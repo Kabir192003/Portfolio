@@ -1,0 +1,60 @@
+import React from 'react';
+import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
+
+// Components
+import Layout from './components/Layout';
+
+// Pages
+import Home from './pages/Home';
+import Projects from './pages/Projects';
+import Project1 from './pages/Project1';
+import Project2 from './pages/Project2';
+import Project3 from './pages/Project3';
+import Project4 from './pages/Project4';
+import Experience from './pages/Experience';
+import Education from './pages/Education';
+import Contact from './pages/Contact';
+
+// Scroll to top on route change
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+};
+
+// Main routing configuration
+const AnimatedRoutes = () => {
+  const location = useLocation();
+
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="projects" element={<Projects />} />
+          <Route path="projects/1" element={<Project1 />} />
+          <Route path="projects/2" element={<Project2 />} />
+          <Route path="projects/3" element={<Project3 />} />
+          <Route path="projects/4" element={<Project4 />} />
+          <Route path="experience" element={<Experience />} />
+          <Route path="education" element={<Education />} />
+          <Route path="contact" element={<Contact />} />
+        </Route>
+      </Routes>
+    </AnimatePresence>
+  );
+};
+
+const App = () => {
+  return (
+    <Router>
+      <ScrollToTop />
+      <AnimatedRoutes />
+    </Router>
+  );
+};
+
+export default App;
