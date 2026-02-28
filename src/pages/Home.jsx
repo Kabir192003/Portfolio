@@ -339,7 +339,7 @@ const Home = () => {
                     <div style={styles.projectGrid}>
                         <ProjectCard
                             to="/projects/1"
-                            img="./sample.jpg"
+                            img="./bmw.jpg"
                             alt="Fintech Dashboard"
                             title="Fintech Dashboard"
                             desc="A comprehensive financial dashboard focusing on data visualization and ease of use."
