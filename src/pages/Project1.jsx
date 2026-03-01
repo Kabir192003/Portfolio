@@ -20,7 +20,7 @@ const Project1 = () => {
         persona2: './tmp2.jpg',
         sitemap: './tmsm.jpg',
         wireframes: ['./tmw1.jpg', './tmw2.jpg', './tmw3.jpg'],
-        finalMockups: ['./1-final.jpg', './sample.jpg', './sample.jpg']
+        finalMockups: ['./tmf1.jpg', './tmf2.jpg', './tmf3.jpg']
     };
 
     return (
