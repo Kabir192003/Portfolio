@@ -8,13 +8,13 @@ const Project1 = () => {
 
     // Hardcoded data for Project 1
     const project = {
-        title: 'Fintech Dashboard',
-        category: 'UI/UX Design',
+        title: 'Trekmate',
+        category: 'Mobile App',
         timeline: '3 Months',
         role: 'Lead Product Designer',
-        overview: 'A comprehensive rethink of how institutional traders interact with complex real-time data. By simplifying the visual hierarchy and introducing customizable widgets, we increased user efficiency by 30%.',
-        problem: 'Traders were overwhelmed by the density of information on legacy platforms, leading to decision fatigue and slower execution times.',
-        solution: 'We introduced a modular, dark-themed dashboard that minimizes eye strain and uses progressive disclosure to hide secondary information until needed.',
+        overview: 'A modern mobile e-commerce app tailored specifically for camping and trekking enthusiasts, offering a focused and seamless shopping experience for outdoor gear.',
+        problem: 'There are not many dedicated apps for camping and trekking products, forcing users to rely on generic marketplaces with poor categorization and overwhelming choices.',
+        solution: 'A niche, user-centric platform that simplifies discovery through curated categories, intuitive navigation, and a streamlined checkout experience built specifically for outdoor needs.',
         heroImage: './Lambo.jpg',
         persona1: './sample.jpg',
         persona2: './Lambo.jpg',
