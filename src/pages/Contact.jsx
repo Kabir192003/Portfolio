@@ -8,23 +8,23 @@ const Contact = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.6 }}
-            className="container section"
+            className="container section contact-page"
         >
-            <div style={styles.layout}>
-                <div style={styles.infoCol}>
+            <div style={styles.layout} className="contact-layout">
+                <div style={styles.infoCol} className="contact-info-col">
                     <h1 style={styles.title}>Let's create <br />together.</h1>
-                    <p style={styles.subtitle}>
+                    <p style={styles.subtitle} className="contact-subtitle">
                         I'm currently open for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!
                     </p>
 
-                    <div style={styles.contactDetails}>
+                    <div style={styles.contactDetails} className="contact-details">
                         <div style={styles.contactItem}>
                             <span style={styles.label}>Email</span>
-                            <a href="mailto:hello@kabiroscope.com" style={styles.link}>hello@kabiroscope.com</a>
+                            <a href="mailto:hello@kabiroscope.com" style={styles.link} className="contact-link">hello@kabiroscope.com</a>
                         </div>
                         <div style={styles.contactItem}>
                             <span style={styles.label}>Social</span>
-                            <a href="#" style={styles.link}>LinkedIn</a>
+                            <a href="#" style={styles.link} className="contact-link">LinkedIn</a>
                         </div>
                     </div>
                 </div>

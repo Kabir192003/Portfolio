@@ -25,20 +25,21 @@ const Project3 = () => {
 
     return (
         <motion.div
+            className="project-detail-page"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8 }}
         >
             {/* Parallax Hero */}
-            <div style={styles.heroContainer}>
+            <div style={styles.heroContainer} className="project-hero">
                 <motion.div style={{ ...styles.heroBg, y }}>
                     {/* Large Hero Image */}
                     <img src={project.heroImage} alt={`${project.title} Hero`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     <div style={styles.heroGradientOverlay} />
                 </motion.div>
 
-                <div className="container" style={styles.heroContent}>
+                <div className="container project-hero-content" style={styles.heroContent}>
                     <Link to="/projects" style={styles.backLink}>← Back to Projects</Link>
                     <span style={styles.category}>{project.category}</span>
                     <h1 style={styles.title}>{project.title}</h1>
@@ -47,7 +48,7 @@ const Project3 = () => {
 
             <div className="container section">
                 {/* Project Meta Info */}
-                <div style={styles.metaGrid}>
+                <div style={styles.metaGrid} className="project-meta-grid">
                     <div>
                         <span style={styles.metaLabel}>Role</span>
                         <p style={styles.metaValue}>{project.role}</p>
@@ -63,30 +64,30 @@ const Project3 = () => {
                 </div>
 
                 {/* Content Sections */}
-                <div style={styles.contentSections}>
+                <div style={styles.contentSections} className="project-content-sections">
 
                     <section style={styles.textSection}>
-                        <h2 style={styles.sectionHeader}>Overview & Motivation</h2>
-                        <p style={styles.paragraph}>{project.overview}</p>
+                        <h2 style={styles.sectionHeader} className="project-section-header">Overview & Motivation</h2>
+                        <p style={styles.paragraph} className="project-paragraph">{project.overview}</p>
                     </section>
 
                     <section style={styles.textSection}>
-                        <div style={styles.splitLayout}>
+                        <div style={styles.splitLayout} className="project-split-layout">
                             <div style={styles.splitContent}>
-                                <h2 style={styles.sectionHeader}>The Problem</h2>
-                                <p style={styles.paragraph}>{project.problem}</p>
+                                <h2 style={styles.sectionHeader} className="project-section-header">The Problem</h2>
+                                <p style={styles.paragraph} className="project-paragraph">{project.problem}</p>
                             </div>
                             <div style={styles.splitContent}>
-                                <h2 style={styles.sectionHeader}>The Solution</h2>
-                                <p style={styles.paragraph}>{project.solution}</p>
+                                <h2 style={styles.sectionHeader} className="project-section-header">The Solution</h2>
+                                <p style={styles.paragraph} className="project-paragraph">{project.solution}</p>
                             </div>
                         </div>
                     </section>
 
                     {/* User Personas */}
                     <section style={styles.textSection}>
-                        <h2 style={styles.sectionHeader}>User Personas</h2>
-                        <div style={styles.imageGrid}>
+                        <h2 style={styles.sectionHeader} className="project-section-header">User Personas</h2>
+                        <div style={styles.imageGrid} className="project-image-grid">
                             <div style={styles.imagePlaceholder} className="persona-image-holder">
                                 <img src={project.persona1} alt="User Persona 1" className="persona-image" style={{ width: '100%', height: '100%' }} />
                             </div>
@@ -98,11 +99,11 @@ const Project3 = () => {
 
                     {/* User Journey Map */}
                     <section style={styles.textSection}>
-                        <h2 style={styles.sectionHeader}>User Journey Map</h2>
-                        <div style={styles.largeImagePlaceholder} className="journey-image-holder">
+                        <h2 style={styles.sectionHeader} className="project-section-header">User Journey Map</h2>
+                        <div style={styles.largeImagePlaceholder} className="project-large-image journey-image-holder">
                             <img src={project.sitemap} alt="Sitemap" className="journey-image" style={{ width: '100%', height: '100%' }} />
                         </div>
-                        <div style={styles.imageGrid3}>
+                        <div style={styles.imageGrid3} className="project-image-grid-3">
                             {project.wireframes.map((wf, idx) => (
                                 <div key={idx} style={styles.imagePlaceholder} className="journey-image-holder">
                                     <img src={wf} alt={`Wireframe ${idx + 1}`} className="journey-image" style={{ width: '100%', height: '100%' }} />
@@ -113,8 +114,8 @@ const Project3 = () => {
 
                     {/* Final Mockups */}
                     <section style={styles.textSection}>
-                        <h2 style={styles.sectionHeader}>High-Fidelity Mockups</h2>
-                        <div style={{ ...styles.largeImagePlaceholder, height: 'clamp(300px, 78vw, 600px)' }}>
+                        <h2 style={styles.sectionHeader} className="project-section-header">High-Fidelity Mockups</h2>
+                        <div style={{ ...styles.largeImagePlaceholder, height: 'clamp(300px, 78vw, 600px)' }} className="project-final-image">
                             <img src={project.final} alt={`${project.title} Final UI`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                         </div>
                     </section>

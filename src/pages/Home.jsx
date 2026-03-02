@@ -34,8 +34,9 @@ const Reveal = ({ children, delay = 0, direction = 'up', style }) => {
     );
 };
 
-const ScrollSection = ({ children, style, delay = 0 }) => (
+const ScrollSection = ({ children, style, delay = 0, className = '' }) => (
     <motion.section
+        className={className}
         style={style}
         initial={{ opacity: 0, y: 36 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -46,8 +47,9 @@ const ScrollSection = ({ children, style, delay = 0 }) => (
     </motion.section>
 );
 
-const FloatingOrb = ({ style, duration = 16, delay = 0 }) => (
+const FloatingOrb = ({ style, duration = 16, delay = 0, className = '' }) => (
     <motion.div
+        className={className}
         style={{ ...styles.floatingOrb, ...style }}
         animate={{
             x: [0, 24, -16, 0],
@@ -234,6 +236,7 @@ const Home = () => {
 
     return (
         <motion.div
+            className="home-page"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -244,18 +247,19 @@ const Home = () => {
             </motion.div>
 
             {/* ── HERO ───────────────────────────────────────────────────── */}
-            <section ref={heroRef} style={styles.heroSection}>
+            <section ref={heroRef} style={styles.heroSection} className="home-hero">
                 <DynamicBackground />
-                <FloatingOrb style={{ top: '16%', right: '12%', width: '260px', height: '260px' }} duration={18} />
-                <FloatingOrb style={{ bottom: '14%', left: '6%', width: '180px', height: '180px' }} duration={22} delay={1.2} />
+                <FloatingOrb className="home-orb" style={{ top: '16%', right: '12%', width: '260px', height: '260px' }} duration={18} />
+                <FloatingOrb className="home-orb" style={{ bottom: '14%', left: '6%', width: '180px', height: '180px' }} duration={22} delay={1.2} />
 
                 <motion.div
-                    className="container"
+                    className="container home-hero-content"
                     style={{ ...styles.heroContent, y: heroY }}
                 >
                     <motion.div style={{ opacity: heroOpacity }}>
                         <motion.h1
                             style={styles.heroTitle}
+                            className="home-hero-title"
                             initial={{ opacity: 0, y: 60 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.25, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
@@ -267,6 +271,7 @@ const Home = () => {
 
                         <motion.p
                             style={styles.heroSubtitle}
+                            className="home-hero-subtitle"
                             initial={{ opacity: 0, y: 40 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.45, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
@@ -278,6 +283,7 @@ const Home = () => {
 
                     <motion.div
                         style={{ ...styles.heroActions, opacity: heroActionsOpacity }}
+                        className="home-hero-actions"
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.65, duration: 0.8 }}
@@ -294,6 +300,7 @@ const Home = () => {
                 {/* Scroll indicator */}
                 <motion.div
                     style={styles.scrollIndicator}
+                    className="home-scroll-indicator"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1.8, duration: 1 }}
@@ -309,7 +316,7 @@ const Home = () => {
 
             <div className="container">
                 {/* ── SKILLS ───────────────────────────────────────────── */}
-                <ScrollSection style={styles.section} delay={0.05}>
+                <ScrollSection style={styles.section} delay={0.05} className="home-section">
                     <Reveal>
                         <div style={{ ...styles.sectionHeader, ...styles.skillsSectionHeader }}>
                             <span style={styles.sectionTag}>What I Do</span>
@@ -328,7 +335,7 @@ const Home = () => {
                 </ScrollSection>
 
                 {/* ── FEATURED PROJECTS ────────────────────────────────── */}
-                <ScrollSection style={styles.section}>
+                <ScrollSection style={styles.section} className="home-section">
                     <Reveal>
                         <div style={styles.sectionHeader}>
                             <span style={styles.sectionTag}>Selected Work</span>
@@ -336,7 +343,7 @@ const Home = () => {
                         </div>
                     </Reveal>
 
-                    <div style={styles.projectGrid}>
+                    <div style={styles.projectGrid} className="home-project-grid">
                         <ProjectCard
                             to="/projects/1"
                             img="./bmw.jpg"
@@ -365,9 +372,10 @@ const Home = () => {
                 </ScrollSection>
 
                 {/* ── CTA ──────────────────────────────────────────────── */}
-                <ScrollSection style={styles.ctaSection} delay={0.1}>
+                <ScrollSection style={styles.ctaSection} delay={0.1} className="home-cta-section">
                     <motion.div
                         style={styles.ctaInner}
+                        className="home-cta-inner"
                         variants={ctaContainerVariants}
                         initial="hidden"
                         whileInView="visible"
@@ -375,6 +383,7 @@ const Home = () => {
                     >
                             <motion.div
                                 style={styles.ctaAura}
+                                className="home-cta-aura"
                                 animate={{ scale: [1, 1.08, 1], opacity: [0.18, 0.32, 0.18] }}
                                 transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
                             />

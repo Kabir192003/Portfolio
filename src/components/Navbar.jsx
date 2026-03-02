@@ -4,26 +4,26 @@ import '../index.css';
 
 const Navbar = () => {
     return (
-        <nav style={styles.nav}>
-            <div style={styles.container} className="container">
+        <nav style={styles.nav} className="site-nav">
+            <div style={styles.container} className="container site-nav-inner">
                 {/* Logo */}
                 <NavLink to="/" style={styles.logoLink}>
-                    <span style={styles.logoText}>kabiroscope</span>
+                    <span style={styles.logoText} className="site-nav-logo">kabiroscope</span>
                 </NavLink>
 
                 {/* Links */}
-                <div style={styles.links}>
-                    <NavLink to="/projects" style={({ isActive }) => isActive ? styles.activeLink : styles.link}>
+                <div style={styles.links} className="site-nav-links">
+                    <NavLink to="/projects" className="site-nav-link" style={({ isActive }) => isActive ? styles.activeLink : styles.link}>
                         Projects
                     </NavLink>
-                    <NavLink to="/experience" style={({ isActive }) => isActive ? styles.activeLink : styles.link}>
+                    <NavLink to="/experience" className="site-nav-link" style={({ isActive }) => isActive ? styles.activeLink : styles.link}>
                         Experience
                     </NavLink>
-                    <NavLink to="/education" style={({ isActive }) => isActive ? styles.activeLink : styles.link}>
+                    <NavLink to="/education" className="site-nav-link" style={({ isActive }) => isActive ? styles.activeLink : styles.link}>
                         Education
                     </NavLink>
 
-                    <NavLink to="/contact" className="glass-button" style={{ marginLeft: '1rem' }}>
+                    <NavLink to="/contact" className="glass-button site-nav-cta" style={{ marginLeft: '1rem' }}>
                         Contact Me
                     </NavLink>
                 </div>

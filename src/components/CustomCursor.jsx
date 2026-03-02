@@ -3,6 +3,12 @@ import React, { useEffect, useRef } from 'react';
 const CustomCursor = () => {
     const cursorDot = useRef(null);
     const cursorRing = useRef(null);
+    const isCoarsePointer = typeof window !== 'undefined'
+        && window.matchMedia('(hover: none), (pointer: coarse)').matches;
+
+    if (isCoarsePointer) {
+        return null;
+    }
 
     useEffect(() => {
         let mouseX = 0, mouseY = 0;

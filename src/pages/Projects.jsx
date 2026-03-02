@@ -60,7 +60,7 @@ const Projects = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.6 }}
-            className="container section"
+            className="container section projects-page"
         >
             <motion.h1
                 style={styles.pageTitle}
@@ -72,12 +72,13 @@ const Projects = () => {
             </motion.h1>
             <motion.div
                 style={styles.titleAccent}
+                className="projects-title-accent"
                 initial={{ scaleX: 0, opacity: 0 }}
                 animate={{ scaleX: 1, opacity: 1 }}
                 transition={{ delay: 0.15, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             />
 
-            <div style={styles.grid}>
+            <div style={styles.grid} className="projects-grid">
                 {projects.map((project, index) => (
                     <motion.article
                         key={project.id}
@@ -101,7 +102,7 @@ const Projects = () => {
                                 <ProjectImage src={project.image} alt={project.title} />
                                 <span style={styles.categoryBadge}>{project.category}</span>
                             </motion.div>
-                            <div style={styles.cardContent}>
+                            <div style={styles.cardContent} className="projects-card-content">
                                 <h2 style={styles.projectTitle}>{project.title}</h2>
                                 <motion.span
                                     style={styles.viewLink}

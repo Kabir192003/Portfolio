@@ -25,26 +25,27 @@ const Education = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.6 }}
-            className="container section"
+            className="container section education-page"
         >
             <h1 style={styles.pageTitle}>Education</h1>
 
-            <div style={styles.timeline}>
+            <div style={styles.timeline} className="timeline">
                 {education.map((edu, index) => (
                     <motion.div
                         key={edu.id}
                         style={styles.timelineItem}
+                        className="timeline-item"
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: index * 0.2, duration: 0.5 }}
                     >
-                        <div style={styles.periodColumn}>
+                        <div style={styles.periodColumn} className="period-column">
                             <span style={styles.period}>{edu.period}</span>
                         </div>
-                        <div style={styles.contentColumn}>
-                            <h2 style={styles.degree}>{edu.degree}</h2>
+                        <div style={styles.contentColumn} className="content-column">
+                            <h2 style={styles.degree} className="role-heading">{edu.degree}</h2>
                             <h3 style={styles.institution}>{edu.institution}</h3>
-                            <p style={styles.description}>{edu.description}</p>
+                            <p style={styles.description} className="timeline-description">{edu.description}</p>
                         </div>
                     </motion.div>
                 ))}

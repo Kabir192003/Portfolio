@@ -234,6 +234,246 @@ main {
   min-height: 100vh;
 }
 
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 1.25rem;
+  }
+
+  .site-nav-inner {
+    flex-wrap: wrap !important;
+    gap: 0.75rem !important;
+  }
+
+  .site-nav-links {
+    flex-wrap: wrap !important;
+    justify-content: flex-end !important;
+    gap: 0.9rem !important;
+  }
+
+  .site-nav-logo {
+    font-size: 1.35rem !important;
+  }
+
+  .site-nav-link {
+    font-size: 0.9rem !important;
+  }
+
+  .site-nav-cta {
+    margin-left: 0.4rem !important;
+  }
+
+  .home-hero {
+    min-height: 500px !important;
+  }
+
+  .home-hero-content {
+    max-width: 100% !important;
+  }
+
+  .home-hero-title {
+    font-size: clamp(2.1rem, 11vw, 4rem) !important;
+  }
+
+  .home-hero-subtitle {
+    font-size: 1rem !important;
+    line-height: 1.65 !important;
+  }
+
+  .home-hero-actions {
+    gap: 1rem !important;
+  }
+
+  .home-scroll-indicator {
+    display: none !important;
+  }
+
+  .home-section {
+    margin-bottom: 5.5rem !important;
+  }
+
+  .home-project-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+  }
+
+  .home-cta-inner {
+    padding: 3.5rem 1.25rem !important;
+    border-radius: 24px !important;
+  }
+
+  .home-cta-aura {
+    width: 240px !important;
+    height: 240px !important;
+    top: -110px !important;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+
+  .projects-card-content {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.5rem !important;
+  }
+
+  .project-hero {
+    height: 52vh !important;
+    min-height: 320px !important;
+  }
+
+  .project-hero-content {
+    padding-bottom: 1.75rem !important;
+  }
+
+  .project-meta-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+    padding-bottom: 2rem !important;
+    margin-bottom: 2.25rem !important;
+  }
+
+  .project-content-sections {
+    gap: 3.5rem !important;
+  }
+
+  .project-section-header {
+    font-size: 1.55rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .project-paragraph {
+    font-size: 1rem !important;
+    line-height: 1.65 !important;
+  }
+
+  .project-split-layout {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+  }
+
+  .project-image-grid,
+  .project-image-grid-3 {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+    margin-top: 1.25rem !important;
+  }
+
+  .project-mobile-image-grid {
+    grid-template-columns: repeat(2, minmax(120px, 1fr)) !important;
+    gap: 1rem !important;
+    margin-top: 1.25rem !important;
+  }
+
+  .project-large-image {
+    height: 250px !important;
+    margin-top: 1.25rem !important;
+  }
+
+  .project-final-image {
+    height: 320px !important;
+  }
+
+  .contact-layout {
+    min-height: auto !important;
+    align-items: flex-start !important;
+    padding-top: 0.5rem;
+  }
+
+  .contact-subtitle {
+    font-size: 1rem !important;
+    margin-bottom: 2rem !important;
+  }
+
+  .contact-details {
+    gap: 1.25rem !important;
+  }
+
+  .contact-link {
+    font-size: 1rem !important;
+    word-break: break-word;
+  }
+
+  .experience-page .timeline,
+  .education-page .timeline {
+    gap: 2rem !important;
+  }
+
+  .experience-page .timeline-item,
+  .education-page .timeline-item {
+    gap: 1rem !important;
+  }
+
+  .experience-page .period-column,
+  .education-page .period-column,
+  .experience-page .content-column,
+  .education-page .content-column {
+    flex: 1 1 100% !important;
+  }
+
+  .experience-page .role-heading,
+  .education-page .role-heading {
+    font-size: 1.35rem !important;
+  }
+
+  .experience-page .timeline-description,
+  .education-page .timeline-description {
+    font-size: 1rem !important;
+  }
+
+  .site-footer-inner {
+    justify-content: center !important;
+    text-align: center;
+  }
+
+  .site-footer-links {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  .section {
+    padding: 3rem 0;
+  }
+
+  .site-nav-inner {
+    justify-content: center !important;
+  }
+
+  .site-nav-links {
+    width: 100%;
+    justify-content: center !important;
+    gap: 0.75rem !important;
+  }
+
+  .site-nav-cta {
+    margin-left: 0 !important;
+  }
+
+  .glass-button {
+    padding: 10px 18px !important;
+    font-size: 0.9rem !important;
+  }
+
+  .home-orb {
+    display: none !important;
+  }
+
+  .home-cta-inner {
+    padding: 3rem 1rem !important;
+  }
+
+  .project-mobile-image-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
 @keyframes pulse {
 
   0%,

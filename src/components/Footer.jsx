@@ -2,10 +2,10 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <footer style={styles.footer}>
-            <div className="container" style={styles.container}>
-                <p style={styles.text}>© {new Date().getFullYear()} kabiroscope. All rights reserved.</p>
-                <div style={styles.links}>
+        <footer style={styles.footer} className="site-footer">
+            <div className="container site-footer-inner" style={styles.container}>
+                <p style={styles.text} className="site-footer-text">© {new Date().getFullYear()} kabiroscope. All rights reserved.</p>
+                <div style={styles.links} className="site-footer-links">
                     <a href="#" style={styles.link}>LinkedIn</a>
                     <a href="#" style={styles.link}>Twitter</a>
                     <a href="#" style={styles.link}>Dribbble</a>
