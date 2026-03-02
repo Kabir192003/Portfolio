@@ -16,8 +16,8 @@ const Project1 = () => {
         problem: 'There are not many dedicated apps for camping and trekking products, forcing users to rely on generic marketplaces with poor categorization and overwhelming choices.',
         solution: 'A niche, user-centric platform that simplifies discovery through curated categories, intuitive navigation, and a streamlined checkout experience built specifically for outdoor needs.',
         heroImage: './tmh.jpg',
-        persona1: './tmp1.jpg',
-        persona2: './tmp2.jpg',
+        persona1: './tmp11.jpg',
+        persona2: './tmp22.jpg',
         sitemap: './tmsm.jpg',
         wireframes: ['./tmw1.jpg', './tmw2.jpg', './tmw3.jpg'],
         finalMockups: ['./tmf1.jpg', './tmf2.jpg', './tmf3.jpg']
