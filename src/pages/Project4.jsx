@@ -96,16 +96,16 @@ const Project4 = () => {
                         </div>
                     </section>
 
-                    {/* Wireframes & Sitemaps */}
+                    {/* User Journey Map */}
                     <section style={styles.textSection}>
-                        <h2 style={styles.sectionHeader}>Information Architecture & Wireframes</h2>
-                        <div style={styles.largeImagePlaceholder}>
-                            <img src={project.sitemap} alt="Sitemap" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                        <h2 style={styles.sectionHeader}>User Journey Map</h2>
+                        <div style={styles.largeImagePlaceholder} className="journey-image-holder">
+                            <img src={project.sitemap} alt="Sitemap" className="journey-image" style={{ width: '100%', height: '100%' }} />
                         </div>
                         <div style={styles.imageGrid3}>
                             {project.wireframes.map((wf, idx) => (
-                                <div key={idx} style={styles.imagePlaceholder}>
-                                    <img src={wf} alt={`Wireframe ${idx + 1}`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                <div key={idx} style={styles.imagePlaceholder} className="journey-image-holder">
+                                    <img src={wf} alt={`Wireframe ${idx + 1}`} className="journey-image" style={{ width: '100%', height: '100%' }} />
                                 </div>
                             ))}
                         </div>

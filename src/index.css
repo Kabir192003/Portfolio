@@ -81,24 +81,28 @@ a {
   padding: var(--spacing-xl) 0;
 }
 
-.persona-image-holder {
+.persona-image-holder,
+.journey-image-holder {
   cursor: zoom-in;
   transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
-.persona-image-holder:hover {
+.persona-image-holder:hover,
+.journey-image-holder:hover {
   transform: scale(1.02);
   box-shadow: 0 14px 30px -18px rgba(0, 0, 0, 0.7);
   z-index: 2;
 }
 
-.persona-image {
+.persona-image,
+.journey-image {
   display: block;
   object-fit: cover;
   transition: filter var(--transition-fast);
 }
 
-.persona-image-holder:hover .persona-image {
+.persona-image-holder:hover .persona-image,
+.journey-image-holder:hover .journey-image {
   object-fit: contain;
 }
 
