@@ -20,7 +20,7 @@ const Project2 = () => {
         persona2: './whp2.jpg',
         sitemap: './whsm.jpg',
         wireframes: ['./p2w1.png', './p2w2.png', './p2w3.png'],
-        final: ['./whf1.jpg', './whf2.jpg', './whf3.jpg']
+        finalMockups: ['./p2m1.png', './p2m2.png', './p2m3.png']
     };
 
     return (
@@ -115,8 +115,12 @@ const Project2 = () => {
                     {/* Final Mockups */}
                     <section style={styles.textSection}>
                         <h2 style={styles.sectionHeader} className="project-section-header">High-Fidelity Mockups</h2>
-                        <div style={{ ...styles.largeImagePlaceholder, height: 'clamp(300px, 78vw, 600px)' }} className="project-final-image">
-                            <img src={project.final} alt={`${project.title} Final UI`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                        <div style={styles.mockupStack} className="project-image-grid-3">
+                            {project.finalMockups.map((mockup, idx) => (
+                                <div key={idx} style={styles.wireframePlaceholder} className="project2-wireframe-holder">
+                                    <img src={mockup} alt={`${project.title} Final Mockup ${idx + 1}`} className="project2-wireframe-image" />
+                                </div>
+                            ))}
                         </div>
                     </section>
 
@@ -229,6 +233,12 @@ const styles = {
         marginTop: '2rem',
     },
     imageGrid3: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '2rem',
+        marginTop: '2rem',
+    },
+    mockupStack: {
         display: 'flex',
         flexDirection: 'column',
         gap: '2rem',
