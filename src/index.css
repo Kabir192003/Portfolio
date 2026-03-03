@@ -106,6 +106,18 @@ a {
   object-fit: contain;
 }
 
+.project1-wireframe-holder {
+  background: #efedeb !important;
+}
+
+.project1-wireframe-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  object-position: center;
+}
+
 @media (hover: none),
 (pointer: coarse) {
 

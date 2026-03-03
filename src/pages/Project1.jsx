@@ -105,8 +105,8 @@ const Project1 = () => {
                         </div>
                         <div style={styles.mobileImageGrid} className="project-mobile-image-grid">
                             {project.wireframes.map((wf, idx) => (
-                                <div key={idx} style={styles.mobileImagePlaceholder} className="journey-image-holder">
-                                    <img src={wf} alt={`Mobile Wireframe ${idx + 1}`} className="journey-image" style={{ width: '100%', height: '100%' }} />
+                                <div key={idx} style={styles.mobileImagePlaceholder} className="project1-wireframe-holder">
+                                    <img src={wf} alt={`Mobile Wireframe ${idx + 1}`} className="project1-wireframe-image" />
                                 </div>
                             ))}
                         </div>
