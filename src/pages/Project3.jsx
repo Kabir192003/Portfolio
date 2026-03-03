@@ -15,12 +15,7 @@ const Project3 = () => {
         overview: 'A comprehensive rethink of how institutional traders interact with complex real-time data. By simplifying the visual hierarchy and introducing customizable widgets, we increased user efficiency by 30%.',
         problem: 'Traders were overwhelmed by the density of information on legacy platforms, leading to decision fatigue and slower execution times.',
         solution: 'We introduced a modular, dark-themed dashboard that minimizes eye strain and uses progressive disclosure to hide secondary information until needed.',
-        heroImage: './bmw.jpg',
-        persona1: './sample.jpg',
-        persona2: './sample.jpg',
-        sitemap: './sample.jpg',
-        wireframes: ['./sample.jpg', './sample.jpg', './sample.jpg'],
-        final: './sample.jpg'
+        heroImage: './bmw.jpg'
     };
 
     return (
@@ -84,42 +79,16 @@ const Project3 = () => {
                         </div>
                     </section>
 
-                    {/* User Personas */}
                     <section style={styles.textSection}>
-                        <h2 style={styles.sectionHeader} className="project-section-header">User Personas</h2>
+                        <h2 style={styles.sectionHeader} className="project-section-header">Survey Responses</h2>
                         <div style={styles.imageGrid} className="project-image-grid">
-                            <div style={styles.imagePlaceholder} className="persona-image-holder">
-                                <img src={project.persona1} alt="User Persona 1" className="persona-image" style={{ width: '100%', height: '100%' }} />
-                            </div>
-                            <div style={styles.imagePlaceholder} className="persona-image-holder">
-                                <img src={project.persona2} alt="User Persona 2" className="persona-image" style={{ width: '100%', height: '100%' }} />
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* User Journey Map */}
-                    <section style={styles.textSection}>
-                        <h2 style={styles.sectionHeader} className="project-section-header">User Journey Map</h2>
-                        <div style={styles.largeImagePlaceholder} className="project-large-image journey-image-holder">
-                            <img src={project.sitemap} alt="Sitemap" className="journey-image" style={{ width: '100%', height: '100%' }} />
-                        </div>
-                        <div style={styles.imageGrid3} className="project-image-grid-3">
-                            {project.wireframes.map((wf, idx) => (
-                                <div key={idx} style={styles.imagePlaceholder} className="journey-image-holder">
-                                    <img src={wf} alt={`Wireframe ${idx + 1}`} className="journey-image" style={{ width: '100%', height: '100%' }} />
+                            {Array.from({ length: 10 }).map((_, idx) => (
+                                <div key={idx} style={styles.imagePlaceholder}>
+                                    Survey Response {idx + 1}
                                 </div>
                             ))}
                         </div>
                     </section>
-
-                    {/* Final Mockups */}
-                    <section style={styles.textSection}>
-                        <h2 style={styles.sectionHeader} className="project-section-header">High-Fidelity Mockups</h2>
-                        <div style={{ ...styles.largeImagePlaceholder, height: 'clamp(300px, 78vw, 600px)' }} className="project-final-image">
-                            <img src={project.final} alt={`${project.title} Final UI`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                        </div>
-                    </section>
-
                 </div>
             </div>
         </motion.div>
@@ -228,12 +197,6 @@ const styles = {
         gap: '2rem',
         marginTop: '2rem',
     },
-    imageGrid3: {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-        gap: '2rem',
-        marginTop: '2rem',
-    },
     imagePlaceholder: {
         width: '100%',
         aspectRatio: '4/3',
@@ -244,19 +207,6 @@ const styles = {
         alignItems: 'center',
         justifyContent: 'center',
         color: 'var(--text-secondary)',
-        overflow: 'hidden',
-    },
-    largeImagePlaceholder: {
-        width: '100%',
-        height: 'clamp(240px, 42vw, 400px)',
-        backgroundColor: 'var(--surface-color)',
-        borderRadius: 'var(--radius-lg)',
-        border: '1px solid var(--glass-border)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        color: 'var(--text-secondary)',
-        marginTop: '2rem',
         overflow: 'hidden',
     }
 };
