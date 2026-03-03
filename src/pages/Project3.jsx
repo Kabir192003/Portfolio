@@ -15,7 +15,19 @@ const Project3 = () => {
         overview: 'A comprehensive rethink of how institutional traders interact with complex real-time data. By simplifying the visual hierarchy and introducing customizable widgets, we increased user efficiency by 30%.',
         problem: 'Traders were overwhelmed by the density of information on legacy platforms, leading to decision fatigue and slower execution times.',
         solution: 'We introduced a modular, dark-themed dashboard that minimizes eye strain and uses progressive disclosure to hide secondary information until needed.',
-        heroImage: './bmw.jpg'
+        heroImage: './bmw.jpg',
+        surveyResponses: [
+            './p3survey1.png',
+            './p3survey2.png',
+            './p3survey3.png',
+            './p3survey4.png',
+            './p3survey5.png',
+            './p3survey6.png',
+            './p3survey7.png',
+            './p3survey8.png',
+            './p3survey9.png',
+            './p3survey10.png'
+        ]
     };
 
     return (
@@ -82,9 +94,14 @@ const Project3 = () => {
                     <section style={styles.textSection}>
                         <h2 style={styles.sectionHeader} className="project-section-header">Survey Responses</h2>
                         <div style={styles.imageGrid} className="project-image-grid">
-                            {Array.from({ length: 10 }).map((_, idx) => (
-                                <div key={idx} style={styles.imagePlaceholder}>
-                                    Survey Response {idx + 1}
+                            {project.surveyResponses.map((response, idx) => (
+                                <div key={idx} style={styles.imagePlaceholder} className="persona-image-holder">
+                                    <img
+                                        src={response}
+                                        alt={`Survey Response ${idx + 1}`}
+                                        className="persona-image"
+                                        style={{ width: '100%', height: '100%' }}
+                                    />
                                 </div>
                             ))}
                         </div>
