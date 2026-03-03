@@ -12,15 +12,15 @@ const Project2 = () => {
         category: 'Mobile App Design',
         timeline: '3 Months',
         role: 'Lead Product Designer',
-        overview: 'A comprehensive rethink of how institutional traders interact with complex real-time data. By simplifying the visual hierarchy and introducing customizable widgets, we increased user efficiency by 30%.',
-        problem: 'Traders were overwhelmed by the density of information on legacy platforms, leading to decision fatigue and slower execution times.',
-        solution: 'We introduced a modular, dark-themed dashboard that minimizes eye strain and uses progressive disclosure to hide secondary information until needed.',
+        overview: 'A unified career platform designed to simplify how users discover jobs, evaluate companies, and build meaningful professional connections. The interface focuses on structured search, assisted filtering, and actionable insights like salary comparisons and relocation costs reducing the cognitive load of switching between multiple platforms. WorkHive is driven by the need to make the job search more transparent, data informed, and efficient for both candidates and recruiters.',
+        problem: 'The current job ecosystem is fragmented and overwhelming. Job seekers rely on multiple tools for job discovery, networking, salary research, and company reviews, leading to scattered information and inefficient decision-making. Interfaces are often cluttered with poor categorization, making it difficult to filter relevant opportunities. Recruiters, on the other hand, struggle with inconsistent candidate data, lack of verified insights, and time consuming shortlisting processes.',
+        solution: 'A user-centric platform that integrates job search, candidate discovery, company ratings, salary insights, and relocation cost estimation into a single ecosystem. Features like refined filters, assisted search, and structured candidate profiles enable faster and more relevant matching. By combining data transparency with intuitive navigation, WorkHive streamlines the hiring journey helping users make confident decisions and enabling recruiters to efficiently identify and engage the right talent.',
         heroImage: './Buaggti2.jpg',
-        persona1: './sample.jpg',
-        persona2: './sample.jpg',
-        sitemap: './sample.jpg',
-        wireframes: ['./sample.jpg', './sample.jpg', './sample.jpg'],
-        final: './sample.jpg'
+        persona1: './whp1.jpg',
+        persona2: './whp2.jpg',
+        sitemap: './whsm.jpg',
+        wireframes: ['./whw1.jpg', './whw2.jpg', './whw3.jpg'],
+        final: ['./whf1.jpg', './whf2.jpg', './whf3.jpg']
     };
 
     return (
