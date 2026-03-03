@@ -105,8 +105,15 @@ const Project2 = () => {
                         </div>
                         <div style={styles.imageGrid3} className="project-image-grid-3">
                             {project.wireframes.map((wf, idx) => (
-                                <div key={idx} style={styles.wireframePlaceholder} className="project2-wireframe-holder">
-                                    <img src={wf} alt={`Wireframe ${idx + 1}`} className="project2-wireframe-image" />
+                                <div key={idx} style={styles.wireframeItem}>
+                                    <div style={styles.wireframePlaceholder} className="project2-wireframe-holder">
+                                        <img src={wf} alt={`Wireframe ${idx + 1}`} className="project2-wireframe-image" />
+                                    </div>
+                                    {idx === 0 && (
+                                        <p style={styles.wireframeDescription}>
+                                            A structured job discovery interface designed to minimize friction and cognitive load. Advanced filters remain accessible at all times, enabling precise refinement without disrupting the browsing flow. Clear CTAs support both direct applications and network-driven referrals.
+                                        </p>
+                                    )}
                                 </div>
                             ))}
                         </div>
@@ -244,6 +251,11 @@ const styles = {
         gap: '2rem',
         marginTop: '2rem',
     },
+    wireframeItem: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '1rem',
+    },
     wireframePlaceholder: {
         width: '100%',
         aspectRatio: '16/10',
@@ -254,6 +266,12 @@ const styles = {
         alignItems: 'center',
         justifyContent: 'center',
         overflow: 'hidden',
+    },
+    wireframeDescription: {
+        margin: 0,
+        fontSize: '1.05rem',
+        color: 'var(--text-secondary)',
+        lineHeight: '1.7',
     },
     imagePlaceholder: {
         width: '100%',
