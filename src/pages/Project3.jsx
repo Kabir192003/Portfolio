@@ -12,7 +12,7 @@ const Project3 = () => {
         category: 'UX Research',
         timeline: '1 Month',
         role: 'UX Reseacher & Analyst',
-        Introduction: 'Swiggy and Zomato have transformed the way urban users discover, order, and experience food. While both platforms offer similar core services—food delivery, dine-in bookings, and loyalty programs—their user experiences differ significantly in design clarity, task efficiency, and service perception. This UX comparative study analyzes both platforms across key user journeys to understand how design decisions influence usability, satisfaction, and overall user preference. By combining feature evaluation with real user feedback from 40 participants, this study aims to uncover which platform delivers a more seamless and intuitive experience.',
+        introduction: 'Swiggy and Zomato have transformed the way urban users discover, order, and experience food. While both platforms offer similar core services—food delivery, dine-in bookings, and loyalty programs—their user experiences differ significantly in design clarity, task efficiency, and service perception. This UX comparative study analyzes both platforms across key user journeys to understand how design decisions influence usability, satisfaction, and overall user preference. By combining feature evaluation with real user feedback from 40 participants, this study aims to uncover which platform delivers a more seamless and intuitive experience.',
         problem: 'Despite offering comparable services, Swiggy and Zomato adopt different UX approaches in navigation, checkout flows, personalization, and support systems. However, it remains unclear how these differences impact real user satisfaction and behavioral preference.The core problem this study addresses is: Which platform provides a superior end-to-end user experience, and what specific UX elements drive that perception?Understanding these differences can reveal broader insights into speed vs. depth in design strategy, and how minimalism, transparency, and support responsiveness affect user trust and loyalty.',
         scope: 'This study evaluates both platforms across critical stages of the food ordering journey, including: Onboarding & App Layout | Food Discovery & Filtering | Checkout & Payment Flow | Delivery & Post-Order Experience | Offers, Discounts & Loyalty Programs | Dine-In & Table Booking Features | Customer Support & Issue Resolution | The research is based on: A structured comparative feature analysis | Survey responses from 40 participants | Qualitative feedback on pain points and satisfaction. The objective is not to declare a winner, but to identify strengths, weaknesses, and strategic UX differences that shape overall user perception.',
         heroImage: './bmw.jpg',
@@ -74,21 +74,14 @@ const Project3 = () => {
                 <div style={styles.contentSections} className="project-content-sections">
 
                     <section style={styles.textSection}>
-                        <h2 style={styles.sectionHeader} className="project-section-header">Overview & Motivation</h2>
-                        <p style={styles.paragraph} className="project-paragraph">{project.overview}</p>
-                    </section>
+                        <h2 style={styles.sectionHeader} className="project-section-header">Introduction</h2>
+                        <p style={styles.paragraph} className="project-paragraph">{project.introduction}</p>
 
-                    <section style={styles.textSection}>
-                        <div style={styles.splitLayout} className="project-split-layout">
-                            <div style={styles.splitContent}>
-                                <h2 style={styles.sectionHeader} className="project-section-header">The Problem</h2>
-                                <p style={styles.paragraph} className="project-paragraph">{project.problem}</p>
-                            </div>
-                            <div style={styles.splitContent}>
-                                <h2 style={styles.sectionHeader} className="project-section-header">The Solution</h2>
-                                <p style={styles.paragraph} className="project-paragraph">{project.solution}</p>
-                            </div>
-                        </div>
+                        <h2 style={{ ...styles.sectionHeader, marginTop: '2.5rem' }} className="project-section-header">Scope</h2>
+                        <p style={styles.paragraph} className="project-paragraph">{project.scope}</p>
+
+                        <h2 style={{ ...styles.sectionHeader, marginTop: '2.5rem' }} className="project-section-header">The Problem</h2>
+                        <p style={styles.paragraph} className="project-paragraph">{project.problem}</p>
                     </section>
 
                     <section style={styles.textSection}>
@@ -197,16 +190,8 @@ const styles = {
         fontSize: '1.2rem',
         color: 'var(--text-secondary)',
         lineHeight: '1.8',
-        maxWidth: '800px',
-    },
-    splitLayout: {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-        gap: 'clamp(1.5rem, 4vw, 4rem)',
-    },
-    splitContent: {
-        display: 'flex',
-        flexDirection: 'column',
+        maxWidth: '100%',
+        textAlign: 'justify',
     },
     imageGrid: {
         display: 'grid',
