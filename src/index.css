@@ -143,6 +143,23 @@ a {
   object-position: center;
 }
 
+.project4-masonry {
+  column-count: 3;
+  column-gap: 1.2rem;
+}
+
+@media (max-width: 1050px) {
+  .project4-masonry {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 680px) {
+  .project4-masonry {
+    column-count: 1;
+  }
+}
+
 @media (hover: none),
 (pointer: coarse) {
 

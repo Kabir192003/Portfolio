@@ -6,21 +6,28 @@ const Project4 = () => {
     const { scrollYProgress } = useScroll();
     const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
 
-    // Hardcoded data for Project 1
     const project = {
-        title: 'SaaS Platform Redesign',
-        category: 'Design System',
-        timeline: '3 Months',
-        role: 'Lead Product Designer',
-        overview: 'A comprehensive rethink of how institutional traders interact with complex real-time data. By simplifying the visual hierarchy and introducing customizable widgets, we increased user efficiency by 30%.',
-        problem: 'Traders were overwhelmed by the density of information on legacy platforms, leading to decision fatigue and slower execution times.',
-        solution: 'We introduced a modular, dark-themed dashboard that minimizes eye strain and uses progressive disclosure to hide secondary information until needed.',
+        title: 'Photography Journal',
+        category: 'Photography',
         heroImage: './sample.jpg',
-        persona1: './sample.jpg',
-        persona2: './sample.jpg',
-        sitemap: './sample.jpg',
-        wireframes: ['./sample.jpg', './sample.jpg', './sample.jpg'],
-        final: './sample.jpg'
+        gallery: [
+            { src: './project4/IMG_6084.HEIC', alt: 'Snow-covered mountain range under dramatic sky' },
+            { src: './project4/IMG_5879.HEIC', alt: 'Orange sports car reflected on glossy surface' },
+            { src: './project4/IMG_6146.HEIC', alt: 'Urban architecture framed against blue sky' },
+            { src: './project4/IMG_5461.HEIC', alt: 'Black-and-white skyscraper perspective shot' },
+            { src: './project4/IMG_5590.HEIC', alt: 'City tram tracks stretching into horizon' },
+            { src: './project4/IMG_5597.HEIC', alt: 'Street scene with layered architecture' },
+            { src: './project4/IMG_E5820.HEIC', alt: 'Travel frame with cinematic light and depth' },
+            { src: './project4/IMG_E5901.HEIC', alt: 'Architectural lines with contrast and shadow' },
+            { src: './project4/IMG_5730.HEIC', alt: 'City composition with strong symmetry' },
+            { src: './project4/IMG_5449.HEIC', alt: 'Tower geometry from a low-angle perspective' },
+            { src: './project4/IMG_E6093.HEIC', alt: 'Glacial landscape and dramatic cloud cover' }
+        ],
+        quotes: [
+            'Photography is the pause button of life.',
+            'A picture is a poem without words.',
+            'Light, shadow, and silence tell stories better than noise.'
+        ]
     };
 
     return (
@@ -47,80 +54,37 @@ const Project4 = () => {
             </div>
 
             <div className="container section">
-                {/* Project Meta Info */}
-                <div style={styles.metaGrid} className="project-meta-grid">
-                    <div>
-                        <span style={styles.metaLabel}>Role</span>
-                        <p style={styles.metaValue}>{project.role}</p>
+                <section style={styles.gallerySection}>
+                    <h2 style={styles.sectionHeader} className="project-section-header">Photography Collection</h2>
+
+                    <div style={styles.quoteStrip}>
+                        {project.quotes.map((quote) => (
+                            <blockquote key={quote} style={styles.quoteCard}>
+                                "{quote}"
+                            </blockquote>
+                        ))}
                     </div>
-                    <div>
-                        <span style={styles.metaLabel}>Timeline</span>
-                        <p style={styles.metaValue}>{project.timeline}</p>
+
+                    <div className="project4-masonry" style={styles.masonry}>
+                        {project.gallery.map((photo, index) => (
+                            <motion.figure
+                                key={photo.src}
+                                style={styles.photoFrame}
+                                initial={{ opacity: 0, y: 22 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, amount: 0.15 }}
+                                transition={{ duration: 0.6, delay: Math.min(index * 0.04, 0.36) }}
+                            >
+                                <img
+                                    src={photo.src}
+                                    alt={photo.alt}
+                                    style={styles.photo}
+                                    loading="lazy"
+                                />
+                            </motion.figure>
+                        ))}
                     </div>
-                    <div>
-                        <span style={styles.metaLabel}>Deliverables</span>
-                        <p style={styles.metaValue}>Wireframes, UI Design, Interactive Prototypes, Design System</p>
-                    </div>
-                </div>
-
-                {/* Content Sections */}
-                <div style={styles.contentSections} className="project-content-sections">
-
-                    <section style={styles.textSection}>
-                        <h2 style={styles.sectionHeader} className="project-section-header">Overview & Motivation</h2>
-                        <p style={styles.paragraph} className="project-paragraph">{project.overview}</p>
-                    </section>
-
-                    <section style={styles.textSection}>
-                        <div style={styles.splitLayout} className="project-split-layout">
-                            <div style={styles.splitContent}>
-                                <h2 style={styles.sectionHeader} className="project-section-header">The Problem</h2>
-                                <p style={styles.paragraph} className="project-paragraph">{project.problem}</p>
-                            </div>
-                            <div style={styles.splitContent}>
-                                <h2 style={styles.sectionHeader} className="project-section-header">The Solution</h2>
-                                <p style={styles.paragraph} className="project-paragraph">{project.solution}</p>
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* User Personas */}
-                    <section style={styles.textSection}>
-                        <h2 style={styles.sectionHeader} className="project-section-header">User Personas</h2>
-                        <div style={styles.imageGrid} className="project-image-grid">
-                            <div style={styles.imagePlaceholder} className="persona-image-holder">
-                                <img src={project.persona1} alt="User Persona 1" className="persona-image" style={{ width: '100%', height: '100%' }} />
-                            </div>
-                            <div style={styles.imagePlaceholder} className="persona-image-holder">
-                                <img src={project.persona2} alt="User Persona 2" className="persona-image" style={{ width: '100%', height: '100%' }} />
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* User Journey Map */}
-                    <section style={styles.textSection}>
-                        <h2 style={styles.sectionHeader} className="project-section-header">User Journey Map</h2>
-                        <div style={styles.largeImagePlaceholder} className="project-large-image journey-image-holder">
-                            <img src={project.sitemap} alt="Sitemap" className="journey-image" style={{ width: '100%', height: '100%' }} />
-                        </div>
-                        <div style={styles.imageGrid3} className="project-image-grid-3">
-                            {project.wireframes.map((wf, idx) => (
-                                <div key={idx} style={styles.imagePlaceholder} className="journey-image-holder">
-                                    <img src={wf} alt={`Wireframe ${idx + 1}`} className="journey-image" style={{ width: '100%', height: '100%' }} />
-                                </div>
-                            ))}
-                        </div>
-                    </section>
-
-                    {/* Final Mockups */}
-                    <section style={styles.textSection}>
-                        <h2 style={styles.sectionHeader} className="project-section-header">High-Fidelity Mockups</h2>
-                        <div style={{ ...styles.largeImagePlaceholder, height: 'clamp(300px, 78vw, 600px)' }} className="project-final-image">
-                            <img src={project.final} alt={`${project.title} Final UI`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                        </div>
-                    </section>
-
-                </div>
+                </section>
             </div>
         </motion.div>
     );
@@ -173,92 +137,52 @@ const styles = {
     title: {
         fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
     },
-    metaGrid: {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-        gap: '2rem',
-        paddingBottom: '4rem',
-        borderBottom: '1px solid var(--glass-border)',
-        marginBottom: '4rem',
-    },
-    metaLabel: {
-        display: 'block',
-        fontSize: '0.85rem',
-        color: 'var(--text-secondary)',
-        marginBottom: '0.5rem',
-        textTransform: 'uppercase',
-        letterSpacing: '0.05em',
-    },
-    metaValue: {
-        fontSize: '1.1rem',
-        fontWeight: '500',
-    },
-    contentSections: {
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '6rem',
-    },
-    textSection: {
-        maxWidth: '1000px',
+    gallerySection: {
+        maxWidth: '1200px',
         margin: '0 auto',
         width: '100%',
     },
     sectionHeader: {
         fontSize: '2rem',
-        marginBottom: '1.5rem',
+        marginBottom: '1.25rem',
+        textAlign: 'center',
     },
-    paragraph: {
-        fontSize: '1.2rem',
+    quoteStrip: {
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+        gap: '1rem',
+        marginBottom: '2rem',
+    },
+    quoteCard: {
+        margin: 0,
+        padding: '1rem 1.15rem',
+        background: 'rgba(185, 140, 232, 0.06)',
+        border: '1px solid var(--glass-border)',
+        borderRadius: 'var(--radius-md)',
         color: 'var(--text-secondary)',
-        lineHeight: '1.8',
-        maxWidth: '800px',
+        fontSize: '0.98rem',
+        lineHeight: '1.7',
+        fontStyle: 'italic',
+        textAlign: 'justify',
     },
-    splitLayout: {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-        gap: 'clamp(1.5rem, 4vw, 4rem)',
+    masonry: {
+        columnGap: '1.2rem',
     },
-    splitContent: {
-        display: 'flex',
-        flexDirection: 'column',
-    },
-    imageGrid: {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-        gap: '2rem',
-        marginTop: '2rem',
-    },
-    imageGrid3: {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-        gap: '2rem',
-        marginTop: '2rem',
-    },
-    imagePlaceholder: {
-        width: '100%',
-        aspectRatio: '4/3',
-        backgroundColor: 'var(--surface-color)',
+    photoFrame: {
+        breakInside: 'avoid',
+        margin: '0 0 1.2rem',
+        padding: '0.45rem',
         borderRadius: 'var(--radius-md)',
         border: '1px solid var(--glass-border)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        color: 'var(--text-secondary)',
-        overflow: 'hidden',
+        background: 'rgba(185, 140, 232, 0.04)',
     },
-    largeImagePlaceholder: {
+    photo: {
         width: '100%',
-        height: 'clamp(240px, 42vw, 400px)',
-        backgroundColor: 'var(--surface-color)',
-        borderRadius: 'var(--radius-lg)',
-        border: '1px solid var(--glass-border)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        color: 'var(--text-secondary)',
-        marginTop: '2rem',
-        overflow: 'hidden',
-    }
+        height: 'auto',
+        display: 'block',
+        borderRadius: 'calc(var(--radius-md) - 6px)',
+        objectFit: 'contain',
+    },
 };
 
 export default Project4;
