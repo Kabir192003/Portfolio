@@ -119,6 +119,11 @@ const Project2 = () => {
                                             A visual network-mapping interface that highlights role relevance through dynamic relationship nodes. Instead of a static list, users can explore career pathways and company overlaps contextually. The match percentage reinforces confidence in opportunity alignment.
                                         </p>
                                     )}
+                                    {idx === 2 && (
+                                        <p style={styles.wireframeDescription}>
+                                            A decision-support tool that helps users evaluate relocation feasibility beyond salary comparisons. By combining income, expenses, and lifestyle inputs, it enables informed career decisions. The simplified layout ensures clarity while handling complex financial variables.
+                                        </p>
+                                    )}
                                 </div>
                             ))}
                         </div>
