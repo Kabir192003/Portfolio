@@ -5,24 +5,24 @@ const Experience = () => {
     const experiences = [
         {
             id: 1,
-            role: 'Senior UI/UX Designer',
-            company: 'TechCorp Solutions',
-            period: '2023 - Present',
-            description: 'Leading the design system team, reducing time to market for new features by 40%. Spearheaded the redesign of the core enterprise dashboard serving over 50k DAU.'
+            role: 'Junior Product Associate',
+            company: 'Dream Weavers',
+            period: 'Feb 2025 - Aug 2025',
+            description: 'Led cross-functional implementation of design & operations, transforming product needs into operational plans and enhancing delivery schedule by 25%. Collaborated with cross-functional stakeholders to align business objectives with execution strategies. Analysed product milestones and operational data to identify trends and bottlenecks, enabling data- driven prioritization and improving overall product performance by 15%.'
         },
         {
             id: 2,
-            role: 'Product Designer',
-            company: 'Innovate.io',
-            period: '2020 - 2023',
-            description: 'Designed cross-platform mobile experiences for B2C health tech applications. Conducted comprehensive user research, improving user retention by 25%.'
+            role: 'UI/UX Intern',
+            company: 'Divine Labs',
+            period: 'Mar 2024 - May 2024',
+            description: 'Designed dashboards and LMS interfaces with attention to the hierarchy of information, accessibility, and logical navigation to improve clarity, decrease cognitive load, and enhance task efficiency. Refined requirements into user flows and prototypes and worked with stakeholders to reconcile business requirements with user requirements and tested solutions early in development, which led to a 25% decrease in usability problems. Utilised testing insights and analytics to prioritise high-impact improvements, enhancing overall product performance by 40%.'
         },
         {
             id: 3,
-            role: 'Junior UI Designer',
-            company: 'Creative Agency',
-            period: '2018 - 2020',
-            description: 'Supported the design of immersive e-commerce websites and crafted interactive prototypes for key client pitches.'
+            role: 'Photography & Video Editing',
+            company: 'Self-Employed',
+            period: '2020 - Present',
+            description: 'Explored photography and video editing as a personal creative pursuit, focusing on visual storytelling, composition, and editing techniques.'
         }
     ];
 
