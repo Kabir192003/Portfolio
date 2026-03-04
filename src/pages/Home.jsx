@@ -305,11 +305,11 @@ const Home = () => {
 
         const isSpace = char === ' ';
         const start = context.currentTime;
-        const duration = isSpace ? 0.06 : 0.045;
+        const duration = isSpace ? 0.1 : 0.07;
 
         const masterGain = context.createGain();
         masterGain.gain.setValueAtTime(0.0001, start);
-        masterGain.gain.exponentialRampToValueAtTime(isSpace ? 0.025 : 0.018, start + 0.003);
+        masterGain.gain.exponentialRampToValueAtTime(isSpace ? 0.075 : 0.12, start + 0.003);
         masterGain.gain.exponentialRampToValueAtTime(0.0001, start + duration);
         masterGain.connect(context.destination);
 
@@ -318,7 +318,7 @@ const Home = () => {
         clickOsc.type = 'square';
         clickOsc.frequency.setValueAtTime(isSpace ? 170 : 1350 + Math.random() * 180, start);
         clickGain.gain.setValueAtTime(0.0001, start);
-        clickGain.gain.exponentialRampToValueAtTime(isSpace ? 0.005 : 0.012, start + 0.002);
+        clickGain.gain.exponentialRampToValueAtTime(isSpace ? 0.18 : 0.8, start + 0.002);
         clickGain.gain.exponentialRampToValueAtTime(0.0001, start + duration * 0.7);
         clickOsc.connect(clickGain);
         clickGain.connect(masterGain);
@@ -328,7 +328,7 @@ const Home = () => {
         bodyOsc.type = 'triangle';
         bodyOsc.frequency.setValueAtTime(isSpace ? 95 : 280 + Math.random() * 90, start);
         bodyGain.gain.setValueAtTime(0.0001, start);
-        bodyGain.gain.exponentialRampToValueAtTime(isSpace ? 0.013 : 0.01, start + 0.004);
+        bodyGain.gain.exponentialRampToValueAtTime(isSpace ? 0.28 : 0.42, start + 0.004);
         bodyGain.gain.exponentialRampToValueAtTime(0.0001, start + duration);
         bodyOsc.connect(bodyGain);
         bodyGain.connect(masterGain);
@@ -346,7 +346,7 @@ const Home = () => {
             noiseFilter.type = 'highpass';
             noiseFilter.frequency.setValueAtTime(isSpace ? 500 : 1800, start);
             noiseGain.gain.setValueAtTime(0.0001, start);
-            noiseGain.gain.exponentialRampToValueAtTime(isSpace ? 0.0018 : 0.0048, start + 0.001);
+            noiseGain.gain.exponentialRampToValueAtTime(isSpace ? 0.12 : 0.2, start + 0.001);
             noiseGain.gain.exponentialRampToValueAtTime(0.0001, start + duration * 0.55);
             noise.connect(noiseFilter);
             noiseFilter.connect(noiseGain);
