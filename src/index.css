@@ -451,29 +451,35 @@ main {
   }
 
   .experience-page .timeline,
-  .education-page .timeline {
+  .education-page .timeline,
+  .research-page .timeline {
     gap: 2rem !important;
   }
 
   .experience-page .timeline-item,
-  .education-page .timeline-item {
+  .education-page .timeline-item,
+  .research-page .timeline-item {
     gap: 1rem !important;
   }
 
   .experience-page .period-column,
   .education-page .period-column,
+  .research-page .period-column,
   .experience-page .content-column,
-  .education-page .content-column {
+  .education-page .content-column,
+  .research-page .content-column {
     flex: 1 1 100% !important;
   }
 
   .experience-page .role-heading,
-  .education-page .role-heading {
+  .education-page .role-heading,
+  .research-page .role-heading {
     font-size: 1.35rem !important;
   }
 
   .experience-page .timeline-description,
-  .education-page .timeline-description {
+  .education-page .timeline-description,
+  .research-page .timeline-description {
     font-size: 1rem !important;
   }
 

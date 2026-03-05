@@ -22,6 +22,9 @@ const Navbar = () => {
                     <NavLink to="/education" className="site-nav-link" style={({ isActive }) => isActive ? styles.activeLink : styles.link}>
                         Education
                     </NavLink>
+                    <NavLink to="/research" className="site-nav-link" style={({ isActive }) => isActive ? styles.activeLink : styles.link}>
+                        Research
+                    </NavLink>
 
                     <NavLink to="/contact" className="glass-button site-nav-cta" style={{ marginLeft: '1rem' }}>
                         Contact Me
