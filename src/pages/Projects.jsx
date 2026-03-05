@@ -49,7 +49,7 @@ const Projects = () => {
     // Mock data for projects
     const projects = [
         { id: 1, title: 'TrekMate', category: 'Mobile App', image: './tmcp.png' },
-        { id: 2, title: 'WorkHive', category: 'Web-Platfrom', image: './sample.jpg' },
+        { id: 2, title: 'WorkHive', category: 'Web-Platfrom', image: './wh.jpg' },
         { id: 3, title: 'The Hunger Games', category: 'UX Case Study', image: './sample.jpg' },
         { id: 4, title: 'Lens & Light', category: 'Photography Collection', image: './hosue.jpg' }
     ];
