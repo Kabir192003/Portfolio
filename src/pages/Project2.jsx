@@ -1,85 +1,10 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { motion, useInView, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 const Project2 = () => {
     const { scrollYProgress } = useScroll();
     const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
-    const mockupTextRef = useRef(null);
-    const mockupTextInView = useInView(mockupTextRef, { once: true, amount: 0.35 });
-    const [typedMockupText, setTypedMockupText] = useState('');
-    const audioContextRef = useRef(null);
-    const lastSoundAtRef = useRef(0);
-    const mockupNarrative = `These mockups present WorkHive as a comprehensive career platform designed to support users across every stage of their professional journey. Rather than functioning as a traditional job board, the platform integrates structured job discovery, network-driven opportunity mapping, and data-backed decision tools such as salary insights and cost-of-living estimation.
-
-Each interface is built with clarity and hierarchy in mind prioritizing scannable job cards, contextual filters, match indicators, and actionable CTAs. The goal is to reduce cognitive load, increase decision confidence, and create a seamless experience where users can discover roles, leverage connections, and evaluate career moves within a single, unified ecosystem.`;
-
-    const playTypewriterClick = useCallback((char) => {
-        if (!char || /\s/.test(char)) return;
-
-        const now = window.performance.now();
-        if (now - lastSoundAtRef.current < 35) return;
-        lastSoundAtRef.current = now;
-
-        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-        if (!AudioContextClass) return;
-
-        if (!audioContextRef.current) {
-            try {
-                audioContextRef.current = new AudioContextClass();
-            } catch {
-                return;
-            }
-        }
-
-        const audioContext = audioContextRef.current;
-        if (!audioContext) return;
-
-        if (audioContext.state === 'suspended') {
-            audioContext.resume().catch(() => { });
-        }
-
-        const osc = audioContext.createOscillator();
-        const gain = audioContext.createGain();
-        const start = audioContext.currentTime;
-
-        osc.type = 'square';
-        osc.frequency.setValueAtTime(1600 + Math.random() * 180, start);
-
-        gain.gain.setValueAtTime(0.0001, start);
-        gain.gain.exponentialRampToValueAtTime(0.018, start + 0.002);
-        gain.gain.exponentialRampToValueAtTime(0.0001, start + 0.028);
-
-        osc.connect(gain);
-        gain.connect(audioContext.destination);
-        osc.start(start);
-        osc.stop(start + 0.03);
-    }, []);
-
-    useEffect(() => {
-        if (!mockupTextInView) return;
-
-        let charIndex = 0;
-        const intervalId = window.setInterval(() => {
-            charIndex += 1;
-            setTypedMockupText(mockupNarrative.slice(0, charIndex));
-            playTypewriterClick(mockupNarrative[charIndex - 1]);
-            if (charIndex >= mockupNarrative.length) {
-                window.clearInterval(intervalId);
-            }
-        }, 35);
-
-        return () => window.clearInterval(intervalId);
-    }, [mockupTextInView, mockupNarrative, playTypewriterClick]);
-
-    useEffect(() => {
-        return () => {
-            if (audioContextRef.current) {
-                audioContextRef.current.close().catch(() => { });
-                audioContextRef.current = null;
-            }
-        };
-    }, []);
 
     // Hardcoded data for Project 1
     const project = {
@@ -94,8 +19,40 @@ Each interface is built with clarity and hierarchy in mind prioritizing scannabl
         persona1: './p2persona1.png',
         persona2: './p2persona2.png',
         sitemap: './p2journey.jpg',
-        wireframes: ['./p2w1.png', './p2w2.png', './p2w3.png'],
-        finalMockups: ['./p2m1.png', './p2m2.png', './p2m3.png']
+        wireframes: [
+            {
+                image: './p2w1.png',
+                title: 'Wireframe 01 · Structured Job Discovery',
+                description: 'A focused search layout built to minimize friction and cognitive load. Persistent filters allow quick refinement without interrupting browse flow, while clear actions support direct apply and referral-based navigation.'
+            },
+            {
+                image: './p2w2.png',
+                title: 'Wireframe 02 · Network Opportunity Mapping',
+                description: 'A visual relationship-based flow that replaces static listings with contextual pathways. Match indicators and connection depth create stronger trust in opportunity relevance and improve decision confidence.'
+            },
+            {
+                image: './p2w3.png',
+                title: 'Wireframe 03 · Relocation Decision Support',
+                description: 'A comparison interface combining salary and cost-of-living inputs in one place. The structure turns complex trade-offs into a clean, readable decision model for users planning location-based career moves.'
+            }
+        ],
+        finalMockups: [
+            {
+                image: './p2m1.png',
+                title: 'Mockup 01 · Guided Exploration',
+                description: 'High-fidelity screens introduce stronger hierarchy, cleaner card design, and clearer CTA emphasis. Information density is reduced while preserving depth, helping users evaluate roles faster.'
+            },
+            {
+                image: './p2m2.png',
+                title: 'Mockup 02 · Connection-Centered Insights',
+                description: 'Visual polish and spacing improvements make network context easier to parse. Users can identify warm paths and relevance cues quickly, turning relationship data into practical next steps.'
+            },
+            {
+                image: './p2m3.png',
+                title: 'Mockup 03 · Confident Decision Flow',
+                description: 'A refined comparison experience aligns financial inputs, outcomes, and actions into one coherent flow. The final state emphasizes clarity, reducing effort at the most critical decision stage.'
+            }
+        ]
     };
 
     return (
@@ -180,28 +137,18 @@ Each interface is built with clarity and hierarchy in mind prioritizing scannabl
                         <div style={styles.largeImagePlaceholder} className="project-large-image journey-image-holder">
                             <img src={project.sitemap} alt="Sitemap" className="journey-image" style={{ width: '100%', height: '100%' }} />
                         </div>
-                        <div style={styles.imageGrid3} className="project-image-grid-3">
-                            {project.wireframes.map((wf, idx) => (
-                                <div key={idx} style={styles.wireframeItem}>
+                        <h3 style={styles.subSectionHeader}>Wirefarmes</h3>
+                        <div style={styles.showcaseGrid}>
+                            {project.wireframes.map((wireframe, idx) => (
+                                <article key={wireframe.title} style={styles.showcaseCard}>
                                     <div style={styles.wireframePlaceholder} className="project2-wireframe-holder">
-                                        <img src={wf} alt={`Wireframe ${idx + 1}`} className="project2-wireframe-image" />
+                                        <img src={wireframe.image} alt={`Wireframe ${idx + 1}`} className="project2-wireframe-image" />
                                     </div>
-                                    {idx === 0 && (
-                                        <p style={styles.wireframeDescription} className="project-paragraph">
-                                            A structured job discovery interface designed to minimize friction and cognitive load. Advanced filters remain accessible at all times, enabling precise refinement without disrupting the browsing flow. Clear CTAs support both direct applications and network-driven referrals.
-                                        </p>
-                                    )}
-                                    {idx === 1 && (
-                                        <p style={styles.wireframeDescription} className="project-paragraph">
-                                            A visual network-mapping interface that highlights role relevance through dynamic relationship nodes. Instead of a static list, users can explore career pathways and company overlaps contextually. The match percentage reinforces confidence in opportunity alignment.
-                                        </p>
-                                    )}
-                                    {idx === 2 && (
-                                        <p style={styles.wireframeDescription} className="project-paragraph">
-                                            A decision-support tool that helps users evaluate relocation feasibility beyond salary comparisons. By combining income, expenses, and lifestyle inputs, it enables informed career decisions. The simplified layout ensures clarity while handling complex financial variables.
-                                        </p>
-                                    )}
-                                </div>
+                                    <div style={styles.showcaseTextWrap}>
+                                        <h4 style={styles.showcaseTitle}>{wireframe.title}</h4>
+                                        <p style={styles.wireframeDescription} className="project-paragraph">{wireframe.description}</p>
+                                    </div>
+                                </article>
                             ))}
                         </div>
                     </section>
@@ -209,11 +156,11 @@ Each interface is built with clarity and hierarchy in mind prioritizing scannabl
                     {/* Final Mockups */}
                     <section style={styles.textSection}>
                         <h2 style={styles.sectionHeader} className="project-section-header">High-Fidelity Mockups</h2>
-                        <div style={styles.mockupStack} className="project-image-grid-3">
+                        <div style={styles.showcaseGrid}>
                             {project.finalMockups.map((mockup, idx) => (
-                                <motion.div
-                                    key={idx}
-                                    style={styles.mockupMotionWrapper}
+                                <motion.article
+                                    key={mockup.title}
+                                    style={styles.showcaseCard}
                                     initial={{ opacity: 0, y: 80, scale: 0.95 }}
                                     whileInView={{ opacity: 1, y: 0, scale: 1 }}
                                     viewport={{ once: true, amount: 0.25 }}
@@ -225,13 +172,14 @@ Each interface is built with clarity and hierarchy in mind prioritizing scannabl
                                         animate={{ y: [0, -10, 0] }}
                                         transition={{ duration: 4.2, repeat: Infinity, ease: 'easeInOut', delay: idx * 0.35 }}
                                     >
-                                        <img src={mockup} alt={`${project.title} Final Mockup ${idx + 1}`} className="project2-wireframe-image" />
+                                        <img src={mockup.image} alt={`${project.title} Final Mockup ${idx + 1}`} className="project2-wireframe-image" />
                                     </motion.div>
-                                </motion.div>
+                                    <div style={styles.showcaseTextWrap}>
+                                        <h4 style={styles.showcaseTitle}>{mockup.title}</h4>
+                                        <p style={styles.wireframeDescription} className="project-paragraph">{mockup.description}</p>
+                                    </div>
+                                </motion.article>
                             ))}
-                        </div>
-                        <div ref={mockupTextRef} style={styles.mockupNarrativeWrap}>
-                            <p style={styles.mockupNarrativeText}>{typedMockupText}</p>
                         </div>
                     </section>
 
@@ -359,25 +307,39 @@ const styles = {
         gap: '2rem',
         marginTop: '2rem',
     },
-    imageGrid3: {
+    subSectionHeader: {
+        marginTop: '1.9rem',
+        marginBottom: '1.1rem',
+        fontSize: '1.25rem',
+        letterSpacing: '0.01em',
+        color: 'var(--text-primary)',
+    },
+    showcaseGrid: {
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+        gap: '1.35rem',
+        marginTop: '0.85rem',
+    },
+    showcaseCard: {
         display: 'flex',
         flexDirection: 'column',
-        gap: '2rem',
-        marginTop: '2rem',
+        gap: '0.95rem',
+        padding: '1rem',
+        borderRadius: 'var(--radius-md)',
+        border: '1px solid var(--glass-border)',
+        background: 'rgba(185, 140, 232, 0.055)',
     },
-    mockupStack: {
+    showcaseTextWrap: {
         display: 'flex',
         flexDirection: 'column',
-        gap: '2rem',
-        marginTop: '2rem',
+        gap: '0.5rem',
     },
-    mockupMotionWrapper: {
-        width: '100%',
-    },
-    wireframeItem: {
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '1rem',
+    showcaseTitle: {
+        margin: 0,
+        fontSize: '1rem',
+        fontWeight: '600',
+        color: 'var(--text-primary)',
+        lineHeight: '1.35',
     },
     wireframePlaceholder: {
         width: '100%',
@@ -398,17 +360,6 @@ const styles = {
         textAlign: 'justify',
         textJustify: 'inter-word',
         padding: '0.15rem 0.15rem 0',
-    },
-    mockupNarrativeWrap: {
-        marginTop: '1.5rem',
-    },
-    mockupNarrativeText: {
-        margin: 0,
-        fontSize: '1.1rem',
-        color: 'var(--text-secondary)',
-        lineHeight: '1.8',
-        textAlign: 'justify',
-        whiteSpace: 'pre-line',
     },
     imagePlaceholder: {
         width: '100%',
