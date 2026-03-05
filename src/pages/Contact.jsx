@@ -24,7 +24,15 @@ const Contact = () => {
                         </div>
                         <div style={styles.contactItem}>
                             <span style={styles.label}>Social</span>
-                            <a href="#" style={styles.link} className="https://www.linkedin.com/in/kabirsharma192003/">LinkedIn</a>
+                            <a
+                                href="https://www.linkedin.com/in/kabirsharma192003/"
+                                style={styles.link}
+                                className="contact-link"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                LinkedIn
+                            </a>
                         </div>
                     </div>
                 </div>

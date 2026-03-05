@@ -6,9 +6,14 @@ const Footer = () => {
             <div className="container site-footer-inner" style={styles.container}>
                 <p style={styles.text} className="site-footer-text">© {new Date().getFullYear()} kabiroscope. All rights reserved.</p>
                 <div style={styles.links} className="site-footer-links">
-                    <a href="#" style={styles.link}>LinkedIn</a>
-                    <a href="#" style={styles.link}>Twitter</a>
-                    <a href="#" style={styles.link}>Dribbble</a>
+                    <a
+                        href="https://www.linkedin.com/in/kabirsharma192003/"
+                        style={styles.link}
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        LinkedIn
+                    </a>
                 </div>
             </div>
         </footer>
