@@ -5,26 +5,24 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 const Project4 = () => {
     const { scrollYProgress } = useScroll();
     const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
-    const baseUrl = import.meta.env.BASE_URL;
-    const withBase = (path) => `${baseUrl}${path}`;
 
     const project = {
         title: 'Photography Journal',
         category: 'Photography',
-        heroImage: withBase('swiss.jpg'),
+        heroImage: './swiss.jpg',
         gallery: [
-            { src: withBase('project4/img_6084.jpg'), alt: 'Snow-covered mountain range under dramatic sky' },
-            { src: withBase('project4/img_5879.jpg'), alt: 'Orange sports car reflected on glossy surface' },
-            { src: withBase('project4/swiss.jpg'), alt: 'Swiss alpine mountain panorama' },
-            { src: withBase('project4/img_6146.jpg'), alt: 'Urban architecture framed against blue sky' },
-            { src: withBase('project4/img_5461.jpg'), alt: 'Black-and-white skyscraper perspective shot' },
-            { src: withBase('project4/img_5590.jpg'), alt: 'City tram tracks stretching into horizon' },
-            { src: withBase('project4/img_5597.jpg'), alt: 'Street scene with layered architecture' },
-            { src: withBase('project4/img_e5820.jpg'), alt: 'Travel frame with cinematic light and depth' },
-            { src: withBase('project4/img_e5901.jpg'), alt: 'Architectural lines with contrast and shadow' },
-            { src: withBase('project4/img_5730.jpg'), alt: 'City composition with strong symmetry' },
-            { src: withBase('project4/img_5449.jpg'), alt: 'Tower geometry from a low-angle perspective' },
-            { src: withBase('project4/img_e6093.jpg'), alt: 'Glacial landscape and dramatic cloud cover' }
+            { src: './project4/IMG_6084.HEIC', alt: 'Snow-covered mountain range under dramatic sky' },
+            { src: './project4/IMG_5879.HEIC', alt: 'Orange sports car reflected on glossy surface' },
+            { src: './project4/swiss.jpg', alt: 'Swiss alpine mountain panorama' },
+            { src: './project4/IMG_6146.HEIC', alt: 'Urban architecture framed against blue sky' },
+            { src: './project4/IMG_5461.HEIC', alt: 'Black-and-white skyscraper perspective shot' },
+            { src: './project4/IMG_5590.HEIC', alt: 'City tram tracks stretching into horizon' },
+            { src: './project4/IMG_5597.HEIC', alt: 'Street scene with layered architecture' },
+            { src: './project4/IMG_E5820.HEIC', alt: 'Travel frame with cinematic light and depth' },
+            { src: './project4/IMG_E5901.HEIC', alt: 'Architectural lines with contrast and shadow' },
+            { src: './project4/IMG_5730.HEIC', alt: 'City composition with strong symmetry' },
+            { src: './project4/IMG_5449.HEIC', alt: 'Tower geometry from a low-angle perspective' },
+            { src: './project4/IMG_E6093.HEIC', alt: 'Glacial landscape and dramatic cloud cover' }
         ],
         quotes: [
             'Photography is the pause button of life.',
@@ -69,10 +67,14 @@ const Project4 = () => {
                     </div>
 
                     <div className="project4-masonry" style={styles.masonry}>
-                        {project.gallery.map((photo) => (
-                            <figure
+                        {project.gallery.map((photo, index) => (
+                            <motion.figure
                                 key={photo.src}
                                 style={styles.photoFrame}
+                                initial={{ opacity: 0, y: 22 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, amount: 0.15 }}
+                                transition={{ duration: 0.6, delay: Math.min(index * 0.04, 0.36) }}
                             >
                                 <img
                                     src={photo.src}
@@ -80,7 +82,7 @@ const Project4 = () => {
                                     style={styles.photo}
                                     loading="lazy"
                                 />
-                            </figure>
+                            </motion.figure>
                         ))}
                     </div>
                 </section>
