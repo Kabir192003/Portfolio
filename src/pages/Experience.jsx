@@ -2,6 +2,13 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const Experience = () => {
+    const toBulletPoints = (description) =>
+        description
+            .split('.')
+            .map((item) => item.trim())
+            .filter(Boolean)
+            .map((item) => `${item}.`);
+
     const experiences = [
         {
             id: 1,
@@ -52,7 +59,13 @@ const Experience = () => {
                         <div style={styles.contentColumn} className="content-column">
                             <h2 style={styles.role} className="role-heading">{exp.role}</h2>
                             <h3 style={styles.company}>{exp.company}</h3>
-                            <p style={styles.description} className="timeline-description">{exp.description}</p>
+                            <ul style={styles.descriptionList} className="timeline-description">
+                                {toBulletPoints(exp.description).map((point) => (
+                                    <li key={point} style={styles.descriptionItem}>
+                                        {point}
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
                     </motion.div>
                 ))}
@@ -107,11 +120,18 @@ const styles = {
         fontWeight: '400',
         marginBottom: '1rem',
     },
-    description: {
+    descriptionList: {
+        margin: 0,
+        paddingLeft: '1.15rem',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '0.55rem',
+    },
+    descriptionItem: {
         fontSize: '1.1rem',
         color: 'var(--text-secondary)',
         lineHeight: '1.6',
-    }
+    },
 };
 
 export default Experience;
