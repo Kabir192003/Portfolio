@@ -143,16 +143,18 @@ Each interface is built with clarity and hierarchy in mind prioritizing scannabl
 
                     <section style={styles.textSection}>
                         <h2 style={styles.sectionHeader} className="project-section-header">Overview & Motivation</h2>
-                        <p style={styles.paragraph} className="project-paragraph">{project.overview}</p>
+                        <div style={styles.featureCard}>
+                            <p style={styles.paragraph} className="project-paragraph">{project.overview}</p>
+                        </div>
                     </section>
 
                     <section style={styles.textSection}>
                         <div style={styles.splitLayout} className="project-split-layout">
-                            <div style={styles.splitContent}>
+                            <div style={styles.splitContentCard}>
                                 <h2 style={styles.sectionHeader} className="project-section-header">The Problem</h2>
                                 <p style={styles.paragraph} className="project-paragraph">{project.problem}</p>
                             </div>
-                            <div style={styles.splitContent}>
+                            <div style={styles.splitContentCard}>
                                 <h2 style={styles.sectionHeader} className="project-section-header">The Solution</h2>
                                 <p style={styles.paragraph} className="project-paragraph">{project.solution}</p>
                             </div>
@@ -185,17 +187,17 @@ Each interface is built with clarity and hierarchy in mind prioritizing scannabl
                                         <img src={wf} alt={`Wireframe ${idx + 1}`} className="project2-wireframe-image" />
                                     </div>
                                     {idx === 0 && (
-                                        <p style={styles.wireframeDescription}>
+                                        <p style={styles.wireframeDescription} className="project-paragraph">
                                             A structured job discovery interface designed to minimize friction and cognitive load. Advanced filters remain accessible at all times, enabling precise refinement without disrupting the browsing flow. Clear CTAs support both direct applications and network-driven referrals.
                                         </p>
                                     )}
                                     {idx === 1 && (
-                                        <p style={styles.wireframeDescription}>
+                                        <p style={styles.wireframeDescription} className="project-paragraph">
                                             A visual network-mapping interface that highlights role relevance through dynamic relationship nodes. Instead of a static list, users can explore career pathways and company overlaps contextually. The match percentage reinforces confidence in opportunity alignment.
                                         </p>
                                     )}
                                     {idx === 2 && (
-                                        <p style={styles.wireframeDescription}>
+                                        <p style={styles.wireframeDescription} className="project-paragraph">
                                             A decision-support tool that helps users evaluate relocation feasibility beyond salary comparisons. By combining income, expenses, and lifestyle inputs, it enables informed career decisions. The simplified layout ensures clarity while handling complex financial variables.
                                         </p>
                                     )}
@@ -309,7 +311,7 @@ const styles = {
     contentSections: {
         display: 'flex',
         flexDirection: 'column',
-        gap: '6rem',
+        gap: '5.25rem',
     },
     textSection: {
         maxWidth: '1000px',
@@ -321,10 +323,18 @@ const styles = {
         marginBottom: '1.5rem',
     },
     paragraph: {
-        fontSize: '1.2rem',
+        fontSize: '1.08rem',
         color: 'var(--text-secondary)',
-        lineHeight: '1.8',
-        maxWidth: '800px',
+        lineHeight: '1.85',
+        maxWidth: '100%',
+        textAlign: 'justify',
+        textJustify: 'inter-word',
+    },
+    featureCard: {
+        padding: '1.5rem 1.7rem',
+        borderRadius: 'var(--radius-md)',
+        border: '1px solid var(--glass-border)',
+        background: 'linear-gradient(160deg, rgba(185, 140, 232, 0.09) 0%, rgba(20, 17, 38, 0.72) 100%)',
     },
     splitLayout: {
         display: 'grid',
@@ -334,6 +344,14 @@ const styles = {
     splitContent: {
         display: 'flex',
         flexDirection: 'column',
+    },
+    splitContentCard: {
+        display: 'flex',
+        flexDirection: 'column',
+        padding: '1.45rem 1.55rem',
+        borderRadius: 'var(--radius-md)',
+        border: '1px solid var(--glass-border)',
+        background: 'rgba(185, 140, 232, 0.055)',
     },
     imageGrid: {
         display: 'grid',
@@ -374,9 +392,12 @@ const styles = {
     },
     wireframeDescription: {
         margin: 0,
-        fontSize: '1.05rem',
+        fontSize: '1rem',
         color: 'var(--text-secondary)',
-        lineHeight: '1.7',
+        lineHeight: '1.72',
+        textAlign: 'justify',
+        textJustify: 'inter-word',
+        padding: '0.15rem 0.15rem 0',
     },
     mockupNarrativeWrap: {
         marginTop: '1.5rem',
