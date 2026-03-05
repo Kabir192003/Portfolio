@@ -145,10 +145,6 @@ const Project3 = () => {
                         <span style={styles.metaLabel}>Timeline</span>
                         <p style={styles.metaValue}>{project.timeline}</p>
                     </div>
-                    <div>
-                        <span style={styles.metaLabel}>Deliverables</span>
-                        <p style={styles.metaValue}>Wireframes, UI Design, Interactive Prototypes, Design System</p>
-                    </div>
                 </div>
 
                 {/* Content Sections */}
