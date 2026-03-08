@@ -43,7 +43,7 @@ const SubtleGrid = () => {
 
     useFrame((state) => {
         if (matRef.current) {
-            matRef.current.opacity = 0.055 + Math.sin(state.clock.elapsedTime * 0.2) * 0.015;
+            matRef.current.opacity = 0.12 + Math.sin(state.clock.elapsedTime * 0.2) * 0.03;
         }
     });
 
@@ -55,7 +55,7 @@ const SubtleGrid = () => {
                 color="#6e4fd1"
                 wireframe
                 transparent
-                opacity={0.16}
+                opacity={0.3}
             />
         </mesh>
     );
@@ -92,27 +92,27 @@ const Scene = () => {
     // Carefully placed shapes — subtle, sparse, premium
     const shapes = useMemo(() => [
         // Octahedrons (diamond-like)
-        { geo: <octahedronGeometry args={[0.6, 0]} />, pos: [-4, 2, -6], rot: [0.3, 0.5, 0.1], scale: 1, color: '#9e74ff', opacity: 0.22 },
-        { geo: <octahedronGeometry args={[0.4, 0]} />, pos: [4.5, -1.5, -8], rot: [0.2, 0.7, 0.3], scale: 1, color: '#7f5cff', opacity: 0.19 },
+        { geo: <octahedronGeometry args={[0.6, 0]} />, pos: [-4, 2, -6], rot: [0.3, 0.5, 0.1], scale: 1, color: '#9e74ff', opacity: 0.48 },
+        { geo: <octahedronGeometry args={[0.4, 0]} />, pos: [4.5, -1.5, -8], rot: [0.2, 0.7, 0.3], scale: 1, color: '#7f5cff', opacity: 0.42 },
         // Icosahedrons (soft spherical)
-        { geo: <icosahedronGeometry args={[0.5, 0]} />, pos: [3, 3, -7], rot: [0.4, 0.2, 0.5], scale: 1, color: '#d4b7ff', opacity: 0.2 },
-        { geo: <icosahedronGeometry args={[0.35, 0]} />, pos: [-3, -2, -9], rot: [0.1, 0.3, 0.4], scale: 1, color: '#7d52f4', opacity: 0.17 },
+        { geo: <icosahedronGeometry args={[0.5, 0]} />, pos: [3, 3, -7], rot: [0.4, 0.2, 0.5], scale: 1, color: '#d4b7ff', opacity: 0.45 },
+        { geo: <icosahedronGeometry args={[0.35, 0]} />, pos: [-3, -2, -9], rot: [0.1, 0.3, 0.4], scale: 1, color: '#7d52f4', opacity: 0.40 },
         // Tetrahedrons
-        { geo: <tetrahedronGeometry args={[0.5, 0]} />, pos: [0.5, 4, -10], rot: [0.6, 0.3, 0.2], scale: 1, color: '#8f68ff', opacity: 0.17 },
-        { geo: <tetrahedronGeometry args={[0.3, 0]} />, pos: [-5, 0, -7], rot: [0.2, 0.4, 0.6], scale: 1, color: '#c77dff', opacity: 0.19 },
+        { geo: <tetrahedronGeometry args={[0.5, 0]} />, pos: [0.5, 4, -10], rot: [0.6, 0.3, 0.2], scale: 1, color: '#8f68ff', opacity: 0.40 },
+        { geo: <tetrahedronGeometry args={[0.3, 0]} />, pos: [-5, 0, -7], rot: [0.2, 0.4, 0.6], scale: 1, color: '#c77dff', opacity: 0.42 },
         // Torus (rings)
-        { geo: <torusGeometry args={[0.5, 0.08, 12, 32]} />, pos: [2, -3, -11], rot: [0.5, 0.1, 0.3], scale: 1.2, color: '#9c63ff', opacity: 0.18 },
-        { geo: <torusGeometry args={[0.35, 0.06, 12, 32]} />, pos: [-2, 1.5, -8], rot: [0.3, 0.6, 0.2], scale: 1, color: '#ba93ff', opacity: 0.2 },
+        { geo: <torusGeometry args={[0.5, 0.08, 12, 32]} />, pos: [2, -3, -11], rot: [0.5, 0.1, 0.3], scale: 1.2, color: '#9c63ff', opacity: 0.40 },
+        { geo: <torusGeometry args={[0.35, 0.06, 12, 32]} />, pos: [-2, 1.5, -8], rot: [0.3, 0.6, 0.2], scale: 1, color: '#ba93ff', opacity: 0.45 },
         // Boxes
-        { geo: <boxGeometry args={[0.5, 0.5, 0.5]} />, pos: [5, 1, -9], rot: [0.4, 0.4, 0.4], scale: 0.8, color: '#6f4dd6', opacity: 0.19 },
-        { geo: <boxGeometry args={[0.3, 0.3, 0.3]} />, pos: [-4.5, 3, -10], rot: [0.2, 0.5, 0.1], scale: 1, color: '#b28eff', opacity: 0.22 },
+        { geo: <boxGeometry args={[0.5, 0.5, 0.5]} />, pos: [5, 1, -9], rot: [0.4, 0.4, 0.4], scale: 0.8, color: '#6f4dd6', opacity: 0.42 },
+        { geo: <boxGeometry args={[0.3, 0.3, 0.3]} />, pos: [-4.5, 3, -10], rot: [0.2, 0.5, 0.1], scale: 1, color: '#b28eff', opacity: 0.48 },
     ], []);
 
     return (
         <>
-            <ambientLight intensity={0.21} color="#b68cff" />
-            <directionalLight position={[5, 5, 3]} intensity={0.3} color="#c77dff" />
-            <directionalLight position={[-3, -2, 5]} intensity={0.19} color="#7e5dff" />
+            <ambientLight intensity={0.4} color="#b68cff" />
+            <directionalLight position={[5, 5, 3]} intensity={0.6} color="#c77dff" />
+            <directionalLight position={[-3, -2, 5]} intensity={0.4} color="#7e5dff" />
 
             <SceneRig>
                 <SubtleGrid />
