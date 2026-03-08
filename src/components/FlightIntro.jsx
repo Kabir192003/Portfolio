@@ -145,11 +145,13 @@ const Scene = ({ onProgress, textureUrl }) => {
         const dubPos = latLonToVec3(DUBLIN.lat, DUBLIN.lon, 1);
         const up = hydPos.clone().normalize();
         const initForward = new THREE.Vector3().subVectors(dubPos, hydPos).normalize();
+        const right = new THREE.Vector3().crossVectors(initForward, up).normalize();
 
         // Start from high above and behind the plane (Zoomed in closer)
         const camStart = hydPos.clone()
-            .add(up.multiplyScalar(0.4))  // Closer to surface
-            .add(initForward.multiplyScalar(-0.8)); // Closer behind
+            .add(up.multiplyScalar(0.2))  // Closer to surface (near equator)
+            .add(initForward.multiplyScalar(-0.8)) // Closer behind
+            .add(right.multiplyScalar(-0.2)); // Start slightly to the left / south
 
         camera.position.copy(camStart);
 
@@ -179,10 +181,10 @@ const Scene = ({ onProgress, textureUrl }) => {
         // ── Cinematic Camera Tracking ──
         const right = new THREE.Vector3().crossVectors(forward, up).normalize();
 
-        // Start behind and elevate, then smoothly transition out to a side view (Closer/Zoomed in)
-        const sideOffsetAmount = 1.0 * eased; // 0 at start, 1.0 at end (tighter side view)
+        // Start behind and elevate, then smoothly transition out to the LEFT side view (South/Equator)
+        const sideOffsetAmount = -1.0 * eased; // 0 at start, -1.0 at end (tighter left-side view)
         const backwardOffsetAmount = -0.8 + (0.15 * eased); // -0.8 at start, -0.65 at end
-        const upwardOffsetAmount = 0.4 - (0.1 * eased); // 0.4 at start, 0.3 at end
+        const upwardOffsetAmount = 0.2 - (0.05 * eased); // 0.2 down to 0.15 (Much closer to ground)
 
         const sideOffset = right.multiplyScalar(sideOffsetAmount);
         const backwardOffset = forward.clone().multiplyScalar(backwardOffsetAmount);
