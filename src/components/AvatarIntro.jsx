@@ -3,6 +3,7 @@ import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { useGLTF } from '@react-three/drei';
 import { motion, AnimatePresence } from 'framer-motion';
 import * as THREE from 'three';
+import CustomCursor from './CustomCursor';
 
 const MODEL_PATH = `${import.meta.env.BASE_URL}models/rajesh_avatar.glb`;
 
@@ -128,6 +129,7 @@ const AvatarIntro = ({ onComplete, onFadeStart }) => {
             overflow: 'hidden',
             fontFamily: "'Inter', 'Outfit', sans-serif",
         }}>
+            <CustomCursor />
 
             {/* 3D Canvas — Avatar */}
             <div style={{ position: 'absolute', inset: 0, zIndex: 1, transform: 'translateY(-10%)' }}>
@@ -231,7 +233,7 @@ const AvatarIntro = ({ onComplete, onFadeStart }) => {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                                 style={{
-                                    position: 'absolute', right: '8%', top: '50%', transform: 'translateY(-50%)',
+                                    position: 'absolute', right: '8%', top: '8%',
                                     color: '#fff', maxWidth: '420px', pointerEvents: 'auto',
                                 }}
                             >

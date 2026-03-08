@@ -27,8 +27,18 @@ const CustomCursor = () => {
             dotY = mouseY;
 
             // Ring lags behind with lerp
-            ringX += (mouseX - ringX) * 0.1;
-            ringY += (mouseY - ringY) * 0.1;
+            ringX += (mouseX - ringX) * 0.15;
+            ringY += (mouseY - ringY) * 0.15;
+
+            // Clamp ring so the dot always stays inside it
+            const dx = dotX - ringX;
+            const dy = dotY - ringY;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            const maxDist = 14; // ring radius minus dot radius
+            if (dist > maxDist) {
+                ringX = dotX - (dx / dist) * maxDist;
+                ringY = dotY - (dy / dist) * maxDist;
+            }
 
             if (cursorDot.current) {
                 cursorDot.current.style.transform = `translate(${dotX}px, ${dotY}px)`;
