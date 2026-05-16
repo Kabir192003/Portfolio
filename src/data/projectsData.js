@@ -6,7 +6,7 @@ export const projectsData = {
         role: 'Product/UX Designer',
         overview: [
             "The outdoor recreation market has seen an explosion of interest, yet the digital experience for purchasing specialized gear remains stubbornly archaic. While giants like Amazon offer everything, they lack the curated expertise and community trust that outdoor enthusiasts crave. Generic marketplaces often result in choice paralysis, poor categorization, and a lack of reliable technical specifications.",
-            "Trekmate was born from a desire to bridge this gap. I envisioned a modern, niche e-commerce mobile application tailored specifically for camping and trekking enthusiasts. The goal was not just to sell products, but to craft an ecosystem that guides users from inspiration to expedition—offering a focused, seamless, and expert-driven shopping experience.",
+            "Trekmate was born from a desire to bridge this gap. I envisioned a modern, niche e-commerce mobile application tailored specifically for camping and trekking enthusiasts. The goal was not just to sell products, but to craft an ecosystem that guides users from inspiration to expedition - offering a focused, seamless, and expert-driven shopping experience.",
             "As the Product Designer, I drove the end-to-end design lifecycle, taking the product from initial user research and ambiguous problem statements to a fully validated high-fidelity prototype ready for developer handoff."
         ],
         impactMetrics: [
@@ -54,7 +54,7 @@ export const projectsData = {
             "Checkout completion time decreased by 35% compared to the benchmarked competitor app during our usability trials.",
             "The comprehensive design system I created became the foundation for the product's MVP development phase."
         ],
-        reflections: "Looking back, while the shopping experience is robust, I see an opportunity to integrate a community aspect—allowing users to share gear loadouts for specific real-world trails. In future iterations, I would prioritize building social proof mechanisms directly into the discovery phase.",
+        reflections: "Looking back, while the shopping experience is robust, I see an opportunity to integrate a community aspect - allowing users to share gear loadouts for specific real-world trails. In future iterations, I would prioritize building social proof mechanisms directly into the discovery phase.",
         
         heroImage: './tmh1.jpg',
         persona1: './tmp11.jpg',
@@ -71,7 +71,7 @@ export const projectsData = {
         overview: [
             "The modern job ecosystem is overwhelmingly fragmented. Candidates bounce between LinkedIn for networking, Glassdoor for salaries, Indeed for listings, and blind forums for company culture insights. This scattered approach creates massive cognitive overload, leading to decision fatigue for job seekers and inefficient sourcing for recruiters.",
             "WorkHive was conceived to consolidate this fragmented experience. It is a unified career platform designed to simplify how users discover jobs, evaluate company cultures, and build meaningful professional connections without constantly context-switching. Driven by a core need for transparency and data-informed decision-making, WorkHive brings everything into a single, cohesive ecosystem.",
-            "My role involved orchestrating the platform's user experience from the ground up—balancing the complex data needs of enterprise recruiters with the intuitive, low-friction interface demanded by modern job seekers."
+            "My role involved orchestrating the platform's user experience from the ground up - balancing the complex data needs of enterprise recruiters with the intuitive, low-friction interface demanded by modern job seekers."
         ],
         impactMetrics: [
             { label: 'Time to Evaluate', value: '-40%' },
@@ -80,7 +80,7 @@ export const projectsData = {
         ],
         tools: ['Figma', 'Miro', 'Hotjar', 'Google Analytics', 'Notion'],
         problem: "During our initial research, we mapped the typical job seeker's journey and found an astonishing average of 7 platform switches per application. Job seekers struggled to weigh opportunities because salary data, cultural insights, and role requirements lived in silos. Recruiters faced the inverse problem: they received high volumes of applications but lacked verified insights to filter candidates effectively, relying on outdated resume parsers.",
-        solution: "I designed a platform architecture that deeply integrates job search, candidate discovery, peer-reviewed company ratings, real-time salary insights, and even relocation cost estimations. The core of the solution is a 'Guided Exploration' interface that uses persistent filters and contextual pathways to surface relevant data—like whether a candidate knows an existing employee—right alongside the job description.",
+        solution: "I designed a platform architecture that deeply integrates job search, candidate discovery, peer-reviewed company ratings, real-time salary insights, and even relocation cost estimations. The core of the solution is a 'Guided Exploration' interface that uses persistent filters and contextual pathways to surface relevant data - like whether a candidate knows an existing employee - right alongside the job description.",
         process: [
             { step: '01', title: 'Generative Research', desc: 'Surveyed 120 professionals and 25 recruiters to map pain points across the hiring lifecycle.' },
             { step: '02', title: 'System Mapping', desc: 'Used Miro to map complex data relationships between candidates, companies, and roles.' },
@@ -164,7 +164,7 @@ export const projectsData = {
         timeline: '1 Month',
         role: 'UX Researcher',
         overview: [
-            "Swiggy and Zomato have fundamentally transformed urban food discovery and delivery. Both giants offer nearly identical core services—food delivery, dine-in bookings, and loyalty subscriptions—yet their market positioning and user experiences differ significantly. One prioritizes minimal, frictionless speed; the other emphasizes feature depth and discovery.",
+            "Swiggy and Zomato have fundamentally transformed urban food discovery and delivery. Both giants offer nearly identical core services - food delivery, dine-in bookings, and loyalty subscriptions - yet their market positioning and user experiences differ significantly. One prioritizes minimal, frictionless speed; the other emphasizes feature depth and discovery.",
             "This study is a deep-dive UX comparative analysis investigating how these distinct design philosophies influence user behavior, task efficiency, and brand perception. By evaluating the platforms across the entire food-ordering journey, I sought to uncover the subtle UI/UX decisions that drive a user to choose one app over the other in a highly saturated market.",
             "Rather than declaring an absolute 'winner', this research provides actionable intelligence on the trade-offs between cognitive load, feature richness, and user trust."
         ],
@@ -281,8 +281,8 @@ export const projectsData = {
             { label: 'Platform Users (n=25)', value: 'Beta' }
         ],
         tools: ['React', 'Node.js', 'Express', 'MongoDB', 'Figma'],
-        problem: "Existing Q&A platforms like Quora or Reddit are text-heavy and require significant cognitive effort to parse. When someone just wants to know 'Logitech MX Master vs Apple Magic Mouse', they want a quick consensus. Furthermore, as a group project, our primary challenge was coordinating complex full-stack features—like a personalized feed algorithm and secure anonymous posting—across multiple developers within a strict 3-month academic timeline.",
-        solution: "We engineered a robust platform that centers around binary or multi-choice polling mixed with threaded discussions. I designed the database to efficiently handle user preferences, connecting them dynamically to the feed generation algorithm. The UI was crafted to be frictionless—allowing users to vote with a single click and see instant visual feedback via progress bars. To foster honest discussion on sensitive topics, we implemented a secure anonymous posting feature on the backend.",
+        problem: "Existing Q&A platforms like Quora or Reddit are text-heavy and require significant cognitive effort to parse. When someone just wants to know 'Logitech MX Master vs Apple Magic Mouse', they want a quick consensus. Furthermore, as a group project, our primary challenge was coordinating complex full-stack features - like a personalized feed algorithm and secure anonymous posting - across multiple developers within a strict 3-month academic timeline.",
+        solution: "We engineered a robust platform that centers around binary or multi-choice polling mixed with threaded discussions. I designed the database to efficiently handle user preferences, connecting them dynamically to the feed generation algorithm. The UI was crafted to be frictionless - allowing users to vote with a single click and see instant visual feedback via progress bars. To foster honest discussion on sensitive topics, we implemented a secure anonymous posting feature on the backend.",
         process: [
             { step: '01', title: 'Architecture & Database Design', desc: 'Mapped out entity-relationship diagrams and designed scalable NoSQL schemas for users, polls, and preferences.' },
             { step: '02', title: 'UI/UX Prototyping', desc: 'Created high-fidelity Figma mockups, establishing a clean, modern design system to serve as a single source of truth for the team.' },

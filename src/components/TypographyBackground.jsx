@@ -20,7 +20,7 @@ const FloatingLetter = ({ char, homePos, index, totalLetters }) => {
         let tx, ty, tz;
 
         if (phase < 8) {
-            // Assembled in word form — gentle breathing
+            // Assembled in word form - gentle breathing
             tx = homePos[0] + Math.sin(t * 0.3 + index * 0.4) * 0.03;
             ty = homePos[1] + Math.cos(t * 0.25 + index * 0.6) * 0.03;
             tz = homePos[2] + Math.sin(t * 0.2 + index * 0.3) * 0.02;

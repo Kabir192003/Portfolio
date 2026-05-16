@@ -89,7 +89,7 @@ const SceneRig = ({ children }) => {
 
 // ─── Scene with floating geometries ───────────────────────────────────────────
 const Scene = () => {
-    // Carefully placed shapes — subtle, sparse, premium
+    // Carefully placed shapes - subtle, sparse, premium
     const shapes = useMemo(() => [
         // Octahedrons (diamond-like)
         { geo: <octahedronGeometry args={[0.6, 0]} />, pos: [-4, 2, -6], rot: [0.3, 0.5, 0.1], scale: 1, color: '#9e74ff', opacity: 0.48 },

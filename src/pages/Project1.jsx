@@ -115,7 +115,7 @@ const Project1 = () => {
                     {/* User Personas */}
                     <section style={styles.textSection}>
                         <h2 style={styles.sectionHeader} className="project-section-header">User Personas</h2>
-                        <p style={styles.paragraph}>By synthesizing data from our interviews, I developed distinct personas to ensure our design decisions remained deeply empathetic to our core demographics—from the casual weekend camper to the hardcore alpinist.</p>
+                        <p style={styles.paragraph}>By synthesizing data from our interviews, I developed distinct personas to ensure our design decisions remained deeply empathetic to our core demographics - from the casual weekend camper to the hardcore alpinist.</p>
                         <div style={styles.imageGrid} className="project-image-grid">
                             <div style={styles.imagePlaceholder} className="persona-image-holder">
                                 <img src={project.persona1} alt="User Persona 1" className="persona-image" style={{ width: '100%', height: '100%' }} />

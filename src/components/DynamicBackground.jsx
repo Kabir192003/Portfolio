@@ -13,14 +13,14 @@ const vertexShader = `
     vUv = uv;
     vec3 pos = position;
 
-    // Base ocean swell — layered sines
+    // Base ocean swell - layered sines
     float wave =
       sin(pos.x * 0.80 + uTime) * 0.55 +
       sin(pos.x * 0.40 - uTime * 0.7) * 0.40 +
       sin(pos.y * 0.35 + pos.x * 0.25 + uTime * 0.5) * 0.30 +
       cos(pos.x * 0.60 + pos.y * 0.40 - uTime * 0.35) * 0.22;
 
-    // Mouse ripple — radiates outward from cursor position
+    // Mouse ripple - radiates outward from cursor position
     vec2 mouseWorld = uMouse * 10.0;
     float dist = distance(pos.xy, mouseWorld);
     float ripple = exp(-dist * 0.3) * sin(dist * 3.0 - uTime * 3.5) * 0.35;

@@ -14,7 +14,7 @@ const AvatarModel = () => {
     const headBoneRef = useRef(null);
     const mouseRef = useRef({ x: 0, y: 0 });
 
-    // Find the head bone on the LIVE scene (not a clone — cloning breaks skeleton bones)
+    // Find the head bone on the LIVE scene (not a clone - cloning breaks skeleton bones)
     useEffect(() => {
         scene.traverse((child) => {
             if (child.name === 'spine006') {
@@ -52,7 +52,7 @@ const AvatarModel = () => {
         );
     });
 
-    // Don't move the model — the camera goes to it instead
+    // Don't move the model - the camera goes to it instead
     return (
         <group ref={groupRef}>
             <primitive object={scene} />
@@ -79,7 +79,7 @@ const AvatarScene = () => {
             <directionalLight position={[3, 18, 5]} intensity={2.5} color="#ffffff" />
             {/* Fill from left */}
             <directionalLight position={[-4, 16, 4]} intensity={1.2} color="#c77dff" />
-            {/* Rim/back light — purple glow for theme */}
+            {/* Rim/back light - purple glow for theme */}
             <pointLight position={[0, 15, -3]} intensity={8} color="#e040fb" distance={12} />
             {/* Bottom fill to avoid dark chin */}
             <pointLight position={[0, 10, 3]} intensity={1.5} color="#b98ce8" distance={8} />
@@ -131,7 +131,7 @@ const AvatarIntro = ({ onComplete, onFadeStart }) => {
         }}>
             <CustomCursor />
 
-            {/* 3D Canvas — Avatar */}
+            {/* 3D Canvas - Avatar */}
             <div style={{ position: 'absolute', inset: 0, zIndex: 1, transform: 'translateY(-10%)' }}>
                 <Canvas
                     camera={{ position: [0, 15.0, 24.7], fov: 14.5 }}
@@ -227,7 +227,7 @@ const AvatarIntro = ({ onComplete, onFadeStart }) => {
 
                     {phase === 2 && (
                         <React.Fragment key="phase2">
-                            {/* About Me — slides in from the right */}
+                            {/* About Me - slides in from the right */}
                             <motion.div
                                 initial={{ opacity: 0, y: 40 }}
                                 animate={{ opacity: 1, y: 0 }}
