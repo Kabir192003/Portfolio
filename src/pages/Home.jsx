@@ -635,6 +635,14 @@ const Home = () => {
                             desc="A data-driven UX study comparing Swiggy and Zomato across key user journeys."
                             index={1}
                         />
+                        <ProjectCard
+                            to="/projects/5"
+                            img="./tot-hero.png"
+                            alt="This or That"
+                            title="This or That"
+                            desc="A full-stack community decision platform with personalized feeds."
+                            index={2}
+                        />
                     </div>
 
                     <Reveal delay={0.3}>
