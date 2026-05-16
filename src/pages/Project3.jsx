@@ -1,118 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { projectsData } from '../data/projectsData';
 
 const Project3 = () => {
     const { scrollYProgress } = useScroll();
     const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
 
-    // Hardcoded, rich data for Project 3
-    const project = {
-        title: 'The Hunger Games',
-        category: 'UX Research & Comparative Analysis',
-        timeline: '1 Month',
-        role: 'UX Researcher & Analyst',
-        overview: [
-            "Swiggy and Zomato have fundamentally transformed urban food discovery and delivery. Both giants offer nearly identical core services—food delivery, dine-in bookings, and loyalty subscriptions—yet their market positioning and user experiences differ significantly. One prioritizes minimal, frictionless speed; the other emphasizes feature depth and discovery.",
-            "This study is a deep-dive UX comparative analysis investigating how these distinct design philosophies influence user behavior, task efficiency, and brand perception. By evaluating the platforms across the entire food-ordering journey, I sought to uncover the subtle UI/UX decisions that drive a user to choose one app over the other in a highly saturated market.",
-            "Rather than declaring an absolute 'winner', this research provides actionable intelligence on the trade-offs between cognitive load, feature richness, and user trust."
-        ],
-        impactMetrics: [
-            { label: 'Participants', value: '40+' },
-            { label: 'Data Points', value: '800+' },
-            { label: 'Key Insights', value: '5' }
-        ],
-        tools: ['Google Forms', 'FigJam', 'Miro', 'SPSS', 'Notion'],
-        problem: "Despite offering comparable services, Swiggy and Zomato adopt vastly different UX approaches regarding navigation architecture, checkout flows, personalization, and post-order support. However, it remained empirically unclear how these differences impacted real-world user satisfaction. The core research question was: Which platform provides a superior end-to-end user experience, and what specific micro-interactions drive that perception?",
-        methodology: "I designed a mixed-methods research approach. First, I conducted a heuristic evaluation of both applications. Next, I deployed a structured survey to 40 active users of both platforms, focusing on quantitative satisfaction scores and qualitative pain points. Participants evaluated specific stages: Onboarding, Discovery, Checkout, Delivery Tracking, and Support.",
-        process: [
-            { step: '01', title: 'Hypothesis Definition', desc: 'Formulated assumptions about speed vs. depth based on initial heuristic reviews.' },
-            { step: '02', title: 'Survey Design', desc: 'Crafted a 20-question survey isolating specific user journeys and pain points.' },
-            { step: '03', title: 'Data Collection', desc: 'Gathered qualitative and quantitative responses from 40 active urban users.' },
-            { step: '04', title: 'Synthesis & Affinity Mapping', desc: 'Used FigJam to cluster feedback and identify recurring behavioral themes.' },
-            { step: '05', title: 'Strategic Recommendations', desc: 'Drafted actionable UX improvements for both platforms based on empirical data.' }
-        ],
-        researchDecisions: [
-            {
-                title: 'Isolating the Journey',
-                reason: 'Instead of asking generic "Which app do you prefer?" questions, I broke the journey into discrete steps (Discovery, Checkout, Support). This prevented brand bias from masking specific UI flaws in individual features.'
-            },
-            {
-                title: 'Mixed-Methods Approach',
-                reason: 'Quantitative data told me *what* users preferred (e.g., 70% preferred Swiggy\'s checkout), but qualitative open text fields revealed *why* (e.g., auto-applied coupons reduced cognitive friction).'
-            }
-        ],
-        painPoints: [
-            {
-                title: 'Promotional Overload (Zomato)',
-                description: 'Users reported high cognitive load due to Zomato’s interface being cluttered with advertisements and flashing promotional banners, making initial navigation overwhelming.'
-            },
-            {
-                title: 'Hidden Charges Transparency',
-                description: 'A recurring frustration across both platforms was the sudden appearance of unexpected delivery fees or "surge" charges only at the final checkout step, severely damaging trust.'
-            },
-            {
-                title: 'Support Loop Frustration',
-                description: 'Users heavily criticized automated chatbot loops when orders were delayed. While Swiggy excelled in ordering efficiency, Zomato was rated slightly higher in human-agent handover responsiveness.'
-            }
-        ],
-        researchInsights: [
-            {
-                title: 'Simplicity vs. Feature Depth',
-                description: 'Users perceived Swiggy as significantly faster to use, largely due to its minimal interface. Zomato introduced higher cognitive load but rewarded users with richer discovery features for dine-in scenarios.'
-            },
-            {
-                title: 'Speed of Task Completion',
-                description: 'For food delivery, users prioritize frictionless task completion over exploration. Swiggy’s auto-applied coupons and straightforward checkout won heavily in the "hungry and in a rush" use case.'
-            },
-            {
-                title: 'Trust Through Transparency',
-                description: 'Real-time delivery tracking accuracy emerged as a massive trust vector. Users felt Swiggy’s tracking UI was more reliable and transparent regarding delays.'
-            }
-        ],
-        recommendations: {
-            swiggy: [
-                {
-                    title: 'Improve Customer Support Handoff',
-                    description: 'Reduce reliance on restrictive chatbot loops during critical delivery failures. Faster access to human agents would drastically improve trust.'
-                },
-                {
-                    title: 'Enhance Loyalty Value Communication',
-                    description: 'Clearer onboarding for "Swiggy One" benefits is needed, as many users misunderstood the ROI of the subscription.'
-                }
-            ],
-            zomato: [
-                {
-                    title: 'Reduce Home Screen Cognitive Load',
-                    description: 'Simplify the home architecture. Grouping promotional elements into dedicated zones rather than interspersing them would improve navigation clarity.'
-                },
-                {
-                    title: 'Frictionless Coupon Integration',
-                    description: 'Adopt an auto-apply mechanism for the best available discount during checkout to reduce the cognitive effort of manual code searching.'
-                }
-            ]
-        },
-        outcomes: [
-            "Successfully synthesized 800+ raw data points into 5 core UX principles regarding cognitive load in hyper-local delivery apps.",
-            "Demonstrated that 'Speed to Checkout' heavily outweighs 'Discovery Features' when user intent is strictly food delivery.",
-            "The study serves as a foundational blueprint for designing high-frequency, transactional mobile applications."
-        ],
-        reflections: "This study reinforced my belief that beautiful UI is irrelevant if the architecture introduces friction during a high-intent task. If I were to expand this research, I would incorporate direct usability testing (e.g., eye-tracking or task-timing) rather than relying solely on self-reported survey data.",
-
-        heroImage: './food.jpg',
-        surveyResponses: [
-            './p3survey1.png',
-            './p3survey2.png',
-            './p3survey3.png',
-            './p3survey4.png',
-            './p3survey5.png',
-            './p3survey6.png',
-            './p3survey7.png',
-            './p3survey8.png',
-            './p3survey9.png',
-            './p3survey10.png'
-        ]
-    };
+    const project = projectsData.project3;
 
     return (
         <motion.div

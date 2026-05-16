@@ -1,107 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { projectsData } from '../data/projectsData';
 
 const Project2 = () => {
     const { scrollYProgress } = useScroll();
     const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
 
-    // Hardcoded, rich data for Project 2
-    const project = {
-        title: 'Workhive',
-        category: 'Web Platform · UX/UI Design',
-        timeline: '4 Months',
-        role: 'Product Designer',
-        overview: [
-            "The modern job ecosystem is overwhelmingly fragmented. Candidates bounce between LinkedIn for networking, Glassdoor for salaries, Indeed for listings, and blind forums for company culture insights. This scattered approach creates massive cognitive overload, leading to decision fatigue for job seekers and inefficient sourcing for recruiters.",
-            "WorkHive was conceived to consolidate this fragmented experience. It is a unified career platform designed to simplify how users discover jobs, evaluate company cultures, and build meaningful professional connections without constantly context-switching. Driven by a core need for transparency and data-informed decision-making, WorkHive brings everything into a single, cohesive ecosystem.",
-            "My role involved orchestrating the platform's user experience from the ground up—balancing the complex data needs of enterprise recruiters with the intuitive, low-friction interface demanded by modern job seekers."
-        ],
-        impactMetrics: [
-            { label: 'Time to Apply', value: '-40%' },
-            { label: 'Profile Completion', value: '+65%' },
-            { label: 'Candidate Match Rate', value: '82%' }
-        ],
-        tools: ['Figma', 'Miro', 'Hotjar', 'Google Analytics', 'Notion'],
-        problem: "During our initial research, we mapped the typical job seeker's journey and found an astonishing average of 7 platform switches per application. Job seekers struggled to weigh opportunities because salary data, cultural insights, and role requirements lived in silos. Recruiters faced the inverse problem: they received high volumes of applications but lacked verified insights to filter candidates effectively, relying on outdated resume parsers.",
-        solution: "I designed a platform architecture that deeply integrates job search, candidate discovery, peer-reviewed company ratings, real-time salary insights, and even relocation cost estimations. The core of the solution is a 'Guided Exploration' interface that uses persistent filters and contextual pathways to surface relevant data—like whether a candidate knows an existing employee—right alongside the job description.",
-        process: [
-            { step: '01', title: 'Generative Research', desc: 'Surveyed 150+ professionals and 20 recruiters to map pain points across the hiring lifecycle.' },
-            { step: '02', title: 'System Mapping', desc: 'Used Miro to map complex data relationships between candidates, companies, and roles.' },
-            { step: '03', title: 'Interaction Design', desc: 'Designed core flows prioritizing progressive disclosure of dense data sets.' },
-            { step: '04', title: 'Prototyping & Testing', desc: 'Iterated on high-fidelity prototypes based on A/B testing feedback for the search interface.' },
-            { step: '05', title: 'Design System', desc: 'Built a robust UI library tailored for dense data visualization and data tables.' }
-        ],
-        designDecisions: [
-            {
-                title: 'Persistent Yet Unobtrusive Filters',
-                reason: 'Job searches are highly iterative. Instead of hiding filters behind a modal or dedicating a massive sidebar to them, I designed a sticky, horizontal filter bar. This allowed users to refine searches without losing their current scroll position, reducing interaction friction.'
-            },
-            {
-                title: 'Network Opportunity Mapping',
-                reason: 'Static job listings lack trust. I introduced visual match indicators and connection depth maps next to job titles. Seeing "2 alumni from your university work here" immediately increased user intent to apply by providing a warm networking path.'
-            },
-            {
-                title: 'Relocation Cost Calculator Integration',
-                reason: 'Salary is relative to location. I designed an embedded decision-support module combining salary offers with regional cost-of-living data, turning abstract numbers into a concrete decision matrix.'
-            }
-        ],
-        challenges: [
-            {
-                title: 'Handling Extreme Data Density',
-                solution: 'Company profiles needed to show reviews, open roles, leadership info, and benefits simultaneously. I implemented a hierarchical card system utilizing visual rhythm and negative space, ensuring the page felt breathable rather than overwhelming.'
-            },
-            {
-                title: 'Recruiter vs. Candidate Views',
-                solution: 'The platform serves two distinct user bases with conflicting needs (privacy vs. visibility). I created a dual-state architecture that allowed candidates to anonymize their profiles to recruiters until mutual interest was established.'
-            }
-        ],
-        outcomes: [
-            "Usability testing showed a 40% reduction in the time it took users to evaluate a company and submit an application compared to legacy platforms.",
-            "By introducing a gamified, step-by-step onboarding flow, profile completion rates increased by 65%.",
-            "The new structured data matching algorithms, supported by the UI, resulted in recruiters reporting an 82% satisfaction rate with suggested candidate relevance."
-        ],
-        reflections: "Designing for a multi-sided marketplace taught me the crucial importance of balancing incentives. If I were to revisit the project, I would spend more time designing edge-case states for users with non-traditional career paths (e.g., career switchers or freelancers), ensuring the matching algorithm UI accommodates non-linear resumes.",
-
-        heroImage: './whh.jpg',
-        persona1: './p2persona1.png',
-        persona2: './p2persona2.png',
-        sitemap: './p2journey.jpg',
-        wireframes: [
-            {
-                image: './p2w1.png',
-                title: 'Wireframe 01 · Structured Job Discovery',
-                description: 'A focused search layout built to minimize friction and cognitive load. Persistent filters allow quick refinement without interrupting browse flow.'
-            },
-            {
-                image: './p2w2.png',
-                title: 'Wireframe 02 · Network Opportunity Mapping',
-                description: 'A visual relationship-based flow that replaces static listings with contextual pathways to improve decision confidence.'
-            },
-            {
-                image: './p2w3.png',
-                title: 'Wireframe 03 · Relocation Decision Support',
-                description: 'A comparison interface combining salary and cost-of-living inputs into a readable decision model for users planning moves.'
-            }
-        ],
-        finalMockups: [
-            {
-                image: './p2m1.png',
-                title: 'Mockup 01 · Guided Exploration',
-                description: 'High-fidelity screens introduce stronger hierarchy, cleaner card design, and clearer CTA emphasis to help evaluate roles faster.'
-            },
-            {
-                image: './p2m2.png',
-                title: 'Mockup 02 · Connection-Centered Insights',
-                description: 'Visual polish makes network context easier to parse, turning relationship data into practical warm-path networking steps.'
-            },
-            {
-                image: './p2m3.png',
-                title: 'Mockup 03 · Confident Decision Flow',
-                description: 'A refined comparison experience aligns financial inputs, outcomes, and actions into one coherent flow.'
-            }
-        ]
-    };
+    const project = projectsData.project2;
 
     return (
         <motion.div

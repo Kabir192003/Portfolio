@@ -1,97 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { projectsData } from '../data/projectsData';
 
 const Project5 = () => {
     const { scrollYProgress } = useScroll();
     const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
 
-    // Rich data for Project 5
-    const project = {
-        title: 'This or That',
-        category: 'Full Stack Web App · Group Project',
-        timeline: 'Feb 2026 - May 2026',
-        role: 'Full Stack Developer & UI/UX Designer',
-        overview: [
-            "We make dozens of micro-decisions every day, from choosing what laptop to buy, to deciding what framework to learn next. However, turning to the internet for advice often means sifting through biased articles or enduring toxic forum environments. People need a fast, reliable, and community-driven way to help them make better choices.",
-            "‘This or That’ is a full-stack community decision platform built to solve this exact problem. Users can ask questions, pose dilemmas, and let the community vote and comment to guide their choices. By creating a profile and selecting specific topics of interest, users are served a personalized, automatically updating feed of decisions relevant to their expertise.",
-            "Developed as a capstone group project at Trinity College Dublin, this application represents a true full-stack endeavor. I took ownership of designing the entire system architecture, the database schemas, the complete UI/UX, and significant portions of both the frontend and backend development. It was an exercise not just in coding, but in effective technical leadership and group collaboration."
-        ],
-        impactMetrics: [
-            { label: 'System Architecture', value: '100%' },
-            { label: 'Time to MVP', value: '3 Mos' },
-            { label: 'Group Grade', value: 'A+' }
-        ],
-        tools: ['React', 'Node.js', 'Express', 'MongoDB', 'Figma'],
-        problem: "Existing Q&A platforms like Quora or Reddit are text-heavy and require significant cognitive effort to parse. When someone just wants to know 'Logitech MX Master vs Apple Magic Mouse', they want a quick consensus. Furthermore, as a group project, our primary challenge was coordinating complex full-stack features—like a personalized feed algorithm and secure anonymous posting—across multiple developers within a strict 3-month academic timeline.",
-        solution: "We engineered a robust platform that centers around binary or multi-choice polling mixed with threaded discussions. I designed the database to efficiently handle user preferences, connecting them dynamically to the feed generation algorithm. The UI was crafted to be frictionless—allowing users to vote with a single click and see instant visual feedback via progress bars. To foster honest discussion on sensitive topics, we implemented a secure anonymous posting feature on the backend.",
-        process: [
-            { step: '01', title: 'Architecture & Database Design', desc: 'Mapped out entity-relationship diagrams and designed scalable NoSQL schemas for users, polls, and preferences.' },
-            { step: '02', title: 'UI/UX Prototyping', desc: 'Created high-fidelity Figma mockups, establishing a clean, modern design system to serve as a single source of truth for the team.' },
-            { step: '03', title: 'Backend & API Development', desc: 'Developed secure RESTful API endpoints handling authentication, preference matching, and the core voting logic.' },
-            { step: '04', title: 'Frontend Implementation', desc: 'Translated the Figma designs into responsive React components, integrating them tightly with our backend services.' },
-            { step: '05', title: 'Group Integration & Testing', desc: 'Led regular code reviews and merge sessions to ensure seamless integration of frontend and backend modules developed by different team members.' }
-        ],
-        designDecisions: [
-            {
-                title: 'Algorithm-Driven Personalized Feed',
-                reason: 'To maximize user engagement, I architected the backend to dynamically filter the global feed based on an array of topic tags selected during user onboarding. This ensured users only saw dilemmas they actually cared about.'
-            },
-            {
-                title: 'Frictionless Voting UI',
-                reason: 'The core action of the platform is voting. I designed large, clear touch targets for the options. Upon voting, the UI immediately transitions to show community percentages, providing instant gratification and keeping the user engaged.'
-            },
-            {
-                title: 'Secure Anonymous Interactions',
-                reason: 'To encourage questions on sensitive topics (e.g., career or relationship choices), I implemented a backend flag that decouples user IDs from specific posts in the public API response, ensuring true anonymity without losing data integrity.'
-            }
-        ],
-        challenges: [
-            {
-                title: 'Group Coordination & Version Control',
-                solution: 'With multiple developers touching the same full-stack features, merge conflicts were a constant threat. I established a strict Git branching strategy and served as the technical lead during integration, ensuring our database schemas and API contracts remained synchronized.'
-            },
-            {
-                title: 'Complex State Management',
-                solution: 'Managing the state of the user’s feed, their profile preferences, and real-time voting updates required careful planning. I implemented centralized state management on the frontend to prevent unnecessary re-renders and ensure the UI always reflected the latest database state.'
-            }
-        ],
-        outcomes: [
-            "Successfully delivered a fully functional, deployed full-stack application within the aggressive 3-month Trinity College timeline.",
-            "Demonstrated strong technical versatility by successfully bridging the gap between database architecture, backend logic, and frontend UI/UX design.",
-            "The project served as a masterclass in collaborative software engineering, proving my ability to communicate technical requirements, divide complex tasks, and unify a team's code into a cohesive product."
-        ],
-        reflections: "Building 'This or That' reinforced the critical importance of planning architecture and API contracts before writing a single line of code. Because I spent time designing the database and Figma files upfront, our team was able to work in parallel much more effectively. In the future, I would love to implement real-time WebSockets to make the voting experience even more dynamic.",
-
-        heroImage: './tot-hero.png',
-        persona1: './p2persona1.png', // Reusing placeholder for now
-        persona2: './p2persona2.png', // Reusing placeholder for now
-        sitemap: './tot-feed.png',
-        wireframes: [
-            {
-                image: './tot-feed.png',
-                title: 'Personalized Feed View',
-                description: 'The core dashboard where users browse active dilemmas filtered by their selected preferences.'
-            },
-            {
-                image: './tot-ask.png',
-                title: 'Question Creation',
-                description: 'A structured, easy-to-use form allowing users to pose dilemmas with clear options and contextual descriptions.'
-            },
-            {
-                image: './tot-profile.png',
-                title: 'User Profile & Preferences',
-                description: 'The hub for users to track their generated decisions, see their voting impact, and adjust their topic preferences.'
-            }
-        ],
-        finalMockups: [
-             {
-                image: './tot-hero.png',
-                title: 'Voting Interface',
-                description: 'The polished UI showcasing clear options, immediate visual feedback via percentage bars, and a threaded comment section for deeper discussion.'
-            }
-        ]
-    };
+    const project = projectsData.project5;
 
     return (
         <motion.div
@@ -112,6 +28,11 @@ const Project5 = () => {
                     <Link to="/projects" style={styles.backLink}>← Back to Projects</Link>
                     <span style={styles.category}>{project.category}</span>
                     <h1 style={styles.title}>{project.title}</h1>
+                    <div style={{ marginTop: '1.5rem', display: 'flex', gap: '1rem' }}>
+                        <a href={project.liveLink} target="_blank" rel="noopener noreferrer" style={styles.liveButton}>
+                            View Live App ↗
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -325,6 +246,20 @@ const styles = {
     },
     title: {
         fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
+    },
+    liveButton: {
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '0.8rem 1.8rem',
+        backgroundColor: 'var(--accent-color)',
+        color: '#fff',
+        borderRadius: 'var(--radius-pill)',
+        textDecoration: 'none',
+        fontWeight: '600',
+        fontSize: '1rem',
+        transition: 'all 0.3s ease',
+        boxShadow: '0 4px 14px rgba(185, 140, 232, 0.4)',
     },
     impactBanner: {
         display: 'grid',

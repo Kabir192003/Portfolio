@@ -1,76 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { projectsData } from '../data/projectsData';
 
 const Project1 = () => {
     const { scrollYProgress } = useScroll();
     const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
 
-    // Hardcoded, rich data for Project 1
-    const project = {
-        title: 'Trekmate',
-        category: 'Mobile App · UX/UI Design',
-        timeline: '3 Months',
-        role: 'Lead Product Designer',
-        overview: [
-            "The outdoor recreation market has seen an explosion of interest, yet the digital experience for purchasing specialized gear remains stubbornly archaic. While giants like Amazon offer everything, they lack the curated expertise and community trust that outdoor enthusiasts crave. Generic marketplaces often result in choice paralysis, poor categorization, and a lack of reliable technical specifications.",
-            "Trekmate was born from a desire to bridge this gap. I envisioned a modern, niche e-commerce mobile application tailored specifically for camping and trekking enthusiasts. The goal was not just to sell products, but to craft an ecosystem that guides users from inspiration to expedition—offering a focused, seamless, and expert-driven shopping experience.",
-            "As the Lead Product Designer, I spearheaded the end-to-end design lifecycle, taking the product from initial user research and ambiguous problem statements to a fully validated high-fidelity prototype ready for developer handoff."
-        ],
-        impactMetrics: [
-            { label: 'Task Success Rate', value: '94%' },
-            { label: 'Checkout Time', value: '-35%' },
-            { label: 'User Satisfaction', value: '4.8/5' }
-        ],
-        tools: ['Figma', 'FigJam', 'Maze', 'Notion', 'UserTesting'],
-        problem: "During our discovery phase, we identified a critical pain point: enthusiasts were spending more time researching gear across disparate forums and generic stores than actually planning their trips. The cognitive load was immense. Users faced overwhelming choices without proper context, lacking reliable guidance on product compatibility (e.g., 'Will this tent withstand a Category 3 storm?'). This fragmentation led to high cart abandonment rates and a deep sense of buyer's remorse.",
-        solution: "I designed a user-centric platform that drastically simplifies gear discovery. By introducing context-aware categorization (e.g., 'Shop by Expedition Type' rather than just 'Tents'), an intuitive filtering system based on technical specs, and a streamlined, single-page checkout flow, Trekmate reduces friction at every touchpoint. The solution empowers users to make confident purchasing decisions through curated expert reviews and integrated trail-tested recommendations.",
-        process: [
-            { step: '01', title: 'Discovery & Research', desc: 'Conducted 15+ user interviews and analyzed competitor gaps to define core user personas.' },
-            { step: '02', title: 'Information Architecture', desc: 'Restructured the taxonomy to align with how hikers actually think about their gear.' },
-            { step: '03', title: 'Wireframing & Prototyping', desc: 'Iterated rapidly through low-fi sketches to high-fi interactive prototypes in Figma.' },
-            { step: '04', title: 'Usability Testing', desc: 'Validated assumptions with 20 users via Maze, leading to critical navigation pivots.' },
-            { step: '05', title: 'Visual Design', desc: 'Developed a rugged yet modern design system reflecting the outdoor spirit.' },
-            { step: '06', title: 'Handoff', desc: 'Created comprehensive documentation and component libraries for engineering.' }
-        ],
-        designDecisions: [
-            {
-                title: 'Contextual Discovery Over Search',
-                reason: 'Instead of forcing users to search for specific items they might not know the names of, I introduced "Shop by Terrain" and "Shop by Weather". This reduced search-to-cart time by 40% as users found relevant gear naturally.'
-            },
-            {
-                title: 'Progressive Disclosure Checkout',
-                reason: 'To combat a 68% industry-standard cart abandonment rate, I designed a progressive checkout flow. By breaking shipping, billing, and review into bite-sized, collapsible accordion steps, the perceived effort was drastically minimized.'
-            },
-            {
-                title: 'Unified Design System',
-                reason: 'I built a scalable component library using atomic design principles. This ensured absolute visual consistency across 40+ screens and accelerated future feature rollout capabilities by an estimated 30%.'
-            }
-        ],
-        challenges: [
-            {
-                title: 'Balancing Information Density',
-                solution: 'Outdoor gear requires extensive technical specs. I solved this by utilizing a modular tab system on product pages, keeping the primary view clean while making technical data easily accessible without navigating away.'
-            },
-            {
-                title: 'Complex Filtering Architecture',
-                solution: 'Users needed to filter by highly specific metrics (e.g., sleeping bag temperature ratings). I implemented a dynamic, collapsible filter drawer that updates product counts in real-time, preventing "zero results" dead-ends.'
-            }
-        ],
-        outcomes: [
-            "The final prototype was tested with 25 target users, resulting in a 94% task completion rate for the primary user flow (finding and purchasing a specific weather-rated tent).",
-            "Checkout completion time decreased by 35% compared to the benchmarked competitor app.",
-            "The comprehensive design system I created became the foundation for the product's MVP development phase."
-        ],
-        reflections: "Looking back, while the shopping experience is robust, I see an opportunity to integrate a community aspect—allowing users to share gear loadouts for specific real-world trails. In future iterations, I would prioritize building social proof mechanisms directly into the discovery phase.",
-        
-        heroImage: './tmh1.jpg',
-        persona1: './tmp11.jpg',
-        persona2: './tmp22.jpg',
-        sitemap: './tmsm.jpg',
-        wireframes: ['./tmw44.png', './tmw55.png', './tmw66.png'],
-        finalMockups: ['./tmf1.jpg', './tmf222.jpg', './tmf333.jpg']
-    };
+    const project = projectsData.project1;
 
     return (
         <motion.div
