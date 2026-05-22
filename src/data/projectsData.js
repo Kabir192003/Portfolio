@@ -5,9 +5,9 @@ export const projectsData = {
         timeline: '3 Months',
         role: 'Product/UX Designer',
         overview: [
-            "The outdoor recreation market has seen an explosion of interest, yet the digital experience for purchasing specialized gear remains stubbornly archaic. While giants like Amazon offer everything, they lack the curated expertise and community trust that outdoor enthusiasts crave. Generic marketplaces often result in choice paralysis, poor categorization, and a lack of reliable technical specifications.",
-            "Trekmate was born from a desire to bridge this gap. I envisioned a modern, niche e-commerce mobile application tailored specifically for camping and trekking enthusiasts. The goal was not just to sell products, but to craft an ecosystem that guides users from inspiration to expedition - offering a focused, seamless, and expert-driven shopping experience.",
-            "As the Product Designer, I drove the end-to-end design lifecycle, taking the product from initial user research and ambiguous problem statements to a fully validated high-fidelity prototype ready for developer handoff."
+            "As a designer who loves the outdoors, it always frustrated me how archaic it is to buy specialized gear online. You either get lost in generic giants like Amazon—which lack curation and trust—or you suffer through clunky, outdated niche forums. The result is always the same: choice paralysis and a lack of reliable technical specs.",
+            "I wanted to design something better. Trekmate was born from a desire to bridge this gap. I envisioned a modern e-commerce mobile application tailored specifically for camping and trekking enthusiasts. My goal was simple: craft an ecosystem that guides users from inspiration to expedition without the headache.",
+            "As the Product Designer, I drove the end-to-end design lifecycle. I took the product from messy, initial user research and ambiguous problem statements all the way to a fully validated, high-fidelity prototype ready for developer handoff."
         ],
         impactMetrics: [
             { label: 'Task Success Rate', value: '94%' },
@@ -32,7 +32,7 @@ export const projectsData = {
             },
             {
                 title: 'Progressive Disclosure Checkout',
-                reason: 'To combat a 68% industry-standard cart abandonment rate, I designed a progressive checkout flow. By breaking shipping, billing, and review into bite-sized, collapsible accordion steps, the perceived effort was drastically minimized.'
+                reason: 'To combat the notoriously high cart abandonment rates typical of complex e-commerce flows, I designed a progressive checkout flow. By breaking shipping, billing, and review into bite-sized, collapsible accordion steps, the perceived effort was drastically minimized.'
             },
             {
                 title: 'Unified Design System',
@@ -70,9 +70,9 @@ export const projectsData = {
         timeline: '4 Months',
         role: 'Product Designer',
         overview: [
-            "The modern job ecosystem is overwhelmingly fragmented. Candidates bounce between LinkedIn for networking, Glassdoor for salaries, Indeed for listings, and blind forums for company culture insights. This scattered approach creates massive cognitive overload, leading to decision fatigue for job seekers and inefficient sourcing for recruiters.",
-            "WorkHive was conceived to consolidate this fragmented experience. It is a unified career platform designed to simplify how users discover jobs, evaluate company cultures, and build meaningful professional connections without constantly context-switching. Driven by a core need for transparency and data-informed decision-making, WorkHive brings everything into a single, cohesive ecosystem.",
-            "My role involved orchestrating the platform's user experience from the ground up - balancing the complex data needs of enterprise recruiters with the intuitive, low-friction interface demanded by modern job seekers."
+            "I constantly noticed my peers keeping a dozen tabs open just to apply for a single job—bouncing between LinkedIn for networking, Glassdoor for salaries, and blind forums for culture insights. As a designer, that kind of friction drives me crazy. It creates massive cognitive overload for candidates and makes sourcing a nightmare for recruiters.",
+            "WorkHive was my answer to this fragmented experience. I wanted to design a unified career platform that respects the user's time and attention. Driven by a core need for transparency, WorkHive brings job discovery, cultural insights, and networking into a single, cohesive ecosystem.",
+            "My role involved orchestrating the platform's user experience from the ground up. I had to balance the complex, heavy data needs of enterprise recruiters with the intuitive, low-friction interface demanded by modern job seekers."
         ],
         impactMetrics: [
             { label: 'Time to Evaluate', value: '-40%' },
@@ -80,7 +80,7 @@ export const projectsData = {
             { label: 'Positive Match Rate (n=120)', value: '82%' }
         ],
         tools: ['Figma', 'Miro', 'Hotjar', 'Google Analytics', 'Notion'],
-        problem: "During our initial research, we mapped the typical job seeker's journey and found an astonishing average of 7 platform switches per application. Job seekers struggled to weigh opportunities because salary data, cultural insights, and role requirements lived in silos. Recruiters faced the inverse problem: they received high volumes of applications but lacked verified insights to filter candidates effectively, relying on outdated resume parsers.",
+        problem: "During our initial research, mapping the typical job seeker's journey revealed that users often switch between multiple platforms during a single application session. Job seekers struggled to weigh opportunities because salary data, cultural insights, and role requirements lived in silos. Recruiters faced the inverse problem: they received high volumes of applications but lacked verified insights to filter candidates effectively, relying on outdated resume parsers.",
         solution: "I designed a platform architecture that deeply integrates job search, candidate discovery, peer-reviewed company ratings, real-time salary insights, and even relocation cost estimations. The core of the solution is a 'Guided Exploration' interface that uses persistent filters and contextual pathways to surface relevant data - like whether a candidate knows an existing employee - right alongside the job description.",
         process: [
             { step: '01', title: 'Generative Research', desc: 'Surveyed 120 professionals and 25 recruiters to map pain points across the hiring lifecycle.' },
@@ -166,9 +166,9 @@ export const projectsData = {
         timeline: '1 Month',
         role: 'UX Researcher',
         overview: [
-            "Swiggy and Zomato have fundamentally transformed urban food discovery and delivery. Both giants offer nearly identical core services - food delivery, dine-in bookings, and loyalty subscriptions - yet their market positioning and user experiences differ significantly. One prioritizes minimal, frictionless speed; the other emphasizes feature depth and discovery.",
-            "This study is a deep-dive UX comparative analysis investigating how these distinct design philosophies influence user behavior, task efficiency, and brand perception. By evaluating the platforms across the entire food-ordering journey, I sought to uncover the subtle UI/UX decisions that drive a user to choose one app over the other in a highly saturated market.",
-            "Rather than declaring an absolute 'winner', this research provides actionable intelligence on the trade-offs between cognitive load, feature richness, and user trust."
+            "I use Swiggy and Zomato almost every day, and as a designer, I couldn't help but obsess over how differently they approach the exact same problem. Both giants offer identical core services, yet one prioritizes minimal, frictionless speed, while the other emphasizes feature depth and discovery.",
+            "I wanted to figure out exactly why I preferred one over the other in different scenarios. This study is my deep-dive UX comparative analysis investigating how these distinct design philosophies actually influence user behavior and brand trust in the real world.",
+            "Rather than just picking a 'winner', I set out to extract actionable intelligence on the trade-offs between cognitive load, feature richness, and user trust in highly saturated markets."
         ],
         impactMetrics: [
             { label: 'Survey Participants', value: '48' },
@@ -273,9 +273,9 @@ export const projectsData = {
         role: 'Full Stack Developer & UI/UX Designer',
         liveLink: 'https://cs7025-this-or-that.onrender.com/home.html',
         overview: [
-            "We make dozens of micro-decisions every day, from choosing what laptop to buy, to deciding what framework to learn next. However, turning to the internet for advice often means sifting through biased articles or enduring toxic forum environments. People need a fast, reliable, and community-driven way to help them make better choices.",
-            "‘This or That’ is a full-stack community decision platform built to solve this exact problem. Users can ask questions, pose dilemmas, and let the community vote and comment to guide their choices. By creating a profile and selecting specific topics of interest, users are served a personalized, automatically updating feed of decisions relevant to their expertise.",
-            "Developed as a capstone group project at Trinity College Dublin, this application represents a true full-stack endeavor. I took ownership of designing the system architecture, the database schemas, the complete UI/UX, and significant portions of both the frontend and backend development. It was an exercise not just in coding, but in effective technical leadership and group collaboration."
+            "Every day, we make dozens of micro-decisions—from choosing a laptop to picking a frontend framework. But turning to the internet for advice often means sifting through biased articles or enduring toxic forums. I realized people just needed a fast, reliable, and community-driven way to help them make better choices.",
+            "‘This or That’ is the full-stack community platform we built to solve this exact problem. Users can pose dilemmas and let the community vote to guide their choices. By selecting specific topics, users are served a personalized, auto-updating feed relevant to their expertise.",
+            "Developed as a capstone group project at Trinity College Dublin, this was a massive collaborative effort. To ensure success within our strict timeline, I took absolute ownership of the complete UI/UX design and the frontend architecture. While my team handled specific backend feature modules and database administration, I single-handedly built the entire React frontend and designed the core system schemas that powered our personalized feed algorithm."
         ],
         impactMetrics: [
             { label: 'System Architecture', value: '100%' },

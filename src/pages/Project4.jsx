@@ -7,8 +7,8 @@ const Project4 = () => {
     const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
 
     const project = {
-        title: 'Photography Journal',
-        category: 'Photography',
+        title: 'Lens & Light: Visual Storytelling',
+        category: 'Design Foundation',
         heroImage: './swiss.jpg',
         gallery: [
             { src: './project4/IMG_6084.HEIC', alt: 'Snow-covered mountain range under dramatic sky' },
@@ -55,8 +55,20 @@ const Project4 = () => {
             </div>
 
             <div className="container section">
+                <section style={styles.textSection}>
+                    <h2 style={styles.sectionHeader} className="project-section-header">The Foundation of My Spatial Awareness</h2>
+                    <div style={styles.featureCard}>
+                        <p style={{...styles.paragraph, marginBottom: '1.5rem'}} className="project-paragraph">
+                            Long before I started designing digital interfaces, I was framing the physical world through a lens. Photography taught me that a compelling composition isn't just about what you include—it's about the negative space that lets the subject breathe. 
+                        </p>
+                        <p style={styles.paragraph} className="project-paragraph">
+                            This relentless practice in visual storytelling, lighting, and understanding focal points directly informs my UI/UX philosophy today. I treat a digital interface the same way I treat a viewfinder: establishing clear visual hierarchy, protecting negative space, and intuitively guiding the user's eye through the experience.
+                        </p>
+                    </div>
+                </section>
+
                 <section style={styles.gallerySection}>
-                    <h2 style={styles.sectionHeader} className="project-section-header">Photography Collection</h2>
+                    <h2 style={{...styles.sectionHeader, marginTop: '4rem'}} className="project-section-header">Selected Compositions</h2>
 
                     <div style={styles.quoteStrip}>
                         {project.quotes.map((quote) => (
@@ -142,6 +154,27 @@ const styles = {
         maxWidth: '1200px',
         margin: '0 auto',
         width: '100%',
+        marginTop: '2rem',
+    },
+    textSection: {
+        maxWidth: '1000px',
+        margin: '0 auto',
+        width: '100%',
+        marginBottom: '2rem',
+    },
+    featureCard: {
+        padding: '2rem',
+        borderRadius: 'var(--radius-md)',
+        border: '1px solid var(--glass-border)',
+        background: 'linear-gradient(160deg, rgba(185, 140, 232, 0.09) 0%, rgba(20, 17, 38, 0.72) 100%)',
+    },
+    paragraph: {
+        fontSize: '1.12rem',
+        color: 'var(--text-secondary)',
+        lineHeight: '1.85',
+        textAlign: 'justify',
+        textJustify: 'inter-word',
+        margin: 0,
     },
     sectionHeader: {
         fontSize: '2rem',

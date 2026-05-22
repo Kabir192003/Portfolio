@@ -26,9 +26,9 @@ const Experience = () => {
         },
         {
             id: 3,
-            role: 'Creative Direction & Visual Storytelling',
-            company: 'Self-Employed',
-            period: '2020 - Present',
+            role: 'Visual Storytelling & Composition Foundation',
+            company: '',
+            period: '',
             description: 'Directed and executed visual narratives through photography and video editing. Developed a strong foundation in visual hierarchy, composition, and color theory - skills that directly inform my approach to UI design and spatial layout. Managed end-to-end creative projects, ensuring alignment between visual assets and core storytelling objectives.'
         }
     ];
@@ -54,11 +54,11 @@ const Experience = () => {
                         transition={{ delay: index * 0.2, duration: 0.5 }}
                     >
                         <div style={styles.periodColumn} className="period-column">
-                            <span style={styles.period}>{exp.period}</span>
+                            {exp.period && <span style={styles.period}>{exp.period}</span>}
                         </div>
                         <div style={styles.contentColumn} className="content-column">
                             <h2 style={styles.role} className="role-heading">{exp.role}</h2>
-                            <h3 style={styles.company}>{exp.company}</h3>
+                            {exp.company && <h3 style={styles.company}>{exp.company}</h3>}
                             <ul style={styles.descriptionList} className="timeline-description">
                                 {toBulletPoints(exp.description).map((point) => (
                                     <li key={point} style={styles.descriptionItem}>

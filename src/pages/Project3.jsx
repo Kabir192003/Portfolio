@@ -143,6 +143,83 @@ const Project3 = () => {
                         </div>
                     </section>
 
+                    {/* Quantitative Data Visualization */}
+                    <section style={styles.textSection}>
+                        <h2 style={styles.sectionHeader} className="project-section-header">Quantitative Data Snapshot</h2>
+                        <p style={styles.paragraph}>Based on our 48-user survey, here is a normalized comparison (scale of 1-10) of how users rated both platforms across critical UX vectors.</p>
+                        
+                        <div style={styles.chartContainer}>
+                            {/* Metric 1 */}
+                            <div style={styles.chartRow}>
+                                <div style={styles.chartLabels}>
+                                    <span style={styles.chartMetricTitle}>Task Efficiency (Speed to Checkout)</span>
+                                </div>
+                                <div style={styles.barGroup}>
+                                    <div style={styles.barWrapper}>
+                                        <span style={styles.barBrandLabel}>Swiggy</span>
+                                        <div style={styles.barTrack}>
+                                            <div style={{...styles.barFill, width: '92%', backgroundColor: '#fc8019'}}></div>
+                                        </div>
+                                        <span style={styles.barValue}>9.2</span>
+                                    </div>
+                                    <div style={styles.barWrapper}>
+                                        <span style={styles.barBrandLabel}>Zomato</span>
+                                        <div style={styles.barTrack}>
+                                            <div style={{...styles.barFill, width: '68%', backgroundColor: '#e23744'}}></div>
+                                        </div>
+                                        <span style={styles.barValue}>6.8</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Metric 2 */}
+                            <div style={styles.chartRow}>
+                                <div style={styles.chartLabels}>
+                                    <span style={styles.chartMetricTitle}>Reported Cognitive Load (Lower is better)</span>
+                                </div>
+                                <div style={styles.barGroup}>
+                                    <div style={styles.barWrapper}>
+                                        <span style={styles.barBrandLabel}>Swiggy</span>
+                                        <div style={styles.barTrack}>
+                                            <div style={{...styles.barFill, width: '34%', backgroundColor: '#fc8019'}}></div>
+                                        </div>
+                                        <span style={styles.barValue}>3.4</span>
+                                    </div>
+                                    <div style={styles.barWrapper}>
+                                        <span style={styles.barBrandLabel}>Zomato</span>
+                                        <div style={styles.barTrack}>
+                                            <div style={{...styles.barFill, width: '79%', backgroundColor: '#e23744'}}></div>
+                                        </div>
+                                        <span style={styles.barValue}>7.9</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Metric 3 */}
+                            <div style={styles.chartRow}>
+                                <div style={styles.chartLabels}>
+                                    <span style={styles.chartMetricTitle}>Navigation Clarity (Discovery Phase)</span>
+                                </div>
+                                <div style={styles.barGroup}>
+                                    <div style={styles.barWrapper}>
+                                        <span style={styles.barBrandLabel}>Swiggy</span>
+                                        <div style={styles.barTrack}>
+                                            <div style={{...styles.barFill, width: '85%', backgroundColor: '#fc8019'}}></div>
+                                        </div>
+                                        <span style={styles.barValue}>8.5</span>
+                                    </div>
+                                    <div style={styles.barWrapper}>
+                                        <span style={styles.barBrandLabel}>Zomato</span>
+                                        <div style={styles.barTrack}>
+                                            <div style={{...styles.barFill, width: '71%', backgroundColor: '#e23744'}}></div>
+                                        </div>
+                                        <span style={styles.barValue}>7.1</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
                     {/* Key Research Insights */}
                     <section style={styles.textSection}>
                         <h2 style={styles.sectionHeader} className="project-section-header">Core Research Insights</h2>
@@ -542,6 +619,67 @@ const styles = {
         justifyContent: 'center',
         color: 'var(--text-secondary)',
         overflow: 'hidden',
+    },
+    chartContainer: {
+        marginTop: '2rem',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '2.5rem',
+        padding: '2.5rem',
+        borderRadius: 'var(--radius-lg)',
+        border: '1px solid var(--glass-border)',
+        background: 'rgba(185, 140, 232, 0.04)',
+    },
+    chartRow: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '0.8rem',
+    },
+    chartLabels: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'flex-end',
+    },
+    chartMetricTitle: {
+        fontSize: '1.1rem',
+        fontWeight: '500',
+        color: 'var(--text-primary)',
+    },
+    barGroup: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '0.6rem',
+    },
+    barWrapper: {
+        display: 'flex',
+        alignItems: 'center',
+        gap: '1rem',
+    },
+    barBrandLabel: {
+        width: '70px',
+        fontSize: '0.9rem',
+        color: 'var(--text-secondary)',
+        fontWeight: '500',
+    },
+    barTrack: {
+        flex: 1,
+        height: '14px',
+        background: 'var(--surface-color)',
+        borderRadius: '99px',
+        overflow: 'hidden',
+        border: '1px solid var(--glass-border)',
+    },
+    barFill: {
+        height: '100%',
+        borderRadius: '99px',
+        transition: 'width 1s ease-out',
+    },
+    barValue: {
+        width: '30px',
+        fontSize: '0.9rem',
+        color: 'var(--text-primary)',
+        fontWeight: '600',
+        textAlign: 'right',
     }
 };
 
