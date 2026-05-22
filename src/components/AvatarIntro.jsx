@@ -103,8 +103,8 @@ const AvatarIntro = ({ onComplete, onFadeStart }) => {
     const [exiting, setExiting] = useState(false);
 
     useEffect(() => {
-        const t1 = setTimeout(() => setPhase(1), 1200);
-        const t2 = setTimeout(() => setPhase(2), 6000);
+        const t1 = setTimeout(() => setPhase(1), 800);
+        const t2 = setTimeout(() => setPhase(2), 2500);
         return () => {
             clearTimeout(t1);
             clearTimeout(t2);
@@ -158,6 +158,23 @@ const AvatarIntro = ({ onComplete, onFadeStart }) => {
                 width: '100%', height: '100%',
                 display: 'flex', pointerEvents: 'none',
             }}>
+                {/* Persistent Skip Button */}
+                <button
+                    onClick={handleEnter}
+                    style={{
+                        position: 'absolute', top: '3%', right: '3%',
+                        padding: '8px 16px', background: 'rgba(255,255,255,0.1)',
+                        color: 'rgba(255,255,255,0.7)', border: '1px solid rgba(255,255,255,0.2)',
+                        borderRadius: '20px', cursor: 'pointer', pointerEvents: 'auto',
+                        fontSize: '0.85rem', letterSpacing: '0.05em', transition: 'all 0.2s',
+                        zIndex: 10, backdropFilter: 'blur(5px)'
+                    }}
+                    onMouseEnter={(e) => { e.currentTarget.style.color = '#fff'; e.currentTarget.style.background = 'rgba(255,255,255,0.2)'; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.color = 'rgba(255,255,255,0.7)'; e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; }}
+                >
+                    Skip Intro ↗
+                </button>
+
                 <AnimatePresence mode="wait">
                     {phase === 1 && (
                         <React.Fragment key="phase1">

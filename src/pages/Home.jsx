@@ -5,10 +5,10 @@ import DynamicBackground from '../components/DynamicBackground';
 import GeometricBackground from '../components/GeometricBackground';
 
 const FALLBACK_IMAGE = './sample.jpg';
-const HERO_TYPED_TEXT = 'Crafting digital\nexperiences that\ninspire.';
-const HERO_GRADIENT_START = HERO_TYPED_TEXT.indexOf('digital');
-const HERO_GRADIENT_END = HERO_GRADIENT_START + 'digital\nexperiences'.length;
-const HERO_TYPO_WORD = 'thnik';
+const HERO_TYPED_TEXT = 'Designing for\nimmersive, human-centred\nexperiences\n- from mobile to spatial.';
+const HERO_GRADIENT_START = HERO_TYPED_TEXT.indexOf('human-centred');
+const HERO_GRADIENT_END = HERO_GRADIENT_START + 'human-centred\nexperiences'.length;
+const HERO_TYPO_WORD = 'experinces';
 
 // ─── Reusable scroll-reveal wrapper ──────────────────────────────────────────
 const Reveal = ({ children, delay = 0, direction = 'up', style }) => {
@@ -402,8 +402,8 @@ const Home = () => {
     }, [ensureHeroAudioContext]);
 
     useEffect(() => {
-        const introText = 'Crafting digital\nexperiences ';
-        const finalText = 'that\ninspire.';
+        const introText = 'Designing for\nimmersive, human-centred\n';
+        const finalText = 'experiences\n- from mobile to spatial.';
         const operations = [
             ...introText.split('').map((char) => ({ kind: 'type', char })),
             { kind: 'pause', min: 420, max: 820 },
@@ -551,7 +551,7 @@ const Home = () => {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.45, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
                         >
-                            UI/UX Designer translating complex problems into elegant,
+                            I'm Kabir Sharma, a UI/UX Designer translating complex problems into elegant,
                             intuitive interfaces. I bring ideas to life through design.
                         </motion.p>
                     </motion.div>

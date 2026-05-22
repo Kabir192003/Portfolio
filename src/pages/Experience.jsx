@@ -13,7 +13,7 @@ const Experience = () => {
         {
             id: 1,
             role: 'Junior Product Associate',
-            company: 'Dream Weavers',
+            company: 'Dream Weavers (Tech Startup)',
             period: 'Feb 2025 - Aug 2025',
             description: 'Led cross-functional implementation of design & operations, transforming product needs into operational plans and enhancing delivery schedule by 25%. Collaborated with cross-functional stakeholders to align business objectives with execution strategies. Analysed product milestones and operational data to identify trends and bottlenecks, enabling data- driven prioritization and improving overall product performance by 15%.'
         },
@@ -26,10 +26,10 @@ const Experience = () => {
         },
         {
             id: 3,
-            role: 'Photography & Video Editing',
+            role: 'Creative Direction & Visual Storytelling',
             company: 'Self-Employed',
             period: '2020 - Present',
-            description: 'Explored photography and video editing as a personal creative pursuit, focusing on visual storytelling, composition, and editing techniques.'
+            description: 'Directed and executed visual narratives through photography and video editing. Developed a strong foundation in visual hierarchy, composition, and color theory - skills that directly inform my approach to UI design and spatial layout. Managed end-to-end creative projects, ensuring alignment between visual assets and core storytelling objectives.'
         }
     ];
 

@@ -7,13 +7,13 @@ const Education = () => {
         {
             id: 1,
             degree: 'M.SC. Interactive Digital Media',
-            institution: 'Tinity College Dublin, Ireland',
+            institution: 'Trinity College Dublin, Ireland',
             period: 'Sep 2025 - Sep 2026',
             description: 'Explored interaction design, UX/UI principles, digital media production, and user-centered design to create intuitive and engaging digital experiences.'
         },
         {
             id: 2,
-            degree: 'Bachelor of Technology in Computer Scienece & Engineering',
+            degree: 'Bachelor of Technology in Computer Science & Engineering',
             institution: 'Anurag University, Hyderabad, India',
             period: '2021 - 2025',
             description: 'Built a strong foundation in computer science, covering programming, data structures, algorithms, databases, and software engineering fundamentals.'
