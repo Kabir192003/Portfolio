@@ -136,17 +136,17 @@ const Project5 = () => {
                         <h2 style={styles.sectionHeader} className="project-section-header">Design Rationale: High-Fidelity UI</h2>
                         <p style={styles.paragraph}>Every pixel was placed with intent. Here is a breakdown of the core screens, highlighting the specific problems they solve, the trade-offs considered, and why these particular UX patterns were chosen.</p>
                         
-                        <div style={styles.showcaseGrid}>
+                        <div style={styles.rationaleGrid}>
                             {project.designRationale.map((item, idx) => (
-                                <article key={item.title} style={styles.showcaseCard}>
-                                    <div style={styles.wireframePlaceholder} className="project2-wireframe-holder">
+                                <div key={item.title} style={{...styles.rationaleRow, flexDirection: idx % 2 === 0 ? 'row-reverse' : 'row'}}>
+                                    <div style={styles.rationaleImageHolder} className="project2-wireframe-holder">
                                         <img src={item.image} alt={`Interface ${idx + 1}`} className="project2-wireframe-image" />
                                     </div>
-                                    <div style={styles.showcaseTextWrap}>
-                                        <h4 style={styles.showcaseTitle}>{item.title}</h4>
-                                        <p style={styles.wireframeDescription}>{item.description}</p>
+                                    <div style={styles.rationaleContent}>
+                                        <h4 style={styles.subSectionHeader}>{item.title}</h4>
+                                        <p style={styles.detailParagraph}>{item.description}</p>
                                     </div>
-                                </article>
+                                </div>
                             ))}
                         </div>
                     </section>
@@ -486,6 +486,35 @@ const styles = {
         display: 'block',
         objectFit: 'cover',
         objectPosition: 'center top',
+    },
+    rationaleGrid: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '5rem',
+        marginTop: '3rem',
+    },
+    rationaleRow: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: '3rem',
+        alignItems: 'center',
+    },
+    rationaleImageHolder: {
+        flex: '1 1 450px',
+        aspectRatio: '16/10',
+        backgroundColor: 'var(--surface-color)',
+        borderRadius: 'var(--radius-md)',
+        border: '1px solid var(--glass-border)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        overflow: 'hidden',
+    },
+    rationaleContent: {
+        flex: '1 1 300px',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '1rem',
     }
 };
 

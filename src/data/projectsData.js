@@ -57,7 +57,7 @@ export const projectsData = {
         ],
         reflections: "Looking back, while the shopping experience is robust, I see an opportunity to integrate a community aspect - allowing users to share gear loadouts for specific real-world trails. In future iterations, I would prioritize building social proof mechanisms directly into the discovery phase.",
         
-        heroImage: './trekmate-new/tm-home.png',
+        heroImage: './tmh.jpg',
         personas: [
             {
                 name: 'Rohan S.',
@@ -483,7 +483,131 @@ export const projectsData = {
                 ]
             }
         ],
-        sitemap: './p2journey.jpg',
+        journeys: [
+            {
+                personaName: 'Marcus T.',
+                archetype: 'Mid-Career Switcher',
+                scenario: 'Marcus wants to move from marketing into product management. He needs to validate his salary expectations, map his transferable skills, and avoid wasting time on roles that won\'t see his CV fairly.',
+                phases: ['Trigger', 'Discovery', 'Validation', 'Networking', 'Interview', 'Decision'],
+                rows: {
+                    actions: [
+                        'Gets passed over for promotion; decides to explore external options seriously',
+                        'Searches PM roles on LinkedIn; filters by experience level but results are inconsistent',
+                        'Visits Glassdoor and Levels.fyi for salary data; compares to his current package',
+                        'Reaches out to 6 contacts at target companies; only 2 respond meaningfully',
+                        'Gets 3 interviews; asked about PM experience he technically doesn\'t have yet',
+                        'Receives an offer 15% below his minimum; has to negotiate blind without market data'
+                    ],
+                    thoughts: [
+                        '"I\'ve been doing PM work without the title for two years. I just need someone to see that."',
+                        '"These JDs all say 3–5 years PM experience. Do I even qualify? I can\'t tell."',
+                        '"Levels.fyi only covers big tech. I\'m targeting scale-ups — there\'s nothing for me here."',
+                        '"I need a warm intro but I don\'t know who to ask or how to frame it without looking desperate."',
+                        '"They keep asking for PM experience as if my 6 years of go-to-market work is irrelevant."',
+                        '"I need to know the market rate before I walk into this negotiation or I\'ll leave money on the table."'
+                    ],
+                    emotions: ['Frustrated', 'Curious', 'Impatient', 'Anxious', 'Skeptical', 'Cautious'],
+                    painPoints: [
+                        'No platform recognises or surfaces transferable-skill equivalency',
+                        'Experience level filters don\'t account for adjacent career paths',
+                        'Salary data gaps for mid-market and scale-up companies',
+                        'Warm intro infrastructure doesn\'t exist beyond cold LinkedIn DMs',
+                        'Interview processes are calibrated for traditional career paths only',
+                        'Offer negotiation happens without real-time, role-specific comp benchmarks'
+                    ],
+                    opportunities: [
+                        'Skill-translation engine: map marketing competencies to PM role requirements',
+                        'Fuzzy experience matching: \'You qualify for 73% of this role based on adjacent skills\'',
+                        'Scale-up salary database crowdsourced from verified WorkHive users',
+                        'Warm intro layer: mutual connections flagged with relationship context',
+                        'Interview prep tailored to career-switch narratives, not just job history',
+                        'Live comp benchmarking tool accessible during active offer stage'
+                    ]
+                }
+            },
+            {
+                personaName: 'Priya M.',
+                archetype: 'First-Time Job Seeker',
+                scenario: 'Priya graduated 3 months ago and has been applying for junior product roles. She\'s managing the process across 8+ tabs and still hasn\'t had a single first-round call.',
+                phases: ['Trigger', 'Discovery', 'Research', 'Application', 'Waiting', 'Post-Outcome'],
+                rows: {
+                    actions: [
+                        'Sees a LinkedIn post about entry-level PM roles; opens LinkedIn, Glassdoor, and Blind simultaneously',
+                        'Searches \'junior product manager\'; finds hundreds of roles with no salary info or culture signals',
+                        'Reads 3 Glassdoor review pages; scrolls Blind threads; opens company LinkedIn to check team size',
+                        'Tailors CV for each role; writes cover letters without knowing if salary meets her threshold',
+                        'Sends 14 applications; checks email obsessively for 2 weeks; hears back from 2',
+                        'Gets rejected post-interview; has no feedback; can\'t tell if it was fit, salary, or skill gap'
+                    ],
+                    thoughts: [
+                        '"There must be a better way to find the right role — not just any role."',
+                        '"How am I supposed to know which of these 400 results are actually entry-level?"',
+                        '"The reviews say great culture but everyone who left says the opposite. Who do I believe?"',
+                        '"I spent 3 hours on this application and I don\'t even know if the salary works for me."',
+                        '"Is my application even being read by a person? It feels like a black hole."',
+                        '"I have no idea what I did wrong. I can\'t improve if no one tells me anything."'
+                    ],
+                    emotions: ['Hopeful', 'Overwhelmed', 'Confused', 'Anxious', 'Anxious', 'Frustrated'],
+                    painPoints: [
+                        'No unified starting point — must cobble together data from multiple platforms',
+                        'Zero salary transparency at the discovery stage wastes application effort',
+                        'Culture signals are contradictory and unverified — hard to triangulate',
+                        'Blind applications with no confirmation of relevance erode confidence',
+                        'ATS black hole creates anxiety and disengagement from the process',
+                        'No feedback loop means no way to iterate or improve'
+                    ],
+                    opportunities: [
+                        'Unified dashboard: role, salary, culture, and team visibility in one view',
+                        'Smart entry-level filter with salary range displayed upfront',
+                        'Verified culture ratings with recency weighting and role-specific filters',
+                        'Connection alerts: \'You know 2 people at this company\' alongside JD',
+                        'Application tracker with estimated response timelines per company',
+                        'Anonymised post-rejection insights: where in the funnel and why'
+                    ]
+                }
+            },
+            {
+                personaName: 'Sarah K.',
+                archetype: 'Enterprise Recruiter',
+                scenario: 'Sarah is hiring a Senior Data Engineer. She received 380 applications in 72 hours. Her ATS shortlisted 40 but most are poorly matched. She needs to identify the top 5 in under a week.',
+                phases: ['Brief', 'Sourcing', 'Screening', 'Shortlisting', 'Interviews', 'Offer'],
+                rows: {
+                    actions: [
+                        'Receives hiring brief from Engineering VP; posts JD across LinkedIn, Indeed, and company site',
+                        '380 applications arrive; ATS auto-screens on keywords; flags 40 for review',
+                        'Manually reviews 40 CVs; many are keyword-stuffed and don\'t reflect actual skills',
+                        'Schedules 12 phone screens in 3 days; only 4 proceed to hiring manager round',
+                        '3 final-round candidates; 1 drops out citing poor culture perception from Glassdoor',
+                        'Extends offer to top candidate; loses them to a competitor who moved faster'
+                    ],
+                    thoughts: [
+                        '"The brief says senior but the hiring manager means something different every time."',
+                        '"Why is the ATS surfacing junior candidates for a senior role — again?"',
+                        '"Half these CVs list tools they\'ve clearly never used seriously. How do I verify this?"',
+                        '"I\'m spending 70% of my time on people who aren\'t close to a fit. This is unsustainable."',
+                        '"We lost a great candidate because our Glassdoor reviews haven\'t been updated in 18 months."',
+                        '"Our process is too slow. By the time we decide, the best people are gone."'
+                    ],
+                    emotions: ['Neutral', 'Overwhelmed', 'Frustrated', 'Impatient', 'Frustrated', 'Frustrated'],
+                    painPoints: [
+                        'JD calibration gap between recruiter and hiring manager creates bad sourcing',
+                        'ATS keyword matching generates volume without quality signal',
+                        'No way to verify depth of claimed technical skills pre-screen',
+                        'Excessive time spent on early-stage filtering that adds no real value',
+                        'Employer brand is unmanaged and actively hurts candidate conversion',
+                        'Slow internal process loses top candidates to faster-moving competitors'
+                    ],
+                    opportunities: [
+                        'Calibration wizard: structured brief-taking to align recruiter and HM upfront',
+                        'Verified skills signals from peer endorsements and project history',
+                        'AI-assisted ranking based on role-specific competency fit, not keywords',
+                        'Async screening tools: structured video or written responses to save phone time',
+                        'Employer brand dashboard: curate, respond to, and track culture perception',
+                        'Pipeline velocity tracker with competitive benchmarks and drop-off alerts'
+                    ]
+                }
+            }
+        ],
         wireframes: [
             {
                 image: './p2w1.png',
