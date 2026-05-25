@@ -57,7 +57,7 @@ export const projectsData = {
         ],
         reflections: "Looking back, while the shopping experience is robust, I see an opportunity to integrate a community aspect - allowing users to share gear loadouts for specific real-world trails. In future iterations, I would prioritize building social proof mechanisms directly into the discovery phase.",
         
-        heroImage: './tmh.jpg',
+        heroImage: './tmh1.jpg',
         personas: [
             {
                 name: 'Rohan S.',
