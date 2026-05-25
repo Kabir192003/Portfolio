@@ -376,8 +376,113 @@ export const projectsData = {
         reflections: "Designing for a multi-sided marketplace taught me the crucial importance of balancing incentives. If I were to revisit the project, I would spend more time designing edge-case states for users with non-traditional career paths (e.g., career switchers or freelancers), ensuring the matching algorithm UI accommodates non-linear resumes.",
 
         heroImage: './whh.jpg',
-        persona1: './p2persona1.png',
-        persona2: './p2persona2.png',
+        personas: [
+            {
+                name: 'Aisha R.',
+                demographics: '29 · Freelance UX Designer → Full-time · Dubai, UAE',
+                archetype: 'FREELANCER GOING PERMANENT',
+                tags: ['Career transition', 'Portfolio-led', 'Remote-first'],
+                quote: "Freelancing taught me a lot but I can't tell if my portfolio reads the same as someone with a traditional job title. I feel invisible on standard job platforms.",
+                painPoints: [
+                    'Freelance experience is undervalued by ATS systems built for linear careers',
+                    'No mechanism to showcase project impact or client outcomes — only job titles',
+                    'Remote-first roles are hard to filter and often have hidden location requirements'
+                ],
+                goals: [
+                    'Present project-based work in a format that registers with recruiters',
+                    'Find roles that value outcome-driven portfolios over traditional CVs'
+                ],
+                metrics: [
+                    { label: 'freelance experience', value: '5 yrs' },
+                    { label: 'ATS pass-throughs', value: 'Zero' },
+                    { label: 'imposter syndrome', value: 'High' }
+                ]
+            },
+            {
+                name: 'David L.',
+                demographics: '38 · Staff Software Engineer · Berlin, Germany',
+                archetype: 'PASSIVE CANDIDATE',
+                tags: ['Passive candidate', 'Selective', 'Compensation-focused'],
+                quote: "I get 10 LinkedIn InMails a week. None of them know what I actually work on. If something compelling existed, I might look — but I'm not going to hunt.",
+                painPoints: [
+                    'Inbound recruiter outreach is generic and irrelevant to his actual expertise',
+                    'No way to signal selective openness without triggering a flood of messages',
+                    'Relocation trade-offs (cost of living, tax, equity) are impossible to model'
+                ],
+                goals: [
+                    'Receive only hyper-relevant, pre-qualified opportunities on his terms',
+                    'Model total compensation including equity, tax, and cost-of-living adjustments'
+                ],
+                metrics: [
+                    { label: 'recruiter InMails', value: '10x/week' },
+                    { label: 'response rate', value: '0.5%' },
+                    { label: 'selectivity', value: 'High' }
+                ]
+            },
+            {
+                name: 'Priya M.',
+                demographics: '24 · Recent CS Graduate · Pune, India',
+                archetype: 'FIRST-TIME JOB SEEKER',
+                tags: ['Entry-level', 'Tech-focused', 'Referral-dependent'],
+                quote: "I have 8 tabs open right now — LinkedIn, Glassdoor, Blind, two company career pages, and I still don't know if any of these jobs are actually a good fit.",
+                painPoints: [
+                    'No single place to see salary, culture, and role requirements together',
+                    'Cannot tell if a connection at a company would give a genuine referral',
+                    'Overwhelmed by volume — no smart filtering for entry-level roles vs. senior'
+                ],
+                goals: [
+                    'Find roles matched to her skills and growth stage, not just keywords',
+                    'Understand culture and salary before investing time in an application'
+                ],
+                metrics: [
+                    { label: 'tabs per session', value: '8–12' },
+                    { label: 'avg. search duration', value: '3–4 wks' },
+                    { label: 'drop-off rate', value: 'High' }
+                ]
+            },
+            {
+                name: 'Sarah K.',
+                demographics: '41 · Senior Talent Acquisition Lead · New York, USA',
+                archetype: 'ENTERPRISE RECRUITER',
+                tags: ['Enterprise recruiter', 'Volume-overwhelmed', 'Data-hungry'],
+                quote: "I get 400 applications for a single role. My current ATS tells me nothing useful. I spend more time screening than actually recruiting.",
+                painPoints: [
+                    'ATS keyword matching surfaces irrelevant candidates and filters out good ones',
+                    'No verified cultural fit signal — self-reported skills can\'t be trusted',
+                    'Impossible to communicate employer brand authentically at scale'
+                ],
+                goals: [
+                    'Surface pre-vetted, culture-matched candidates with verified signals',
+                    'Reduce time-to-hire by 40% without sacrificing quality'
+                ],
+                metrics: [
+                    { label: 'apps per role', value: '400+' },
+                    { label: 'avg. time-to-hire', value: '42 days' },
+                    { label: 'cost-per-hire', value: '$28K' }
+                ]
+            },
+            {
+                name: 'Marcus T.',
+                demographics: '33 · Marketing Manager · London, UK',
+                archetype: 'MID-CAREER SWITCHER',
+                tags: ['Career-switcher', 'Salary-driven', 'Risk-averse'],
+                quote: "I know I'm underpaid but I can't validate it without sounding desperate in interviews. I need real numbers, not 'competitive salary'.",
+                painPoints: [
+                    'Salary bands are hidden until deep in the interview process',
+                    'Unclear which of his skills transfer across industries',
+                    'Cultural fit is impossible to assess from polished company pages'
+                ],
+                goals: [
+                    'Access verified salary data by role, company, and location before applying',
+                    'Map transferable skills to new industries with confidence'
+                ],
+                metrics: [
+                    { label: 'avg. switch timeline', value: '6 months' },
+                    { label: 'target salary jump', value: '£20K+' },
+                    { label: 'platform trust', value: 'Low' }
+                ]
+            }
+        ],
         sitemap: './p2journey.jpg',
         wireframes: [
             {
