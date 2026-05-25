@@ -178,12 +178,61 @@ const Project1 = () => {
                         </div>
                     </section>
 
-                    {/* User Journey Map */}
+                    {/* User Journey Maps */}
                     <section style={styles.textSection}>
-                        <h2 style={styles.sectionHeader} className="project-section-header">Information Architecture</h2>
-                        <p style={styles.paragraph}>Mapping the user journey was critical to reducing cognitive load. I constructed a comprehensive sitemap to visualize the navigational flow before diving into high-fidelity designs.</p>
-                        <div style={styles.largeImagePlaceholder} className="project-large-image journey-image-holder">
-                            <img src={project.sitemap} alt="Sitemap" className="journey-image" style={{ width: '100%', height: '100%' }} />
+                        <h2 style={styles.sectionHeader} className="project-section-header">User Journey Maps</h2>
+                        <p style={styles.paragraph}>By mapping the specific scenarios for our core personas, I identified key friction points and specific opportunities to build trust and reduce cognitive load at every stage of the buying cycle.</p>
+                        
+                        <div style={styles.journeysContainer}>
+                            {project.journeys && project.journeys.map((journey, idx) => {
+                                const initials = journey.personaName.split(' ').map(n => n[0]).join('');
+                                return (
+                                    <div key={idx} style={styles.journeyCard}>
+                                        <div style={styles.journeyHeader}>
+                                            <div style={styles.journeyAvatar}>{initials}</div>
+                                            <div>
+                                                <h3 style={styles.journeyTitle}>{journey.personaName} — {journey.archetype}</h3>
+                                                <p style={styles.journeyScenario}><em>Scenario:</em> {journey.scenario}</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div style={styles.tableWrapper}>
+                                            <table style={styles.journeyTable}>
+                                                <thead>
+                                                    <tr>
+                                                        <th style={styles.journeyTh}></th>
+                                                        {journey.phases.map(phase => (
+                                                            <th key={phase} style={styles.journeyThPhase}>{phase}</th>
+                                                        ))}
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td style={styles.journeyTdLabel}><span style={{...styles.rowLabelBadge, backgroundColor: '#5c52c6'}}>Actions</span></td>
+                                                        {journey.rows.actions.map((text, i) => <td key={i} style={styles.journeyTd}>{text}</td>)}
+                                                    </tr>
+                                                    <tr>
+                                                        <td style={styles.journeyTdLabel}><span style={{...styles.rowLabelBadge, backgroundColor: '#0e9f6e'}}>Thoughts</span></td>
+                                                        {journey.rows.thoughts.map((text, i) => <td key={i} style={styles.journeyTd}><em>{text}</em></td>)}
+                                                    </tr>
+                                                    <tr>
+                                                        <td style={styles.journeyTdLabel}><span style={{...styles.rowLabelBadge, backgroundColor: '#e25822'}}>Emotion</span></td>
+                                                        {journey.rows.emotions.map((text, i) => <td key={i} style={{...styles.journeyTd, fontWeight: 'bold', color: '#e25822', textAlign: 'center', borderBottom: '3px solid #e25822'}}>{text}</td>)}
+                                                    </tr>
+                                                    <tr>
+                                                        <td style={styles.journeyTdLabel}><span style={{...styles.rowLabelBadge, backgroundColor: '#9b2c2c'}}>Pain Points</span></td>
+                                                        {journey.rows.painPoints.map((text, i) => <td key={i} style={{...styles.journeyTd, color: '#9b2c2c'}}>{text}</td>)}
+                                                    </tr>
+                                                    <tr>
+                                                        <td style={styles.journeyTdLabel}><span style={{...styles.rowLabelBadge, backgroundColor: '#046c4e'}}>Opportunities</span></td>
+                                                        {journey.rows.opportunities.map((text, i) => <td key={i} style={{...styles.journeyTd, color: '#046c4e'}}>{text}</td>)}
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                );
+                            })}
                         </div>
                     </section>
 
@@ -708,6 +757,109 @@ const styles = {
     personaMetricLabel: {
         fontSize: '0.9rem',
         color: '#6e6c69',
+        textAlign: 'center',
+    },
+    journeysContainer: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '4rem',
+        marginTop: '2.5rem',
+    },
+    journeyCard: {
+        backgroundColor: '#faf9f7',
+        border: '1px solid #eae5de',
+        borderRadius: '16px',
+        padding: '2.5rem',
+        color: '#2a2825',
+        overflow: 'hidden',
+    },
+    journeyHeader: {
+        display: 'flex',
+        alignItems: 'center',
+        gap: '1.2rem',
+        marginBottom: '2rem',
+    },
+    journeyAvatar: {
+        width: '56px',
+        height: '56px',
+        borderRadius: '50%',
+        backgroundColor: '#e2f6ed',
+        color: '#046c4e',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontSize: '1.4rem',
+        fontWeight: 'bold',
+        flexShrink: 0,
+    },
+    journeyTitle: {
+        fontSize: '1.6rem',
+        fontWeight: '700',
+        margin: '0 0 0.4rem 0',
+        color: '#1a1917',
+    },
+    journeyScenario: {
+        fontSize: '1.05rem',
+        color: '#464542',
+        margin: 0,
+        lineHeight: '1.5',
+    },
+    tableWrapper: {
+        width: '100%',
+        overflowX: 'auto',
+        WebkitOverflowScrolling: 'touch',
+        paddingBottom: '1rem', // Space for scrollbar
+    },
+    journeyTable: {
+        width: '100%',
+        minWidth: '900px',
+        borderCollapse: 'collapse',
+        backgroundColor: '#fff',
+        borderRadius: '8px',
+        overflow: 'hidden',
+        border: '1px solid #eae5de',
+    },
+    journeyTh: {
+        padding: '1rem',
+        backgroundColor: '#faf9f7',
+        borderBottom: '1px solid #eae5de',
+        borderRight: '1px solid #eae5de',
+        width: '120px',
+    },
+    journeyThPhase: {
+        padding: '1rem',
+        backgroundColor: '#f1f3f9',
+        borderBottom: '1px solid #eae5de',
+        borderRight: '1px solid #eae5de',
+        fontSize: '1rem',
+        fontWeight: '700',
+        color: '#2d3282',
+        textAlign: 'center',
+    },
+    journeyTdLabel: {
+        padding: '1rem',
+        borderBottom: '1px solid #eae5de',
+        borderRight: '1px solid #eae5de',
+        verticalAlign: 'top',
+        backgroundColor: '#faf9f7',
+    },
+    journeyTd: {
+        padding: '1rem',
+        borderBottom: '1px solid #eae5de',
+        borderRight: '1px solid #eae5de',
+        fontSize: '0.95rem',
+        lineHeight: '1.5',
+        color: '#464542',
+        verticalAlign: 'top',
+    },
+    rowLabelBadge: {
+        display: 'inline-block',
+        padding: '0.4rem 0.8rem',
+        borderRadius: '6px',
+        color: '#fff',
+        fontSize: '0.85rem',
+        fontWeight: '700',
+        width: '100%',
         textAlign: 'center',
     }
 };

@@ -165,7 +165,131 @@ export const projectsData = {
                 ]
             }
         ],
-        sitemap: './tmsm.jpg',
+        journeys: [
+            {
+                personaName: 'Daniel P.',
+                archetype: 'Casual Family Camper',
+                scenario: 'Daniel wants to take his family on their first 2-night forest camping trip. He has no existing gear and a budget of €600 for the whole family.',
+                phases: ['Trigger', 'Discovery', 'Research', 'Decision', 'Purchase', 'Post-Purchase'],
+                rows: {
+                    actions: [
+                        'Kids ask about camping after watching a nature documentary',
+                        "Searches 'beginner camping gear family of 4'; browses REI & decathlon",
+                        'Reads buying guides; gets confused by conflicting weight & price tiers',
+                        'Calls his outdoorsy brother-in-law; gets a basic list',
+                        'Buys a bundle kit from a sporting goods store in person',
+                        'Trip goes well; wishes he had packed a ground mat; forgets to review anything'
+                    ],
+                    thoughts: [
+                        '"This could be a great family memory if I can figure out the gear."',
+                        '"Do I really need a 4-season tent for one weekend trip? This feels like overkill."',
+                        '"\'Ultralight\' this, \'three-pole system\' that — I have no idea what half this means."',
+                        '"I give up researching. I\'ll just ask Klaus — he\'s done this before."',
+                        '"The guy in the store was helpful but I\'m not sure I got the best value."',
+                        '"Good trip but I feel like I\'m missing something. Maybe a checklist would help."'
+                    ],
+                    emotions: ['Excited', 'Curious', 'Overwhelmed', 'Frustrated', 'Neutral', 'Hopeful'],
+                    painPoints: [
+                        'Inspiration exists but no guided starting point for beginners',
+                        "No scenario-based filtering ('family, 2 nights, summer forest')",
+                        'Jargon-heavy content excludes non-expert shoppers',
+                        'Falls out of the digital funnel — converts offline via personal advice',
+                        'In-store conversion means lost data and no digital relationship',
+                        'No follow-up, no checklist, no re-engagement hook'
+                    ],
+                    opportunities: [
+                        "'Plan my trip' wizard as a guided onboarding entry point",
+                        'Scenario filters: group size, experience level, terrain, duration',
+                        'Plain-language gear explainers with parent-friendly framing',
+                        'Expert chat or in-app assistant to replace the phone call',
+                        'Starter kit bundles with transparent value comparison',
+                        "Post-trip checklist + 'What to add next time' nudge email"
+                    ]
+                }
+            },
+            {
+                personaName: 'Rohan S.',
+                archetype: 'Weekend Warrior',
+                scenario: "Rohan's weekend trek is 3 weeks away. His current tent leaked badly on the last trip. He needs a reliable upgrade under ₹8,000 — fast.",
+                phases: ['Trigger', 'Discovery', 'Research', 'Decision', 'Purchase', 'Post-Purchase'],
+                rows: {
+                    actions: [
+                        'Remembers wet sleeping bag; decides to buy a new tent',
+                        "Googles 'best budget trekking tent India'; lands on Amazon & Reddit threads",
+                        'Opens 6 tabs; cross-references specs & user comments for 2 hrs',
+                        'Shortlists 2 tents; asks in a WhatsApp group for opinions',
+                        'Buys on Amazon after a friend vouches for one option',
+                        'Sets up tent at home; shares quick review in the group chat'
+                    ],
+                    thoughts: [
+                        '"My tent totally failed me last monsoon. Never again."',
+                        '"There are thousands of results. Which of these are actually for India\'s conditions?"',
+                        '"This one says 3000mm HH but the comments say it leaks. Who do I trust?"',
+                        '"I\'ll just ask someone who\'s actually used it. Specs mean nothing if people hate it."',
+                        '"Fine — if Arjun says it\'s good I\'ll go with it."',
+                        '"Decent. I wish I\'d found this info before spending 2 hours Googling."'
+                    ],
+                    emotions: ['Frustrated', 'Overwhelmed', 'Confused', 'Anxious', 'Relieved', 'Satisfied'],
+                    painPoints: [
+                        'No clear event triggers the search — pure frustration',
+                        'Generic results, no India-specific trail condition context',
+                        'Conflicting specs & reviews across platforms with no resolution',
+                        'Has to rely on personal network because no trusted source exists',
+                        'Decision made on social proof, not verified data',
+                        'Post-purchase validation loop happens outside the platform'
+                    ],
+                    opportunities: [
+                        "Contextual entry — 'Planning a monsoon trek?' prompts",
+                        'Curated collections filtered by region & season',
+                        "Community-verified spec badges (e.g. 'Monsoon tested')",
+                        'In-app Q&A; with certified gear experts',
+                        'Compatibility checker & peer review aggregation',
+                        'Prompt post-trip review with structured trail conditions'
+                    ]
+                }
+            },
+            {
+                personaName: 'Ava L.',
+                archetype: 'Gear Influencer',
+                scenario: 'Ava is preparing a "Best Lightweight Layering for Alpine Summer" post. She needs to test, verify, and confidently recommend 3–4 products to 82K followers.',
+                phases: ['Trigger', 'Discovery', 'Research', 'Decision', 'Purchase', 'Post-Purchase'],
+                rows: {
+                    actions: [
+                        'Follower DM asks for alpine layering recs; sees engagement opportunity',
+                        'Browses brand sites, gear blogs & Trailforks; checks for affiliate options',
+                        'Downloads spec sheets, emails 2 brands for media samples, reads 1-star reviews',
+                        'Narrows to 3 items she can personally test before the post goes live',
+                        'Buys 1; receives 2 as press samples; stress-tests all three on a day hike',
+                        'Posts reel with honest breakdown; links bio to her curated gear page'
+                    ],
+                    thoughts: [
+                        '"My audience trusts me. A bad rec damages that trust permanently."',
+                        '"Most affiliate schemes push me toward bestsellers, not the best product."',
+                        '"The brand says \'exceptional moisture wicking\'. I need to know the fabric GSM and actual sweat tests."',
+                        '"I\'ll only recommend things I\'ve personally worn above 2,500m."',
+                        '"Stress-testing takes a full day. I wish there were verified trail reviews I could trust."',
+                        '"The reel performed well but the link-in-bio flow is clunky. I need a shareable gear list."'
+                    ],
+                    emotions: ['Excited', 'Skeptical', 'Frustrated', 'Curious', 'Hopeful', 'Delighted'],
+                    painPoints: [
+                        'No platform surfaces gear discovery in a creator-first context',
+                        'Affiliate incentives misalign with authentic recommendation',
+                        'Raw technical specs are buried behind marketing copy',
+                        'No way to filter by verified expert/expedition reviews',
+                        'Validation requires personal testing — no trusted third-party data',
+                        'No native shareable gear list or creator storefront feature'
+                    ],
+                    opportunities: [
+                        'Creator profile with curated public gear lists',
+                        'Bias-transparent curation: distinguish editorial vs. sponsored picks',
+                        'Raw spec data layer toggle alongside product marketing copy',
+                        'Verified expedition reviews from guides and certified professionals',
+                        'Aggregated community trail-condition performance data per product',
+                        "Shareable 'Ava's Alpine Kit' link page with affiliate transparency"
+                    ]
+                }
+            }
+        ],
         designRationale: [
             {
                 image: './trekmate-new/tm-onboarding.png',
