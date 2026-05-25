@@ -134,18 +134,18 @@ const Project2 = () => {
                             <img src={project.sitemap} alt="Sitemap" className="journey-image" style={{ width: '100%', height: '100%' }} />
                         </div>
                         
-                        <h3 style={{...styles.subSectionHeader, marginTop: '2.5rem'}}>Initial Wireframes</h3>
-                        <div style={styles.showcaseGrid}>
+                        <h3 style={{...styles.subSectionHeader, marginTop: '4rem'}}>Initial Wireframes</h3>
+                        <div style={styles.rationaleGrid}>
                             {project.wireframes.map((wireframe, idx) => (
-                                <article key={wireframe.title} style={styles.showcaseCard}>
-                                    <div style={styles.wireframePlaceholder} className="project2-wireframe-holder">
+                                <div key={idx} style={{...styles.rationaleRow, flexDirection: idx % 2 !== 0 ? 'row-reverse' : 'row'}}>
+                                    <div style={styles.rationaleImageHolder} className="project2-wireframe-holder">
                                         <img src={wireframe.image} alt={`Wireframe ${idx + 1}`} className="project2-wireframe-image" />
                                     </div>
-                                    <div style={styles.showcaseTextWrap}>
-                                        <h4 style={styles.showcaseTitle}>{wireframe.title}</h4>
-                                        <p style={styles.wireframeDescription}>{wireframe.description}</p>
+                                    <div style={styles.rationaleContent}>
+                                        <h3 style={styles.subSectionHeader}>{wireframe.title}</h3>
+                                        <p style={styles.detailParagraph}>{wireframe.description}</p>
                                     </div>
-                                </article>
+                                </div>
                             ))}
                         </div>
                     </section>
@@ -180,29 +180,17 @@ const Project2 = () => {
                     <section style={styles.textSection}>
                         <h2 style={styles.sectionHeader} className="project-section-header">Design Rationale: High-Fidelity UI</h2>
                         <p style={styles.paragraph}>Every pixel was placed with intent. Here is a breakdown of the core screens, highlighting the specific problems they solve, the trade-offs considered, and why these particular UX patterns were chosen.</p>
-                        <div style={styles.showcaseGrid}>
+                        <div style={styles.rationaleGrid}>
                             {project.designRationale.map((mockup, idx) => (
-                                <motion.article
-                                    key={mockup.title}
-                                    style={styles.showcaseCard}
-                                    initial={{ opacity: 0, y: 80, scale: 0.95 }}
-                                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                                    viewport={{ once: true, amount: 0.25 }}
-                                    transition={{ duration: 0.8, delay: idx * 0.18, ease: [0.22, 1, 0.36, 1] }}
-                                >
-                                    <motion.div
-                                        style={styles.wireframePlaceholder}
-                                        className="project2-wireframe-holder"
-                                        animate={{ y: [0, -10, 0] }}
-                                        transition={{ duration: 4.2, repeat: Infinity, ease: 'easeInOut', delay: idx * 0.35 }}
-                                    >
+                                <div key={idx} style={{...styles.rationaleRow, flexDirection: idx % 2 === 0 ? 'row-reverse' : 'row'}}>
+                                    <div style={styles.rationaleImageHolder} className="project2-wireframe-holder">
                                         <img src={mockup.image} alt={`${project.title} Rationale ${idx + 1}`} className="project2-wireframe-image" />
-                                    </motion.div>
-                                    <div style={styles.showcaseTextWrap}>
-                                        <h4 style={styles.showcaseTitle}>{mockup.title}</h4>
-                                        <p style={styles.wireframeDescription}>{mockup.description}</p>
                                     </div>
-                                </motion.article>
+                                    <div style={styles.rationaleContent}>
+                                        <h3 style={styles.subSectionHeader}>{mockup.title}</h3>
+                                        <p style={styles.detailParagraph}>{mockup.description}</p>
+                                    </div>
+                                </div>
                             ))}
                         </div>
                     </section>
@@ -539,6 +527,35 @@ const styles = {
         color: 'var(--text-secondary)',
         marginTop: '2rem',
         overflow: 'hidden',
+    },
+    rationaleGrid: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '5rem',
+        marginTop: '3rem',
+    },
+    rationaleRow: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: '3rem',
+        alignItems: 'center',
+    },
+    rationaleImageHolder: {
+        flex: '1 1 450px',
+        aspectRatio: '16/10',
+        backgroundColor: 'var(--surface-color)',
+        borderRadius: 'var(--radius-md)',
+        border: '1px solid var(--glass-border)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        overflow: 'hidden',
+    },
+    rationaleContent: {
+        flex: '1 1 300px',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '1rem',
     }
 };
 
