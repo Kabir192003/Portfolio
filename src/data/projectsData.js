@@ -315,6 +315,26 @@ export const projectsData = {
                 image: './trekmate-new/tm-profile.png',
                 title: 'Profile: Building an Ecosystem',
                 rationale: "To turn a purely transactional e-commerce app into a lifestyle habit, I introduced the 'Field Journal'. This feature allows users to log their trips and gear performance, building a retention loop that keeps them coming back long after a purchase."
+            },
+            {
+                image: './trekmate-new/tm-cart.png',
+                title: 'Cart: Transparent Cost Breakdown',
+                rationale: "To build immediate trust before checkout, the cart explicitly breaks down the subtotal, shipping, and estimated tax. Large, frictionless quantity toggles and clear item removal actions ensure users maintain full control without navigating away."
+            },
+            {
+                image: './trekmate-new/tm-shipping.png',
+                title: 'Checkout: Contextual Delivery',
+                rationale: "Outdoor enthusiasts often need gear delivered directly to a basecamp. By integrating a 'Ship to a trailhead' option alongside standard delivery methods, the checkout flow dynamically adapts to the unique logistical realities of an adventurer."
+            },
+            {
+                image: './trekmate-new/tm-order.png',
+                title: 'Order Confirmation: Resolving Anxiety',
+                rationale: "Post-purchase anxiety is mitigated through a clean, definitive success state. Highlighting the exact delivery window, the tracking email destination, and providing a singular call-to-action back to the home screen creates a reassuring cognitive loop."
+            },
+            {
+                image: './trekmate-new/tm-saved.png',
+                title: 'Saved: High-Consideration Holding',
+                rationale: "The Saved tab acts as a strategic holding area for high-consideration items. Visual indicators like the 'Editor's Pick' badge and explicit community rating scores help users continuously validate their choices over time before committing to a final purchase."
             }
         ]
     },
