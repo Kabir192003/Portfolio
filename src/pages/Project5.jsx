@@ -131,34 +131,20 @@ const Project5 = () => {
                         </div>
                     </section>
 
-                    {/* UI Showcase */}
+                    {/* Design Rationale */}
                     <section style={styles.textSection}>
-                        <h2 style={styles.sectionHeader} className="project-section-header">Interface Highlights</h2>
-                        <p style={styles.paragraph}>The interface was designed to be clean, inviting, and highly functional, putting the community's choices front and center.</p>
+                        <h2 style={styles.sectionHeader} className="project-section-header">Design Rationale: High-Fidelity UI</h2>
+                        <p style={styles.paragraph}>Every pixel was placed with intent. Here is a breakdown of the core screens, highlighting the specific problems they solve, the trade-offs considered, and why these particular UX patterns were chosen.</p>
                         
                         <div style={styles.showcaseGrid}>
-                            {project.wireframes.map((wireframe, idx) => (
-                                <article key={wireframe.title} style={styles.showcaseCard}>
+                            {project.designRationale.map((item, idx) => (
+                                <article key={item.title} style={styles.showcaseCard}>
                                     <div style={styles.wireframePlaceholder} className="project2-wireframe-holder">
-                                        <img src={wireframe.image} alt={`Interface ${idx + 1}`} className="project2-wireframe-image" />
+                                        <img src={item.image} alt={`Interface ${idx + 1}`} className="project2-wireframe-image" />
                                     </div>
                                     <div style={styles.showcaseTextWrap}>
-                                        <h4 style={styles.showcaseTitle}>{wireframe.title}</h4>
-                                        <p style={styles.wireframeDescription}>{wireframe.description}</p>
-                                    </div>
-                                </article>
-                            ))}
-                        </div>
-                        
-                         <div style={{...styles.showcaseGrid, marginTop: '2rem'}}>
-                            {project.finalMockups.map((mockup, idx) => (
-                                <article key={mockup.title} style={styles.showcaseCard}>
-                                    <div style={styles.wireframePlaceholder} className="project2-wireframe-holder">
-                                        <img src={mockup.image} alt={`Final Interface ${idx + 1}`} className="project2-wireframe-image" />
-                                    </div>
-                                    <div style={styles.showcaseTextWrap}>
-                                        <h4 style={styles.showcaseTitle}>{mockup.title}</h4>
-                                        <p style={styles.wireframeDescription}>{mockup.description}</p>
+                                        <h4 style={styles.showcaseTitle}>{item.title}</h4>
+                                        <p style={styles.wireframeDescription}>{item.description}</p>
                                     </div>
                                 </article>
                             ))}

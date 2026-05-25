@@ -57,12 +57,37 @@ export const projectsData = {
         ],
         reflections: "Looking back, while the shopping experience is robust, I see an opportunity to integrate a community aspect - allowing users to share gear loadouts for specific real-world trails. In future iterations, I would prioritize building social proof mechanisms directly into the discovery phase.",
         
-        heroImage: './tmh1.jpg',
+        heroImage: './trekmate-new/tm-home.png',
         persona1: './tmp11.jpg',
         persona2: './tmp22.jpg',
         sitemap: './tmsm.jpg',
-        wireframes: ['./tmw44.png', './tmw55.png', './tmw66.png'],
-        finalMockups: ['./tmf1.jpg', './tmf222.jpg', './tmf333.jpg']
+        designRationale: [
+            {
+                image: './trekmate-new/tm-onboarding.png',
+                title: 'Onboarding: Emotional Connection First',
+                rationale: "Before asking for a single piece of user data, I wanted to establish trust and a premium feel. The full-bleed landscape creates an immediate emotional connection. The prominent 'Skip' button respects the user's time—a critical tradeoff to reduce early bounce rates."
+            },
+            {
+                image: './trekmate-new/tm-home.png',
+                title: 'Home: Contextual Discovery',
+                rationale: "Instead of forcing users to search raw categories, the home screen curates gear contextually (e.g., 'Winter Capsule '26'). This guides users based on their immediate environmental needs, drastically reducing cognitive load and choice paralysis."
+            },
+            {
+                image: './trekmate-new/tm-browse.png',
+                title: 'Browse: Visual Evaluation Hierarchy',
+                rationale: "Horizontal, scrollable filter pills keep the vertical space entirely dedicated to large product cards. Because expensive gear requires intense visual evaluation, I maximized the image real estate while keeping critical data (price, rating) immediately scannable."
+            },
+            {
+                image: './trekmate-new/tm-product.png',
+                title: 'Product Detail: Conversion Focus',
+                rationale: "The 'Add to cart' button is sticky at the bottom, ensuring the primary conversion action is always accessible regardless of scroll depth. The visual hierarchy prioritizes the price and key technical specs immediately below the product title."
+            },
+            {
+                image: './trekmate-new/tm-profile.png',
+                title: 'Profile: Building an Ecosystem',
+                rationale: "To turn a purely transactional e-commerce app into a lifestyle habit, I introduced the 'Field Journal'. This feature allows users to log their trips and gear performance, building a retention loop that keeps them coming back long after a purchase."
+            }
+        ]
     },
     project2: {
         title: 'Workhive',
@@ -142,21 +167,21 @@ export const projectsData = {
                 description: 'A comparison interface combining salary and cost-of-living inputs into a readable decision model for users planning moves.'
             }
         ],
-        finalMockups: [
+        designRationale: [
             {
                 image: './p2m1.png',
-                title: 'Mockup 01 · Guided Exploration',
-                description: 'High-fidelity screens introduce stronger hierarchy, cleaner card design, and clearer CTA emphasis to help evaluate roles faster.'
+                title: 'Guided Exploration: Minimizing Cognitive Load',
+                description: 'Instead of overwhelming the user with a massive wall of text, I utilized progressive disclosure. The clean card layout creates a strict visual hierarchy. The primary CTA ("Apply") is given maximum visual weight, while secondary actions are de-emphasized to prevent choice paralysis.'
             },
             {
                 image: './p2m2.png',
-                title: 'Mockup 02 · Connection-Centered Insights',
-                description: 'Visual polish makes network context easier to parse, turning relationship data into practical warm-path networking steps.'
+                title: 'Connection-Centered Insights: Building Trust',
+                description: 'A key tradeoff was sacrificing screen real estate to show network connections upfront. Why? Because seeing "2 alumni work here" creates instant trust. I designed a horizontal scroll for these connections so they remain visible without pushing critical job details below the fold.'
             },
             {
                 image: './p2m3.png',
-                title: 'Mockup 03 · Confident Decision Flow',
-                description: 'A refined comparison experience aligns financial inputs, outcomes, and actions into one coherent flow.'
+                title: 'Confident Decision Flow: Anchoring Data',
+                description: 'Salary means nothing without context. By anchoring the salary offer next to real-time regional cost-of-living data, I transformed abstract numbers into a concrete decision matrix. The layout uses high contrast and clear data visualization to make complex financial comparisons effortless.'
             }
         ]
     },
@@ -327,28 +352,21 @@ export const projectsData = {
         persona1: './p2persona1.png', 
         persona2: './p2persona2.png', 
         sitemap: './tot-feed.png',
-        wireframes: [
+        designRationale: [
             {
                 image: './tot-feed.png',
-                title: 'Personalized Feed View',
-                description: 'The core dashboard where users browse active dilemmas filtered by their selected preferences.'
+                title: 'Personalized Feed: Algorithm-Driven Discovery',
+                description: 'Instead of an overwhelming chronological firehose, the feed relies on user-declared expertise. By dynamically filtering dilemmas based on their profile tags, we significantly increased engagement rates and response quality.'
+            },
+            {
+                image: './tot-hero.png',
+                title: 'Hybrid Polling System: Structured Empathy',
+                description: 'We had to balance quantitative data (polls) with qualitative context (comments). The interface prioritizes the poll visual to capture immediate votes, while anchoring the discussion thread directly below for deeper context.'
             },
             {
                 image: './tot-ask.png',
-                title: 'Question Creation',
-                description: 'A structured, easy-to-use form allowing users to pose dilemmas with clear options and contextual descriptions.'
-            },
-            {
-                image: './tot-profile.png',
-                title: 'User Profile & Preferences',
-                description: 'The hub for users to track their generated decisions, see their voting impact, and adjust their topic preferences.'
-            }
-        ],
-        finalMockups: [
-             {
-                image: './tot-hero.png',
-                title: 'Voting Interface',
-                description: 'The polished UI showcasing clear options, immediate visual feedback via percentage bars, and a threaded comment section for deeper discussion.'
+                title: 'Decision Creation: Frictionless Input',
+                description: 'Creating a poll needed to be as easy as sending a tweet. I designed a progressive input flow that expands based on the poll type (text vs image), ensuring the user is never confronted with an overwhelming form.'
             }
         ]
     }

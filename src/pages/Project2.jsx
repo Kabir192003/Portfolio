@@ -176,12 +176,12 @@ const Project2 = () => {
                         </div>
                     </section>
 
-                    {/* Final Mockups */}
+                    {/* Design Rationale */}
                     <section style={styles.textSection}>
-                        <h2 style={styles.sectionHeader} className="project-section-header">High-Fidelity Mockups</h2>
-                        <p style={styles.paragraph}>The final interface utilizes a modern, clean aesthetic that prioritizes readability above all else. Subtle elevation and shadow systems establish clear depth, helping users naturally distinguish between interactive elements and static data points.</p>
+                        <h2 style={styles.sectionHeader} className="project-section-header">Design Rationale: High-Fidelity UI</h2>
+                        <p style={styles.paragraph}>Every pixel was placed with intent. Here is a breakdown of the core screens, highlighting the specific problems they solve, the trade-offs considered, and why these particular UX patterns were chosen.</p>
                         <div style={styles.showcaseGrid}>
-                            {project.finalMockups.map((mockup, idx) => (
+                            {project.designRationale.map((mockup, idx) => (
                                 <motion.article
                                     key={mockup.title}
                                     style={styles.showcaseCard}
@@ -196,7 +196,7 @@ const Project2 = () => {
                                         animate={{ y: [0, -10, 0] }}
                                         transition={{ duration: 4.2, repeat: Infinity, ease: 'easeInOut', delay: idx * 0.35 }}
                                     >
-                                        <img src={mockup.image} alt={`${project.title} Final Mockup ${idx + 1}`} className="project2-wireframe-image" />
+                                        <img src={mockup.image} alt={`${project.title} Rationale ${idx + 1}`} className="project2-wireframe-image" />
                                     </motion.div>
                                     <div style={styles.showcaseTextWrap}>
                                         <h4 style={styles.showcaseTitle}>{mockup.title}</h4>

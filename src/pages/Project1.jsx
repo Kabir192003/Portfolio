@@ -126,19 +126,12 @@ const Project1 = () => {
                         </div>
                     </section>
 
-                    {/* User Journey Map & Wireframes */}
+                    {/* User Journey Map */}
                     <section style={styles.textSection}>
-                        <h2 style={styles.sectionHeader} className="project-section-header">Information Architecture & Wireframes</h2>
-                        <p style={styles.paragraph}>Mapping the user journey was critical to reducing cognitive load. I constructed a comprehensive sitemap to visualize the navigational flow before diving into mid-fidelity wireframes to test interaction patterns.</p>
+                        <h2 style={styles.sectionHeader} className="project-section-header">Information Architecture</h2>
+                        <p style={styles.paragraph}>Mapping the user journey was critical to reducing cognitive load. I constructed a comprehensive sitemap to visualize the navigational flow before diving into high-fidelity designs.</p>
                         <div style={styles.largeImagePlaceholder} className="project-large-image journey-image-holder">
                             <img src={project.sitemap} alt="Sitemap" className="journey-image" style={{ width: '100%', height: '100%' }} />
-                        </div>
-                        <div style={styles.mobileImageGrid} className="project-mobile-image-grid">
-                            {project.wireframes.map((wf, idx) => (
-                                <div key={idx} style={styles.mobileImagePlaceholder} className="project1-wireframe-holder">
-                                    <img src={wf} alt={`Mobile Wireframe ${idx + 1}`} className="project1-wireframe-image" />
-                                </div>
-                            ))}
                         </div>
                     </section>
 
@@ -168,14 +161,21 @@ const Project1 = () => {
                         </div>
                     </section>
 
-                    {/* Final Mockups */}
+                    {/* Design Rationale & High-Fidelity UI */}
                     <section style={styles.textSection}>
-                        <h2 style={styles.sectionHeader} className="project-section-header">High-Fidelity UI</h2>
-                        <p style={styles.paragraph}>The final UI blends rugged outdoor aesthetics with clean, modern e-commerce patterns. Dark mode was prioritized to align with the visual language of modern, premium outdoor brands while reducing eye strain.</p>
-                        <div style={styles.mobileImageGrid} className="project-mobile-image-grid">
-                            {project.finalMockups.map((mockup, idx) => (
-                                <div key={idx} style={styles.mobileImagePlaceholder}>
-                                    <img src={mockup} alt={`${project.title} High-Fidelity Mockup ${idx + 1}`} style={styles.mobileImage} />
+                        <h2 style={styles.sectionHeader} className="project-section-header">High-Fidelity UI & Rationale</h2>
+                        <p style={styles.paragraph}>Every pixel was placed with intent. Here is a breakdown of the core screens, highlighting the specific problems they solve, the trade-offs considered, and why these particular UX patterns were chosen.</p>
+                        
+                        <div style={styles.rationaleGrid}>
+                            {project.designRationale.map((item, idx) => (
+                                <div key={idx} style={styles.rationaleRow}>
+                                    <div style={styles.mobileImagePlaceholder}>
+                                        <img src={item.image} alt={item.title} style={styles.mobileImage} />
+                                    </div>
+                                    <div style={styles.rationaleContent}>
+                                        <h3 style={styles.subSectionHeader}>{item.title}</h3>
+                                        <p style={styles.detailParagraph}>{item.rationale}</p>
+                                    </div>
                                 </div>
                             ))}
                         </div>
@@ -508,6 +508,24 @@ const styles = {
         color: 'var(--text-secondary)',
         marginTop: '2rem',
         overflow: 'hidden',
+    },
+    rationaleGrid: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '4rem',
+        marginTop: '3rem',
+    },
+    rationaleRow: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: '3rem',
+        alignItems: 'center',
+    },
+    rationaleContent: {
+        flex: '1 1 300px',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '1rem',
     }
 };
 
