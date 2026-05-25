@@ -119,77 +119,92 @@ const Project2 = () => {
                         <div style={styles.personaGrid}>
                             {project.personas && project.personas.map((persona, idx) => {
                                 const initials = persona.name.split(' ').map(n => n[0]).join('');
-                                // Determine theme colors based on archetype
-                                let themeColor = '#2d3282';
-                                let bgColor = '#e6e8fc';
+                                // Premium glowing colors based on archetype
+                                let glowColor = 'rgba(185, 140, 232, 0.4)'; // Default purple
+                                let badgeColor = 'rgba(185, 140, 232, 0.15)';
+                                let badgeText = '#d4b3ff';
+                                
                                 if (persona.archetype.includes('FREELANCER')) {
-                                    themeColor = '#9c4221';
-                                    bgColor = '#feebc8';
+                                    glowColor = 'rgba(251, 146, 60, 0.2)'; // Orange
+                                    badgeColor = 'rgba(251, 146, 60, 0.1)';
+                                    badgeText = '#fdba74';
                                 } else if (persona.archetype.includes('PASSIVE')) {
-                                    themeColor = '#744210';
-                                    bgColor = '#fefcbf';
+                                    glowColor = 'rgba(250, 204, 21, 0.2)'; // Yellow
+                                    badgeColor = 'rgba(250, 204, 21, 0.1)';
+                                    badgeText = '#fef08a';
                                 } else if (persona.archetype.includes('FIRST-TIME')) {
-                                    themeColor = '#2a4365';
-                                    bgColor = '#e2e8f0';
+                                    glowColor = 'rgba(96, 165, 250, 0.2)'; // Blue
+                                    badgeColor = 'rgba(96, 165, 250, 0.1)';
+                                    badgeText = '#93c5fd';
                                 } else if (persona.archetype.includes('ENTERPRISE')) {
-                                    themeColor = '#22543d';
-                                    bgColor = '#c6f6d5';
+                                    glowColor = 'rgba(74, 222, 128, 0.2)'; // Green
+                                    badgeColor = 'rgba(74, 222, 128, 0.1)';
+                                    badgeText = '#86efac';
                                 } else if (persona.archetype.includes('SWITCHER')) {
-                                    themeColor = '#44337a';
-                                    bgColor = '#e9d8fd';
+                                    glowColor = 'rgba(167, 139, 250, 0.2)'; // Purple
+                                    badgeColor = 'rgba(167, 139, 250, 0.1)';
+                                    badgeText = '#d8b4fe';
                                 }
 
                                 return (
                                     <div key={idx} style={styles.personaCard}>
-                                        <div style={styles.personaHeader}>
-                                            <div style={{...styles.personaAvatar, backgroundColor: bgColor, color: themeColor}}>{initials}</div>
-                                            <div>
-                                                <h3 style={styles.personaName}>{persona.name}</h3>
-                                                <p style={styles.personaDemographics}>{persona.demographics}</p>
-                                            </div>
-                                        </div>
-
-                                        <span style={{...styles.personaArchetype, color: '#3182ce'}}>{persona.archetype}</span>
-                                        <div style={styles.personaTagsRow}>
-                                            {persona.tags.map(tag => (
-                                                <span key={tag} style={{...styles.personaTag, backgroundColor: '#ebf8ff', color: '#2b6cb0'}}>{tag}</span>
-                                            ))}
-                                        </div>
-
-                                        <blockquote style={styles.personaQuote}>
-                                            "{persona.quote}"
-                                        </blockquote>
-
-                                        <div style={styles.personaDetailsGrid}>
-                                            <div>
-                                                <h4 style={styles.personaSectionTitle}>PAIN POINTS</h4>
-                                                <ul style={styles.personaList}>
-                                                    {persona.painPoints.map((pt, i) => (
-                                                        <li key={i} style={styles.personaListItem}>
-                                                            <span style={{color: '#e53e3e', marginRight: '6px'}}>✕</span> {pt}
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                            </div>
-                                            <div>
-                                                <h4 style={styles.personaSectionTitle}>GOALS</h4>
-                                                <ul style={styles.personaList}>
-                                                    {persona.goals.map((gl, i) => (
-                                                        <li key={i} style={styles.personaListItem}>
-                                                            <span style={{color: '#3182ce', marginRight: '6px'}}>✓</span> {gl}
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                        <div style={styles.personaMetricsContainer}>
-                                            {persona.metrics.map((m, i) => (
-                                                <div key={i} style={styles.personaMetricBlock}>
-                                                    <span style={styles.personaMetricValue}>{m.value}</span>
-                                                    <span style={styles.personaMetricLabel}>{m.label}</span>
+                                        <div style={{...styles.personaCardGlow, background: `radial-gradient(circle, ${glowColor} 0%, transparent 70%)`}}></div>
+                                        <div style={styles.personaContentWrapper}>
+                                            <div style={styles.personaHeader}>
+                                                <div style={styles.personaAvatar}>{initials}</div>
+                                                <div>
+                                                    <h3 style={styles.personaName}>{persona.name}</h3>
+                                                    <p style={styles.personaDemographics}>{persona.demographics}</p>
                                                 </div>
-                                            ))}
+                                            </div>
+
+                                            <div style={{...styles.personaArchetypeBadge, backgroundColor: badgeColor, color: badgeText}}>
+                                                {persona.archetype}
+                                            </div>
+                                            
+                                            <div style={styles.personaTagsRow}>
+                                                {persona.tags.map(tag => (
+                                                    <span key={tag} style={styles.personaTag}>{tag}</span>
+                                                ))}
+                                            </div>
+
+                                            <blockquote style={styles.personaQuote}>
+                                                "{persona.quote}"
+                                            </blockquote>
+
+                                            <div style={styles.personaDetailsGrid}>
+                                                <div style={styles.personaDetailCol}>
+                                                    <h4 style={styles.personaSectionTitle}>PAIN POINTS</h4>
+                                                    <ul style={styles.personaList}>
+                                                        {persona.painPoints.map((pt, i) => (
+                                                            <li key={i} style={styles.personaListItem}>
+                                                                <span style={styles.iconX}>✕</span> 
+                                                                <span>{pt}</span>
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                </div>
+                                                <div style={styles.personaDetailCol}>
+                                                    <h4 style={styles.personaSectionTitle}>GOALS</h4>
+                                                    <ul style={styles.personaList}>
+                                                        {persona.goals.map((gl, i) => (
+                                                            <li key={i} style={styles.personaListItem}>
+                                                                <span style={styles.iconCheck}>✓</span> 
+                                                                <span>{gl}</span>
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div style={styles.personaMetricsContainer}>
+                                                {persona.metrics.map((m, i) => (
+                                                    <div key={i} style={styles.personaMetricBlock}>
+                                                        <span style={styles.personaMetricValue}>{m.value}</span>
+                                                        <span style={styles.personaMetricLabel}>{m.label}</span>
+                                                    </div>
+                                                ))}
+                                            </div>
                                         </div>
                                     </div>
                                 );
@@ -695,17 +710,39 @@ const styles = {
         gap: '1rem',
     },
     personaGrid: {
-        display: 'flex',
-        flexDirection: 'column',
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))',
         gap: '2.5rem',
-        marginTop: '2.5rem',
+        marginTop: '3rem',
     },
     personaCard: {
-        backgroundColor: '#faf9f7',
-        border: '1px solid #eae5de',
-        borderRadius: '16px',
+        backgroundColor: 'var(--surface-color)',
+        border: '1px solid var(--glass-border)',
+        borderRadius: '24px',
         padding: '2.5rem',
-        color: '#2a2825',
+        position: 'relative',
+        overflow: 'hidden',
+        boxShadow: '0 20px 40px rgba(0,0,0,0.3)',
+        display: 'flex',
+        flexDirection: 'column',
+    },
+    personaCardGlow: {
+        position: 'absolute',
+        top: '-10%',
+        right: '-10%',
+        width: '250px',
+        height: '250px',
+        borderRadius: '50%',
+        zIndex: 0,
+        pointerEvents: 'none',
+        opacity: 0.8,
+    },
+    personaContentWrapper: {
+        position: 'relative',
+        zIndex: 1,
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100%',
     },
     personaHeader: {
         display: 'flex',
@@ -722,62 +759,78 @@ const styles = {
         justifyContent: 'center',
         fontSize: '1.5rem',
         fontWeight: 'bold',
+        backgroundColor: 'var(--surface-light)',
+        border: '1px solid var(--glass-border)',
+        color: 'var(--text-primary)',
     },
     personaName: {
-        fontSize: '1.8rem',
+        fontSize: '1.6rem',
         fontWeight: '700',
         margin: '0 0 0.2rem 0',
-        color: '#1a1917',
+        color: 'var(--text-primary)',
+        letterSpacing: '-0.02em',
     },
     personaDemographics: {
-        fontSize: '1rem',
-        color: '#6e6c69',
+        fontSize: '0.95rem',
+        color: 'var(--text-secondary)',
         margin: 0,
     },
-    personaArchetype: {
-        display: 'block',
-        fontSize: '0.85rem',
+    personaArchetypeBadge: {
+        display: 'inline-block',
+        padding: '0.5rem 1rem',
+        borderRadius: 'var(--radius-pill)',
+        fontSize: '0.8rem',
         fontWeight: '700',
         textTransform: 'uppercase',
         letterSpacing: '0.05em',
-        marginBottom: '0.8rem',
+        marginBottom: '1.5rem',
+        alignSelf: 'flex-start',
     },
     personaTagsRow: {
         display: 'flex',
         flexWrap: 'wrap',
         gap: '0.6rem',
-        marginBottom: '1.5rem',
+        marginBottom: '2rem',
     },
     personaTag: {
-        padding: '0.4rem 1rem',
-        borderRadius: '6px',
-        fontSize: '0.9rem',
-        fontWeight: '600',
+        padding: '0.4rem 0.8rem',
+        borderRadius: 'var(--radius-sm)',
+        fontSize: '0.85rem',
+        fontWeight: '500',
+        backgroundColor: 'rgba(255,255,255,0.03)',
+        border: '1px solid rgba(255,255,255,0.08)',
+        color: 'var(--text-secondary)',
     },
     personaQuote: {
-        fontSize: '1.2rem',
+        fontSize: '1.1rem',
         fontStyle: 'italic',
-        color: '#464542',
+        color: 'var(--text-primary)',
         lineHeight: '1.6',
         margin: '0 0 2rem 0',
-        borderLeft: '4px solid #eae5de',
+        borderLeft: '3px solid var(--accent-color)',
         paddingLeft: '1.2rem',
+        opacity: 0.9,
     },
     personaDetailsGrid: {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-        gap: '2.5rem',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '2rem',
         paddingTop: '2rem',
-        borderTop: '1px solid #eae5de',
+        borderTop: '1px solid var(--glass-border)',
         marginBottom: '2rem',
+    },
+    personaDetailCol: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '1rem',
     },
     personaSectionTitle: {
         fontSize: '0.85rem',
         fontWeight: '700',
-        color: '#6e6c69',
+        color: 'var(--text-secondary)',
         textTransform: 'uppercase',
         letterSpacing: '0.05em',
-        marginBottom: '1rem',
+        margin: 0,
     },
     personaList: {
         listStyle: 'none',
@@ -785,40 +838,57 @@ const styles = {
         margin: 0,
         display: 'flex',
         flexDirection: 'column',
-        gap: '0.8rem',
+        gap: '1rem',
     },
     personaListItem: {
-        fontSize: '1.05rem',
-        color: '#1a1917',
+        fontSize: '1rem',
+        color: 'var(--text-primary)',
         lineHeight: '1.5',
         display: 'flex',
         alignItems: 'flex-start',
+        gap: '0.8rem',
+    },
+    iconX: {
+        color: '#f87171',
+        fontWeight: 'bold',
+        marginTop: '0.1rem',
+        flexShrink: 0,
+    },
+    iconCheck: {
+        color: '#4ade80',
+        fontWeight: 'bold',
+        marginTop: '0.1rem',
+        flexShrink: 0,
     },
     personaMetricsContainer: {
-        display: 'flex',
-        justifyContent: 'space-between',
-        paddingTop: '2rem',
-        borderTop: '1px solid #eae5de',
-        flexWrap: 'wrap',
+        display: 'grid',
+        gridTemplateColumns: 'repeat(3, 1fr)',
         gap: '1rem',
+        paddingTop: '1.5rem',
+        borderTop: '1px solid var(--glass-border)',
+        marginTop: 'auto',
     },
     personaMetricBlock: {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        flex: 1,
-        minWidth: '120px',
+        backgroundColor: 'rgba(0,0,0,0.2)',
+        padding: '1rem 0.5rem',
+        borderRadius: '12px',
+        border: '1px solid rgba(255,255,255,0.03)',
     },
     personaMetricValue: {
-        fontSize: '1.8rem',
+        fontSize: '1.6rem',
         fontWeight: '800',
-        color: '#1a1917',
+        color: 'var(--text-primary)',
         marginBottom: '0.2rem',
     },
     personaMetricLabel: {
-        fontSize: '0.9rem',
-        color: '#6e6c69',
+        fontSize: '0.8rem',
+        color: 'var(--text-secondary)',
         textAlign: 'center',
+        textTransform: 'uppercase',
+        letterSpacing: '0.05em',
     },
     journeysContainer: {
         display: 'flex',
