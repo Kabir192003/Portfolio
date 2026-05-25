@@ -58,8 +58,113 @@ export const projectsData = {
         reflections: "Looking back, while the shopping experience is robust, I see an opportunity to integrate a community aspect - allowing users to share gear loadouts for specific real-world trails. In future iterations, I would prioritize building social proof mechanisms directly into the discovery phase.",
         
         heroImage: './trekmate-new/tm-home.png',
-        persona1: './tmp11.jpg',
-        persona2: './tmp22.jpg',
+        personas: [
+            {
+                name: 'Rohan S.',
+                demographics: '28 · Software Engineer · Bangalore, India',
+                archetype: 'WEEKEND WARRIOR',
+                tags: ['Weekend warrior', 'Tech-savvy', 'Budget-conscious'],
+                quote: "I spend more time comparing tent specs on Reddit threads than actually planning my route.",
+                painPoints: [
+                    'Overwhelmed by conflicting reviews spread across 4–5 different sites',
+                    'Cannot verify if mid-range gear actually performs in heavy rain',
+                    'No way to check item compatibility (e.g. sleeping bag + tent system)'
+                ],
+                goals: [
+                    'Find reliable gear under budget without hours of prior research',
+                    'Trust verified technical specs sourced from real trekkers'
+                ],
+                metrics: [
+                    { label: 'trips / year', value: '4–6x' },
+                    { label: 'research per purchase', value: '3–5 hrs' },
+                    { label: 'cart abandonment', value: 'High' }
+                ]
+            },
+            {
+                name: 'Maya K.',
+                demographics: '35 · Physiotherapist · Vancouver, Canada',
+                archetype: 'EXPERIENCED HIKER',
+                tags: ['Experienced hiker', 'Safety-first', 'Sustainability-minded'],
+                quote: "I'll pay premium if I know exactly why it's worth it — but no one ever tells me that.",
+                painPoints: [
+                    'Marketing copy replaces actual technical data',
+                    'Hard to filter for sustainable or ethically-made options',
+                    "Buyer's remorse after trusting vague 'all-season' claims"
+                ],
+                goals: [
+                    'Access deep spec sheets and real-world condition performance data',
+                    'Discover brands aligned with her environmental values'
+                ],
+                metrics: [
+                    { label: 'trips / year', value: '10–15x' },
+                    { label: 'avg. item spend', value: '$400+' },
+                    { label: 'platform loyalty', value: 'Low' }
+                ]
+            },
+            {
+                name: 'Daniel P.',
+                demographics: '42 · High School Teacher · Munich, Germany',
+                archetype: 'CASUAL FAMILY CAMPER',
+                tags: ['Casual camper', 'Family trips', 'First-time buyer'],
+                quote: "I just want someone to tell me what to buy for a 3-day trip with two kids — I don't care about ultralight everything.",
+                painPoints: [
+                    'Jargon-heavy product descriptions exclude non-expert buyers',
+                    "No curated 'starter kit' exists for casual, family-oriented use cases",
+                    'Fear of buying the wrong gear and ruining a family trip'
+                ],
+                goals: [
+                    "Get guided, scenario-based recommendations ('family weekend in forest')",
+                    'Understand gear in plain language with clear return policy'
+                ],
+                metrics: [
+                    { label: 'trips / year', value: '2–3x' },
+                    { label: 'total budget', value: '€600' },
+                    { label: 'decision anxiety', value: 'High' }
+                ]
+            },
+            {
+                name: 'Ava L.',
+                demographics: '24 · Outdoors Content Creator · Sydney, Australia',
+                archetype: 'GEAR INFLUENCER',
+                tags: ['Gear influencer', 'Aesthetics-driven', 'Community-focused'],
+                quote: "My audience trusts me, so I need to trust what I recommend. Right now I test gear myself because there's no platform I'd stake my reputation on.",
+                painPoints: [
+                    'No platform aggregates community reviews with real trail condition data',
+                    'Sponsored content erodes trust — needs unbiased, credible curation',
+                    'Generic storefronts lack shareable, linkable product stories'
+                ],
+                goals: [
+                    "Build a trusted 'gear list' she can share publicly with her community",
+                    'Discover new product releases before they go mainstream'
+                ],
+                metrics: [
+                    { label: 'gear purchases', value: 'Monthly' },
+                    { label: 'social followers', value: '82K' },
+                    { label: 'brand influence', value: 'Very high' }
+                ]
+            },
+            {
+                name: 'James T.',
+                demographics: '51 · Retired Military Officer · Colorado, USA',
+                archetype: 'EXPERT SURVIVALIST',
+                tags: ['Expert survivalist', 'Performance-obsessed', 'Brand-skeptical'],
+                quote: "I've seen cheap gear fail in the field. I need failure modes, not star ratings.",
+                painPoints: [
+                    "Consumer-grade reviews don't reflect extreme-condition performance",
+                    'No way to compare edge-case specs (tensile strength, temperature floor)',
+                    'Over-marketed products crowd out genuinely superior gear'
+                ],
+                goals: [
+                    'Access military-grade or expedition-tested equipment with raw specs',
+                    'Filter by verified expert reviews from guides and mountaineers'
+                ],
+                metrics: [
+                    { label: 'trips / year', value: '20+' },
+                    { label: 'avg. spend', value: '$1,500+' },
+                    { label: 'impulse buys', value: 'Zero' }
+                ]
+            }
+        ],
         sitemap: './tmsm.jpg',
         designRationale: [
             {
