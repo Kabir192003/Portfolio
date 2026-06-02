@@ -26,6 +26,9 @@ const Navbar = () => {
 
                 {/* Links */}
                 <div style={styles.links} className="site-nav-links">
+                    <NavLink to="/currently-working-on" className="site-nav-link" style={({ isActive }) => isActive ? styles.activeLink : styles.link}>
+                        Currently Working On
+                    </NavLink>
                     <NavLink to="/projects" className="site-nav-link" style={({ isActive }) => isActive ? styles.activeLink : styles.link}>
                         Projects
                     </NavLink>

@@ -9,6 +9,7 @@ import AvatarIntro from './components/AvatarIntro';
 
 // Pages
 import Home from './pages/Home';
+import CurrentlyWorkingOn from './pages/CurrentlyWorkingOn';
 import Projects from './pages/Projects';
 import Project1 from './pages/Project1';
 import Project2 from './pages/Project2';
@@ -38,6 +39,7 @@ const AnimatedRoutes = () => {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
+          <Route path="currently-working-on" element={<CurrentlyWorkingOn />} />
           <Route path="projects" element={<Projects />} />
           <Route path="projects/1" element={<Project1 />} />
           <Route path="projects/2" element={<Project2 />} />
