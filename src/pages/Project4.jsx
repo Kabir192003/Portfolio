@@ -59,10 +59,10 @@ const Project4 = () => {
                     <h2 style={styles.sectionHeader} className="project-section-header">The Foundation of My Spatial Awareness</h2>
                     <div style={styles.featureCard}>
                         <p style={{...styles.paragraph, marginBottom: '1.5rem'}} className="project-paragraph">
-                            Long before I started designing digital interfaces, I was framing the physical world through a lens. Photography taught me that a compelling composition isn't just about what you include—it's about the negative space that lets the subject breathe. 
+                            Long before I started designing digital interfaces, I was training my eye through a camera lens. Photography taught me that a compelling composition is about what you leave out as much as what you include. Negative space, focal points, and visual hierarchy are not abstract concepts to me; they are instincts I developed through years of deliberate practice.
                         </p>
                         <p style={styles.paragraph} className="project-paragraph">
-                            This relentless practice in visual storytelling, lighting, and understanding focal points directly informs my UI/UX philosophy today. I treat a digital interface the same way I treat a viewfinder: establishing clear visual hierarchy, protecting negative space, and intuitively guiding the user's eye through the experience.
+                            This discipline directly shapes how I design every interface. I treat a digital screen the same way I treat a viewfinder: establishing clear visual hierarchy, protecting whitespace, and guiding the user's eye exactly where it needs to go. Every UI decision I make is informed by this foundation in spatial awareness and visual storytelling.
                         </p>
                     </div>
                 </section>

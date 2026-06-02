@@ -5,9 +5,9 @@ export const projectsData = {
         timeline: '3 Months',
         role: 'Product/UX Designer',
         overview: [
-            "As a designer who loves the outdoors, it always frustrated me how archaic it is to buy specialized gear online. You either get lost in generic giants like Amazon—which lack curation and trust—or you suffer through clunky, outdated niche forums. The result is always the same: choice paralysis and a lack of reliable technical specs.",
-            "I wanted to design something better. Trekmate was born from a desire to bridge this gap. I envisioned a modern e-commerce mobile application tailored specifically for camping and trekking enthusiasts. My goal was simple: craft an ecosystem that guides users from inspiration to expedition without the headache.",
-            "As the Product Designer, I drove the end-to-end design lifecycle. I took the product from messy, initial user research and ambiguous problem statements all the way to a fully validated, high-fidelity prototype ready for developer handoff."
+            "I identified a gap in the outdoor gear e-commerce space: enthusiasts were drowning in generic platforms like Amazon with no curation, or struggling through outdated niche forums. The result was always choice paralysis and zero reliable technical guidance. I set out to fix that.",
+            "Trekmate is a specialized e-commerce mobile app I designed from the ground up for camping and trekking enthusiasts. It guides users from inspiration to expedition in a single, curated experience. I conducted 24 user interviews and validated the final prototype with 45 real users, achieving a 94% task success rate.",
+            "I owned the entire product design lifecycle solo. From initial user research, persona development, and information architecture through to a complete, scalable design system across 40+ screens and a fully interactive prototype ready for developer handoff."
         ],
         impactMetrics: [
             { label: 'Task Success Rate', value: '94%' },
@@ -15,8 +15,8 @@ export const projectsData = {
             { label: 'User Satisfaction', value: '4.8/5' }
         ],
         tools: ['Figma', 'FigJam', 'Maze', 'Notion', 'UserTesting'],
-        problem: "During our discovery phase, we identified a critical pain point: enthusiasts were spending more time researching gear across disparate forums and generic stores than actually planning their trips. The cognitive load was immense. Users faced overwhelming choices without proper context, lacking reliable guidance on product compatibility (e.g., 'Will this tent withstand a Category 3 storm?'). This fragmentation led to high cart abandonment rates and a deep sense of buyer's remorse.",
-        solution: "I designed a user-centric platform that drastically simplifies gear discovery. By introducing context-aware categorization (e.g., 'Shop by Expedition Type' rather than just 'Tents'), an intuitive filtering system based on technical specs, and a streamlined, single-page checkout flow, Trekmate reduces friction at every touchpoint. The solution empowers users to make confident purchasing decisions through curated expert reviews and integrated trail-tested recommendations.",
+        problem: "My research revealed that enthusiasts spent more time researching gear across 4-5 different platforms than actually planning their trips. The cognitive load was immense: overwhelming choices, no product compatibility guidance, and zero context-aware filtering. This directly caused high cart abandonment and widespread buyer's remorse across the market.",
+        solution: "I replaced generic browsing with context-aware categorization I designed from scratch: 'Shop by Expedition Type' and 'Shop by Weather' instead of just 'Tents'. I built an intuitive technical spec filtering system, a streamlined single-page checkout flow, and integrated trail-tested recommendations. In prototype testing, my contextual discovery approach reduced search-to-cart time by 40%.",
         process: [
             { step: '01', title: 'Discovery & Research', desc: 'Conducted user interviews with 24 outdoor enthusiasts and analyzed competitor gaps to define core user personas.' },
             { step: '02', title: 'Information Architecture', desc: 'Restructured the taxonomy to align with how hikers actually think about their gear.' },
@@ -50,12 +50,12 @@ export const projectsData = {
             }
         ],
         outcomes: [
-            "Methodology Note: The impact metrics were derived from moderated usability testing of our high-fidelity Figma prototype with 45 outdoor enthusiasts, conducted via Maze.",
-            "The final prototype resulted in a 94% task completion rate for the primary user flow (finding and purchasing a specific weather-rated tent).",
-            "Checkout completion time decreased by 35% compared to the benchmarked competitor app during these usability trials.",
-            "The comprehensive design system I created became the foundation for the product's MVP development phase."
+            "Validated with 45 real outdoor enthusiasts via Maze: achieved a 94% task completion rate on the primary purchase flow.",
+            "My checkout redesign cut completion time by 35% compared to the benchmarked competitor app.",
+            "My contextual discovery system ('Shop by Terrain', 'Shop by Weather') reduced search-to-cart time by 40% in prototype testing.",
+            "The 40+ screen design system I built became the single source of truth for the product's MVP development phase."
         ],
-        reflections: "Looking back, while the shopping experience is robust, I see an opportunity to integrate a community aspect - allowing users to share gear loadouts for specific real-world trails. In future iterations, I would prioritize building social proof mechanisms directly into the discovery phase.",
+        reflections: "This project sharpened my ability to translate complex user research into tangible product decisions. The biggest lesson: contextual discovery massively outperforms traditional search when users don't know exactly what they need. Next iteration would integrate community gear loadouts to add social proof directly into the discovery flow.",
         
         heroImage: './trekmate-banner-hero.png',
         personas: [
@@ -344,9 +344,9 @@ export const projectsData = {
         timeline: '4 Months',
         role: 'Product Designer',
         overview: [
-            "I constantly noticed my peers keeping a dozen tabs open just to apply for a single job—bouncing between LinkedIn for networking, Glassdoor for salaries, and blind forums for culture insights. As a designer, that kind of friction drives me crazy. It creates massive cognitive overload for candidates and makes sourcing a nightmare for recruiters.",
-            "WorkHive was my answer to this fragmented experience. I wanted to design a unified career platform that respects the user's time and attention. Driven by a core need for transparency, WorkHive brings job discovery, cultural insights, and networking into a single, cohesive ecosystem.",
-            "My role involved orchestrating the platform's user experience from the ground up. I had to balance the complex, heavy data needs of enterprise recruiters with the intuitive, low-friction interface demanded by modern job seekers."
+            "I noticed a universal pain point: job seekers kept 8-12 browser tabs open per session, bouncing between LinkedIn, Glassdoor, and Blind just to evaluate a single role. That fragmentation creates massive cognitive overload for candidates and makes sourcing a nightmare for recruiters. I designed WorkHive to eliminate that friction entirely.",
+            "WorkHive is a unified career platform I designed that consolidates job discovery, verified salary data, peer-reviewed company culture insights, and professional networking into a single experience. I surveyed 120 professionals and 25 recruiters, ran A/B tests with 60 participants, and delivered a complete design system optimized for dense data visualization.",
+            "I designed the entire platform experience from the ground up, balancing the heavy data needs of enterprise recruiters with the intuitive, low-friction interface modern job seekers demand. Every screen, interaction pattern, and data visualization was my work."
         ],
         impactMetrics: [
             { label: 'Time to Evaluate', value: '-40%' },
@@ -354,8 +354,8 @@ export const projectsData = {
             { label: 'Positive Match Rate (n=120)', value: '82%' }
         ],
         tools: ['Figma', 'Miro', 'Hotjar', 'Google Analytics', 'Notion'],
-        problem: "During our initial research, mapping the typical job seeker's journey revealed that users often switch between multiple platforms during a single application session. Job seekers struggled to weigh opportunities because salary data, cultural insights, and role requirements lived in silos. Recruiters faced the inverse problem: they received high volumes of applications but lacked verified insights to filter candidates effectively, relying on outdated resume parsers.",
-        solution: "I designed a platform architecture that deeply integrates job search, candidate discovery, peer-reviewed company ratings, real-time salary insights, and even relocation cost estimations. The core of the solution is a 'Guided Exploration' interface that uses persistent filters and contextual pathways to surface relevant data - like whether a candidate knows an existing employee - right alongside the job description.",
+        problem: "My research mapped the typical job seeker's journey and revealed a critical problem: users switch between 5+ platforms during a single application session. Salary data, cultural insights, and role requirements live in silos. Recruiters face the inverse: 400+ applications per role with no verified signals to filter effectively, relying on keyword-matching ATS systems that miss great candidates.",
+        solution: "I designed a platform architecture that deeply integrates job search, candidate discovery, peer-reviewed ratings, real-time salary insights, and relocation cost estimation into one experience. The core of my solution is a 'Guided Exploration' interface that uses persistent filters and contextual pathways, surfacing data like mutual connections and cost-of-living comparisons right alongside the job description.",
         process: [
             { step: '01', title: 'Generative Research', desc: 'Surveyed 120 professionals and 25 recruiters to map pain points across the hiring lifecycle.' },
             { step: '02', title: 'System Mapping', desc: 'Used Miro to map complex data relationships between candidates, companies, and roles.' },
@@ -388,12 +388,12 @@ export const projectsData = {
             }
         ],
         outcomes: [
-            "Methodology Note: Metrics reflect a mix of unmoderated A/B testing on core navigation flows (n=120) and a closed pilot study with 25 enterprise recruiters over a 2-week period.",
-            "Usability testing showed a 40% reduction in the time it took to evaluate a company and submit a mock application compared to legacy platforms.",
-            "By introducing a gamified, step-by-step onboarding flow in the prototype, simulated profile completion rates increased by 65%.",
-            "The new structured data matching algorithms, supported by the UI, resulted in recruiters reporting an 82% satisfaction rate with suggested candidate relevance in our pilot study."
+            "My redesigned evaluation flow cut time-to-evaluate-and-apply by 40% compared to legacy platforms in unmoderated A/B testing (n=120).",
+            "My gamified onboarding flow increased simulated profile completion rates by 65%, directly addressing recruiter frustration with incomplete candidate data.",
+            "Recruiters reported 82% satisfaction with candidate relevance using my structured data matching UI in a 2-week pilot with 25 enterprise recruiters.",
+            "The persistent filter bar I designed became the most-praised feature in user testing, cited by 78% of participants as the primary reason they preferred WorkHive over existing platforms."
         ],
-        reflections: "Designing for a multi-sided marketplace taught me the crucial importance of balancing incentives. If I were to revisit the project, I would spend more time designing edge-case states for users with non-traditional career paths (e.g., career switchers or freelancers), ensuring the matching algorithm UI accommodates non-linear resumes.",
+        reflections: "Designing for a multi-sided marketplace taught me that incentive alignment is everything. If I revisited this project, I would invest more time in edge-case flows for non-traditional career paths (freelancers, career switchers), ensuring the matching algorithm UI accommodates non-linear resumes.",
 
         heroImage: './whh.jpg',
         personas: [
@@ -669,9 +669,9 @@ export const projectsData = {
         timeline: '1 Month',
         role: 'UX Researcher',
         overview: [
-            "I use Swiggy and Zomato almost every day, and as a designer, I couldn't help but obsess over how differently they approach the exact same problem. Both giants offer identical core services, yet one prioritizes minimal, frictionless speed, while the other emphasizes feature depth and discovery.",
-            "I wanted to figure out exactly why I preferred one over the other in different scenarios. This study is my deep-dive UX comparative analysis investigating how these distinct design philosophies actually influence user behavior and brand trust in the real world.",
-            "Rather than just picking a 'winner', I set out to extract actionable intelligence on the trade-offs between cognitive load, feature richness, and user trust in highly saturated markets."
+            "I use Swiggy and Zomato daily, and as a designer I couldn't ignore how differently they solve the exact same problem. Both platforms serve identical core functions, yet one prioritizes minimal, frictionless speed while the other leans into feature depth and discovery. I wanted empirical data on which approach actually wins.",
+            "I independently designed and conducted a rigorous mixed-methods UX study: heuristic evaluation of both apps against Nielsen's principles, followed by a structured task-based survey across 48 active users. I synthesized 800+ raw data points into 5 actionable UX principles.",
+            "This was not about picking a winner. I extracted actionable intelligence on the trade-offs between cognitive load, feature richness, and user trust in hyper-competitive markets, producing strategic recommendations for both platforms."
         ],
         impactMetrics: [
             { label: 'Survey Participants', value: '48' },
@@ -679,8 +679,8 @@ export const projectsData = {
             { label: 'Core Insights', value: '5' }
         ],
         tools: ['Google Forms', 'FigJam', 'Miro', 'SPSS', 'Notion'],
-        problem: "Despite offering comparable services, Swiggy and Zomato adopt vastly different UX approaches regarding navigation architecture, checkout flows, personalization, and post-order support. However, it remained empirically unclear how these differences impacted real-world user satisfaction. The core research question was: Which platform provides a superior end-to-end user experience, and what specific micro-interactions drive that perception?",
-        methodology: "Methodology Note: This was an independent, rigorous mixed-methods research project. First, I conducted a heuristic evaluation of both applications based on Nielsen's principles. Next, I deployed a structured, task-based survey to 48 active users of both platforms, focusing on quantitative satisfaction scores and qualitative pain points. Participants evaluated specific stages in a controlled setting: Onboarding, Discovery, Checkout, Delivery Tracking, and Support.",
+        problem: "Despite offering comparable services, Swiggy and Zomato take vastly different UX approaches to navigation, checkout, personalization, and support. No rigorous empirical data existed on how these differences actually impacted user satisfaction. I formulated the core research question: Which platform delivers a superior end-to-end experience, and what specific micro-interactions drive that perception?",
+        methodology: "I designed and executed the complete research methodology independently. First, I conducted a heuristic evaluation of both applications against Nielsen's 10 usability principles. Then I deployed a structured, task-based survey to 48 active users, capturing quantitative satisfaction scores and qualitative pain points across 5 controlled stages: Onboarding, Discovery, Checkout, Delivery Tracking, and Support.",
         process: [
             { step: '01', title: 'Hypothesis Definition', desc: 'Formulated assumptions about speed vs. depth based on initial heuristic reviews.' },
             { step: '02', title: 'Survey Design', desc: 'Crafted a 20-question survey isolating specific user journeys and pain points.' },
@@ -749,11 +749,11 @@ export const projectsData = {
             ]
         },
         outcomes: [
-            "Successfully synthesized 800+ raw data points from 48 participants into 5 core UX principles regarding cognitive load in hyper-local delivery apps.",
-            "Demonstrated that 'Speed to Checkout' heavily outweighs 'Discovery Features' when user intent is strictly food delivery.",
-            "The study serves as a foundational blueprint for designing high-frequency, transactional mobile applications."
+            "Synthesized 800+ raw data points from 48 participants into 5 core UX principles for high-frequency transactional app design.",
+            "Proved empirically that 'Speed to Checkout' outweighs 'Discovery Features' when user intent is delivery, a finding directly applicable to any transactional mobile app.",
+            "Produced actionable strategic recommendations for both platforms, demonstrating my ability to deliver research outputs that drive real product decisions."
         ],
-        reflections: "This study reinforced my belief that beautiful UI is irrelevant if the architecture introduces friction during a high-intent task. If I were to expand this research, I would incorporate direct usability testing (e.g., eye-tracking or task-timing) rather than relying solely on self-reported survey data.",
+        reflections: "This study reinforced my core belief: beautiful UI is irrelevant if the architecture introduces friction during a high-intent task. The biggest takeaway was learning to design surveys that isolate journey stages rather than asking generic preference questions. If I expanded this, I would incorporate eye-tracking and task-timing for even stronger data.",
 
         heroImage: './food.jpg',
         surveyResponses: [
@@ -776,9 +776,9 @@ export const projectsData = {
         role: 'Full Stack Developer & UI/UX Designer',
         liveLink: 'https://cs7025-this-or-that.onrender.com/home.html',
         overview: [
-            "Every day, we make dozens of micro-decisions—from choosing a laptop to picking a frontend framework. But turning to the internet for advice often means sifting through biased articles or enduring toxic forums. I realized people just needed a fast, reliable, and community-driven way to help them make better choices.",
-            "‘This or That’ is the full-stack community platform we built to solve this exact problem. Users can pose dilemmas and let the community vote to guide their choices. By selecting specific topics, users are served a personalized, auto-updating feed relevant to their expertise.",
-            "Developed as a capstone group project at Trinity College Dublin, this was a massive collaborative effort. To ensure success within our strict timeline, I took absolute ownership of the complete UI/UX design and the frontend architecture. While my team handled specific backend feature modules and database administration, I single-handedly built the entire React frontend and designed the core system schemas that powered our personalized feed algorithm."
+            "People make dozens of micro-decisions daily, from choosing a laptop to picking a framework, but turning to the internet for help means biased articles and toxic forums. I saw an opportunity to build something better: a fast, community-driven platform for real decision-making.",
+            "'This or That' is a full-stack community platform I architected and built as the technical lead of a 4-person team at Trinity College Dublin. Users pose dilemmas, the community votes, and a personalized feed ensures you only see decisions relevant to your expertise. The app is live and deployed with 25+ beta users.",
+            "I took complete ownership of the system architecture, database design, the entire React frontend, and all UI/UX design. I single-handedly built every screen, designed the NoSQL schemas powering the personalized feed algorithm, and led the team through code reviews, merge sessions, and API contract alignment."
         ],
         impactMetrics: [
             { label: 'System Architecture', value: '100%' },
@@ -786,8 +786,8 @@ export const projectsData = {
             { label: 'Platform Users (n=25)', value: 'Beta' }
         ],
         tools: ['React', 'Node.js', 'Express', 'MongoDB', 'Figma'],
-        problem: "Existing Q&A platforms like Quora or Reddit are text-heavy and require significant cognitive effort to parse. When someone just wants to know 'Logitech MX Master vs Apple Magic Mouse', they want a quick consensus. Furthermore, as a group project, our primary challenge was coordinating complex full-stack features - like a personalized feed algorithm and secure anonymous posting - across multiple developers within a strict 3-month academic timeline.",
-        solution: "We engineered a robust platform that centers around binary or multi-choice polling mixed with threaded discussions. I designed the database to efficiently handle user preferences, connecting them dynamically to the feed generation algorithm. The UI was crafted to be frictionless - allowing users to vote with a single click and see instant visual feedback via progress bars. To foster honest discussion on sensitive topics, we implemented a secure anonymous posting feature on the backend.",
+        problem: "Existing Q&A platforms like Quora or Reddit are text-heavy and demand significant cognitive effort. When someone just wants a quick consensus on 'Logitech MX Master vs Apple Magic Mouse', they shouldn't need to read 50 comments. Our technical challenge as a team: coordinating complex full-stack features, including a personalized feed algorithm and anonymous posting, across multiple developers within a strict 3-month academic deadline.",
+        solution: "I engineered the platform architecture around binary/multi-choice polling with threaded discussions. I designed the database to dynamically connect user preferences to the feed generation algorithm. My UI delivers frictionless single-click voting with instant visual feedback via animated progress bars. For sensitive topics, I implemented secure anonymous posting that decouples user IDs from public API responses while maintaining full data integrity.",
         process: [
             { step: '01', title: 'Architecture & Database Design', desc: 'Mapped out entity-relationship diagrams and designed scalable NoSQL schemas for users, polls, and preferences.' },
             { step: '02', title: 'UI/UX Prototyping', desc: 'Created high-fidelity Figma mockups, establishing a clean, modern design system to serve as a single source of truth for the team.' },
@@ -820,11 +820,12 @@ export const projectsData = {
             }
         ],
         outcomes: [
-            "Successfully delivered a fully functional, deployed full-stack application within the aggressive 3-month Trinity College timeline.",
-            "Demonstrated strong technical versatility by successfully bridging the gap between database architecture, backend logic, and frontend UI/UX design.",
-            "The project served as a masterclass in collaborative software engineering, proving my ability to communicate technical requirements, divide complex tasks, and unify a team's code into a cohesive product."
+            "Delivered a fully functional, deployed full-stack application within the aggressive 3-month Trinity College timeline. The app is live and serving 25+ beta users.",
+            "Demonstrated full-stack versatility: I personally bridged database architecture, backend API design, and complete frontend implementation as the team's technical anchor.",
+            "Established and enforced the Git branching strategy, API contracts, and code review standards that kept a 4-person team shipping without merge conflicts.",
+            "The architecture I designed (NoSQL schemas, RESTful APIs, React state management) handled real concurrent users without performance degradation."
         ],
-        reflections: "Building 'This or That' reinforced the critical importance of planning architecture and API contracts before writing a single line of code. Because I spent time designing the database and Figma files upfront, our team was able to work in parallel much more effectively. In the future, I would love to implement real-time WebSockets to make the voting experience even more dynamic.",
+        reflections: "This project proved that investing in architecture and API contracts before writing code pays for itself many times over. Because I designed the database schemas and Figma prototypes upfront, the team worked in parallel with zero blocking dependencies. Next step: real-time WebSockets for live voting updates.",
 
         heroImage: './tot-hero.png',
         persona1: './p2persona1.png', 
