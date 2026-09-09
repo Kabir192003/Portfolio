@@ -719,12 +719,12 @@ main {
 .portrait-reveal {
   position: relative;
   display: block;
-  width: min(380px, 78vw);
+  width: min(520px, 88vw);
   aspect-ratio: 4 / 5;
   --rx: -9999px;
   --ry: -9999px;
-  -webkit-mask-image: radial-gradient(ellipse 62% 74% at 50% 38%, #000 20%, transparent 92%);
-  mask-image: radial-gradient(ellipse 62% 74% at 50% 38%, #000 20%, transparent 92%);
+  -webkit-mask-image: radial-gradient(ellipse 58% 68% at 50% 36%, #000 0%, transparent 100%);
+  mask-image: radial-gradient(ellipse 58% 68% at 50% 36%, #000 0%, transparent 100%);
 }
 
 .portrait-reveal-bw,
