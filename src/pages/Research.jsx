@@ -102,8 +102,8 @@ const styles = {
     highlightPanel: {
         padding: '1.05rem 1.25rem',
         borderRadius: 'var(--radius-md)',
-        border: '1px solid rgba(185, 140, 232, 0.28)',
-        background: 'linear-gradient(150deg, rgba(185, 140, 232, 0.16) 0%, rgba(20, 17, 38, 0.75) 100%)',
+        border: '1px solid rgba(200, 147, 63, 0.28)',
+        background: 'linear-gradient(150deg, rgba(200, 147, 63, 0.16) 0%, rgba(19, 18, 16, 0.75) 100%)',
     },
     highlightText: {
         margin: 0,
@@ -133,7 +133,7 @@ const styles = {
     researchCard: {
         borderRadius: 'var(--radius-md)',
         border: '1px solid var(--glass-border)',
-        background: 'rgba(185, 140, 232, 0.06)',
+        background: 'rgba(200, 147, 63, 0.06)',
         padding: '1.25rem',
         display: 'flex',
         flexDirection: 'column',
@@ -141,8 +141,8 @@ const styles = {
     },
     objectiveCard: {
         borderRadius: 'var(--radius-md)',
-        border: '1px solid rgba(185, 140, 232, 0.35)',
-        background: 'linear-gradient(155deg, rgba(185, 140, 232, 0.15) 0%, rgba(20, 17, 38, 0.85) 100%)',
+        border: '1px solid rgba(200, 147, 63, 0.35)',
+        background: 'linear-gradient(155deg, rgba(200, 147, 63, 0.15) 0%, rgba(19, 18, 16, 0.85) 100%)',
         padding: '1.25rem',
         display: 'flex',
         flexDirection: 'column',
@@ -168,9 +168,9 @@ const styles = {
         margin: '0.2rem 0',
     },
     domainChip: {
-        border: '1px solid rgba(185, 140, 232, 0.35)',
+        border: '1px solid rgba(200, 147, 63, 0.35)',
         borderRadius: 'var(--radius-sm)',
-        background: 'rgba(185, 140, 232, 0.09)',
+        background: 'rgba(200, 147, 63, 0.09)',
         padding: '0.65rem 0.8rem',
         color: 'var(--text-primary)',
         fontSize: '0.98rem',

@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import PhysicsPlayground from '../components/PhysicsPlayground';
 
 const Education = () => {
     const education = [
@@ -51,8 +50,6 @@ const Education = () => {
                     </motion.div>
                 ))}
             </div>
-
-            <PhysicsPlayground />
         </motion.div>
     );
 };

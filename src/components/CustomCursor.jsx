@@ -19,7 +19,13 @@ const CustomCursor = () => {
         const onMove = (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
+            if (!hasMoved) {
+                hasMoved = true;
+                cursorDot.current?.style.setProperty('opacity', '1');
+                cursorRing.current?.style.setProperty('opacity', '1');
+            }
         };
+        let hasMoved = false;
 
         const animate = () => {
             // Dot follows instantly
@@ -87,14 +93,15 @@ const CustomCursor = () => {
                     width: '6px',
                     height: '6px',
                     borderRadius: '50%',
-                    background: '#b98ce8',
+                    background: '#c8933f',
                     pointerEvents: 'none',
                     zIndex: 9999,
                     marginLeft: '-3px',
                     marginTop: '-3px',
-                    transition: 'width 0.2s, height 0.2s, background 0.2s',
+                    transition: 'width 0.2s, height 0.2s, background 0.2s, opacity 0.2s',
                     willChange: 'transform',
-                    boxShadow: '0 0 10px 2px rgba(185,140,232,0.45)',
+                    boxShadow: '0 0 10px 2px rgba(200,147,63,0.4)',
+                    opacity: 0,
                 }}
                 className="cursor-dot"
             />
@@ -108,14 +115,15 @@ const CustomCursor = () => {
                     width: '36px',
                     height: '36px',
                     borderRadius: '50%',
-                    border: '1.5px solid rgba(185, 140, 232, 0.4)',
+                    border: '1.5px solid rgba(200, 147, 63, 0.35)',
                     pointerEvents: 'none',
                     zIndex: 9998,
                     marginLeft: '-18px',
                     marginTop: '-18px',
-                    transition: 'width 0.3s, height 0.3s, border-color 0.3s',
+                    transition: 'width 0.3s, height 0.3s, border-color 0.3s, opacity 0.2s',
                     willChange: 'transform',
                     backdropFilter: 'blur(1px)',
+                    opacity: 0,
                 }}
                 className="cursor-ring"
             />
@@ -125,16 +133,16 @@ const CustomCursor = () => {
                     height: 60px !important;
                     margin-left: -30px !important;
                     margin-top: -30px !important;
-                    border-color: rgba(185, 140, 232, 0.62) !important;
-                    background: rgba(185, 140, 232, 0.08) !important;
+                    border-color: rgba(200, 147, 63, 0.55) !important;
+                    background: rgba(200, 147, 63, 0.08) !important;
                 }
                 .cursor-dot--hover {
                     width: 10px !important;
                     height: 10px !important;
                     margin-left: -5px !important;
                     margin-top: -5px !important;
-                    background: #f3ecff !important;
-                    box-shadow: 0 0 14px 3px rgba(185,140,232,0.62) !important;
+                    background: #f2ede4 !important;
+                    box-shadow: 0 0 14px 3px rgba(200,147,63,0.55) !important;
                 }
 
                 /* Hide the browser default cursor globally when custom cursor is active */

@@ -1,15 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 
 // Components
 import Layout from './components/Layout';
-import FlightIntro from './components/FlightIntro';
-import AvatarIntro from './components/AvatarIntro';
 
 // Pages
 import Home from './pages/Home';
-import CurrentlyWorkingOn from './pages/CurrentlyWorkingOn';
 import Projects from './pages/Projects';
 import Project1 from './pages/Project1';
 import Project2 from './pages/Project2';
@@ -39,7 +36,6 @@ const AnimatedRoutes = () => {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="currently-working-on" element={<CurrentlyWorkingOn />} />
           <Route path="projects" element={<Projects />} />
           <Route path="projects/1" element={<Project1 />} />
           <Route path="projects/2" element={<Project2 />} />
@@ -57,31 +53,10 @@ const AnimatedRoutes = () => {
 };
 
 const App = () => {
-  // Intro Phases: 'flight' -> 'flight-fading' -> 'avatar' -> 'done'
-  const [introPhase, setIntroPhase] = useState('flight');
-
   return (
     <Router>
       <ScrollToTop />
-
-      {/* Mount AnimatedRoutes underneath AvatarIntro as soon as it starts fading out */}
-      {(introPhase === 'avatar-fading' || introPhase === 'done') && <AnimatedRoutes />}
-
-      {/* Mount AvatarIntro underneath FlightIntro as it fades out. Keeps it alive until user clicks Enter */}
-      {(introPhase === 'flight-fading' || introPhase === 'avatar' || introPhase === 'avatar-fading') && (
-        <AvatarIntro
-          onFadeStart={() => setIntroPhase('avatar-fading')}
-          onComplete={() => setIntroPhase('done')}
-        />
-      )}
-
-      {/* Keep FlightIntro in the DOM until it completely finishes fading out */}
-      {(introPhase === 'flight' || introPhase === 'flight-fading') && (
-        <FlightIntro
-          onFadeStart={() => setIntroPhase('flight-fading')}
-          onComplete={() => setIntroPhase('avatar')}
-        />
-      )}
+      <AnimatedRoutes />
     </Router>
   );
 };

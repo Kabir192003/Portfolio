@@ -1,49 +1,87 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import '../index.css';
+import React, { useEffect, useState } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
+
+const LINKS = [
+    { to: '/projects', label: 'Work' },
+    { to: '/experience', label: 'Experience' },
+    { to: '/education', label: 'Education' },
+    { to: '/research', label: 'Research' },
+];
 
 const Navbar = () => {
-    const logoLetters = 'kabiroscope'.split('');
+    const [menuOpen, setMenuOpen] = useState(false);
+    const location = useLocation();
+
+    // Close the mobile menu on route change
+    useEffect(() => {
+        setMenuOpen(false);
+    }, [location.pathname]);
+
+    // Lock body scroll while the mobile menu is open
+    useEffect(() => {
+        document.body.style.overflow = menuOpen ? 'hidden' : '';
+        return () => { document.body.style.overflow = ''; };
+    }, [menuOpen]);
 
     return (
         <nav style={styles.nav} className="site-nav">
             <div style={styles.container} className="container site-nav-inner">
-                {/* Logo */}
                 <NavLink to="/" style={styles.logoLink}>
-                    <span style={styles.logoText} className="site-nav-logo" aria-label="kabiroscope">
-                        {logoLetters.map((char, index) => (
-                            <span
-                                key={`${char}-${index}`}
-                                className="site-nav-logo-letter"
-                                style={{ '--logo-index': index }}
-                                aria-hidden="true"
-                            >
-                                {char}
-                            </span>
-                        ))}
-                    </span>
+                    <span style={styles.logoText}>kabiroscope</span>
                 </NavLink>
 
-                {/* Links */}
-                <div style={styles.links} className="site-nav-links">
-                    <NavLink to="/currently-working-on" className="site-nav-link" style={({ isActive }) => isActive ? styles.activeLink : styles.link}>
-                        Currently Working On
+                {/* Desktop links */}
+                <div style={styles.links} className="site-nav-links-desktop">
+                    {LINKS.map((l) => (
+                        <NavLink
+                            key={l.to}
+                            to={l.to}
+                            className="site-nav-link"
+                            style={({ isActive }) => isActive ? styles.activeLink : styles.link}
+                        >
+                            {l.label}
+                        </NavLink>
+                    ))}
+                    <NavLink to="/contact" className="glass-button btn-primary" style={styles.cta}>
+                        Contact
                     </NavLink>
-                    <NavLink to="/projects" className="site-nav-link" style={({ isActive }) => isActive ? styles.activeLink : styles.link}>
-                        Projects
-                    </NavLink>
-                    <NavLink to="/experience" className="site-nav-link" style={({ isActive }) => isActive ? styles.activeLink : styles.link}>
-                        Experience
-                    </NavLink>
-                    <NavLink to="/education" className="site-nav-link" style={({ isActive }) => isActive ? styles.activeLink : styles.link}>
-                        Education
-                    </NavLink>
-                    <NavLink to="/research" className="site-nav-link" style={({ isActive }) => isActive ? styles.activeLink : styles.link}>
-                        Research
-                    </NavLink>
+                </div>
 
-                    <NavLink to="/contact" className="glass-button site-nav-cta" style={{ marginLeft: '1rem' }}>
-                        Contact Me
+                {/* Mobile toggle */}
+                <button
+                    aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+                    aria-expanded={menuOpen}
+                    onClick={() => setMenuOpen((v) => !v)}
+                    style={styles.menuBtn}
+                    className="site-nav-toggle"
+                >
+                    <span style={{ ...styles.menuBar, transform: menuOpen ? 'translateY(6px) rotate(45deg)' : 'none' }} />
+                    <span style={{ ...styles.menuBar, opacity: menuOpen ? 0 : 1 }} />
+                    <span style={{ ...styles.menuBar, transform: menuOpen ? 'translateY(-6px) rotate(-45deg)' : 'none' }} />
+                </button>
+            </div>
+
+            {/* Mobile panel */}
+            <div
+                className="site-nav-mobile-panel"
+                style={{
+                    ...styles.mobilePanel,
+                    maxHeight: menuOpen ? '420px' : '0px',
+                    opacity: menuOpen ? 1 : 0,
+                }}
+            >
+                <div className="container" style={styles.mobileLinks}>
+                    {LINKS.map((l) => (
+                        <NavLink
+                            key={l.to}
+                            to={l.to}
+                            style={({ isActive }) => ({ ...styles.mobileLink, color: isActive ? 'var(--text-primary)' : 'var(--text-secondary)' })}
+                        >
+                            {l.label}
+                        </NavLink>
+                    ))}
+                    <NavLink to="/contact" className="glass-button btn-primary" style={{ ...styles.cta, alignSelf: 'flex-start', marginTop: '0.5rem' }}>
+                        Contact
                     </NavLink>
                 </div>
             </div>
@@ -56,17 +94,17 @@ const styles = {
         position: 'sticky',
         top: 0,
         width: '100%',
-        padding: '1.25rem 0',
-        background: 'linear-gradient(to bottom, rgba(11,10,19,0.86) 0%, transparent 100%)',
-        backdropFilter: 'blur(12px)',
-        WebkitBackdropFilter: 'blur(12px)',
+        background: 'rgba(12,11,9,0.88)',
+        backdropFilter: 'blur(10px)',
+        WebkitBackdropFilter: 'blur(10px)',
         zIndex: 100,
-        borderBottom: '1px solid rgba(185,140,232,0.15)',
+        borderBottom: '1px solid var(--border)',
     },
     container: {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
+        padding: '1.1rem 0',
     },
     logoLink: {
         display: 'inline-flex',
@@ -74,30 +112,67 @@ const styles = {
         textDecoration: 'none',
     },
     logoText: {
-        fontFamily: "'Outfit', 'Space Grotesk', sans-serif",
-        fontSize: '1.55rem',
-        fontWeight: 700,
-        letterSpacing: '-0.05em',
-        display: 'inline-flex',
-        alignItems: 'center',
-        gap: 0,
-        transition: 'filter 0.3s',
+        fontFamily: 'var(--font-logo)',
+        fontSize: '1.3rem',
+        fontWeight: 600,
+        letterSpacing: '-0.03em',
+        color: 'var(--text-primary)',
     },
     links: {
         display: 'flex',
         alignItems: 'center',
-        gap: '2rem',
+        gap: '2.25rem',
     },
     link: {
-        fontSize: '0.95rem',
+        fontSize: '0.92rem',
         fontWeight: '500',
         color: 'var(--text-secondary)',
         transition: 'color var(--transition-fast)',
     },
     activeLink: {
-        fontSize: '0.95rem',
-        fontWeight: '600',
+        fontSize: '0.92rem',
+        fontWeight: '500',
         color: 'var(--text-primary)',
+    },
+    cta: {
+        padding: '9px 20px',
+        fontSize: '0.88rem',
+    },
+    menuBtn: {
+        display: 'none',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        gap: '5px',
+        width: '36px',
+        height: '36px',
+        background: 'transparent',
+        border: '1px solid var(--border-strong)',
+        borderRadius: 'var(--radius-sm)',
+        cursor: 'pointer',
+        flex: 'none',
+    },
+    menuBar: {
+        display: 'block',
+        width: '16px',
+        height: '1.5px',
+        background: 'var(--text-primary)',
+        transition: 'transform var(--transition-fast), opacity var(--transition-fast)',
+    },
+    mobilePanel: {
+        overflow: 'hidden',
+        transition: 'max-height var(--transition-slow), opacity var(--transition-fast)',
+        borderBottom: '1px solid var(--border)',
+    },
+    mobileLinks: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '1.1rem',
+        padding: '0.5rem 0 1.75rem',
+    },
+    mobileLink: {
+        fontSize: '1rem',
+        fontWeight: '500',
     },
 };
 
