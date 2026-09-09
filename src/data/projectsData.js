@@ -339,329 +339,83 @@ export const projectsData = {
         ]
     },
     project2: {
-        title: 'Workhive',
-        category: 'Web Platform · UX/UI Design',
-        timeline: '4 Months',
-        role: 'Product Designer',
+        title: 'Work Hive',
+        tagline: 'Endorsement-based hiring, rebuilt from a broken prototype into a working product',
+        category: 'Web Platform · Product Design',
+        timeline: 'Solo, rapid iteration',
+        role: 'Product Designer — audited, redesigned and shipped',
+        liveLink: 'https://kabir192003.github.io/WorkHive/',
+        repoLink: 'https://github.com/Kabir192003/WorkHive',
         overview: [
-            "I noticed a universal pain point: job seekers kept 8-12 browser tabs open per session, bouncing between LinkedIn, Glassdoor, and Blind just to evaluate a single role. That fragmentation creates massive cognitive overload for candidates and makes sourcing a nightmare for recruiters. I designed WorkHive to eliminate that friction entirely.",
-            "WorkHive is a unified career platform I designed that consolidates job discovery, verified salary data, peer-reviewed company culture insights, and professional networking into a single experience. I surveyed 120 professionals and 25 recruiters, ran A/B tests with 60 participants, and delivered a complete design system optimized for dense data visualization.",
-            "I designed the entire platform experience from the ground up, balancing the heavy data needs of enterprise recruiters with the intuitive, low-friction interface modern job seekers demand. Every screen, interaction pattern, and data visualization was my work."
+            "Work Hive is a hiring platform built around a simple idea: a short, named endorsement from someone you actually worked with tells a recruiter more than another line on a resume. I inherited a high-fidelity click-through of it — good bones, real visual craft — but almost nothing underneath actually worked. Applying to a job silently did nothing. Every company on the ratings page showed the same hard-coded write-up. The 'people you may know' panel showed contacts with no relationship to whatever job you'd just been looking at.",
+            "My job was to close that gap: take a design that looked finished and make it behave like a real product, without losing the visual language that made it worth building in the first place. That meant auditing every screen as a user would actually use it, deciding what 'done' meant for each core flow, and rebuilding the data and interaction layer underneath the UI — not just patching the parts that were visibly broken."
         ],
         impactMetrics: [
-            { label: 'Time to Evaluate', value: '-40%' },
-            { label: 'Profile Completion', value: '+65%' },
-            { label: 'Positive Match Rate (n=120)', value: '82%' }
+            { label: 'Core flows taken from broken to working', value: '6' },
+            { label: 'Companies & roles modelled for real filtering', value: '100 / 112' },
+            { label: 'Cities in the live cost-of-living tool', value: '15' }
         ],
-        tools: ['Figma', 'Miro', 'Hotjar', 'Google Analytics', 'Notion'],
-        problem: "My research mapped the typical job seeker's journey and revealed a critical problem: users switch between 5+ platforms during a single application session. Salary data, cultural insights, and role requirements live in silos. Recruiters face the inverse: 400+ applications per role with no verified signals to filter effectively, relying on keyword-matching ATS systems that miss great candidates.",
-        solution: "I designed a platform architecture that deeply integrates job search, candidate discovery, peer-reviewed ratings, real-time salary insights, and relocation cost estimation into one experience. The core of my solution is a 'Guided Exploration' interface that uses persistent filters and contextual pathways, surfacing data like mutual connections and cost-of-living comparisons right alongside the job description.",
+        tools: ['Rapid UI iteration', 'Component-driven prototyping', 'Shipped as a live, working build'],
+        problem: "The prototype read well in a click-through but fell apart under real use. Search returned six jobs total, so every filter looked broken because there was nothing to filter. Apply Direct — the platform's entire reason for existing — didn't navigate anywhere from the job list. Company Ratings showed one company's numbers no matter which company you picked. Connections showed a network with no relationship to the role you came from. The profile page was read-only. And the top navigation had grown to nine items plus a row of unlabeled icons, so on a normal window it visibly overlapped itself.",
+        solution: "I treated this as a systems problem, not a set of one-off fixes. Every screen that displayed data needed real data behind it, so I modelled 100 companies across 12 industries and 112 roles across 11 job functions and five seniority levels — enough variety that facet filters, company search and role matching all produce genuinely different results instead of the same six items reordered. Every flow that ended in a dead click got rebuilt end to end: Apply Direct now validates, accepts a resume, and lands a real record in the candidate's dashboard; Connections now reflects the specific job and company you arrived from, not a fixed default. And the navigation got restructured around what a candidate actually does most — search and apply — with everything else collapsed behind a single 'More' menu.",
         process: [
-            { step: '01', title: 'Generative Research', desc: 'Surveyed 120 professionals and 25 recruiters to map pain points across the hiring lifecycle.' },
-            { step: '02', title: 'System Mapping', desc: 'Used Miro to map complex data relationships between candidates, companies, and roles.' },
-            { step: '03', title: 'Interaction Design', desc: 'Designed core flows prioritizing progressive disclosure of dense data sets.' },
-            { step: '04', title: 'Prototyping & Testing', desc: 'Iterated on high-fidelity prototypes based on A/B testing feedback from 60 participants for the search interface.' },
-            { step: '05', title: 'Design System', desc: 'Built a robust UI library tailored for dense data visualization and data tables.' }
+            { step: '01', title: 'Use it like a candidate would', desc: 'Clicked every button on every screen and logged what actually happened versus what the UI implied would happen — the fastest way to find out how much of a "finished" design is load-bearing.' },
+            { step: '02', title: 'Prioritise by the core loop', desc: 'Search, apply, get endorsed. Anything that blocked that loop got fixed first; supporting screens (settings, mentorship, events) came after.' },
+            { step: '03', title: 'Rebuild the data underneath', desc: 'A UI with three sample jobs can\'t honestly demonstrate a filtering system. I generated a large, varied dataset so the existing filter and search logic had something real to prove itself against.' },
+            { step: '04', title: 'Make screens context-aware', desc: 'Company Ratings, Connections and Quick Links were static regardless of what you clicked. I rewired each to respond to the actual company, city or role in front of the user.' },
+            { step: '05', title: 'Ship it, not just show it', desc: 'The prototype is deployed and clickable at the link above — not a set of static frames. If a flow is described here, it works on the live site right now.' }
         ],
         designDecisions: [
             {
-                title: 'Persistent Yet Unobtrusive Filters',
-                reason: 'Job searches are highly iterative. Instead of hiding filters behind a modal or dedicating a massive sidebar to them, I designed a sticky, horizontal filter bar. This allowed users to refine searches without losing their current scroll position, reducing interaction friction.'
+                image: './workhive/search.jpg',
+                title: 'A dataset large enough to make the design tell the truth',
+                description: 'Thirteen refine-search facets on six jobs is a UI that can\'t be honestly evaluated — every filter either returns everything or nothing. I built out 112 roles across 11 functions, five seniority bands and 100 companies so the search and filter interactions the original design promised actually have something real to demonstrate against.'
             },
             {
-                title: 'Network Opportunity Mapping',
-                reason: 'Static job listings lack trust. I introduced visual match indicators and connection depth maps next to job titles. Seeing "2 alumni from your university work here" immediately increased user intent to apply by providing a warm networking path.'
+                image: './workhive/apply.jpg',
+                title: 'Apply Direct actually applies',
+                description: 'This is the platform\'s core conversion moment, and it was completely non-functional — the button had no handler. I rebuilt it as a real form with validation, a working resume upload, and a submission that creates a genuine record in the candidate\'s dashboard, including an optional endorsement request tied to that specific role.'
             },
             {
-                title: 'Relocation Cost Calculator Integration',
-                reason: 'Salary is relative to location. I designed an embedded decision-support module combining salary offers with regional cost-of-living data, turning abstract numbers into a concrete decision matrix.'
+                image: './workhive/ratings.jpg',
+                title: 'Company Ratings that respond to the company you picked',
+                description: 'Every company page showed identical numbers. I designed a rating model that produces a distinct, consistent score and review breakdown per company per category (compensation, benefits, culture, career progression), so switching companies changes what you see — the way a real ratings product has to.'
+            },
+            {
+                image: './workhive/connections.jpg',
+                title: 'A network that reflects the job you came from',
+                description: 'Clicking "Refer someone" from a specific role used to drop you into a generic, unrelated network view. I rebuilt Connections to carry that context through — the people, company and match score shown are tied to the actual job you clicked from, with a visible "showing people connected to X" state so it\'s never ambiguous why you\'re seeing what you\'re seeing.'
+            },
+            {
+                image: './workhive/cost.jpg',
+                title: 'A cost-of-living tool that calculates something',
+                description: 'The calculator had a single free-text field and a static result. I rebuilt it around real city and currency selectors — 15 cities spanning the Gulf, South Asia and other global hubs, 10 currencies — so changing either input live-recomputes every line item, not just a headline number.'
+            },
+            {
+                image: './workhive/profile.jpg',
+                title: 'A profile you can actually edit',
+                description: 'The candidate profile — the thing a recruiter judges you on — had no edit state at all. I added one: name, headline, location, skills and each experience entry become real inputs, with add and remove controls, and changes persist after save.'
             }
         ],
         challenges: [
             {
-                title: 'Handling Extreme Data Density',
-                solution: 'Company profiles needed to show reviews, open roles, leadership info, and benefits simultaneously. I implemented a hierarchical card system utilizing visual rhythm and negative space, ensuring the page felt breathable rather than overwhelming.'
+                title: 'Making 100 companies feel distinct without writing 100 company profiles by hand',
+                solution: 'Hand-authoring unique ratings, review counts and category breakdowns for 100 companies wasn\'t realistic. I designed a deterministic model that derives each company\'s numbers from its own identity, so the same company always shows the same figures across visits, every company is genuinely different from its neighbours, and nothing needed writing by hand — the difference between the page reading as flexible versus wallpapered was in whether that variation held up under repeated use.'
             },
             {
-                title: 'Recruiter vs. Candidate Views',
-                solution: 'The platform serves two distinct user bases with conflicting needs (privacy vs. visibility). I created a dual-state architecture that allowed candidates to anonymize their profiles to recruiters until mutual interest was established.'
+                title: 'A navigation bar that broke itself on first load',
+                solution: 'After collapsing the top navigation, it intermittently rendered with two sections overlapping on the very first paint. I traced it to a flex-grow calculation racing the browser\'s first layout pass, and rebuilt the header to size itself with a self-pushing margin instead of grow, which removed the dependency on layout-timing entirely rather than papering over the symptom.'
             }
         ],
         outcomes: [
-            "My redesigned evaluation flow cut time-to-evaluate-and-apply by 40% compared to legacy platforms in unmoderated A/B testing (n=120).",
-            "My gamified onboarding flow increased simulated profile completion rates by 65%, directly addressing recruiter frustration with incomplete candidate data.",
-            "Recruiters reported 82% satisfaction with candidate relevance using my structured data matching UI in a 2-week pilot with 25 enterprise recruiters.",
-            "The persistent filter bar I designed became the most-praised feature in user testing, cited by 78% of participants as the primary reason they preferred WorkHive over existing platforms."
+            "Every core screen — Home, Search, Job Detail, Apply, Company Ratings, Connections, Salaries, Cost of Living, Relocation, Profile, Messages, Onboarding, Settings — is live and clickable, not a static frame.",
+            "The candidate's primary loop (search a role, apply, request an endorsement) now works end to end and is verifiable on the deployed link, not just described in a deck.",
+            "Search, company lookup and the connections network all run against a 100-company, 112-role dataset, so the filtering UI the original design promised is genuinely exercised rather than looking broken on contact.",
+            "Shipped as a public, working build rather than a private file — the fastest way I know to make a design case study verifiable instead of just asserted."
         ],
-        reflections: "Designing for a multi-sided marketplace taught me that incentive alignment is everything. If I revisited this project, I would invest more time in edge-case flows for non-traditional career paths (freelancers, career switchers), ensuring the matching algorithm UI accommodates non-linear resumes.",
+        reflections: "The gap between a design that looks finished and a product that behaves like one is almost always in the parts that don't show up in a click-through — what happens on the tenth click, not the first. This project sharpened how I audit: assume nothing is wired until I've clicked it myself, and treat a screen with three sample rows the same way I'd treat a screen with none, because both are demos, not products. If I kept going, the next layer would be persistence (the app resets on reload) and a real backend behind the endorsement flow, which is the natural next step once the front-end behaviour is trustworthy.",
 
-        heroImage: './whh.jpg',
-        personas: [
-            {
-                name: 'Aisha R.',
-                demographics: '29 · Freelance UX Designer → Full-time · Dubai, UAE',
-                archetype: 'FREELANCER GOING PERMANENT',
-                tags: ['Career transition', 'Portfolio-led', 'Remote-first'],
-                quote: "Freelancing taught me a lot but I can't tell if my portfolio reads the same as someone with a traditional job title. I feel invisible on standard job platforms.",
-                painPoints: [
-                    'Freelance experience is undervalued by ATS systems built for linear careers',
-                    'No mechanism to showcase project impact or client outcomes — only job titles',
-                    'Remote-first roles are hard to filter and often have hidden location requirements'
-                ],
-                goals: [
-                    'Present project-based work in a format that registers with recruiters',
-                    'Find roles that value outcome-driven portfolios over traditional CVs'
-                ],
-                metrics: [
-                    { label: 'freelance experience', value: '5 yrs' },
-                    { label: 'ATS pass-throughs', value: 'Zero' },
-                    { label: 'imposter syndrome', value: 'High' }
-                ]
-            },
-            {
-                name: 'David L.',
-                demographics: '38 · Staff Software Engineer · Berlin, Germany',
-                archetype: 'PASSIVE CANDIDATE',
-                tags: ['Passive candidate', 'Selective', 'Compensation-focused'],
-                quote: "I get 10 LinkedIn InMails a week. None of them know what I actually work on. If something compelling existed, I might look — but I'm not going to hunt.",
-                painPoints: [
-                    'Inbound recruiter outreach is generic and irrelevant to his actual expertise',
-                    'No way to signal selective openness without triggering a flood of messages',
-                    'Relocation trade-offs (cost of living, tax, equity) are impossible to model'
-                ],
-                goals: [
-                    'Receive only hyper-relevant, pre-qualified opportunities on his terms',
-                    'Model total compensation including equity, tax, and cost-of-living adjustments'
-                ],
-                metrics: [
-                    { label: 'recruiter InMails', value: '10x/week' },
-                    { label: 'response rate', value: '0.5%' },
-                    { label: 'selectivity', value: 'High' }
-                ]
-            },
-            {
-                name: 'Priya M.',
-                demographics: '24 · Recent CS Graduate · Pune, India',
-                archetype: 'FIRST-TIME JOB SEEKER',
-                tags: ['Entry-level', 'Tech-focused', 'Referral-dependent'],
-                quote: "I have 8 tabs open right now — LinkedIn, Glassdoor, Blind, two company career pages, and I still don't know if any of these jobs are actually a good fit.",
-                painPoints: [
-                    'No single place to see salary, culture, and role requirements together',
-                    'Cannot tell if a connection at a company would give a genuine referral',
-                    'Overwhelmed by volume — no smart filtering for entry-level roles vs. senior'
-                ],
-                goals: [
-                    'Find roles matched to her skills and growth stage, not just keywords',
-                    'Understand culture and salary before investing time in an application'
-                ],
-                metrics: [
-                    { label: 'tabs per session', value: '8–12' },
-                    { label: 'avg. search duration', value: '3–4 wks' },
-                    { label: 'drop-off rate', value: 'High' }
-                ]
-            },
-            {
-                name: 'Sarah K.',
-                demographics: '41 · Senior Talent Acquisition Lead · New York, USA',
-                archetype: 'ENTERPRISE RECRUITER',
-                tags: ['Enterprise recruiter', 'Volume-overwhelmed', 'Data-hungry'],
-                quote: "I get 400 applications for a single role. My current ATS tells me nothing useful. I spend more time screening than actually recruiting.",
-                painPoints: [
-                    'ATS keyword matching surfaces irrelevant candidates and filters out good ones',
-                    'No verified cultural fit signal — self-reported skills can\'t be trusted',
-                    'Impossible to communicate employer brand authentically at scale'
-                ],
-                goals: [
-                    'Surface pre-vetted, culture-matched candidates with verified signals',
-                    'Reduce time-to-hire by 40% without sacrificing quality'
-                ],
-                metrics: [
-                    { label: 'apps per role', value: '400+' },
-                    { label: 'avg. time-to-hire', value: '42 days' },
-                    { label: 'cost-per-hire', value: '$28K' }
-                ]
-            },
-            {
-                name: 'Marcus T.',
-                demographics: '33 · Marketing Manager · London, UK',
-                archetype: 'MID-CAREER SWITCHER',
-                tags: ['Career-switcher', 'Salary-driven', 'Risk-averse'],
-                quote: "I know I'm underpaid but I can't validate it without sounding desperate in interviews. I need real numbers, not 'competitive salary'.",
-                painPoints: [
-                    'Salary bands are hidden until deep in the interview process',
-                    'Unclear which of his skills transfer across industries',
-                    'Cultural fit is impossible to assess from polished company pages'
-                ],
-                goals: [
-                    'Access verified salary data by role, company, and location before applying',
-                    'Map transferable skills to new industries with confidence'
-                ],
-                metrics: [
-                    { label: 'avg. switch timeline', value: '6 months' },
-                    { label: 'target salary jump', value: '£20K+' },
-                    { label: 'platform trust', value: 'Low' }
-                ]
-            }
-        ],
-        journeys: [
-            {
-                personaName: 'Marcus T.',
-                archetype: 'Mid-Career Switcher',
-                scenario: 'Marcus wants to move from marketing into product management. He needs to validate his salary expectations, map his transferable skills, and avoid wasting time on roles that won\'t see his CV fairly.',
-                phases: ['Trigger', 'Discovery', 'Validation', 'Networking', 'Interview', 'Decision'],
-                rows: {
-                    actions: [
-                        'Gets passed over for promotion; decides to explore external options seriously',
-                        'Searches PM roles on LinkedIn; filters by experience level but results are inconsistent',
-                        'Visits Glassdoor and Levels.fyi for salary data; compares to his current package',
-                        'Reaches out to 6 contacts at target companies; only 2 respond meaningfully',
-                        'Gets 3 interviews; asked about PM experience he technically doesn\'t have yet',
-                        'Receives an offer 15% below his minimum; has to negotiate blind without market data'
-                    ],
-                    thoughts: [
-                        '"I\'ve been doing PM work without the title for two years. I just need someone to see that."',
-                        '"These JDs all say 3–5 years PM experience. Do I even qualify? I can\'t tell."',
-                        '"Levels.fyi only covers big tech. I\'m targeting scale-ups — there\'s nothing for me here."',
-                        '"I need a warm intro but I don\'t know who to ask or how to frame it without looking desperate."',
-                        '"They keep asking for PM experience as if my 6 years of go-to-market work is irrelevant."',
-                        '"I need to know the market rate before I walk into this negotiation or I\'ll leave money on the table."'
-                    ],
-                    emotions: ['Frustrated', 'Curious', 'Impatient', 'Anxious', 'Skeptical', 'Cautious'],
-                    painPoints: [
-                        'No platform recognises or surfaces transferable-skill equivalency',
-                        'Experience level filters don\'t account for adjacent career paths',
-                        'Salary data gaps for mid-market and scale-up companies',
-                        'Warm intro infrastructure doesn\'t exist beyond cold LinkedIn DMs',
-                        'Interview processes are calibrated for traditional career paths only',
-                        'Offer negotiation happens without real-time, role-specific comp benchmarks'
-                    ],
-                    opportunities: [
-                        'Skill-translation engine: map marketing competencies to PM role requirements',
-                        'Fuzzy experience matching: \'You qualify for 73% of this role based on adjacent skills\'',
-                        'Scale-up salary database crowdsourced from verified WorkHive users',
-                        'Warm intro layer: mutual connections flagged with relationship context',
-                        'Interview prep tailored to career-switch narratives, not just job history',
-                        'Live comp benchmarking tool accessible during active offer stage'
-                    ]
-                }
-            },
-            {
-                personaName: 'Priya M.',
-                archetype: 'First-Time Job Seeker',
-                scenario: 'Priya graduated 3 months ago and has been applying for junior product roles. She\'s managing the process across 8+ tabs and still hasn\'t had a single first-round call.',
-                phases: ['Trigger', 'Discovery', 'Research', 'Application', 'Waiting', 'Post-Outcome'],
-                rows: {
-                    actions: [
-                        'Sees a LinkedIn post about entry-level PM roles; opens LinkedIn, Glassdoor, and Blind simultaneously',
-                        'Searches \'junior product manager\'; finds hundreds of roles with no salary info or culture signals',
-                        'Reads 3 Glassdoor review pages; scrolls Blind threads; opens company LinkedIn to check team size',
-                        'Tailors CV for each role; writes cover letters without knowing if salary meets her threshold',
-                        'Sends 14 applications; checks email obsessively for 2 weeks; hears back from 2',
-                        'Gets rejected post-interview; has no feedback; can\'t tell if it was fit, salary, or skill gap'
-                    ],
-                    thoughts: [
-                        '"There must be a better way to find the right role — not just any role."',
-                        '"How am I supposed to know which of these 400 results are actually entry-level?"',
-                        '"The reviews say great culture but everyone who left says the opposite. Who do I believe?"',
-                        '"I spent 3 hours on this application and I don\'t even know if the salary works for me."',
-                        '"Is my application even being read by a person? It feels like a black hole."',
-                        '"I have no idea what I did wrong. I can\'t improve if no one tells me anything."'
-                    ],
-                    emotions: ['Hopeful', 'Overwhelmed', 'Confused', 'Anxious', 'Anxious', 'Frustrated'],
-                    painPoints: [
-                        'No unified starting point — must cobble together data from multiple platforms',
-                        'Zero salary transparency at the discovery stage wastes application effort',
-                        'Culture signals are contradictory and unverified — hard to triangulate',
-                        'Blind applications with no confirmation of relevance erode confidence',
-                        'ATS black hole creates anxiety and disengagement from the process',
-                        'No feedback loop means no way to iterate or improve'
-                    ],
-                    opportunities: [
-                        'Unified dashboard: role, salary, culture, and team visibility in one view',
-                        'Smart entry-level filter with salary range displayed upfront',
-                        'Verified culture ratings with recency weighting and role-specific filters',
-                        'Connection alerts: \'You know 2 people at this company\' alongside JD',
-                        'Application tracker with estimated response timelines per company',
-                        'Anonymised post-rejection insights: where in the funnel and why'
-                    ]
-                }
-            },
-            {
-                personaName: 'Sarah K.',
-                archetype: 'Enterprise Recruiter',
-                scenario: 'Sarah is hiring a Senior Data Engineer. She received 380 applications in 72 hours. Her ATS shortlisted 40 but most are poorly matched. She needs to identify the top 5 in under a week.',
-                phases: ['Brief', 'Sourcing', 'Screening', 'Shortlisting', 'Interviews', 'Offer'],
-                rows: {
-                    actions: [
-                        'Receives hiring brief from Engineering VP; posts JD across LinkedIn, Indeed, and company site',
-                        '380 applications arrive; ATS auto-screens on keywords; flags 40 for review',
-                        'Manually reviews 40 CVs; many are keyword-stuffed and don\'t reflect actual skills',
-                        'Schedules 12 phone screens in 3 days; only 4 proceed to hiring manager round',
-                        '3 final-round candidates; 1 drops out citing poor culture perception from Glassdoor',
-                        'Extends offer to top candidate; loses them to a competitor who moved faster'
-                    ],
-                    thoughts: [
-                        '"The brief says senior but the hiring manager means something different every time."',
-                        '"Why is the ATS surfacing junior candidates for a senior role — again?"',
-                        '"Half these CVs list tools they\'ve clearly never used seriously. How do I verify this?"',
-                        '"I\'m spending 70% of my time on people who aren\'t close to a fit. This is unsustainable."',
-                        '"We lost a great candidate because our Glassdoor reviews haven\'t been updated in 18 months."',
-                        '"Our process is too slow. By the time we decide, the best people are gone."'
-                    ],
-                    emotions: ['Neutral', 'Overwhelmed', 'Frustrated', 'Impatient', 'Frustrated', 'Frustrated'],
-                    painPoints: [
-                        'JD calibration gap between recruiter and hiring manager creates bad sourcing',
-                        'ATS keyword matching generates volume without quality signal',
-                        'No way to verify depth of claimed technical skills pre-screen',
-                        'Excessive time spent on early-stage filtering that adds no real value',
-                        'Employer brand is unmanaged and actively hurts candidate conversion',
-                        'Slow internal process loses top candidates to faster-moving competitors'
-                    ],
-                    opportunities: [
-                        'Calibration wizard: structured brief-taking to align recruiter and HM upfront',
-                        'Verified skills signals from peer endorsements and project history',
-                        'AI-assisted ranking based on role-specific competency fit, not keywords',
-                        'Async screening tools: structured video or written responses to save phone time',
-                        'Employer brand dashboard: curate, respond to, and track culture perception',
-                        'Pipeline velocity tracker with competitive benchmarks and drop-off alerts'
-                    ]
-                }
-            }
-        ],
-        wireframes: [
-            {
-                image: './p2w1.png',
-                title: 'Wireframe 01 · Structured Job Discovery',
-                description: 'A focused search layout built to minimize friction and cognitive load. Persistent filters allow quick refinement without interrupting browse flow.'
-            },
-            {
-                image: './p2w2.png',
-                title: 'Wireframe 02 · Network Opportunity Mapping',
-                description: 'A visual relationship-based flow that replaces static listings with contextual pathways to improve decision confidence.'
-            },
-            {
-                image: './p2w3.png',
-                title: 'Wireframe 03 · Relocation Decision Support',
-                description: 'A comparison interface combining salary and cost-of-living inputs into a readable decision model for users planning moves.'
-            }
-        ],
-        designRationale: [
-            {
-                image: './p2m1.png',
-                title: 'Guided Exploration: Minimizing Cognitive Load',
-                description: 'Instead of overwhelming the user with a massive wall of text, I utilized progressive disclosure. The clean card layout creates a strict visual hierarchy. The primary CTA ("Apply") is given maximum visual weight, while secondary actions are de-emphasized to prevent choice paralysis.'
-            },
-            {
-                image: './p2m2.png',
-                title: 'Connection-Centered Insights: Building Trust',
-                description: 'A key tradeoff was sacrificing screen real estate to show network connections upfront. Why? Because seeing "2 alumni work here" creates instant trust. I designed a horizontal scroll for these connections so they remain visible without pushing critical job details below the fold.'
-            },
-            {
-                image: './p2m3.png',
-                title: 'Confident Decision Flow: Anchoring Data',
-                description: 'Salary means nothing without context. By anchoring the salary offer next to real-time regional cost-of-living data, I transformed abstract numbers into a concrete decision matrix. The layout uses high contrast and clear data visualization to make complex financial comparisons effortless.'
-            }
-        ]
+        heroImage: './workhive/hero.jpg'
     },
     project3: {
         title: 'The Hunger Games',
