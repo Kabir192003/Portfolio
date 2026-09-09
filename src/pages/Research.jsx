@@ -103,7 +103,7 @@ const styles = {
         padding: '1.05rem 1.25rem',
         borderRadius: 'var(--radius-md)',
         border: '1px solid rgba(200, 147, 63, 0.28)',
-        background: 'linear-gradient(150deg, rgba(200, 147, 63, 0.16) 0%, rgba(19, 18, 16, 0.75) 100%)',
+        background: 'linear-gradient(150deg, rgba(179, 121, 42, 0.14) 0%, rgba(255, 253, 248, 0.92) 100%)',
     },
     highlightText: {
         margin: 0,
@@ -142,7 +142,7 @@ const styles = {
     objectiveCard: {
         borderRadius: 'var(--radius-md)',
         border: '1px solid rgba(200, 147, 63, 0.35)',
-        background: 'linear-gradient(155deg, rgba(200, 147, 63, 0.15) 0%, rgba(19, 18, 16, 0.85) 100%)',
+        background: 'linear-gradient(155deg, rgba(179, 121, 42, 0.13) 0%, rgba(255, 253, 248, 0.95) 100%)',
         padding: '1.25rem',
         display: 'flex',
         flexDirection: 'column',

@@ -165,7 +165,7 @@ const styles = {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        background: 'radial-gradient(circle at 20% 25%, rgba(200, 147, 63, 0.22), rgba(19, 18, 16, 0.9) 65%)',
+        background: 'radial-gradient(circle at 20% 25%, rgba(179, 121, 42, 0.16), rgba(255, 253, 248, 0.95) 65%)',
     },
     fallbackText: {
         fontSize: '0.82rem',

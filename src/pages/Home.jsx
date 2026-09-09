@@ -1,9 +1,10 @@
 import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import ScopeMark from '../components/ScopeMark';
+import PortraitReveal from '../components/PortraitReveal';
 
 const FALLBACK_IMAGE = './sample.jpg';
+const PORTRAIT_IMAGE = './portrait.jpg';
 
 const SKILLS = [
     'Product Design', 'UX Research', 'Interaction Design', 'Design Systems',
@@ -104,6 +105,7 @@ const CardImage = ({ src, alt }) => {
         <img
             src={src || FALLBACK_IMAGE}
             alt={alt}
+            className="home-project-image"
             style={styles.projectImg}
             loading="lazy"
             decoding="async"
@@ -112,21 +114,27 @@ const CardImage = ({ src, alt }) => {
     );
 };
 
+// ─── Editorial index row — the case-study list reads like a masthead
+// contents page: a ghost number, a big title, and an image that only
+// gives up its colour on hover. No cards, no boxes. ─────────────────
 const ProjectCard = ({ to, img, title, tag, desc, index }) => (
-    <Reveal delay={index * 0.08} style={styles.cardWrap}>
-        <Link to={to} style={{ textDecoration: 'none', display: 'block' }} className="home-project-card">
-            <div style={styles.projectCard}>
-                <div style={styles.projectImageWrap}>
-                    <CardImage src={img} alt={title} />
+    <Reveal delay={index * 0.06} style={styles.rowWrap}>
+        <Link
+            to={to}
+            style={styles.rowLink}
+            className="home-project-row"
+        >
+            <span style={styles.rowIndex} aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+            <div style={styles.rowText}>
+                <div style={styles.rowTopLine}>
+                    <h3 style={styles.rowTitle}>{title}</h3>
+                    <span className="eyebrow" style={styles.projectTag}>{tag}</span>
                 </div>
-                <div style={styles.projectInfo}>
-                    <div style={styles.projectTopRow}>
-                        <h3 style={styles.projectTitle}>{title}</h3>
-                        <span className="eyebrow" style={styles.projectTag}>{tag}</span>
-                    </div>
-                    <p style={styles.projectDesc}>{desc}</p>
-                    <span style={styles.projectArrow}>View case study →</span>
-                </div>
+                <p style={styles.rowDesc}>{desc}</p>
+                <span style={styles.projectArrow}>View case study <span className="home-project-arrow-icon">→</span></span>
+            </div>
+            <div style={styles.rowImageWrap} className="home-project-image-mask">
+                <CardImage src={img} alt={title} />
             </div>
         </Link>
     </Reveal>
@@ -172,55 +180,73 @@ const Home = () => {
                     transition={{ duration: 26, repeat: Infinity, ease: 'easeInOut', delay: 1.4 }}
                 />
                 <div className="home-hero-glow" />
-                <ScopeMark size={620} style={styles.scopeMark} className="home-scope-mark" />
                 <div className="container">
-                    <div style={styles.heroContent} className="home-hero-content">
-                        <motion.span
-                            className="eyebrow"
-                            style={styles.heroEyebrow}
-                            initial={{ opacity: 0, y: 12 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5 }}
-                        >
-                            Kabir Sharma — Product Designer
-                        </motion.span>
+                    <div style={styles.heroGrid} className="home-hero-grid">
+                        <div style={styles.heroContent} className="home-hero-content">
+                            <motion.span
+                                className="eyebrow"
+                                style={styles.heroEyebrow}
+                                initial={{ opacity: 0, y: 12 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5 }}
+                            >
+                                Kabir Sharma — Product Designer
+                            </motion.span>
 
-                        <motion.h1
-                            style={styles.heroTitle}
-                            className="home-hero-title"
-                            initial={{ opacity: 0, y: 18 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: 0.08 }}
-                        >
-                            Most portfolios show you the mockup.{' '}
-                            <span className="text-gradient glow-text">This one shows you what happens when you click it.</span>
-                        </motion.h1>
+                            <motion.h1
+                                style={styles.heroTitle}
+                                className="home-hero-title"
+                                initial={{ opacity: 0, y: 18 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.6, delay: 0.08 }}
+                            >
+                                Most portfolios show you the mockup.{' '}
+                                <span className="text-gradient glow-text">This one shows you what happens when you click it.</span>
+                            </motion.h1>
 
-                        <motion.p
-                            style={styles.heroSubtitle}
-                            className="home-hero-subtitle"
-                            initial={{ opacity: 0, y: 14 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: 0.16 }}
-                        >
-                            I design interfaces, then I use them the way a stranger would — which is
-                            usually where the real work starts. Based between Dublin and Hyderabad,
-                            currently studying interactive digital media at Trinity College Dublin.
-                        </motion.p>
+                            <motion.p
+                                style={styles.heroSubtitle}
+                                className="home-hero-subtitle"
+                                initial={{ opacity: 0, y: 14 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.6, delay: 0.16 }}
+                            >
+                                I design interfaces, then I use them the way a stranger would — which is
+                                usually where the real work starts. Based between Dublin and Hyderabad,
+                                currently studying interactive digital media at Trinity College Dublin.
+                            </motion.p>
+
+                            <motion.div
+                                style={styles.heroActions}
+                                className="home-hero-actions"
+                                initial={{ opacity: 0, y: 14 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.6, delay: 0.24 }}
+                            >
+                                <MagneticLink to="/projects" className="glass-button btn-primary" style={styles.primaryCta}>
+                                    View the work
+                                </MagneticLink>
+                                <MagneticLink to="/contact" className="home-ghost-link" style={styles.ghostLink}>
+                                    Say hello →
+                                </MagneticLink>
+                            </motion.div>
+                        </div>
 
                         <motion.div
-                            style={styles.heroActions}
-                            className="home-hero-actions"
-                            initial={{ opacity: 0, y: 14 }}
+                            className="home-hero-portrait"
+                            style={{ justifySelf: 'end' }}
+                            initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: 0.24 }}
+                            transition={{ duration: 0.7, delay: 0.15 }}
                         >
-                            <MagneticLink to="/projects" className="glass-button btn-primary" style={styles.primaryCta}>
-                                View the work
-                            </MagneticLink>
-                            <MagneticLink to="/contact" className="home-ghost-link" style={styles.ghostLink}>
-                                Say hello →
-                            </MagneticLink>
+                            <PortraitReveal
+                                src={PORTRAIT_IMAGE}
+                                alt="Kabir Sharma"
+                                radius={150}
+                                style={styles.heroPortrait}
+                                wrapStyle={styles.heroPortraitWrap}
+                                caption={<span style={styles.heroPortraitCaption}>hover to reveal</span>}
+                            />
                         </motion.div>
                     </div>
                 </div>
@@ -264,7 +290,7 @@ const Home = () => {
                         </div>
                     </Reveal>
 
-                    <div style={styles.projectGrid} className="home-project-grid">
+                    <div style={styles.projectList} className="home-project-list">
                         {FEATURED.map((p, i) => (
                             <ProjectCard key={p.to} {...p} index={i} />
                         ))}
@@ -303,18 +329,35 @@ const styles = {
         padding: 'clamp(4rem, 12vh, 8rem) 0 clamp(3rem, 8vh, 5rem)',
         overflow: 'hidden',
     },
-    scopeMark: {
-        position: 'absolute',
-        top: '50%',
-        right: '-10%',
-        transform: 'translateY(-50%)',
-        opacity: 0.9,
-        zIndex: 1,
-    },
-    heroContent: {
-        maxWidth: '760px',
+    heroGrid: {
+        display: 'grid',
+        gridTemplateColumns: 'minmax(0, 1fr) auto',
+        alignItems: 'center',
+        gap: '2rem',
         position: 'relative',
         zIndex: 2,
+    },
+    heroContent: {
+        maxWidth: '680px',
+        position: 'relative',
+        zIndex: 2,
+    },
+    heroPortraitWrap: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: '0.9rem',
+        justifySelf: 'end',
+    },
+    heroPortrait: {
+        filter: 'drop-shadow(0 30px 50px rgba(33, 29, 22, 0.16))',
+    },
+    heroPortraitCaption: {
+        fontFamily: 'var(--font-mono)',
+        fontSize: '0.72rem',
+        letterSpacing: '0.14em',
+        textTransform: 'uppercase',
+        color: 'var(--text-tertiary)',
     },
     heroEyebrow: {
         marginBottom: '1.5rem',
@@ -402,30 +445,68 @@ const styles = {
         transition: 'border-color var(--transition-fast), color var(--transition-fast), box-shadow var(--transition-fast)',
         cursor: 'default',
     },
-    projectGrid: {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-        gap: '1.5rem',
-    },
-    cardWrap: {
-        height: '100%',
-    },
-    projectCard: {
-        borderRadius: 'var(--radius-md)',
-        overflow: 'hidden',
-        background: 'var(--surface-color)',
-        border: '1px solid var(--border)',
+    projectList: {
         display: 'flex',
         flexDirection: 'column',
-        height: '100%',
-        transition: 'border-color var(--transition-fast), transform var(--transition-fast)',
     },
-    projectImageWrap: {
+    rowWrap: {
+        width: '100%',
+    },
+    rowLink: {
+        display: 'grid',
+        gridTemplateColumns: 'auto minmax(0, 1fr) minmax(180px, 300px)',
+        alignItems: 'center',
+        gap: 'clamp(1.25rem, 3vw, 2.75rem)',
+        padding: 'clamp(1.75rem, 4vw, 2.75rem) 0',
+        textDecoration: 'none',
+    },
+    rowIndex: {
+        fontFamily: 'var(--font-mono)',
+        fontSize: '1rem',
+        color: 'var(--text-tertiary)',
+        letterSpacing: '0.05em',
+    },
+    rowText: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '0.6rem',
+        minWidth: 0,
+    },
+    rowTopLine: {
+        display: 'flex',
+        alignItems: 'baseline',
+        flexWrap: 'wrap',
+        gap: '0.85rem',
+    },
+    rowTitle: {
+        fontSize: 'clamp(1.5rem, 3vw, 2.2rem)',
+        fontWeight: 600,
+        letterSpacing: '-0.02em',
+    },
+    projectTag: {
+        flex: 'none',
+    },
+    rowDesc: {
+        fontSize: '0.95rem',
+        color: 'var(--text-secondary)',
+        lineHeight: 1.65,
+        maxWidth: '48ch',
+    },
+    projectArrow: {
+        marginTop: '0.3rem',
+        fontSize: '0.85rem',
+        color: 'var(--accent-color)',
+        fontWeight: 500,
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: '0.3em',
+    },
+    rowImageWrap: {
         position: 'relative',
         width: '100%',
-        aspectRatio: '16/10',
-        overflow: 'hidden',
-        borderBottom: '1px solid var(--border)',
+        aspectRatio: '5/4',
+        overflow: 'visible',
+        justifySelf: 'end',
     },
     projectImg: {
         width: '100%',
@@ -438,39 +519,6 @@ const styles = {
         width: '100%',
         height: '100%',
         background: 'var(--surface-light)',
-    },
-    projectInfo: {
-        padding: '1.5rem',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '0.6rem',
-        flex: 1,
-    },
-    projectTopRow: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        gap: '0.75rem',
-    },
-    projectTitle: {
-        fontSize: '1.2rem',
-        fontWeight: 600,
-        letterSpacing: '-0.01em',
-    },
-    projectTag: {
-        flex: 'none',
-    },
-    projectDesc: {
-        fontSize: '0.9rem',
-        color: 'var(--text-secondary)',
-        lineHeight: 1.65,
-        flex: 1,
-    },
-    projectArrow: {
-        marginTop: '0.25rem',
-        fontSize: '0.85rem',
-        color: 'var(--accent-color)',
-        fontWeight: 500,
     },
     ctaSection: {
         marginBottom: '4rem',

@@ -94,7 +94,7 @@ const styles = {
         position: 'sticky',
         top: 0,
         width: '100%',
-        background: 'rgba(12,11,9,0.88)',
+        background: 'rgba(247, 243, 234, 0.82)',
         backdropFilter: 'blur(10px)',
         WebkitBackdropFilter: 'blur(10px)',
         zIndex: 100,

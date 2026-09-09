@@ -141,7 +141,7 @@ const CustomCursor = () => {
                     height: 10px !important;
                     margin-left: -5px !important;
                     margin-top: -5px !important;
-                    background: #f2ede4 !important;
+                    background: #c14a26 !important;
                     box-shadow: 0 0 14px 3px rgba(200,147,63,0.55) !important;
                 }
 

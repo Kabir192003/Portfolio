@@ -262,7 +262,7 @@ const styles = {
         gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
         gap: '2rem',
         padding: '2.5rem',
-        background: 'linear-gradient(160deg, rgba(200, 147, 63, 0.08) 0%, rgba(19, 18, 16, 0.65) 100%)',
+        background: 'linear-gradient(160deg, rgba(179, 121, 42, 0.1) 0%, rgba(255, 253, 248, 0.9) 100%)',
         borderRadius: 'var(--radius-lg)',
         border: '1px solid var(--glass-border)',
         marginBottom: '3rem',
@@ -357,7 +357,7 @@ const styles = {
         padding: '2rem',
         borderRadius: 'var(--radius-md)',
         border: '1px solid var(--glass-border)',
-        background: 'linear-gradient(160deg, rgba(200, 147, 63, 0.09) 0%, rgba(19, 18, 16, 0.72) 100%)',
+        background: 'linear-gradient(160deg, rgba(179, 121, 42, 0.1) 0%, rgba(255, 253, 248, 0.92) 100%)',
     },
     processGrid: {
         display: 'grid',

@@ -1,30 +1,35 @@
 :root {
-  /* ── Ground ─────────────────────────────────────────────── */
-  --bg-color: #0c0b09;
-  --surface-color: #131210;
-  --surface-light: #1a1815;
+  /* ── Ground: warm paper, not clinical white ────────────────
+     A designer's studio at midday, not a hospital. Off-white
+     with a hint of cream so flat panels still feel considered. */
+  --bg-color: #f7f3ea;
+  --surface-color: #fffdf8;
+  --surface-light: #f0ead9;
 
-  --text-primary: #f2ede4;
-  --text-secondary: #8f887c;
-  --text-tertiary: #5c574d;
+  --text-primary: #211d16;
+  --text-secondary: #6b6355;
+  --text-tertiary: #a39a86;
 
   /* ── Signal: a worked-brass duotone ─────────────────────────
      Brass + ember — the "scope" in kabiroscope: warm optics,
-     not a purple SaaS gradient. Used with real presence, not
-     as a single timid dot of colour. */
-  --accent-color: #d9a039;
-  --accent-hover: #eeb84f;
-  --accent-2: #e2532a;
-  --accent-ink: #1c1408;
-  --accent-soft: rgba(217, 160, 57, 0.12);
-  --accent-soft-border: rgba(217, 160, 57, 0.36);
-  --accent-glow: rgba(217, 160, 57, 0.5);
-  --accent-2-glow: rgba(226, 83, 42, 0.45);
+     like gold foil on stationery, not a purple SaaS gradient. */
+  --accent-color: #b3792a;
+  --accent-hover: #96631f;
+  --accent-2: #c14a26;
+  --accent-ink: #fffaf0;
+  --accent-soft: rgba(179, 121, 42, 0.09);
+  --accent-soft-border: rgba(179, 121, 42, 0.34);
+  --accent-glow: rgba(179, 121, 42, 0.28);
+  --accent-2-glow: rgba(193, 74, 38, 0.24);
 
-  --border: rgba(242, 237, 228, 0.1);
-  --border-strong: rgba(242, 237, 228, 0.18);
-  --glass-bg: rgba(242, 237, 228, 0.03);
+  --border: rgba(33, 29, 22, 0.1);
+  --border-strong: rgba(33, 29, 22, 0.18);
+  --glass-bg: rgba(255, 255, 255, 0.5);
   --glass-border: var(--border);
+
+  --shadow-sm: 0 2px 10px -4px rgba(33, 29, 22, 0.12);
+  --shadow-md: 0 16px 40px -16px rgba(33, 29, 22, 0.22);
+  --shadow-lg: 0 30px 70px -20px rgba(33, 29, 22, 0.28);
 
   /* ── Type system ────────────────────────────────────────── */
   --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -62,7 +67,7 @@ html {
 body {
   background: var(--bg-color);
   background-image:
-    radial-gradient(circle at 50% -10%, rgba(200, 147, 63, 0.06), transparent 42%);
+    radial-gradient(circle at 50% -10%, rgba(179, 121, 42, 0.07), transparent 42%);
   color: var(--text-primary);
   font-family: var(--font-primary);
   line-height: 1.6;
@@ -72,15 +77,15 @@ body {
   position: relative;
 }
 
-/* Fine film-grain — cheap texture so flat dark panels don't read as bare */
+/* Fine paper-grain — cheap texture so flat panels don't read as bare */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
   z-index: 9997;
   pointer-events: none;
-  opacity: 0.05;
-  mix-blend-mode: overlay;
+  opacity: 0.035;
+  mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
@@ -251,7 +256,7 @@ a {
 }
 
 .glow-text {
-  text-shadow: 0 0 60px var(--accent-glow), 0 0 120px rgba(226, 83, 42, 0.18);
+  /* On paper, ink doesn't glow — the gradient alone carries it */
 }
 
 /* ── Buttons ────────────────────────────────────────────────
@@ -329,16 +334,6 @@ main {
   color: var(--text-primary) !important;
 }
 
-.home-project-card:hover > div {
-  border-color: var(--accent-soft-border) !important;
-  transform: translateY(-6px);
-  box-shadow: 0 24px 60px -20px rgba(217, 160, 57, 0.35);
-}
-
-.home-project-card > div {
-  transition: border-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
-}
-
 .home-ghost-link:hover {
   color: var(--text-primary) !important;
 }
@@ -349,12 +344,51 @@ main {
   box-shadow: 0 6px 20px -10px var(--accent-glow);
 }
 
-.home-project-card img {
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+/* ── Case-study index rows ─────────────────────────────────
+   Editorial contents-page treatment instead of cards: a ghost
+   number, a big title, and a photo that stays grayscale until
+   the row is hovered — the same reveal language as the portrait. */
+.home-project-row {
+  color: inherit;
+  border-top: 1px solid var(--border);
+  transition: background var(--transition-fast);
 }
 
-.home-project-card:hover img {
-  transform: scale(1.05);
+.home-project-list > div:last-child .home-project-row {
+  border-bottom: 1px solid var(--border);
+}
+
+.home-project-row:hover {
+  background: var(--accent-soft);
+}
+
+.home-project-row:hover h3 {
+  color: var(--accent-hover);
+}
+
+.home-project-arrow-icon {
+  display: inline-block;
+  transition: transform var(--transition-fast);
+}
+
+.home-project-row:hover .home-project-arrow-icon {
+  transform: translateX(5px);
+}
+
+.home-project-image-mask {
+  -webkit-mask-image: radial-gradient(ellipse 76% 82% at 50% 42%, #000 58%, transparent 100%);
+  mask-image: radial-gradient(ellipse 76% 82% at 50% 42%, #000 58%, transparent 100%);
+}
+
+.home-project-image {
+  filter: grayscale(1) contrast(1.05) brightness(1.01);
+  transform: scale(1);
+  transition: filter 0.6s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.home-project-row:hover .home-project-image {
+  filter: grayscale(0) saturate(1.05);
+  transform: scale(1.06);
 }
 
 .home-cta-glow {
@@ -393,17 +427,20 @@ main {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(560px circle at var(--mx, 50%) var(--my, 30%), rgba(217, 160, 57, 0.16), transparent 62%);
+  background: radial-gradient(560px circle at var(--mx, 50%) var(--my, 30%), rgba(179, 121, 42, 0.14), transparent 62%);
   transition: background 0.25s ease;
   z-index: 1;
+  mix-blend-mode: multiply;
 }
 
 .glow-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(60px);
+  filter: blur(70px);
   pointer-events: none;
   z-index: 0;
+  mix-blend-mode: multiply;
+  opacity: 0.8;
 }
 
 /* ── Marquee ticker ─────────────────────────────────────── */
@@ -451,8 +488,23 @@ main {
 }
 
 @media (max-width: 900px) {
-  .home-scope-mark {
-    display: none;
+  .home-hero-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .home-hero-portrait {
+    justify-self: center !important;
+    order: -1;
+  }
+
+  .portrait-reveal {
+    width: min(240px, 60vw) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .home-project-row {
+    grid-template-columns: 1fr !important;
   }
 }
 
@@ -657,5 +709,61 @@ main {
 
   .project-mobile-image-grid {
     grid-template-columns: 1fr !important;
+  }
+}
+
+/* ── Portrait reveal ────────────────────────────────────────
+   A free-floating photo, no card or frame: the whole shape
+   feathers into the page via a mask, sitting in black & white
+   until a soft torchlight circle of colour follows the cursor. */
+.portrait-reveal {
+  position: relative;
+  display: block;
+  width: min(380px, 78vw);
+  aspect-ratio: 4 / 5;
+  --rx: -9999px;
+  --ry: -9999px;
+  -webkit-mask-image: radial-gradient(ellipse 74% 88% at 50% 40%, #000 52%, transparent 100%);
+  mask-image: radial-gradient(ellipse 74% 88% at 50% 40%, #000 52%, transparent 100%);
+}
+
+.portrait-reveal-bw,
+.portrait-reveal-color {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  pointer-events: none;
+  user-select: none;
+}
+
+.portrait-reveal-bw {
+  filter: grayscale(1) contrast(1.08) brightness(1.03);
+}
+
+.portrait-reveal-color {
+  filter: saturate(1.08) contrast(1.02);
+  -webkit-mask-image: radial-gradient(circle, #000 0%, #000 32%, transparent 76%);
+  mask-image: radial-gradient(circle, #000 0%, #000 32%, transparent 76%);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: calc(var(--radius) * 2) calc(var(--radius) * 2);
+  mask-size: calc(var(--radius) * 2) calc(var(--radius) * 2);
+  -webkit-mask-position: calc(var(--rx) - var(--radius)) calc(var(--ry) - var(--radius));
+  mask-position: calc(var(--rx) - var(--radius)) calc(var(--ry) - var(--radius));
+  transition: -webkit-mask-position 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              mask-position 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (hover: none), (pointer: coarse) {
+  .portrait-reveal-color {
+    -webkit-mask-image: none;
+    mask-image: none;
+    opacity: 0.55;
+  }
+  .portrait-reveal-bw {
+    opacity: 0.75;
   }
 }
