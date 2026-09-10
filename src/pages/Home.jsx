@@ -11,6 +11,19 @@ const TOOLS_CRAFT = ['PROTOTYPING', 'FRONT-END', 'MOTION DESIGN', 'FIGMA'];
 const STATS = [
     { label: 'CASE STUDIES', value: '6' },
     { label: 'LIVE, SHIPPABLE PRODUCTS', value: '3' },
+    { label: 'PRODUCT & DESIGN — EXPERIENCE', value: '2+ YRS' },
+];
+
+const CAPABILITIES = [
+    { area: 'PRODUCT', items: 'Research · Requirements · Prioritisation · Product Analytics · Testing' },
+    { area: 'TECHNOLOGY', items: 'Python · SQL · React · JavaScript · REST APIs · AI/LLM workflows' },
+    { area: 'DESIGN', items: 'UX · Interaction Design · Prototyping · Information Architecture · Usability Testing' },
+    { area: 'DATA', items: 'Analysis · Visualisation · Funnel Analysis · Structured Problem Solving' },
+];
+
+const INTEREST_STATS = [
+    { value: '15+', label: 'Countries visited' },
+    { value: '12,000+', label: 'KM driven across Europe' },
 ];
 const INDEX_ITEMS = [
     { num: '01', label: 'STYLEBOOK AI' },
@@ -43,7 +56,8 @@ const Home = () => {
             {/* Page title */}
             <div style={{ textAlign: 'center', padding: '3rem 1.5rem 2rem' }}>
                 <h1 style={{ fontFamily: "'Anton', sans-serif", fontSize: 'clamp(2.8rem, 9vw, 7.5rem)', letterSpacing: '0.01em', lineHeight: 0.95, margin: 0, textTransform: 'uppercase' }}>Kabir Sharma</h1>
-                <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.95rem', letterSpacing: '0.24em', textTransform: 'uppercase', color: MUTED, marginTop: '1rem' }}>Product Designer &amp; Developer</p>
+                <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 'clamp(0.85rem, 2vw, 1.05rem)', letterSpacing: '0.2em', textTransform: 'uppercase', color: RULE, fontWeight: 700, marginTop: '1.1rem' }}>Technology × Product × Design</p>
+                <p style={{ fontSize: '1.05rem', color: MUTED, maxWidth: '560px', margin: '0.9rem auto 0', lineHeight: 1.65 }}>I turn complex problems into practical digital products through research, data, design and technology.</p>
             </div>
             <div style={{ borderTop: `1px solid ${INK}` }} />
 
@@ -80,20 +94,47 @@ const Home = () => {
                 </div>
 
                 <div style={{ position: 'relative', padding: '2.75rem 1.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }} className="home-portrait-col">
-                    <div style={{ position: 'relative', width: '100%', maxWidth: '340px', aspectRatio: '4/5', overflow: 'hidden', filter: 'grayscale(1) contrast(1.05)' }}>
-                        <img src="./portrait.jpg" alt="Kabir Sharma" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
+                    <div
+                        style={{
+                            position: 'relative',
+                            width: '100%',
+                            maxWidth: '340px',
+                            aspectRatio: '4/5',
+                            WebkitMaskImage: 'radial-gradient(ellipse 74% 82% at 50% 42%, #000 30%, transparent 100%)',
+                            maskImage: 'radial-gradient(ellipse 74% 82% at 50% 42%, #000 30%, transparent 100%)',
+                        }}
+                    >
+                        <img src="./portrait.jpg" alt="Kabir Sharma" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', filter: 'grayscale(1) contrast(1.05)', display: 'block' }} />
                     </div>
 
+                    {/* Camera */}
                     <svg viewBox="0 0 60 40" style={{ position: 'absolute', top: '6%', left: '2%', width: '80px', overflow: 'visible' }}>
                         <path d="M8 30 L8 12 L28 12 L28 30 Z M8 20 L2 15 L2 25 Z" fill="none" stroke={RULE} strokeWidth="1.4" />
                         <circle cx="18" cy="21" r="5" fill="none" stroke={RULE} strokeWidth="1.4" />
                     </svg>
+                    {/* Speech bubble */}
                     <svg viewBox="0 0 60 40" style={{ position: 'absolute', top: '2%', right: '-38%', width: '130px', overflow: 'visible' }} className="home-doodle-speech">
                         <path d="M4 30 Q4 8 26 8 Q48 8 48 22 Q48 32 36 32 L20 32 L14 38 L16 30" fill="none" stroke={RULE} strokeWidth="1.4" />
                         <text x="10" y="24" fontFamily="Anton" fontSize="9" fill={RULE} transform="rotate(-4 10 24)">it runs</text>
                     </svg>
-                    <svg viewBox="0 0 60 40" style={{ position: 'absolute', bottom: '18%', left: '-6%', width: '90px', overflow: 'visible' }} className="home-doodle-code">
+                    {/* Code brackets */}
+                    <svg viewBox="0 0 60 40" style={{ position: 'absolute', bottom: '30%', left: '-8%', width: '70px', overflow: 'visible' }} className="home-doodle-code">
                         <text x="2" y="24" fontFamily="Anton" fontSize="16" fill={RULE}>&lt;/&gt;</text>
+                    </svg>
+                    {/* Pen + notebook */}
+                    <svg viewBox="0 0 60 40" style={{ position: 'absolute', bottom: '6%', left: '-10%', width: '90px', overflow: 'visible' }} className="home-doodle-pen">
+                        <path d="M6 34 L6 16 L26 16 L26 34 Z" fill="none" stroke={RULE} strokeWidth="1.2" />
+                        <path d="M9 21 L23 21 M9 25 L23 25 M9 29 L18 29" fill="none" stroke={RULE} strokeWidth="1" />
+                        <path d="M32 34 L44 12 L48 15 L36 37 Z" fill="none" stroke={RULE} strokeWidth="1.2" />
+                        <path d="M44 12 L48 15" stroke={RULE} strokeWidth="1.2" />
+                    </svg>
+                    {/* Laptop */}
+                    <svg viewBox="0 0 60 40" style={{ position: 'absolute', bottom: '-8%', right: '-12%', width: '110px', overflow: 'visible' }} className="home-doodle-laptop">
+                        <rect x="10" y="6" width="34" height="22" rx="1.5" fill="none" stroke={RULE} strokeWidth="1.2" />
+                        <path d="M4 32 L50 32 L45 28 L9 28 Z" fill="none" stroke={RULE} strokeWidth="1.2" />
+                        <circle cx="19" cy="14" r="2.2" fill="none" stroke={RULE} strokeWidth="1" />
+                        <circle cx="26" cy="14" r="2.2" fill="none" stroke={RULE} strokeWidth="1" />
+                        <circle cx="19" cy="20" r="2.2" fill="none" stroke={RULE} strokeWidth="1" />
                     </svg>
 
                     <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.68rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: MUTED, marginTop: '1.1rem' }}>Dublin ↔ Hyderabad</span>
@@ -128,7 +169,21 @@ const Home = () => {
                 </div>
             </div>
 
-            <div style={{ borderTop: `1px solid ${INK}` }} />
+            {/* Capabilities */}
+            <div style={{ borderTop: `1px solid ${INK}`, borderBottom: `1px solid ${INK}` }}>
+                <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '2.75rem clamp(1.25rem,3vw,3rem)' }}>
+                    <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.72rem', letterSpacing: '0.14em', fontWeight: 700, color: MUTED, display: 'block', marginBottom: '1.75rem' }}>WHAT I WORK ACROSS</span>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '2rem' }}>
+                        {CAPABILITIES.map((c) => (
+                            <div key={c.area} style={{ borderTop: `2px solid ${INK}`, paddingTop: '0.9rem' }}>
+                                <h3 style={{ fontFamily: "'Anton', sans-serif", fontSize: '1.15rem', letterSpacing: '0.02em', marginBottom: '0.6rem' }}>{c.area}</h3>
+                                <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.8rem', color: MUTED, lineHeight: 1.7 }}>{c.items}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
             <div style={{ display: 'flex', alignItems: 'center', gap: '2rem', padding: '0.9rem clamp(1.25rem,3vw,3rem)', overflowX: 'auto', borderBottom: `1px solid ${INK}` }}>
                 <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.75rem', letterSpacing: '0.1em', fontWeight: 700, flex: 'none' }}>INDEX</span>
                 {INDEX_ITEMS.map((ix) => (
@@ -183,6 +238,34 @@ const Home = () => {
                 </div>
             </div>
 
+            {/* Outside the build */}
+            <div style={{ borderTop: `1px solid ${INK}` }}>
+                <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '3.5rem clamp(1.25rem,3vw,3rem) 4rem' }}>
+                    <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.72rem', letterSpacing: '0.14em', fontWeight: 700, color: RULE, display: 'block', marginBottom: '1rem' }}>OUTSIDE THE BUILD</span>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1.4fr) minmax(220px,1fr)', gap: '3rem', alignItems: 'start' }} className="home-outside-grid">
+                        <div>
+                            <p style={{ fontSize: '1.08rem', lineHeight: 1.75, marginBottom: '1.1rem' }}>
+                                Most of my time outside work goes toward cars, not as a spectator but somewhere I've actually put the miles in. I've driven over 12,000km across Europe at this point, usually just to see a stretch of road or a car event in person rather than watch it happen on a screen. That's taken me to more than fifteen countries so far, and what keeps pulling me back isn't really the cars themselves so much as the local culture that builds up around them in each place, who shows up, what they've built, why they care.
+                            </p>
+                            <p style={{ fontSize: '1.08rem', lineHeight: 1.75 }}>
+                                The same attention that goes into a product's details ends up in how I look at a watch or a car too, what a specific decision was actually for, not just what it looks like on the surface. It's a slower, more deliberate way of paying attention than most of my working week allows, which is probably why I keep making time for it.
+                            </p>
+                        </div>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+                            {INTEREST_STATS.map((s) => (
+                                <div key={s.label} style={{ borderTop: `1px solid ${INK}`, paddingTop: '0.9rem' }}>
+                                    <h3 style={{ fontFamily: "'Anton', sans-serif", fontSize: '1.8rem', margin: 0 }}>{s.value}</h3>
+                                    <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.72rem', letterSpacing: '0.06em', textTransform: 'uppercase', color: MUTED }}>{s.label}</span>
+                                </div>
+                            ))}
+                            <div style={{ borderTop: `1px solid ${INK}`, paddingTop: '0.9rem', display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                                {['Motorsport', 'Car culture', 'Watch collecting', 'Road trips'].map((tg) => <Chip key={tg}>{tg.toUpperCase()}</Chip>)}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <style>{`
                 @media (max-width: 900px) {
                     .home-profile-grid {
@@ -193,10 +276,10 @@ const Home = () => {
                         border-left: none !important;
                         border-bottom: 1px solid ${INK};
                     }
-                    .home-doodle-speech, .home-doodle-code {
+                    .home-doodle-speech, .home-doodle-code, .home-doodle-pen, .home-doodle-laptop {
                         display: none;
                     }
-                    .home-featured-grid {
+                    .home-featured-grid, .home-outside-grid {
                         grid-template-columns: 1fr !important;
                     }
                 }
