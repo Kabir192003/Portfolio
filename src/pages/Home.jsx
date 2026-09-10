@@ -17,32 +17,32 @@ const TICKER_ITEMS = [
 ];
 
 const STATS = [
-    { value: '5', label: 'Case studies' },
-    { value: '1', label: 'Live, shippable product' },
+    { value: '6', label: 'Case studies' },
+    { value: '3', label: 'Live, shippable products' },
     { value: '2', label: 'Countries called home' },
 ];
 
 const FEATURED = [
+    {
+        to: '/projects/6',
+        img: './stylebook/sb-hero.png',
+        title: 'StyleBook AI',
+        tag: 'AI Product · Team Lead',
+        desc: 'A written brand description in, a verified, exportable design system out. Led a team of four, wrote nearly all of the implementation, published a Figma plugin.',
+    },
+    {
+        to: '/projects/1',
+        img: './trekmate-v2/tm-landing.jpg',
+        title: 'Trek Mate',
+        tag: 'E-commerce',
+        desc: 'A generic gear storefront, rebuilt around one point of view — independent makers, field-tested, scored on what actually matters.',
+    },
     {
         to: '/projects/2',
         img: './workhive/hero.jpg',
         title: 'Work Hive',
         tag: 'Web Platform',
         desc: 'Inherited a high-fidelity prototype where almost nothing worked. Rebuilt it into a live, clickable product — endorsements, search, an editable profile, all of it.',
-    },
-    {
-        to: '/projects/3',
-        img: './hgx2.jpg',
-        title: 'The Hunger Games',
-        tag: 'UX Research',
-        desc: 'A data-driven comparison of two food-delivery giants across the journeys that actually decide which one wins.',
-    },
-    {
-        to: '/projects/5',
-        img: './tot-hero.png',
-        title: 'This or That',
-        tag: 'Full-Stack Platform',
-        desc: 'A community decision platform with personalised feeds — built, not just designed.',
     },
 ];
 

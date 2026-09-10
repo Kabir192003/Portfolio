@@ -1,342 +1,78 @@
 export const projectsData = {
     project1: {
-        title: 'Trekmate',
-        category: 'Mobile App · UX/UI Design',
-        timeline: '3 Months',
-        role: 'Product/UX Designer',
+        title: 'Trek Mate',
+        tagline: 'An outdoor gear storefront rebuilt around one idea: independent makers, scored on what actually matters',
+        category: 'E-commerce · Product Design',
+        timeline: 'Solo redesign',
+        role: 'Product Designer — repositioned, redesigned and shipped',
+        liveLink: 'https://kabir192003.github.io/Trek-Mate/',
+        repoLink: 'https://github.com/Kabir192003/Trek-Mate',
         overview: [
-            "I identified a gap in the outdoor gear e-commerce space: enthusiasts were drowning in generic platforms like Amazon with no curation, or struggling through outdated niche forums. The result was always choice paralysis and zero reliable technical guidance. I set out to fix that.",
-            "Trekmate is a specialized e-commerce mobile app I designed from the ground up for camping and trekking enthusiasts. It guides users from inspiration to expedition in a single, curated experience. I conducted 24 user interviews and validated the final prototype with 45 real users, achieving a 94% task success rate.",
-            "I owned the entire product design lifecycle solo. From initial user research, persona development, and information architecture through to a complete, scalable design system across 40+ screens and a fully interactive prototype ready for developer handoff."
+            "Trek Mate started as a fairly generic outdoor-gear storefront — a product grid, a cart, the usual e-commerce scaffolding. It worked, but it didn't say anything. Big-box gear sites already do 'browse tents, filter by price' perfectly well, and a student project that just re-skins that pattern isn't a reason for anyone to choose it over Amazon.",
+            "I redesigned it around a specific point of view instead: gear from independent makers, scored on the things that actually decide a purchase outdoors — weight, durability, pack volume — not marketing copy, and field-tested before it ships rather than dropped straight from a warehouse. That positioning had to show up in the writing, the photography direction, and the actual mechanics of browsing and buying, not just the hero copy.",
+            "The result is a live, working storefront — real category and price filters across 25 items in eight gear categories, a wishlist and cart that hold state across the session, and an account section with order history, saved addresses and payment on file. Every screen in this case study is a screenshot of the deployed build, not a Figma frame."
         ],
         impactMetrics: [
-            { label: 'Task Success Rate', value: '94%' },
-            { label: 'Task Time (n=45)', value: '-35%' },
-            { label: 'User Satisfaction', value: '4.8/5' }
+            { label: 'Gear categories, real filters', value: '8' },
+            { label: 'Independent maker brands', value: '7' },
+            { label: 'Account sections built', value: '5' }
         ],
-        tools: ['Figma', 'FigJam', 'Maze', 'Notion', 'UserTesting'],
-        problem: "My research revealed that enthusiasts spent more time researching gear across 4-5 different platforms than actually planning their trips. The cognitive load was immense: overwhelming choices, no product compatibility guidance, and zero context-aware filtering. This directly caused high cart abandonment and widespread buyer's remorse across the market.",
-        solution: "I replaced generic browsing with context-aware categorization I designed from scratch: 'Shop by Expedition Type' and 'Shop by Weather' instead of just 'Tents'. I built an intuitive technical spec filtering system, a streamlined single-page checkout flow, and integrated trail-tested recommendations. In prototype testing, my contextual discovery approach reduced search-to-cart time by 40%.",
+        tools: ['Positioning & copy', 'Component-driven UI', 'Shipped as a live, working build'],
+        problem: "The original version had the shape of an e-commerce site without a reason to exist. Nothing about the browsing experience, the copy, or the product photography suggested why this storefront was different from any other — a shopper had no reason to trust it over a marketplace they already use. Underneath that, the usual e-commerce mechanics were themselves shallow: a handful of placeholder products, filters with nothing real to filter, and account pages that were static mockups rather than something a returning shopper could actually use.",
+        solution: "I rebuilt the product around a specific promise — independent makers, field-tested gear, scored on weight and durability rather than marketing claims — and let that promise shape every layer, not just the homepage headline. That meant real editorial photography direction instead of stock-catalogue shots, copy that argues a point ('Scored on what matters', 'Field-tested, not just sold') instead of describing a feature, and a catalogue built out to 25 products across eight categories and seven maker brands so the price, rating and category filters have something genuine to work against. Wishlist, cart and the account section (orders, addresses, payment, notifications) all hold real state, so the site behaves like something a shopper could actually return to rather than a single click-through path.",
         process: [
-            { step: '01', title: 'Discovery & Research', desc: 'Conducted user interviews with 24 outdoor enthusiasts and analyzed competitor gaps to define core user personas.' },
-            { step: '02', title: 'Information Architecture', desc: 'Restructured the taxonomy to align with how hikers actually think about their gear.' },
-            { step: '03', title: 'Wireframing & Prototyping', desc: 'Iterated rapidly through low-fi sketches to high-fi interactive prototypes in Figma.' },
-            { step: '04', title: 'Usability Testing', desc: 'Validated assumptions with 45 users via Maze, leading to critical navigation pivots.' },
-            { step: '05', title: 'Visual Design', desc: 'Developed a rugged yet modern design system reflecting the outdoor spirit.' },
-            { step: '06', title: 'Handoff', desc: 'Created comprehensive documentation and component libraries for engineering.' }
+            { step: '01', title: 'Find the actual point of view', desc: 'A generic gear store has no reason to win against Amazon. I settled on independent makers and field-testing as the thing this storefront is actually for, before touching a single screen.' },
+            { step: '02', title: 'Let positioning drive the writing', desc: 'Every line of copy — hero, empty states, footer — got rewritten to argue that point of view rather than describe a feature. "Your pack is empty" instead of "Cart (0)".' },
+            { step: '03', title: 'Build a catalogue worth filtering', desc: 'Modelled 25 products across 8 categories and 7 maker brands with real prices, ratings and badges (Bestseller, New, Editor\'s Pick), so category, price-band and rating filters return genuinely different results.' },
+            { step: '04', title: 'Make the account section real', desc: 'Wishlist, cart and profile needed to hold state, not reset on navigation — orders, saved addresses and payment on file, editable rather than static labels.' },
+            { step: '05', title: 'Ship it, not just show it', desc: 'The result is deployed and clickable at the link above. If a flow is described in this case study, it works on the live site right now.' }
         ],
         designDecisions: [
             {
-                title: 'Contextual Discovery Over Search',
-                reason: 'Instead of forcing users to search for specific items they might not know the names of, I introduced "Shop by Terrain" and "Shop by Weather". This reduced search-to-cart time by 40% in our prototype testing as users found relevant gear naturally.'
+                image: './trekmate-v2/tm-landing.jpg',
+                title: 'A homepage that argues a point instead of describing a feature',
+                description: 'The three-card strip under the hero — "Scored on what matters," "Field-tested, not just sold," "Independent makers only" — is the entire positioning of the redesign compressed into a scannable moment. A visitor who reads three lines understands why this storefront is different before they ever open a product page.'
             },
             {
-                title: 'Progressive Disclosure Checkout',
-                reason: 'To combat the notoriously high cart abandonment rates typical of complex e-commerce flows, I designed a progressive checkout flow. By breaking shipping, billing, and review into bite-sized, collapsible accordion steps, the perceived effort was drastically minimized.'
+                image: './trekmate-v2/tm-browse.jpg',
+                title: 'Filters with something real to filter',
+                description: 'Category counts down the left rail (Tents · 3, Hiking Boots · 3, Winter Apparel · 4...), a price range and a rating threshold — ordinary e-commerce facets, but only honest if the catalogue behind them is real. 25 products across 8 categories and 7 maker brands means picking "Under $100" or "4.5 & up" actually changes what\'s on screen instead of quietly returning the same three items.'
             },
             {
-                title: 'Unified Design System',
-                reason: 'I built a scalable component library using atomic design principles. This ensured absolute visual consistency across 40+ screens and accelerated future feature rollout capabilities.'
+                image: './trekmate-v2/tm-wishlist.jpg',
+                title: 'Saved gear that persists, with a reason for each item',
+                description: 'Wishlisting a product anywhere in the catalogue lands it here with its badge intact — Editor\'s Pick, Bestseller — so a returning shopper sees not just what they saved but why it stood out the first time. The heart icon in the header badge count and this page always agree, because they read from the same state.'
+            },
+            {
+                image: './trekmate-v2/tm-cart.jpg',
+                title: 'An empty cart that still sounds like the brand',
+                description: '"Your pack is empty" instead of the generic "Your cart is empty" is a small line, but it\'s the kind of detail that either holds the positioning together or quietly breaks it. Every state in the app, including the ones nobody deliberately designs, got the same pass.'
+            },
+            {
+                image: './trekmate-v2/tm-profile.jpg',
+                title: 'An account section built for a returning shopper',
+                description: 'Orders, addresses, payment methods and notification preferences, each in its own tab, with account details that are genuinely editable rather than static labels. Most student e-commerce projects stop at the product page; treating the account section as a real surface is what makes the site feel like a store rather than a landing page with a cart icon.'
             }
         ],
         challenges: [
             {
-                title: 'Balancing Information Density',
-                solution: 'Outdoor gear requires extensive technical specs. I solved this by utilizing a modular tab system on product pages, keeping the primary view clean while making technical data easily accessible without navigating away.'
+                title: 'Making "field-tested" show up in more than the headline',
+                solution: 'It\'s easy to put a trust claim in a hero and never touch it again. I pushed it into the product data itself — badges like Bestseller, New and Editor\'s Pick are assigned per product rather than decorative, ratings vary genuinely across the catalogue instead of clustering near 4.8, and the copy throughout (category descriptions, empty states, footer) keeps returning to weight, durability and pack volume instead of drifting into generic retail language.'
             },
             {
-                title: 'Complex Filtering Architecture',
-                solution: 'Users needed to filter by highly specific metrics (e.g., sleeping bag temperature ratings). I implemented a dynamic, collapsible filter drawer that updates product counts in real-time, preventing "zero results" dead-ends.'
+                title: 'Twenty-five products is either a catalogue or a demo, depending on the details',
+                solution: 'A product grid with round numbers and repeated prices reads as placeholder data even at a glance. I varied pricing precision ($389 vs $449 crossed out, $78, $525), spread ratings across a real range instead of a narrow high band, and split inventory unevenly across categories (three tents, four winter apparel pieces) rather than a suspiciously even count — the kind of irregularity that makes a dataset read as real rather than generated.'
             }
         ],
         outcomes: [
-            "Validated with 45 real outdoor enthusiasts via Maze: achieved a 94% task completion rate on the primary purchase flow.",
-            "My checkout redesign cut completion time by 35% compared to the benchmarked competitor app.",
-            "My contextual discovery system ('Shop by Terrain', 'Shop by Weather') reduced search-to-cart time by 40% in prototype testing.",
-            "The 40+ screen design system I built became the single source of truth for the product's MVP development phase."
+            "Every core surface — home, browse with working filters, wishlist, cart, profile with account sub-sections — is live and clickable at the link above, not a static frame.",
+            "The catalogue (25 products, 8 categories, 7 maker brands) is large and varied enough that category, price and rating filters produce genuinely different results rather than reordering the same handful of items.",
+            "Wishlist, cart and account state persist across navigation, so the site behaves like something a shopper could return to rather than a single scripted path.",
+            "The positioning — independent makers, field-tested, scored on what matters — shows up consistently from the hero copy down to empty-state microcopy, not just on the homepage."
         ],
-        reflections: "This project sharpened my ability to translate complex user research into tangible product decisions. The biggest lesson: contextual discovery massively outperforms traditional search when users don't know exactly what they need. Next iteration would integrate community gear loadouts to add social proof directly into the discovery flow.",
-        
-        heroImage: './trekmate-banner-hero.png',
-        personas: [
-            {
-                name: 'Rohan S.',
-                demographics: '28 · Software Engineer · Bangalore, India',
-                archetype: 'WEEKEND WARRIOR',
-                tags: ['Weekend warrior', 'Tech-savvy', 'Budget-conscious'],
-                quote: "I spend more time comparing tent specs on Reddit threads than actually planning my route.",
-                painPoints: [
-                    'Overwhelmed by conflicting reviews spread across 4–5 different sites',
-                    'Cannot verify if mid-range gear actually performs in heavy rain',
-                    'No way to check item compatibility (e.g. sleeping bag + tent system)'
-                ],
-                goals: [
-                    'Find reliable gear under budget without hours of prior research',
-                    'Trust verified technical specs sourced from real trekkers'
-                ],
-                metrics: [
-                    { label: 'trips / year', value: '4–6x' },
-                    { label: 'research per purchase', value: '3–5 hrs' },
-                    { label: 'cart abandonment', value: 'High' }
-                ]
-            },
-            {
-                name: 'Maya K.',
-                demographics: '35 · Physiotherapist · Vancouver, Canada',
-                archetype: 'EXPERIENCED HIKER',
-                tags: ['Experienced hiker', 'Safety-first', 'Sustainability-minded'],
-                quote: "I'll pay premium if I know exactly why it's worth it — but no one ever tells me that.",
-                painPoints: [
-                    'Marketing copy replaces actual technical data',
-                    'Hard to filter for sustainable or ethically-made options',
-                    "Buyer's remorse after trusting vague 'all-season' claims"
-                ],
-                goals: [
-                    'Access deep spec sheets and real-world condition performance data',
-                    'Discover brands aligned with her environmental values'
-                ],
-                metrics: [
-                    { label: 'trips / year', value: '10–15x' },
-                    { label: 'avg. item spend', value: '$400+' },
-                    { label: 'platform loyalty', value: 'Low' }
-                ]
-            },
-            {
-                name: 'Daniel P.',
-                demographics: '42 · High School Teacher · Munich, Germany',
-                archetype: 'CASUAL FAMILY CAMPER',
-                tags: ['Casual camper', 'Family trips', 'First-time buyer'],
-                quote: "I just want someone to tell me what to buy for a 3-day trip with two kids — I don't care about ultralight everything.",
-                painPoints: [
-                    'Jargon-heavy product descriptions exclude non-expert buyers',
-                    "No curated 'starter kit' exists for casual, family-oriented use cases",
-                    'Fear of buying the wrong gear and ruining a family trip'
-                ],
-                goals: [
-                    "Get guided, scenario-based recommendations ('family weekend in forest')",
-                    'Understand gear in plain language with clear return policy'
-                ],
-                metrics: [
-                    { label: 'trips / year', value: '2–3x' },
-                    { label: 'total budget', value: '€600' },
-                    { label: 'decision anxiety', value: 'High' }
-                ]
-            },
-            {
-                name: 'Ava L.',
-                demographics: '24 · Outdoors Content Creator · Sydney, Australia',
-                archetype: 'GEAR INFLUENCER',
-                tags: ['Gear influencer', 'Aesthetics-driven', 'Community-focused'],
-                quote: "My audience trusts me, so I need to trust what I recommend. Right now I test gear myself because there's no platform I'd stake my reputation on.",
-                painPoints: [
-                    'No platform aggregates community reviews with real trail condition data',
-                    'Sponsored content erodes trust — needs unbiased, credible curation',
-                    'Generic storefronts lack shareable, linkable product stories'
-                ],
-                goals: [
-                    "Build a trusted 'gear list' she can share publicly with her community",
-                    'Discover new product releases before they go mainstream'
-                ],
-                metrics: [
-                    { label: 'gear purchases', value: 'Monthly' },
-                    { label: 'social followers', value: '82K' },
-                    { label: 'brand influence', value: 'Very high' }
-                ]
-            },
-            {
-                name: 'James T.',
-                demographics: '51 · Retired Military Officer · Colorado, USA',
-                archetype: 'EXPERT SURVIVALIST',
-                tags: ['Expert survivalist', 'Performance-obsessed', 'Brand-skeptical'],
-                quote: "I've seen cheap gear fail in the field. I need failure modes, not star ratings.",
-                painPoints: [
-                    "Consumer-grade reviews don't reflect extreme-condition performance",
-                    'No way to compare edge-case specs (tensile strength, temperature floor)',
-                    'Over-marketed products crowd out genuinely superior gear'
-                ],
-                goals: [
-                    'Access military-grade or expedition-tested equipment with raw specs',
-                    'Filter by verified expert reviews from guides and mountaineers'
-                ],
-                metrics: [
-                    { label: 'trips / year', value: '20+' },
-                    { label: 'avg. spend', value: '$1,500+' },
-                    { label: 'impulse buys', value: 'Zero' }
-                ]
-            }
-        ],
-        journeys: [
-            {
-                personaName: 'Daniel P.',
-                archetype: 'Casual Family Camper',
-                scenario: 'Daniel wants to take his family on their first 2-night forest camping trip. He has no existing gear and a budget of €600 for the whole family.',
-                phases: ['Trigger', 'Discovery', 'Research', 'Decision', 'Purchase', 'Post-Purchase'],
-                rows: {
-                    actions: [
-                        'Kids ask about camping after watching a nature documentary',
-                        "Searches 'beginner camping gear family of 4'; browses REI & decathlon",
-                        'Reads buying guides; gets confused by conflicting weight & price tiers',
-                        'Calls his outdoorsy brother-in-law; gets a basic list',
-                        'Buys a bundle kit from a sporting goods store in person',
-                        'Trip goes well; wishes he had packed a ground mat; forgets to review anything'
-                    ],
-                    thoughts: [
-                        '"This could be a great family memory if I can figure out the gear."',
-                        '"Do I really need a 4-season tent for one weekend trip? This feels like overkill."',
-                        '"\'Ultralight\' this, \'three-pole system\' that — I have no idea what half this means."',
-                        '"I give up researching. I\'ll just ask Klaus — he\'s done this before."',
-                        '"The guy in the store was helpful but I\'m not sure I got the best value."',
-                        '"Good trip but I feel like I\'m missing something. Maybe a checklist would help."'
-                    ],
-                    emotions: ['Excited', 'Curious', 'Overwhelmed', 'Frustrated', 'Neutral', 'Hopeful'],
-                    painPoints: [
-                        'Inspiration exists but no guided starting point for beginners',
-                        "No scenario-based filtering ('family, 2 nights, summer forest')",
-                        'Jargon-heavy content excludes non-expert shoppers',
-                        'Falls out of the digital funnel — converts offline via personal advice',
-                        'In-store conversion means lost data and no digital relationship',
-                        'No follow-up, no checklist, no re-engagement hook'
-                    ],
-                    opportunities: [
-                        "'Plan my trip' wizard as a guided onboarding entry point",
-                        'Scenario filters: group size, experience level, terrain, duration',
-                        'Plain-language gear explainers with parent-friendly framing',
-                        'Expert chat or in-app assistant to replace the phone call',
-                        'Starter kit bundles with transparent value comparison',
-                        "Post-trip checklist + 'What to add next time' nudge email"
-                    ]
-                }
-            },
-            {
-                personaName: 'Rohan S.',
-                archetype: 'Weekend Warrior',
-                scenario: "Rohan's weekend trek is 3 weeks away. His current tent leaked badly on the last trip. He needs a reliable upgrade under ₹8,000 — fast.",
-                phases: ['Trigger', 'Discovery', 'Research', 'Decision', 'Purchase', 'Post-Purchase'],
-                rows: {
-                    actions: [
-                        'Remembers wet sleeping bag; decides to buy a new tent',
-                        "Googles 'best budget trekking tent India'; lands on Amazon & Reddit threads",
-                        'Opens 6 tabs; cross-references specs & user comments for 2 hrs',
-                        'Shortlists 2 tents; asks in a WhatsApp group for opinions',
-                        'Buys on Amazon after a friend vouches for one option',
-                        'Sets up tent at home; shares quick review in the group chat'
-                    ],
-                    thoughts: [
-                        '"My tent totally failed me last monsoon. Never again."',
-                        '"There are thousands of results. Which of these are actually for India\'s conditions?"',
-                        '"This one says 3000mm HH but the comments say it leaks. Who do I trust?"',
-                        '"I\'ll just ask someone who\'s actually used it. Specs mean nothing if people hate it."',
-                        '"Fine — if Arjun says it\'s good I\'ll go with it."',
-                        '"Decent. I wish I\'d found this info before spending 2 hours Googling."'
-                    ],
-                    emotions: ['Frustrated', 'Overwhelmed', 'Confused', 'Anxious', 'Relieved', 'Satisfied'],
-                    painPoints: [
-                        'No clear event triggers the search — pure frustration',
-                        'Generic results, no India-specific trail condition context',
-                        'Conflicting specs & reviews across platforms with no resolution',
-                        'Has to rely on personal network because no trusted source exists',
-                        'Decision made on social proof, not verified data',
-                        'Post-purchase validation loop happens outside the platform'
-                    ],
-                    opportunities: [
-                        "Contextual entry — 'Planning a monsoon trek?' prompts",
-                        'Curated collections filtered by region & season',
-                        "Community-verified spec badges (e.g. 'Monsoon tested')",
-                        'In-app Q&A; with certified gear experts',
-                        'Compatibility checker & peer review aggregation',
-                        'Prompt post-trip review with structured trail conditions'
-                    ]
-                }
-            },
-            {
-                personaName: 'Ava L.',
-                archetype: 'Gear Influencer',
-                scenario: 'Ava is preparing a "Best Lightweight Layering for Alpine Summer" post. She needs to test, verify, and confidently recommend 3–4 products to 82K followers.',
-                phases: ['Trigger', 'Discovery', 'Research', 'Decision', 'Purchase', 'Post-Purchase'],
-                rows: {
-                    actions: [
-                        'Follower DM asks for alpine layering recs; sees engagement opportunity',
-                        'Browses brand sites, gear blogs & Trailforks; checks for affiliate options',
-                        'Downloads spec sheets, emails 2 brands for media samples, reads 1-star reviews',
-                        'Narrows to 3 items she can personally test before the post goes live',
-                        'Buys 1; receives 2 as press samples; stress-tests all three on a day hike',
-                        'Posts reel with honest breakdown; links bio to her curated gear page'
-                    ],
-                    thoughts: [
-                        '"My audience trusts me. A bad rec damages that trust permanently."',
-                        '"Most affiliate schemes push me toward bestsellers, not the best product."',
-                        '"The brand says \'exceptional moisture wicking\'. I need to know the fabric GSM and actual sweat tests."',
-                        '"I\'ll only recommend things I\'ve personally worn above 2,500m."',
-                        '"Stress-testing takes a full day. I wish there were verified trail reviews I could trust."',
-                        '"The reel performed well but the link-in-bio flow is clunky. I need a shareable gear list."'
-                    ],
-                    emotions: ['Excited', 'Skeptical', 'Frustrated', 'Curious', 'Hopeful', 'Delighted'],
-                    painPoints: [
-                        'No platform surfaces gear discovery in a creator-first context',
-                        'Affiliate incentives misalign with authentic recommendation',
-                        'Raw technical specs are buried behind marketing copy',
-                        'No way to filter by verified expert/expedition reviews',
-                        'Validation requires personal testing — no trusted third-party data',
-                        'No native shareable gear list or creator storefront feature'
-                    ],
-                    opportunities: [
-                        'Creator profile with curated public gear lists',
-                        'Bias-transparent curation: distinguish editorial vs. sponsored picks',
-                        'Raw spec data layer toggle alongside product marketing copy',
-                        'Verified expedition reviews from guides and certified professionals',
-                        'Aggregated community trail-condition performance data per product',
-                        "Shareable 'Ava's Alpine Kit' link page with affiliate transparency"
-                    ]
-                }
-            }
-        ],
-        designRationale: [
-            {
-                image: './trekmate-new/tm-onboarding.png',
-                title: 'Onboarding: Emotional Connection First',
-                rationale: "Before asking for a single piece of user data, I wanted to establish trust and a premium feel. The full-bleed landscape creates an immediate emotional connection. The prominent 'Skip' button respects the user's time—a critical tradeoff to reduce early bounce rates."
-            },
-            {
-                image: './trekmate-new/tm-home.png',
-                title: 'Home: Contextual Discovery',
-                rationale: "Instead of forcing users to search raw categories, the home screen curates gear contextually (e.g., 'Winter Capsule '26'). This guides users based on their immediate environmental needs, drastically reducing cognitive load and choice paralysis."
-            },
-            {
-                image: './trekmate-new/tm-browse.png',
-                title: 'Browse: Visual Evaluation Hierarchy',
-                rationale: "Horizontal, scrollable filter pills keep the vertical space entirely dedicated to large product cards. Because expensive gear requires intense visual evaluation, I maximized the image real estate while keeping critical data (price, rating) immediately scannable."
-            },
-            {
-                image: './trekmate-new/tm-product.png',
-                title: 'Product Detail: Conversion Focus',
-                rationale: "The 'Add to cart' button is sticky at the bottom, ensuring the primary conversion action is always accessible regardless of scroll depth. The visual hierarchy prioritizes the price and key technical specs immediately below the product title."
-            },
-            {
-                image: './trekmate-new/tm-profile.png',
-                title: 'Profile: Building an Ecosystem',
-                rationale: "To turn a purely transactional e-commerce app into a lifestyle habit, I introduced the 'Field Journal'. This feature allows users to log their trips and gear performance, building a retention loop that keeps them coming back long after a purchase."
-            },
-            {
-                image: './trekmate-new/tm-cart.png',
-                title: 'Cart: Transparent Cost Breakdown',
-                rationale: "To build immediate trust before checkout, the cart explicitly breaks down the subtotal, shipping, and estimated tax. Large, frictionless quantity toggles and clear item removal actions ensure users maintain full control without navigating away."
-            },
-            {
-                image: './trekmate-new/tm-shipping.png',
-                title: 'Checkout: Contextual Delivery',
-                rationale: "Outdoor enthusiasts often need gear delivered directly to a basecamp. By integrating a 'Ship to a trailhead' option alongside standard delivery methods, the checkout flow dynamically adapts to the unique logistical realities of an adventurer."
-            },
-            {
-                image: './trekmate-new/tm-order.png',
-                title: 'Order Confirmation: Resolving Anxiety',
-                rationale: "Post-purchase anxiety is mitigated through a clean, definitive success state. Highlighting the exact delivery window, the tracking email destination, and providing a singular call-to-action back to the home screen creates a reassuring cognitive loop."
-            },
-            {
-                image: './trekmate-new/tm-saved.png',
-                title: 'Saved: High-Consideration Holding',
-                rationale: "The Saved tab acts as a strategic holding area for high-consideration items. Visual indicators like the 'Editor's Pick' badge and explicit community rating scores help users continuously validate their choices over time before committing to a final purchase."
-            }
-        ]
+        reflections: "The lesson from this one wasn't visual — it was that a point of view has to survive contact with the boring screens. It's easy to nail a hero and let the cart, the empty states and the account section drift back into generic e-commerce defaults. Holding the same positioning together through the parts nobody screenshots for a portfolio is most of what separates a redesign that reads as considered from one that reads as a skin. If I kept going, the next layer would be a real product detail page with the same field-tested framing — spec sheets, trail-condition notes — since right now that promise is strongest on the browse grid and thins out past it.",
+
+        heroImage: './trekmate-v2/tm-hero-bg.jpg'
     },
     project2: {
         title: 'Work Hive',
@@ -602,5 +338,80 @@ export const projectsData = {
                 description: 'Creating a poll needed to be as easy as sending a tweet. I designed a progressive input flow that expands based on the poll type (text vs image), ensuring the user is never confronted with an overwhelming form.'
             }
         ]
-    }
+    },
+    project6: {
+        title: 'StyleBook AI',
+        tagline: 'A written brand description in, a verified, exportable design system out — built and shipped with a team of four',
+        category: 'AI Product · Design Systems · Team Lead',
+        timeline: '9 weeks build, 3 weeks research — Summer 2026',
+        role: 'Project lead — idea, architecture, and nearly all implementation',
+        liveLink: 'https://stylebook.site',
+        repoLink: 'https://github.com/Kabir192003/StyleBookAI',
+        overview: [
+            "StyleBook AI takes a plain-language brand description — \"a calm, premium skincare brand aimed at Gen Z\" — and returns a complete design system for it: a colour palette with each colour assigned a role, a heading and body font pairing, a type scale, spacing and radius values, and styling for ten interface components. Every part is editable by hand afterwards, and the finished system exports as production code in nine formats or imports straight into Figma as editable components through a plugin I built and published to the Figma Community.",
+            "It was my idea, proposed to a team of four at Trinity College Dublin, and I acted as project manager and lead engineer across it: I chose the stack, wrote the architecture, and carried out the implementation across the AI pipeline, the token system, the live editor, the export formats, authentication, the database layer and the Figma plugin. Of 212 commits in the repository, 207 are mine — a number that says a lot about where the building happened and very little on its own about where the thinking happened, since two teammates' research and testing shaped several of the decisions I'm proudest of.",
+            "The idea came from a genuine gap: good tools exist for picking colours, good tools exist for browsing fonts, and almost nothing connects the two and carries the result through to something a developer can actually build with. Coolors gives you five colours. Google Fonts shows you a typeface on a white page. Neither can tell you whether that colour and that font actually work together, and neither produces anything portable. The bet underneath StyleBook is that design decisions are only correct in relation to each other — so the system, not the individual swatch, had to be the unit of work."
+        ],
+        impactMetrics: [
+            { label: 'Colours, fonts & themes in the library', value: '1,922 / 1,933 / 90' },
+            { label: 'Export formats, plus Figma & PDF', value: '9' },
+            { label: 'Commits, mine of 212', value: '207' }
+        ],
+        tools: ['Next.js 14 · TypeScript · Tailwind', 'Google Gemini for generation', 'Supabase · Zustand · Zod', 'Figma Plugin API'],
+        problem: "Every comparable tool covers one piece of the problem and stops. Palette tools like Coolors or Realtime Colors give you five colours with no way to check them against real type. Typography tools like Google Fonts or Fontjoy show a face on a blank page, disconnected from any colour decision. Design-token infrastructure like Tokens Studio assumes a design system — and a design team — already exists. AI interface generators like v0 or Uizard produce a screen, not a system, and hand back a picture or a slab of code rather than a token layer a product can grow on. Nothing spans the full path from a written description to something exportable, and the market research the team ran confirmed it: the honest positioning was the connection between those stages, not any single stage on its own.",
+        solution: "I built the product around a hard rule: anything the AI produces has to be checked for real accessibility before the user ever sees it, not handed over on trust. Every colour pair the system generates is measured in code with the same WCAG contrast implementation the interface renders — not asserted by the model — repaired by adjusting lightness while preserving hue if it fails, and reported as a deviation rather than silently swapped if it genuinely can't be saved. The library itself holds nearly 2,000 colours and over 1,900 fonts; a shortlisting step tokenises the brief and samples a capped, rotating candidate list so the model always has real options to choose from rather than inventing a font that has no file to load. The generated result opens live in Studio, a real editing surface built against a realistic rendered page rather than a sheet of isolated components, and leaves through nine code export formats or a Figma plugin that reads actual rendered DOM geometry rather than reconstructing layout from token values — the difference between a system that's portable in theory and one that's portable in practice.",
+        process: [
+            { step: '01', title: 'Split scope by what could ship first', desc: 'Debated a narrower "nice colour tool" against the fuller pipeline. Chose to build the browsable library first, since it works with zero AI, and treat generation as a layer on top — so there was always something real to show even mid-build.' },
+            { step: '02', title: 'Get the token architecture right before building on it', desc: 'A full quiet week (week 5) went into the layering model alone: raw palette values feeding derived semantic roles, feeding an alias layer components actually read from, with per-component overrides on top. Getting that ordering wrong would have been expensive to unwind later.' },
+            { step: '03', title: 'Make the AI\'s claims checkable, not trustable', desc: 'After the generator produced body text at 1.02:1 contrast — and separately claimed a button passed 4.5:1 when it measurably didn\'t — every colour pair the model proposes gets measured and repaired in code, and the written explanation is regenerated from the real numbers afterward.' },
+            { step: '04', title: 'Rebuild the landing page around the working product', desc: 'The first version was a scroll-driven narrative that buried the actual generator below a story. The shipped version puts a live, working prompt box directly in the hero, with the scroll story kept underneath as optional depth.' },
+            { step: '05', title: 'Match reality instead of modelling it', desc: 'The first Figma export reconstructed layout from token values on the server and was subtly wrong throughout. The version that shipped reads real rendered geometry from the browser — a specific, transferable lesson about measuring over modelling.' },
+            { step: '06', title: 'Audit, then ship the plugin', desc: 'A formal accessibility pass found and fixed real failures (muted text at 1.8:1 in ~200 places, an unreachable mobile nav below 640px) before the Figma plugin went through Figma\'s own review — a security disclosure and a reviewer-requested screen recording, not a rubber stamp.' }
+        ],
+        designDecisions: [
+            {
+                image: './stylebook/sb-hero.png',
+                title: 'A hero built like a printer\'s proof, with a number that has to be true',
+                description: 'The landing page reads like a press sheet — registration marks, a stepped headline, a live prompt box wired to the real generator. The 13.0:1 contrast figure sitting in the hero isn\'t a design detail, it\'s computed live from whatever palette is currently on screen. It would have been easier to hardcode it and nobody would have noticed, but a tool whose entire argument is that it measures things rather than asserts them can\'t have a fake measurement in its own shop window.'
+            },
+            {
+                image: './stylebook/sb-verified.png',
+                title: 'Verified, not claimed — the mechanic the whole product is built on',
+                description: 'Every generated system ships with a panel that shows its own work: which tokens were adjusted, by how much, and why — "colors.primary asked for #d0c9c3, shipped #af815a... saturation was 12%, too washed out to read as an action colour." That panel exists because the alternative — a model that writes confidently about numbers it never calculated — is precisely the failure mode that makes AI design tools untrustworthy, and it was a real bug I hit in testing, not a hypothetical.'
+            },
+            {
+                image: './stylebook/sb-studio.png',
+                title: 'Studio: a live product page, not a sheet of isolated swatches',
+                description: 'Editing happens against a realistic rendered interface — here, a member dashboard for the generated "Aether Skincare" brand — because a colour or a component only reveals whether it actually works once it sits next to the others in a real layout. Getting every one of ten components, across four interaction states, in light and dark, to genuinely reflect an edited token rather than quietly fall back to a stale one took longer than getting the first working version on screen — it\'s the part of the project with the most surface area for something to be subtly wrong.'
+            },
+            {
+                image: './stylebook/sb-colors.png',
+                title: 'The colour wall: a library built to be browsed, not just generated from',
+                description: 'Nearly 2,000 shades, hung salon-style with names, hex values and mood tags, searchable and filterable by family. This exists because the AI generator was always meant to be a layer on top of something that works without it — building the browsable library first meant there was real, usable product even in weeks when the generation pipeline was still broken.'
+            }
+        ],
+        challenges: [
+            {
+                title: 'Making AI output trustworthy',
+                solution: 'The hardest problem in the project, and the one I\'m most glad was solved properly. During testing the generator produced body text at a contrast ratio of 1.02:1 — very nearly invisible — and separately wrote reasoning claiming a button met 4.5:1 when it measurably didn\'t. The fix was to stop trusting the model on anything measurable: every colour pair is now measured in code, repaired by adjusting lightness while preserving hue, and the written explanation is regenerated from the real numbers afterward. If a colour genuinely can\'t be saved that way, the system reports it as a deviation instead of silently substituting something the user never chose.'
+            },
+            {
+                title: 'Matching Tokens Studio\'s exact export format',
+                solution: 'Tokens Studio\'s own documentation describes its JSON shape loosely enough that a plausible reading still produces a file that imports without error and simply shows nothing — no stack trace, no error to chase, just a blank result. It took roughly six attempts across three days, working through a reference export already known to import correctly and comparing our output against it property by property until the exact mismatch surfaced.'
+            },
+            {
+                title: 'Fixing the reported bug instead of the convenient one',
+                solution: 'A teammate reported outline buttons disappearing in dark mode. The first fix — raising every border in the app to a 3:1 ratio — technically worked but made every card, table and modal border roughly two and a half times darker in both light and dark mode, an unrequested redesign that also broke a deliberate rule distinguishing control borders from decorative hairlines. The correct fix was narrower: a separate role used only where a border is a control\'s entire boundary. The outline button went from 1.32:1 to 3.04:1 in dark mode; card borders didn\'t move at all. The lesson generalised — the fix that makes the symptom disappear isn\'t always the right one, and the difference is usually only visible if you measure something nobody asked about.'
+            }
+        ],
+        outcomes: [
+            "Shipped a working, publicly deployed application: 1,922 colours, 1,933 fonts and 90 themes across 12 categories, 9 code export formats plus PDF and Figma, 10 editable components with 4 interaction states each, and 28 passing tests across a 32-route TypeScript codebase.",
+            "Published the StyleBook Import plugin to the Figma Community — a review process that included a security disclosure and a reviewer-requested screen recording, not a file upload — and rebuilt the export pipeline to measure real rendered DOM geometry rather than reconstruct layout, fixing most fidelity problems at once.",
+            "Ran a formal accessibility audit that found and fixed real failures (muted text at 1.8:1 in roughly 200 places, a mobile nav completely unreachable below 640px), on top of accessibility that was built into the token layer from the start rather than bolted on.",
+            "Presented at a three-day public showcase, giving the same full technical walkthrough to every visitor regardless of background — the recurring response was that people hadn't seen a tool that went from description to a checked, editable, exportable system before, and several suggested it had genuine commercial potential."
+        ],
+        reflections: "The habit I'll carry forward furthest is verifying instead of asserting — it started as a narrow decision not to trust a language model's arithmetic and became a general one: it's why the accessibility audit measured real rendered values instead of trusting a colour's name, why the privacy policy was written only after reading the validation code it describes, and why every factual claim in the individual report behind this project was checked against the codebase before being presented. The honest gaps are worth naming too: there's no rate limiting on the AI endpoint yet, no automated accessibility testing in the build pipeline, and no testing with real assistive-technology users — the standard that actually matters and the one I can't claim. Structurally, I'd pair on the first two or three features next time rather than dividing the build into clean vertical slices from day one; the split I chose meant I was the only person who understood how the pieces connected, which shipped the product in nine weeks but wouldn't scale to a longer one.",
+
+        heroImage: './stylebook/sb-hero-bg.jpg'
+    },
 };

@@ -48,7 +48,8 @@ const ProjectImage = ({ src, alt }) => {
 const Projects = () => {
     // Mock data for projects
     const projects = [
-        { id: 1, title: 'TrekMate', category: 'Mobile App', image: './tm.jpg' },
+        { id: 6, title: 'StyleBook AI', category: 'AI Product · Design Systems', image: './stylebook/sb-hero.png' },
+        { id: 1, title: 'Trek Mate', category: 'E-commerce', image: './trekmate-v2/tm-landing.jpg' },
         { id: 2, title: 'Work Hive', category: 'Web Platform', image: './workhive/hero.jpg' },
         { id: 3, title: 'The Hunger Games: UX Edition', category: 'UX Case Study', image: './hgx2.jpg' },
         { id: 4, title: 'Lens & Light', category: 'Photography Collection', image: './hosue.jpg' },

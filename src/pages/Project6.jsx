@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { projectsData } from '../data/projectsData';
 
-const Project2 = () => {
-    const project = projectsData.project2;
+const Project6 = () => {
+    const project = projectsData.project6;
 
     return (
         <motion.div
@@ -66,7 +66,7 @@ const Project2 = () => {
                     <div>
                         <span style={styles.metaLabel}>Live product</span>
                         <p style={styles.metaValue}>
-                            <a href={project.liveLink} target="_blank" rel="noopener noreferrer" style={styles.inlineLink}>kabir192003.github.io/WorkHive ↗</a>
+                            <a href={project.liveLink} target="_blank" rel="noopener noreferrer" style={styles.inlineLink}>stylebook.site ↗</a>
                         </p>
                     </div>
                 </div>
@@ -98,7 +98,7 @@ const Project2 = () => {
 
                     {/* Problem */}
                     <section style={styles.textSection}>
-                        <h2 style={styles.sectionHeader} className="project-section-header">What I inherited</h2>
+                        <h2 style={styles.sectionHeader} className="project-section-header">The gap in the market</h2>
                         <p style={styles.paragraph} className="project-paragraph">{project.problem}</p>
                     </section>
 
@@ -143,7 +143,7 @@ const Project2 = () => {
 
                     {/* Challenges */}
                     <section style={styles.textSection}>
-                        <h2 style={styles.sectionHeader} className="project-section-header">Two things worth calling out</h2>
+                        <h2 style={styles.sectionHeader} className="project-section-header">Three things worth calling out</h2>
                         <div style={styles.painPointList}>
                             {project.challenges.map((challenge, idx) => (
                                 <article key={idx} style={styles.painPointItem}>
@@ -451,4 +451,4 @@ const styles = {
     },
 };
 
-export default Project2;
+export default Project6;

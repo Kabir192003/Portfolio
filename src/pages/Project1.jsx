@@ -1,12 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { projectsData } from '../data/projectsData';
 
 const Project1 = () => {
-    const { scrollYProgress } = useScroll();
-    const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
-
     const project = projectsData.project1;
 
     return (
@@ -15,24 +12,37 @@ const Project1 = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.4 }}
         >
-            {/* Parallax Hero */}
+            {/* Hero */}
             <div style={styles.heroContainer} className="project-hero">
-                <motion.div style={{ ...styles.heroBg, y }}>
-                    <img src={project.heroImage} alt={`${project.title} Hero`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <div style={styles.heroBg}>
+                    <img src={project.heroImage} alt={`${project.title} — Home screen`} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
                     <div style={styles.heroGradientOverlay} />
-                </motion.div>
+                </div>
 
                 <div className="container project-hero-content" style={styles.heroContent}>
                     <Link to="/projects" style={styles.backLink}>← Back to Projects</Link>
                     <span style={styles.category}>{project.category}</span>
                     <h1 style={styles.title}>{project.title}</h1>
+                    {project.tagline && <p style={styles.tagline}>{project.tagline}</p>}
+                    <div style={styles.heroCtaRow}>
+                        {project.liveLink && (
+                            <a href={project.liveLink} target="_blank" rel="noopener noreferrer" style={styles.ctaPrimary}>
+                                View live product ↗
+                            </a>
+                        )}
+                        {project.repoLink && (
+                            <a href={project.repoLink} target="_blank" rel="noopener noreferrer" style={styles.ctaSecondary}>
+                                View source
+                            </a>
+                        )}
+                    </div>
                 </div>
             </div>
 
             <div className="container section">
-                
+
                 {/* Impact Banner */}
                 <div style={styles.impactBanner}>
                     {project.impactMetrics.map((metric, idx) => (
@@ -54,14 +64,16 @@ const Project1 = () => {
                         <p style={styles.metaValue}>{project.timeline}</p>
                     </div>
                     <div>
-                        <span style={styles.metaLabel}>Deliverables</span>
-                        <p style={styles.metaValue}>User Research, Wireframes, UI Design, Design System, Prototyping</p>
+                        <span style={styles.metaLabel}>Live product</span>
+                        <p style={styles.metaValue}>
+                            <a href={project.liveLink} target="_blank" rel="noopener noreferrer" style={styles.inlineLink}>kabir192003.github.io/Trek-Mate ↗</a>
+                        </p>
                     </div>
                 </div>
 
                 {/* Tools & Methods */}
                 <div style={styles.toolsContainer}>
-                    <span style={styles.metaLabel}>Tools & Methods</span>
+                    <span style={styles.metaLabel}>Approach</span>
                     <div style={styles.toolsRow}>
                         {project.tools.map((tool) => (
                             <span key={tool} style={styles.toolPill}>{tool}</span>
@@ -74,33 +86,31 @@ const Project1 = () => {
 
                     {/* Overview */}
                     <section style={styles.textSection}>
-                        <h2 style={styles.sectionHeader} className="project-section-header">Overview & Motivation</h2>
+                        <h2 style={styles.sectionHeader} className="project-section-header">What this is</h2>
                         <div style={styles.featureCard}>
                             {project.overview.map((para, idx) => (
-                                <p key={idx} style={{...styles.paragraph, marginBottom: idx !== project.overview.length - 1 ? '1.5rem' : 0}} className="project-paragraph">
+                                <p key={idx} style={{ ...styles.paragraph, marginBottom: idx !== project.overview.length - 1 ? '1.5rem' : 0 }} className="project-paragraph">
                                     {para}
                                 </p>
                             ))}
                         </div>
                     </section>
 
-                    {/* Problem & Solution */}
+                    {/* Problem */}
                     <section style={styles.textSection}>
-                        <div style={styles.splitLayout} className="project-split-layout">
-                            <div style={styles.splitContentCard}>
-                                <h2 style={styles.sectionHeader} className="project-section-header">The Problem</h2>
-                                <p style={styles.paragraph} className="project-paragraph">{project.problem}</p>
-                            </div>
-                            <div style={styles.splitContentCard}>
-                                <h2 style={styles.sectionHeader} className="project-section-header">The Solution</h2>
-                                <p style={styles.paragraph} className="project-paragraph">{project.solution}</p>
-                            </div>
-                        </div>
+                        <h2 style={styles.sectionHeader} className="project-section-header">Where it started</h2>
+                        <p style={styles.paragraph} className="project-paragraph">{project.problem}</p>
                     </section>
 
-                    {/* My Process */}
+                    {/* Solution */}
                     <section style={styles.textSection}>
-                        <h2 style={styles.sectionHeader} className="project-section-header">Design Process</h2>
+                        <h2 style={styles.sectionHeader} className="project-section-header">My approach</h2>
+                        <p style={styles.paragraph} className="project-paragraph">{project.solution}</p>
+                    </section>
+
+                    {/* Process */}
+                    <section style={styles.textSection}>
+                        <h2 style={styles.sectionHeader} className="project-section-header">Process</h2>
                         <div style={styles.processGrid}>
                             {project.process.map((step, idx) => (
                                 <div key={idx} style={styles.processCard}>
@@ -112,215 +122,53 @@ const Project1 = () => {
                         </div>
                     </section>
 
-                    {/* User Personas */}
+                    {/* Key Decisions, each with a real screenshot */}
                     <section style={styles.textSection}>
-                        <h2 style={styles.sectionHeader} className="project-section-header">User Personas</h2>
-                        <p style={styles.paragraph}>By synthesizing data from our interviews, I developed distinct personas to ensure our design decisions remained deeply empathetic to our core demographics - from the casual weekend camper to the hardcore alpinist.</p>
-                        
-                        <div style={styles.personaGrid}>
-                            {project.personas.map((persona, idx) => {
-                                const initials = persona.name.split(' ').map(n => n[0]).join('');
-                                // Premium glowing colors based on archetype
-                                let glowColor = 'rgba(185, 140, 232, 0.4)'; // Default purple
-                                let badgeColor = 'rgba(185, 140, 232, 0.15)';
-                                let badgeText = '#d4b3ff';
-                                
-                                if (persona.archetype.includes('CASUAL')) {
-                                    glowColor = 'rgba(74, 222, 128, 0.2)'; // Green
-                                    badgeColor = 'rgba(74, 222, 128, 0.1)';
-                                    badgeText = '#86efac';
-                                } else if (persona.archetype.includes('WEEKEND')) {
-                                    glowColor = 'rgba(96, 165, 250, 0.2)'; // Blue
-                                    badgeColor = 'rgba(96, 165, 250, 0.1)';
-                                    badgeText = '#93c5fd';
-                                } else if (persona.archetype.includes('GEAR')) {
-                                    glowColor = 'rgba(244, 114, 182, 0.2)'; // Pink
-                                    badgeColor = 'rgba(244, 114, 182, 0.1)';
-                                    badgeText = '#f9a8d4';
-                                }
-
-                                return (
-                                    <div key={idx} style={styles.personaCard}>
-                                        <div style={{...styles.personaCardGlow, background: `radial-gradient(circle, ${glowColor} 0%, transparent 70%)`}}></div>
-                                        <div style={styles.personaContentWrapper}>
-                                            <div style={styles.personaHeader}>
-                                                <div style={styles.personaAvatar}>{initials}</div>
-                                                <div>
-                                                    <h3 style={styles.personaName}>{persona.name}</h3>
-                                                    <p style={styles.personaDemographics}>{persona.demographics}</p>
-                                                </div>
-                                            </div>
-
-                                            <div style={{...styles.personaArchetypeBadge, backgroundColor: badgeColor, color: badgeText}}>
-                                                {persona.archetype}
-                                            </div>
-                                            
-                                            <div style={styles.personaTagsRow}>
-                                                {persona.tags.map(tag => (
-                                                    <span key={tag} style={styles.personaTag}>{tag}</span>
-                                                ))}
-                                            </div>
-
-                                            <blockquote style={styles.personaQuote}>
-                                                "{persona.quote}"
-                                            </blockquote>
-
-                                            <div style={styles.personaDetailsGrid}>
-                                                <div style={styles.personaDetailCol}>
-                                                    <h4 style={styles.personaSectionTitle}>PAIN POINTS</h4>
-                                                    <ul style={styles.personaList}>
-                                                        {persona.painPoints.map((pt, i) => (
-                                                            <li key={i} style={styles.personaListItem}>
-                                                                <span style={styles.iconX}>✕</span> 
-                                                                <span>{pt}</span>
-                                                            </li>
-                                                        ))}
-                                                    </ul>
-                                                </div>
-                                                <div style={styles.personaDetailCol}>
-                                                    <h4 style={styles.personaSectionTitle}>GOALS</h4>
-                                                    <ul style={styles.personaList}>
-                                                        {persona.goals.map((gl, i) => (
-                                                            <li key={i} style={styles.personaListItem}>
-                                                                <span style={styles.iconCheck}>✓</span> 
-                                                                <span>{gl}</span>
-                                                            </li>
-                                                        ))}
-                                                    </ul>
-                                                </div>
-                                            </div>
-
-                                            <div style={styles.personaMetricsContainer}>
-                                                {persona.metrics.map((m, i) => (
-                                                    <div key={i} style={styles.personaMetricBlock}>
-                                                        <span style={styles.personaMetricValue}>{m.value}</span>
-                                                        <span style={styles.personaMetricLabel}>{m.label}</span>
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    </div>
-                                );
-                            })}
-                        </div>
-                    </section>
-
-                    {/* User Journey Maps */}
-                    <section style={styles.textSection}>
-                        <h2 style={styles.sectionHeader} className="project-section-header">User Journey Maps</h2>
-                        <p style={styles.paragraph}>By mapping the specific scenarios for our core personas, I identified key friction points and specific opportunities to build trust and reduce cognitive load at every stage of the buying cycle.</p>
-                        
-                        <div style={styles.journeysContainer}>
-                            {project.journeys && project.journeys.map((journey, idx) => {
-                                const initials = journey.personaName.split(' ').map(n => n[0]).join('');
-                                return (
-                                    <div key={idx} style={styles.journeyCard}>
-                                        <div style={styles.journeyHeader}>
-                                            <div style={styles.journeyAvatar}>{initials}</div>
-                                            <div>
-                                                <h3 style={styles.journeyTitle}>{journey.personaName} — {journey.archetype}</h3>
-                                                <p style={styles.journeyScenario}><em>Scenario:</em> {journey.scenario}</p>
-                                            </div>
-                                        </div>
-                                        
-                                        <div style={styles.tableWrapper}>
-                                            <table style={styles.journeyTable}>
-                                                <thead>
-                                                    <tr>
-                                                        <th style={styles.journeyTh}></th>
-                                                        {journey.phases.map(phase => (
-                                                            <th key={phase} style={styles.journeyThPhase}>{phase}</th>
-                                                        ))}
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td style={styles.journeyTdLabel}><span style={{...styles.rowLabelBadge, backgroundColor: '#5c52c6'}}>Actions</span></td>
-                                                        {journey.rows.actions.map((text, i) => <td key={i} style={styles.journeyTd}>{text}</td>)}
-                                                    </tr>
-                                                    <tr>
-                                                        <td style={styles.journeyTdLabel}><span style={{...styles.rowLabelBadge, backgroundColor: '#0e9f6e'}}>Thoughts</span></td>
-                                                        {journey.rows.thoughts.map((text, i) => <td key={i} style={styles.journeyTd}><em>{text}</em></td>)}
-                                                    </tr>
-                                                    <tr>
-                                                        <td style={styles.journeyTdLabel}><span style={{...styles.rowLabelBadge, backgroundColor: '#e25822'}}>Emotion</span></td>
-                                                        {journey.rows.emotions.map((text, i) => <td key={i} style={{...styles.journeyTd, fontWeight: 'bold', color: '#e25822', textAlign: 'center', borderBottom: '3px solid #e25822'}}>{text}</td>)}
-                                                    </tr>
-                                                    <tr>
-                                                        <td style={styles.journeyTdLabel}><span style={{...styles.rowLabelBadge, backgroundColor: '#9b2c2c'}}>Pain Points</span></td>
-                                                        {journey.rows.painPoints.map((text, i) => <td key={i} style={{...styles.journeyTd, color: '#9b2c2c'}}>{text}</td>)}
-                                                    </tr>
-                                                    <tr>
-                                                        <td style={styles.journeyTdLabel}><span style={{...styles.rowLabelBadge, backgroundColor: '#046c4e'}}>Opportunities</span></td>
-                                                        {journey.rows.opportunities.map((text, i) => <td key={i} style={{...styles.journeyTd, color: '#046c4e'}}>{text}</td>)}
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                );
-                            })}
-                        </div>
-                    </section>
-
-                    {/* Strategic Design Decisions */}
-                    <section style={styles.textSection}>
-                        <h2 style={styles.sectionHeader} className="project-section-header">Strategic Design Decisions</h2>
-                        <div style={styles.decisionGrid}>
-                            {project.designDecisions.map((decision, idx) => (
-                                <article key={idx} style={styles.showcaseCard}>
-                                    <h4 style={styles.showcaseTitle}>{decision.title}</h4>
-                                    <p style={styles.detailParagraph}>{decision.reason}</p>
-                                </article>
-                            ))}
-                        </div>
-                    </section>
-
-                    {/* Key Challenges */}
-                    <section style={styles.textSection}>
-                        <h2 style={styles.sectionHeader} className="project-section-header">Challenges & Solutions</h2>
-                        <div style={styles.painPointList}>
-                            {project.challenges.map((challenge, idx) => (
-                                <article key={idx} style={styles.painPointItem}>
-                                    <h3 style={styles.subSectionHeader}>Challenge: {challenge.title}</h3>
-                                    <p style={styles.detailParagraph}><strong>Solution:</strong> {challenge.solution}</p>
-                                </article>
-                            ))}
-                        </div>
-                    </section>
-
-                    {/* Design Rationale & High-Fidelity UI */}
-                    <section style={styles.textSection}>
-                        <h2 style={styles.sectionHeader} className="project-section-header">High-Fidelity UI & Rationale</h2>
-                        <p style={styles.paragraph}>Every pixel was placed with intent. Here is a breakdown of the core screens, highlighting the specific problems they solve, the trade-offs considered, and why these particular UX patterns were chosen.</p>
-                        
+                        <h2 style={styles.sectionHeader} className="project-section-header">Key decisions</h2>
+                        <p style={styles.paragraph}>Every screen below is a screenshot of the live, deployed product — not a mockup.</p>
                         <div style={styles.rationaleGrid}>
-                            {project.designRationale.map((item, idx) => (
-                                <div key={idx} style={styles.rationaleRow}>
-                                    <div style={styles.mobileImagePlaceholder}>
-                                        <img src={item.image} alt={item.title} style={styles.mobileImage} />
+                            {project.designDecisions.map((mockup, idx) => (
+                                <div key={idx} style={{ ...styles.rationaleRow, flexDirection: idx % 2 === 0 ? 'row' : 'row-reverse' }}>
+                                    <div style={styles.rationaleImageHolder} className="project1-wireframe-holder">
+                                        <img src={mockup.image} alt={mockup.title} className="project1-wireframe-image" />
                                     </div>
                                     <div style={styles.rationaleContent}>
-                                        <h3 style={styles.subSectionHeader}>{item.title}</h3>
-                                        <p style={styles.detailParagraph}>{item.rationale}</p>
+                                        <h3 style={styles.subSectionHeader}>{mockup.title}</h3>
+                                        <p style={styles.detailParagraph}>{mockup.description}</p>
                                     </div>
                                 </div>
                             ))}
                         </div>
                     </section>
 
+                    {/* Challenges */}
+                    <section style={styles.textSection}>
+                        <h2 style={styles.sectionHeader} className="project-section-header">Two things worth calling out</h2>
+                        <div style={styles.painPointList}>
+                            {project.challenges.map((challenge, idx) => (
+                                <article key={idx} style={styles.painPointItem}>
+                                    <h3 style={styles.subSectionHeader}>{challenge.title}</h3>
+                                    <p style={styles.detailParagraph}>{challenge.solution}</p>
+                                </article>
+                            ))}
+                        </div>
+                    </section>
+
                     {/* Outcomes & Reflections */}
                     <section style={styles.textSection}>
-                        <h2 style={styles.sectionHeader} className="project-section-header">Outcomes & Next Steps</h2>
+                        <h2 style={styles.sectionHeader} className="project-section-header">Where it landed</h2>
                         <div style={styles.conclusionCard}>
-                            <h3 style={styles.subSectionHeader}>Impact</h3>
                             <ul style={styles.outcomeList}>
                                 {project.outcomes.map((outcome, idx) => (
                                     <li key={idx} style={styles.detailParagraph}>{outcome}</li>
                                 ))}
                             </ul>
-                            
-                            <h3 style={{...styles.subSectionHeader, marginTop: '1.5rem'}}>Reflections</h3>
+                            {project.liveLink && (
+                                <a href={project.liveLink} target="_blank" rel="noopener noreferrer" style={{ ...styles.ctaPrimary, alignSelf: 'flex-start', marginTop: '0.5rem' }}>
+                                    Try it yourself ↗
+                                </a>
+                            )}
+                            <h3 style={{ ...styles.subSectionHeader, marginTop: '1.5rem' }}>Reflection</h3>
                             <p style={styles.detailParagraph}>{project.reflections}</p>
                         </div>
                     </section>
@@ -334,8 +182,8 @@ const Project1 = () => {
 const styles = {
     heroContainer: {
         position: 'relative',
-        height: '60vh',
-        minHeight: '400px',
+        height: '58vh',
+        minHeight: '380px',
         display: 'flex',
         alignItems: 'flex-end',
         overflow: 'hidden',
@@ -343,10 +191,7 @@ const styles = {
     },
     heroBg: {
         position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '110%',
+        inset: 0,
         backgroundColor: 'var(--surface-color)',
         zIndex: -1,
     },
@@ -378,16 +223,50 @@ const styles = {
     title: {
         fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
     },
+    tagline: {
+        fontSize: '1.15rem',
+        color: 'var(--text-secondary)',
+        maxWidth: '640px',
+        marginTop: '0.75rem',
+        lineHeight: '1.6',
+    },
+    heroCtaRow: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: '0.9rem',
+        marginTop: '1.75rem',
+    },
+    ctaPrimary: {
+        display: 'inline-block',
+        padding: '0.75rem 1.5rem',
+        borderRadius: 'var(--radius-pill)',
+        background: 'var(--accent-color)',
+        color: '#141126',
+        fontWeight: '600',
+        fontSize: '0.95rem',
+    },
+    ctaSecondary: {
+        display: 'inline-block',
+        padding: '0.75rem 1.5rem',
+        borderRadius: 'var(--radius-pill)',
+        border: '1px solid var(--glass-border)',
+        color: 'var(--text-primary)',
+        fontWeight: '500',
+        fontSize: '0.95rem',
+    },
+    inlineLink: {
+        color: 'var(--accent-color)',
+    },
     impactBanner: {
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
         gap: '2rem',
         padding: '2.5rem',
-        background: 'linear-gradient(160deg, rgba(185, 140, 232, 0.08) 0%, rgba(20, 17, 38, 0.65) 100%)',
+        background: 'linear-gradient(160deg, rgba(179, 121, 42, 0.1) 0%, rgba(255, 253, 248, 0.9) 100%)',
         borderRadius: 'var(--radius-lg)',
         border: '1px solid var(--glass-border)',
         marginBottom: '3rem',
-        marginTop: '-2rem', // Pull up slightly
+        marginTop: '-2rem',
     },
     impactItem: {
         display: 'flex',
@@ -397,13 +276,13 @@ const styles = {
         gap: '0.5rem',
     },
     impactValue: {
-        fontSize: '3rem',
+        fontSize: '2.4rem',
         fontWeight: '700',
-        lineHeight: '1',
+        lineHeight: '1.1',
         margin: 0,
     },
     impactLabel: {
-        fontSize: '0.95rem',
+        fontSize: '0.9rem',
         color: 'var(--text-secondary)',
         textTransform: 'uppercase',
         letterSpacing: '0.05em',
@@ -439,17 +318,16 @@ const styles = {
     },
     toolPill: {
         padding: '0.4rem 1.2rem',
-        background: 'rgba(185, 140, 232, 0.06)',
+        background: 'rgba(200, 147, 63, 0.06)',
         border: '1px solid var(--glass-border)',
         borderRadius: 'var(--radius-pill)',
         fontSize: '0.9rem',
         color: 'var(--text-primary)',
-        transition: 'all 0.3s ease',
     },
     contentSections: {
         display: 'flex',
         flexDirection: 'column',
-        gap: '6rem',
+        gap: '4.5rem',
     },
     textSection: {
         maxWidth: '1000px',
@@ -457,8 +335,8 @@ const styles = {
         width: '100%',
     },
     sectionHeader: {
-        fontSize: '2rem',
-        marginBottom: '1.5rem',
+        fontSize: '1.85rem',
+        marginBottom: '1.25rem',
     },
     subSectionHeader: {
         fontSize: '1.3rem',
@@ -466,36 +344,20 @@ const styles = {
         color: 'var(--text-primary)',
     },
     paragraph: {
-        fontSize: '1.12rem',
+        fontSize: '1.1rem',
         color: 'var(--text-secondary)',
-        lineHeight: '1.85',
-        textAlign: 'justify',
-        textJustify: 'inter-word',
+        lineHeight: '1.8',
     },
     detailParagraph: {
-        fontSize: '1.05rem',
+        fontSize: '1.03rem',
         color: 'var(--text-secondary)',
         lineHeight: '1.75',
-        textAlign: 'justify',
     },
     featureCard: {
         padding: '2rem',
         borderRadius: 'var(--radius-md)',
         border: '1px solid var(--glass-border)',
-        background: 'linear-gradient(160deg, rgba(185, 140, 232, 0.05) 0%, rgba(20, 17, 38, 0.4) 100%)',
-    },
-    splitLayout: {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-        gap: 'clamp(1.5rem, 4vw, 3rem)',
-    },
-    splitContentCard: {
-        display: 'flex',
-        flexDirection: 'column',
-        padding: '2rem',
-        borderRadius: 'var(--radius-md)',
-        border: '1px solid var(--glass-border)',
-        background: 'rgba(185, 140, 232, 0.04)',
+        background: 'linear-gradient(160deg, rgba(179, 121, 42, 0.1) 0%, rgba(255, 253, 248, 0.92) 100%)',
     },
     processGrid: {
         display: 'grid',
@@ -504,15 +366,13 @@ const styles = {
         marginTop: '1rem',
     },
     processCard: {
-        background: 'rgba(185, 140, 232, 0.03)',
+        background: 'rgba(200, 147, 63, 0.03)',
         border: '1px solid var(--glass-border)',
         borderRadius: 'var(--radius-md)',
         padding: '1.8rem',
-        position: 'relative',
         display: 'flex',
         flexDirection: 'column',
         gap: '0.8rem',
-        transition: 'transform 0.3s ease',
     },
     processStepBadge: {
         display: 'inline-flex',
@@ -529,29 +389,9 @@ const styles = {
         marginBottom: '0.5rem',
     },
     processTitle: {
-        fontSize: '1.2rem',
+        fontSize: '1.15rem',
         color: 'var(--text-primary)',
         margin: 0,
-    },
-    decisionGrid: {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-        gap: '1.5rem',
-    },
-    showcaseCard: {
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '0.8rem',
-        padding: '1.8rem',
-        borderRadius: 'var(--radius-md)',
-        border: '1px solid var(--glass-border)',
-        background: 'rgba(185, 140, 232, 0.05)',
-    },
-    showcaseTitle: {
-        margin: 0,
-        fontSize: '1.2rem',
-        fontWeight: '600',
-        color: 'var(--text-primary)',
     },
     painPointList: {
         display: 'flex',
@@ -562,12 +402,12 @@ const styles = {
         padding: '1.8rem',
         borderRadius: 'var(--radius-md)',
         border: '1px solid var(--glass-border)',
-        background: 'linear-gradient(90deg, rgba(185, 140, 232, 0.06) 0%, transparent 100%)',
+        background: 'linear-gradient(90deg, rgba(200, 147, 63, 0.06) 0%, transparent 100%)',
     },
     conclusionCard: {
         borderRadius: 'var(--radius-md)',
         border: '1px solid var(--glass-border)',
-        background: 'rgba(185, 140, 232, 0.06)',
+        background: 'rgba(200, 147, 63, 0.06)',
         padding: '2.5rem',
         display: 'flex',
         flexDirection: 'column',
@@ -575,370 +415,40 @@ const styles = {
     },
     outcomeList: {
         margin: 0,
-        paddingLeft: '1.5rem',
+        paddingLeft: '1.4rem',
         display: 'flex',
         flexDirection: 'column',
         gap: '0.8rem',
-    },
-    imageGrid: {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-        gap: '2rem',
-        marginTop: '2rem',
-    },
-    mobileImageGrid: {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
-        gap: '2rem',
-        marginTop: '2rem',
-        justifyItems: 'center',
-    },
-    imagePlaceholder: {
-        width: '100%',
-        aspectRatio: '4/3',
-        backgroundColor: 'var(--surface-color)',
-        borderRadius: 'var(--radius-md)',
-        border: '1px solid var(--glass-border)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        color: 'var(--text-secondary)',
-        overflow: 'hidden',
-    },
-    mobileImagePlaceholder: {
-        width: '100%',
-        maxWidth: '260px',
-        aspectRatio: '9/19.5',
-        backgroundColor: 'var(--surface-color)',
-        borderRadius: '28px',
-        border: '1px solid var(--glass-border)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        overflow: 'hidden',
-        boxShadow: '0 10px 30px rgba(0, 0, 0, 0.2)',
-    },
-    mobileImage: {
-        width: '100%',
-        height: '100%',
-        objectFit: 'cover',
-        objectPosition: 'top',
-    },
-    largeImagePlaceholder: {
-        width: '100%',
-        height: 'clamp(240px, 42vw, 500px)',
-        backgroundColor: 'var(--surface-color)',
-        borderRadius: 'var(--radius-lg)',
-        border: '1px solid var(--glass-border)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        color: 'var(--text-secondary)',
-        marginTop: '2rem',
-        overflow: 'hidden',
     },
     rationaleGrid: {
         display: 'flex',
         flexDirection: 'column',
         gap: '4rem',
-        marginTop: '3rem',
+        marginTop: '2rem',
     },
     rationaleRow: {
         display: 'flex',
         flexWrap: 'wrap',
-        gap: '3rem',
+        gap: '2.5rem',
         alignItems: 'center',
+    },
+    rationaleImageHolder: {
+        flex: '1 1 480px',
+        aspectRatio: '16/10',
+        backgroundColor: 'var(--surface-color)',
+        borderRadius: 'var(--radius-md)',
+        border: '1px solid var(--glass-border)',
+        display: 'flex',
+        alignItems: 'flex-start',
+        justifyContent: 'center',
+        overflow: 'hidden',
     },
     rationaleContent: {
         flex: '1 1 300px',
         display: 'flex',
         flexDirection: 'column',
-        gap: '1rem',
+        gap: '0.85rem',
     },
-    personaGrid: {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))',
-        gap: '2.5rem',
-        marginTop: '3rem',
-    },
-    personaCard: {
-        backgroundColor: 'var(--surface-color)',
-        border: '1px solid var(--glass-border)',
-        borderRadius: '24px',
-        padding: '2.5rem',
-        position: 'relative',
-        overflow: 'hidden',
-        boxShadow: '0 20px 40px rgba(0,0,0,0.3)',
-        display: 'flex',
-        flexDirection: 'column',
-    },
-    personaCardGlow: {
-        position: 'absolute',
-        top: '-10%',
-        right: '-10%',
-        width: '250px',
-        height: '250px',
-        borderRadius: '50%',
-        zIndex: 0,
-        pointerEvents: 'none',
-        opacity: 0.8,
-    },
-    personaContentWrapper: {
-        position: 'relative',
-        zIndex: 1,
-        display: 'flex',
-        flexDirection: 'column',
-        height: '100%',
-    },
-    personaHeader: {
-        display: 'flex',
-        alignItems: 'center',
-        gap: '1.2rem',
-        marginBottom: '1.5rem',
-    },
-    personaAvatar: {
-        width: '64px',
-        height: '64px',
-        borderRadius: '50%',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        fontSize: '1.5rem',
-        fontWeight: 'bold',
-        backgroundColor: 'var(--surface-light)',
-        border: '1px solid var(--glass-border)',
-        color: 'var(--text-primary)',
-    },
-    personaName: {
-        fontSize: '1.6rem',
-        fontWeight: '700',
-        margin: '0 0 0.2rem 0',
-        color: 'var(--text-primary)',
-        letterSpacing: '-0.02em',
-    },
-    personaDemographics: {
-        fontSize: '0.95rem',
-        color: 'var(--text-secondary)',
-        margin: 0,
-    },
-    personaArchetypeBadge: {
-        display: 'inline-block',
-        padding: '0.5rem 1rem',
-        borderRadius: 'var(--radius-pill)',
-        fontSize: '0.8rem',
-        fontWeight: '700',
-        textTransform: 'uppercase',
-        letterSpacing: '0.05em',
-        marginBottom: '1.5rem',
-        alignSelf: 'flex-start',
-    },
-    personaTagsRow: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        gap: '0.6rem',
-        marginBottom: '2rem',
-    },
-    personaTag: {
-        padding: '0.4rem 0.8rem',
-        borderRadius: 'var(--radius-sm)',
-        fontSize: '0.85rem',
-        fontWeight: '500',
-        backgroundColor: 'rgba(255,255,255,0.03)',
-        border: '1px solid rgba(255,255,255,0.08)',
-        color: 'var(--text-secondary)',
-    },
-    personaQuote: {
-        fontSize: '1.1rem',
-        fontStyle: 'italic',
-        color: 'var(--text-primary)',
-        lineHeight: '1.6',
-        margin: '0 0 2rem 0',
-        borderLeft: '3px solid var(--accent-color)',
-        paddingLeft: '1.2rem',
-        opacity: 0.9,
-    },
-    personaDetailsGrid: {
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '2rem',
-        paddingTop: '2rem',
-        borderTop: '1px solid var(--glass-border)',
-        marginBottom: '2rem',
-    },
-    personaDetailCol: {
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '1rem',
-    },
-    personaSectionTitle: {
-        fontSize: '0.85rem',
-        fontWeight: '700',
-        color: 'var(--text-secondary)',
-        textTransform: 'uppercase',
-        letterSpacing: '0.05em',
-        margin: 0,
-    },
-    personaList: {
-        listStyle: 'none',
-        padding: 0,
-        margin: 0,
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '1rem',
-    },
-    personaListItem: {
-        fontSize: '1rem',
-        color: 'var(--text-primary)',
-        lineHeight: '1.5',
-        display: 'flex',
-        alignItems: 'flex-start',
-        gap: '0.8rem',
-    },
-    iconX: {
-        color: '#f87171',
-        fontWeight: 'bold',
-        marginTop: '0.1rem',
-        flexShrink: 0,
-    },
-    iconCheck: {
-        color: '#4ade80',
-        fontWeight: 'bold',
-        marginTop: '0.1rem',
-        flexShrink: 0,
-    },
-    personaMetricsContainer: {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(3, 1fr)',
-        gap: '1rem',
-        paddingTop: '1.5rem',
-        borderTop: '1px solid var(--glass-border)',
-        marginTop: 'auto',
-    },
-    personaMetricBlock: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        backgroundColor: 'rgba(0,0,0,0.2)',
-        padding: '1rem 0.5rem',
-        borderRadius: '12px',
-        border: '1px solid rgba(255,255,255,0.03)',
-    },
-    personaMetricValue: {
-        fontSize: '1.6rem',
-        fontWeight: '800',
-        color: 'var(--text-primary)',
-        marginBottom: '0.2rem',
-    },
-    personaMetricLabel: {
-        fontSize: '0.8rem',
-        color: 'var(--text-secondary)',
-        textAlign: 'center',
-        textTransform: 'uppercase',
-        letterSpacing: '0.05em',
-    },
-    journeysContainer: {
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '4rem',
-        marginTop: '2.5rem',
-    },
-    journeyCard: {
-        backgroundColor: '#faf9f7',
-        border: '1px solid #eae5de',
-        borderRadius: '16px',
-        padding: '2.5rem',
-        color: '#2a2825',
-        overflow: 'hidden',
-    },
-    journeyHeader: {
-        display: 'flex',
-        alignItems: 'center',
-        gap: '1.2rem',
-        marginBottom: '2rem',
-    },
-    journeyAvatar: {
-        width: '56px',
-        height: '56px',
-        borderRadius: '50%',
-        backgroundColor: '#e2f6ed',
-        color: '#046c4e',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        fontSize: '1.4rem',
-        fontWeight: 'bold',
-        flexShrink: 0,
-    },
-    journeyTitle: {
-        fontSize: '1.6rem',
-        fontWeight: '700',
-        margin: '0 0 0.4rem 0',
-        color: '#1a1917',
-    },
-    journeyScenario: {
-        fontSize: '1.05rem',
-        color: '#464542',
-        margin: 0,
-        lineHeight: '1.5',
-    },
-    tableWrapper: {
-        width: '100%',
-        overflowX: 'auto',
-        WebkitOverflowScrolling: 'touch',
-        paddingBottom: '1rem', // Space for scrollbar
-    },
-    journeyTable: {
-        width: '100%',
-        minWidth: '900px',
-        borderCollapse: 'collapse',
-        backgroundColor: '#fff',
-        borderRadius: '8px',
-        overflow: 'hidden',
-        border: '1px solid #eae5de',
-    },
-    journeyTh: {
-        padding: '1rem',
-        backgroundColor: '#faf9f7',
-        borderBottom: '1px solid #eae5de',
-        borderRight: '1px solid #eae5de',
-        width: '120px',
-    },
-    journeyThPhase: {
-        padding: '1rem',
-        backgroundColor: '#f1f3f9',
-        borderBottom: '1px solid #eae5de',
-        borderRight: '1px solid #eae5de',
-        fontSize: '1rem',
-        fontWeight: '700',
-        color: '#2d3282',
-        textAlign: 'center',
-    },
-    journeyTdLabel: {
-        padding: '1rem',
-        borderBottom: '1px solid #eae5de',
-        borderRight: '1px solid #eae5de',
-        verticalAlign: 'top',
-        backgroundColor: '#faf9f7',
-    },
-    journeyTd: {
-        padding: '1rem',
-        borderBottom: '1px solid #eae5de',
-        borderRight: '1px solid #eae5de',
-        fontSize: '0.95rem',
-        lineHeight: '1.5',
-        color: '#464542',
-        verticalAlign: 'top',
-    },
-    rowLabelBadge: {
-        display: 'inline-block',
-        padding: '0.4rem 0.8rem',
-        borderRadius: '6px',
-        color: '#fff',
-        fontSize: '0.85rem',
-        fontWeight: '700',
-        width: '100%',
-        textAlign: 'center',
-    }
 };
 
 export default Project1;
