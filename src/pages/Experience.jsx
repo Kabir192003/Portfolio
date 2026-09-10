@@ -11,18 +11,25 @@ const Experience = () => {
 
     const experiences = [
         {
+            id: 0,
+            role: 'Research Assistant, UX/Interaction Designer',
+            company: 'ADAPT Research Centre, Trinity College Dublin',
+            period: 'Jul 2026 - Present',
+            description: 'Working inside a university research centre alongside researchers and engineers on pilot projects, turning research goals into concrete, documented outputs rather than open-ended exploration. Reviewed and audited a large set of CC0 images against defined criteria for generative AI dataset pre-processing, flagging inconsistencies and edge cases back to the team. Ran structured testing on outputs and kept detailed records across long review cycles, and helped maintain a documented system used across the team\'s workflows as requirements evolved.'
+        },
+        {
             id: 1,
-            role: 'Junior Product Associate',
-            company: 'Dream Weavers (Tech Startup)',
+            role: 'Product Associate',
+            company: 'DreamWeavers',
             period: 'Feb 2025 - Aug 2025',
-            description: 'Led cross-functional implementation of design & operations, transforming product needs into operational plans and enhancing delivery schedule by 25%. Collaborated with cross-functional stakeholders to align business objectives with execution strategies. Analysed product milestones and operational data to identify trends and bottlenecks, enabling data- driven prioritization and improving overall product performance by 15%.'
+            description: 'Defined product requirements and use cases from day one alongside engineers, staying involved through QA and release rather than handing off a spec and moving on — a big part of why feature delivery time dropped 25%. Dug into user behaviour and product data myself to find what was actually worth building next, which fed into a 15% lift in overall product performance. Pressure-tested ideas with research and structured analysis before any build work started, and presented the rationale and trade-offs directly to PMs and engineers in sprint reviews rather than leaving it in a doc nobody read.'
         },
         {
             id: 2,
-            role: 'UI/UX Intern',
-            company: 'Divine Labs',
+            role: 'UI/UX Design Intern',
+            company: 'Divine Labs (IIT Delhi)',
             period: 'Mar 2024 - May 2024',
-            description: 'Designed dashboards and LMS interfaces with attention to the hierarchy of information, accessibility, and logical navigation to improve clarity, decrease cognitive load, and enhance task efficiency. Refined requirements into user flows and prototypes and worked with stakeholders to reconcile business requirements with user requirements and tested solutions early in development, which led to a 25% decrease in usability problems. Utilised testing insights and analytics to prioritise high-impact improvements, enhancing overall product performance by 40%.'
+            description: 'Restructured interaction flows in data-dense dashboards after closely reviewing how people actually used them, then stayed involved through the build so the shipped product matched the intended design — that follow-through was a big part of the 25% drop in usability issues, not just the redesign itself. Ran usability tests to validate design directions before engineering handoff, documenting what I found in enough detail to actually act on it, which improved key performance metrics by 40%. Presented findings straight to senior stakeholders through sketches, flows and interactive prototypes rather than a slide deck of screenshots.'
         },
         {
             id: 3,
