@@ -33,7 +33,7 @@ const Experience = () => {
             company: 'Divine Labs (IIT Delhi)',
             period: 'Mar 2024 - May 2024',
             bullets: [
-                'Restructured interaction flows for data-dense dashboards based on observed user behaviour, contributing to a 25% reduction in usability issues.',
+                'Restructured interaction flows for data-dense dashboards, including an LMS (Learning Management System) and the Unimoni portal, based on observed user behaviour, contributing to a 25% reduction in usability issues.',
                 'Rapidly prototyped and tested alternative design directions, contributing to a 40% improvement in key performance metrics.',
                 'Synthesised research findings into actionable product and UX improvements for senior stakeholders.',
                 'Worked alongside developers throughout implementation to maintain design intent through to the shipped product.'

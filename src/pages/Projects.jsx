@@ -52,8 +52,7 @@ const Projects = () => {
         { id: 1, title: 'Trek Mate', category: 'E-commerce', image: './trekmate-v2/tm-landing.jpg' },
         { id: 2, title: 'Work Hive', category: 'Web Platform', image: './workhive/hero.jpg' },
         { id: 3, title: 'The Hunger Games: UX Edition', category: 'UX Case Study', image: './hgx2.jpg' },
-        { id: 4, title: 'Lens & Light', category: 'Photography Collection', image: './hosue.jpg' },
-        { id: 5, title: 'This or That', category: 'Full Stack Platform', image: './tot-hero.png' }
+        { id: 5, title: 'This or That', category: 'Full Stack Platform', image: './tot-thumb.jpg' }
     ];
 
     return (

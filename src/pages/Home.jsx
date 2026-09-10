@@ -11,7 +11,7 @@ const TOOLS_CRAFT = ['PROTOTYPING', 'FRONT-END', 'MOTION DESIGN', 'FIGMA'];
 const STATS = [
     { label: 'CASE STUDIES', value: '6' },
     { label: 'LIVE, SHIPPABLE PRODUCTS', value: '3' },
-    { label: 'PRODUCT & DESIGN — EXPERIENCE', value: '2+ YRS' },
+    { label: 'PRODUCT & DESIGN — EXPERIENCE', value: '1+ YRS' },
 ];
 
 const CAPABILITIES = [
@@ -21,10 +21,6 @@ const CAPABILITIES = [
     { area: 'DATA', items: 'Analysis · Visualisation · Funnel Analysis · Structured Problem Solving' },
 ];
 
-const INTEREST_STATS = [
-    { value: '15+', label: 'Countries visited' },
-    { value: '12,000+', label: 'KM driven across Europe' },
-];
 const INDEX_ITEMS = [
     { num: '01', label: 'STYLEBOOK AI' },
     { num: '02', label: 'TREK MATE' },
@@ -38,7 +34,7 @@ const PROJECTS = [
     { num: '02', title: 'Trek Mate', tags: ['E-COMMERCE', 'MOBILE'], desc: 'A generic gear storefront, rebuilt around independent makers, field-tested on what actually matters.', img: './trekmate-v2/tm-landing.jpg', link: '/projects/1' },
     { num: '03', title: 'Work Hive', tags: ['WEB PLATFORM'], desc: 'Inherited a prototype where almost nothing worked. Rebuilt into a live, clickable product — search, endorsements, an editable profile, all of it.', img: './workhive/hero.jpg', link: '/projects/2' },
     { num: '04', title: 'The Hunger Games', tags: ['UX RESEARCH'], desc: 'A comparative usability study across the major food delivery apps, built from surveys and interviews.', img: './hgx2.jpg', link: '/projects/3' },
-    { num: '05', title: 'This or That', tags: ['FULL STACK'], desc: 'A deployed community decision platform — React, Node, Express, MongoDB — with an algorithm-driven feed and anonymous posting.', img: './sample.jpg', link: '/projects/5' },
+    { num: '05', title: 'This or That', tags: ['FULL STACK'], desc: 'A deployed community decision platform — React, Node, Express, MongoDB — with an algorithm-driven feed and anonymous posting.', img: './tot-thumb.jpg', link: '/projects/5' },
 ];
 
 const Chip = ({ children }) => (
@@ -113,7 +109,7 @@ const Home = () => {
                         <circle cx="18" cy="21" r="5" fill="none" stroke={RULE} strokeWidth="1.4" />
                     </svg>
                     {/* Speech bubble */}
-                    <svg viewBox="0 0 60 40" style={{ position: 'absolute', top: '2%', right: '-38%', width: '130px', overflow: 'visible' }} className="home-doodle-speech">
+                    <svg viewBox="0 0 60 40" style={{ position: 'absolute', top: '4%', right: '-4%', width: '95px', overflow: 'visible' }} className="home-doodle-speech">
                         <path d="M4 30 Q4 8 26 8 Q48 8 48 22 Q48 32 36 32 L20 32 L14 38 L16 30" fill="none" stroke={RULE} strokeWidth="1.4" />
                         <text x="10" y="24" fontFamily="Anton" fontSize="9" fill={RULE} transform="rotate(-4 10 24)">it runs</text>
                     </svg>
@@ -138,6 +134,12 @@ const Home = () => {
                     </svg>
 
                     <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.68rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: MUTED, marginTop: '1.1rem' }}>Dublin ↔ Hyderabad</span>
+
+                    <Link to="/about" style={{ marginTop: '2.5rem', textDecoration: 'none', display: 'block', transform: 'rotate(-2deg)' }}>
+                        <span style={{ fontFamily: "'Caveat', cursive", fontSize: '1.6rem', color: RULE, lineHeight: 1.2 }}>
+                            when I'm not building, I'm usually chasing a car event somewhere →
+                        </span>
+                    </Link>
                 </div>
 
                 <div style={{ padding: '2.75rem clamp(1.25rem,3vw,3rem)', borderLeft: `1px solid ${INK}`, display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
@@ -162,10 +164,14 @@ const Home = () => {
                     ))}
 
                     <div>
-                        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.68rem', letterSpacing: '0.1em', color: MUTED }}>CURRENTLY STUDYING</span>
-                        <h3 style={{ fontFamily: "'Anton', sans-serif", fontSize: '1.3rem', textTransform: 'uppercase', margin: '0.3rem 0' }}>Interactive Digital Media</h3>
-                        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.75rem', color: MUTED }}>Trinity College Dublin</span>
+                        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.68rem', letterSpacing: '0.1em', color: MUTED }}>EDUCATION</span>
+                        <h3 style={{ fontFamily: "'Anton', sans-serif", fontSize: '1.2rem', textTransform: 'uppercase', margin: '0.3rem 0' }}>M.Sc. Interactive Digital Media</h3>
+                        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.72rem', color: MUTED, display: 'block', marginBottom: '0.5rem' }}>Trinity College Dublin</span>
+                        <h3 style={{ fontFamily: "'Anton', sans-serif", fontSize: '1.2rem', textTransform: 'uppercase', margin: '0.3rem 0' }}>B.Tech Computer Science</h3>
+                        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.72rem', color: MUTED }}>Anurag University</span>
                     </div>
+                    <div style={{ borderTop: `1px solid ${INK}`, paddingTop: '1.25rem' }} />
+                    <Link to="/about" style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.8rem', fontWeight: 700, color: RULE, textDecoration: 'underline' }}>More about me →</Link>
                 </div>
             </div>
 
@@ -238,31 +244,14 @@ const Home = () => {
                 </div>
             </div>
 
-            {/* Outside the build */}
+            {/* Outside the build — teaser */}
             <div style={{ borderTop: `1px solid ${INK}` }}>
-                <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '3.5rem clamp(1.25rem,3vw,3rem) 4rem' }}>
-                    <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.72rem', letterSpacing: '0.14em', fontWeight: 700, color: RULE, display: 'block', marginBottom: '1rem' }}>OUTSIDE THE BUILD</span>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1.4fr) minmax(220px,1fr)', gap: '3rem', alignItems: 'start' }} className="home-outside-grid">
-                        <div>
-                            <p style={{ fontSize: '1.08rem', lineHeight: 1.75, marginBottom: '1.1rem' }}>
-                                Most of my time outside work goes toward cars, not as a spectator but somewhere I've actually put the miles in. I've driven over 12,000km across Europe at this point, usually just to see a stretch of road or a car event in person rather than watch it happen on a screen. That's taken me to more than fifteen countries so far, and what keeps pulling me back isn't really the cars themselves so much as the local culture that builds up around them in each place, who shows up, what they've built, why they care.
-                            </p>
-                            <p style={{ fontSize: '1.08rem', lineHeight: 1.75 }}>
-                                The same attention that goes into a product's details ends up in how I look at a watch or a car too, what a specific decision was actually for, not just what it looks like on the surface. It's a slower, more deliberate way of paying attention than most of my working week allows, which is probably why I keep making time for it.
-                            </p>
-                        </div>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-                            {INTEREST_STATS.map((s) => (
-                                <div key={s.label} style={{ borderTop: `1px solid ${INK}`, paddingTop: '0.9rem' }}>
-                                    <h3 style={{ fontFamily: "'Anton', sans-serif", fontSize: '1.8rem', margin: 0 }}>{s.value}</h3>
-                                    <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.72rem', letterSpacing: '0.06em', textTransform: 'uppercase', color: MUTED }}>{s.label}</span>
-                                </div>
-                            ))}
-                            <div style={{ borderTop: `1px solid ${INK}`, paddingTop: '0.9rem', display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                                {['Motorsport', 'Car culture', 'Watch collecting', 'Road trips'].map((tg) => <Chip key={tg}>{tg.toUpperCase()}</Chip>)}
-                            </div>
-                        </div>
+                <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '3.5rem clamp(1.25rem,3vw,3rem) 4rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '2rem' }}>
+                    <div>
+                        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.72rem', letterSpacing: '0.14em', fontWeight: 700, color: RULE, display: 'block', marginBottom: '0.75rem' }}>OUTSIDE THE BUILD</span>
+                        <p style={{ fontSize: '1.08rem', lineHeight: 1.7, maxWidth: '560px' }}>15+ countries, 12,000km driven across Europe chasing car events, a growing watch collection, and a camera that comes along for the ride.</p>
                     </div>
+                    <Link to="/about" style={{ flex: 'none', fontFamily: "'JetBrains Mono', monospace", fontWeight: 700, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.04em', border: `1px solid ${INK}`, padding: '0.85rem 1.5rem', textDecoration: 'none', color: INK }}>Read the story →</Link>
                 </div>
             </div>
 
@@ -279,7 +268,7 @@ const Home = () => {
                     .home-doodle-speech, .home-doodle-code, .home-doodle-pen, .home-doodle-laptop {
                         display: none;
                     }
-                    .home-featured-grid, .home-outside-grid {
+                    .home-featured-grid {
                         grid-template-columns: 1fr !important;
                     }
                 }
