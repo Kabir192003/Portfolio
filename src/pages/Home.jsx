@@ -33,10 +33,10 @@ const INDEX_ITEMS = [
 const FEATURED_TAGS = ['AI PRODUCT', 'TEAM LEAD', 'FIGMA PLUGIN'];
 
 const PROJECTS = [
-    { num: '02', year: '2026 · SHIPPED', title: 'Trek Mate', tags: ['E-COMMERCE', 'MOBILE'], desc: 'A generic gear storefront, rebuilt around independent makers, field-tested on what actually matters.', img: './trekmate-v2/tm-landing.jpg', link: '/projects/1' },
-    { num: '03', year: '2025 · SHIPPED', title: 'Work Hive', tags: ['WEB PLATFORM'], desc: 'Inherited a prototype where almost nothing worked. Rebuilt into a live, clickable product — search, endorsements, an editable profile, all of it.', img: './workhive/hero.jpg', link: '/projects/2' },
+    { num: '02', year: '2026 · SHIPPED', title: 'Trek Mate', tags: ['E-COMMERCE', 'MOBILE'], desc: 'A generic gear storefront, rebuilt around independent makers, field-tested on what actually matters.', img: './trekmate-v2/tm-mockup.png', link: '/projects/1' },
+    { num: '03', year: '2025 · SHIPPED', title: 'Work Hive', tags: ['WEB PLATFORM'], desc: 'Inherited a prototype where almost nothing worked. Rebuilt into a live, clickable product — search, endorsements, an editable profile, all of it.', img: './workhive/wh-mockup.png', link: '/projects/2' },
     { num: '04', year: '2025 · RESEARCH', title: 'The Hunger Games', tags: ['UX RESEARCH'], desc: 'A comparative usability study across the major food delivery apps, built from surveys and interviews.', img: './hgx2.jpg', link: '/projects/3' },
-    { num: '05', year: '2026 · SHIPPED', title: 'This or That', tags: ['FULL STACK'], desc: 'A deployed community decision platform — React, Node, Express, MongoDB — with an algorithm-driven feed and anonymous posting.', img: './tot-thumb.jpg', link: '/projects/5' },
+    { num: '05', year: '2026 · SHIPPED', title: 'This or That', tags: ['FULL STACK'], desc: 'A deployed community decision platform — React, Node, Express, MongoDB — with an algorithm-driven feed and anonymous posting.', img: './tot-mockup.png', link: '/projects/5' },
 ];
 
 const Chip = ({ children }) => (
@@ -268,7 +268,7 @@ const Home = () => {
                         <div key={proj.num}>
                             <span style={{ fontFamily: "'Anton', sans-serif", fontSize: '1.4rem', color: RULE }}>{proj.num}</span>
                             <div style={{ margin: '0.8rem 0 1rem', backgroundImage: 'radial-gradient(circle, rgba(20,20,20,0.14) 1px, transparent 1.6px)', backgroundSize: '7px 7px', padding: '1rem' }}>
-                                <img src={proj.img} alt={proj.title} style={{ width: '100%', aspectRatio: '4/3', objectFit: 'cover', display: 'block', border: `1px solid ${INK}`, transform: idx % 2 === 0 ? 'rotate(-0.6deg)' : 'rotate(0.6deg)', boxShadow: '0 14px 30px -16px rgba(20,20,20,0.3)' }} />
+                                <img src={proj.img} alt={proj.title} style={{ width: '100%', aspectRatio: '3/2', objectFit: 'cover', display: 'block', border: `1px solid ${INK}`, transform: idx % 2 === 0 ? 'rotate(-0.6deg)' : 'rotate(0.6deg)', boxShadow: '0 14px 30px -16px rgba(20,20,20,0.3)' }} />
                             </div>
                             <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.75rem', flexWrap: 'wrap' }}>
                                 <HighlightChip>{proj.year}</HighlightChip>
