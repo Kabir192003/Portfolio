@@ -35,7 +35,7 @@ const FEATURED_TAGS = ['AI PRODUCT', 'TEAM LEAD', 'FIGMA PLUGIN'];
 const PROJECTS = [
     { num: '02', year: '2026 · SHIPPED', title: 'Trek Mate', tags: ['E-COMMERCE', 'MOBILE'], desc: 'A generic gear storefront, rebuilt around independent makers, field-tested on what actually matters.', img: './trekmate-v2/tm-mockup.png', link: '/projects/1' },
     { num: '03', year: '2025 · SHIPPED', title: 'Work Hive', tags: ['WEB PLATFORM'], desc: 'Inherited a prototype where almost nothing worked. Rebuilt into a live, clickable product — search, endorsements, an editable profile, all of it.', img: './workhive/wh-mockup.png', link: '/projects/2' },
-    { num: '04', year: '2025 · RESEARCH', title: 'The Hunger Games', tags: ['UX RESEARCH'], desc: 'A comparative usability study across the major food delivery apps, built from surveys and interviews.', img: './hgx2.jpg', link: '/projects/3' },
+    { num: '04', year: '2025 · RESEARCH', title: 'The Hunger Games', tags: ['UX RESEARCH'], desc: 'A comparative usability study across the major food delivery apps, built from surveys and interviews.', img: './hg-mockup.png', link: '/projects/3' },
     { num: '05', year: '2026 · SHIPPED', title: 'This or That', tags: ['FULL STACK'], desc: 'A deployed community decision platform — React, Node, Express, MongoDB — with an algorithm-driven feed and anonymous posting.', img: './tot-mockup.png', link: '/projects/5' },
 ];
 
