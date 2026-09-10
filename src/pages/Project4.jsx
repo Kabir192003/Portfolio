@@ -1,222 +1,102 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
+
+const INK = '#141414';
+const RULE = '#2e2bef';
+const MUTED = '#3a3833';
+
+const GALLERY = [
+    { src: './project4/img_6084.jpg', alt: 'A lit timber house at dusk' },
+    { src: './project4/img_5879.jpg', alt: 'Detail shot, glossy reflection' },
+    { src: './swiss.jpg', alt: 'Swiss alpine mountain panorama' },
+    { src: './project4/img_6146.jpg', alt: 'Urban architecture against the sky' },
+    { src: './project4/img_5461.jpg', alt: 'Black-and-white perspective shot' },
+    { src: './project4/img_5590.jpg', alt: 'A stone-walled canal lined with trees' },
+    { src: './project4/img_5597.jpg', alt: 'Street scene with layered architecture' },
+    { src: './project4/img_e5820.jpg', alt: 'Travel frame with cinematic light' },
+    { src: './project4/img_e5901.jpg', alt: 'Architectural lines, contrast and shadow' },
+    { src: './project4/img_5730.jpg', alt: 'A cobbled courtyard' },
+    { src: './project4/img_5449.jpg', alt: 'Tower geometry from a low angle' },
+    { src: './project4/img_e6093.jpg', alt: 'A red funicular tram on its track' },
+];
+
+const QUOTES = [
+    'Photography is the pause button of life.',
+    'A picture is a poem without words.',
+    'Light, shadow, and silence tell stories better than noise.',
+];
 
 const Project4 = () => {
-    const { scrollYProgress } = useScroll();
-    const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
-
-    const project = {
-        title: 'Lens & Light: Visual Storytelling',
-        category: 'Design Foundation',
-        heroImage: './swiss.jpg',
-        gallery: [
-            { src: './project4/img_6084.jpg', alt: 'Snow-covered mountain range under dramatic sky' },
-            { src: './project4/img_5879.jpg', alt: 'Orange sports car reflected on glossy surface' },
-            { src: './swiss.jpg', alt: 'Swiss alpine mountain panorama' },
-            { src: './project4/img_6146.jpg', alt: 'Urban architecture framed against blue sky' },
-            { src: './project4/img_5461.jpg', alt: 'Black-and-white skyscraper perspective shot' },
-            { src: './project4/img_5590.jpg', alt: 'City tram tracks stretching into horizon' },
-            { src: './project4/img_5597.jpg', alt: 'Street scene with layered architecture' },
-            { src: './project4/img_e5820.jpg', alt: 'Travel frame with cinematic light and depth' },
-            { src: './project4/img_e5901.jpg', alt: 'Architectural lines with contrast and shadow' },
-            { src: './project4/img_5730.jpg', alt: 'City composition with strong symmetry' },
-            { src: './project4/img_5449.jpg', alt: 'Tower geometry from a low-angle perspective' },
-            { src: './project4/img_e6093.jpg', alt: 'Glacial landscape and dramatic cloud cover' }
-        ],
-        quotes: [
-            'Photography is the pause button of life.',
-            'A picture is a poem without words.',
-            'Light, shadow, and silence tell stories better than noise.'
-        ]
-    };
-
     return (
         <motion.div
-            className="project-detail-page"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.4 }}
         >
-            {/* Parallax Hero */}
-            <div style={styles.heroContainer} className="project-hero">
-                <motion.div style={{ ...styles.heroBg, y }}>
-                    {/* Large Hero Image */}
-                    <img src={project.heroImage} alt={`${project.title} Hero`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                    <div style={styles.heroGradientOverlay} />
-                </motion.div>
+            <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '3.5rem clamp(1.25rem,3vw,2rem) 2rem' }}>
+                <Link to="/about" style={{ display: 'inline-block', marginBottom: '1.5rem', fontFamily: "'JetBrains Mono', monospace", fontSize: '0.78rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: MUTED, textDecoration: 'none' }}>← Back to about</Link>
+                <span style={{ display: 'block', fontFamily: "'JetBrains Mono', monospace", fontSize: '0.75rem', letterSpacing: '0.16em', textTransform: 'uppercase', color: RULE }}>Design foundation</span>
+                <h1 style={{ fontFamily: "'Anton', sans-serif", fontSize: 'clamp(2.4rem, 6vw, 4.2rem)', textTransform: 'uppercase', lineHeight: 1.02, margin: '0.8rem 0 1.25rem' }}>
+                    Lens &amp; Light
+                </h1>
+                <p style={{ fontSize: '1.1rem', color: MUTED, maxWidth: '640px', lineHeight: 1.7 }}>
+                    Nothing formal, a running collection of whatever the road, the cars or the trip in front of me looked like that day. The same eye for composition ends up in how I lay out an interface.
+                </p>
+            </div>
 
-                <div className="container project-hero-content" style={styles.heroContent}>
-                    <Link to="/about" style={styles.backLink}>← Back to About</Link>
-                    <span style={styles.category}>{project.category}</span>
-                    <h1 style={styles.title}>{project.title}</h1>
+            <div style={{ borderTop: `1px solid ${INK}` }} />
+
+            <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '3.5rem clamp(1.25rem,3vw,2rem)' }}>
+                <p style={{ fontSize: '1.08rem', lineHeight: 1.8, marginBottom: '1.1rem' }}>
+                    Long before I started designing digital interfaces, I was training my eye through a camera lens. A compelling composition is about what you leave out as much as what you include, negative space, focal points, visual hierarchy are not abstract concepts to me, they're instincts built up over years of just looking.
+                </p>
+                <p style={{ fontSize: '1.08rem', lineHeight: 1.8 }}>
+                    That discipline shows up directly in how I design an interface. I treat a screen the same way I treat a viewfinder: establishing hierarchy, protecting whitespace, and guiding the eye exactly where it needs to go.
+                </p>
+            </div>
+
+            <div style={{ borderTop: `1px solid ${INK}`, borderBottom: `1px solid ${INK}`, maxWidth: '1100px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))' }}>
+                {QUOTES.map((q, i) => (
+                    <div key={q} style={{ padding: '1.75rem', borderLeft: i > 0 ? `1px solid ${INK}` : 'none' }} className="photo-quote-cell">
+                        <span style={{ fontFamily: "'Caveat', cursive", fontSize: '1.5rem', color: INK, lineHeight: 1.3 }}>&ldquo;{q}&rdquo;</span>
+                    </div>
+                ))}
+            </div>
+
+            <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '3.5rem clamp(1.25rem,3vw,3rem) 5rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '2rem' }}>
+                    {GALLERY.map((photo) => (
+                        <motion.div
+                            key={photo.src}
+                            initial={{ opacity: 0, y: 16 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, amount: 0.1 }}
+                            transition={{ duration: 0.5 }}
+                            style={{ backgroundImage: 'radial-gradient(circle, rgba(20,20,20,0.14) 1px, transparent 1.6px)', backgroundSize: '7px 7px', padding: '0.75rem' }}
+                        >
+                            <img
+                                src={photo.src}
+                                alt={photo.alt}
+                                loading="lazy"
+                                style={{ width: '100%', display: 'block', border: `1px solid ${INK}`, aspectRatio: '4/5', objectFit: 'cover' }}
+                            />
+                        </motion.div>
+                    ))}
                 </div>
             </div>
 
-            <div className="container section">
-                <section style={styles.textSection}>
-                    <h2 style={styles.sectionHeader} className="project-section-header">The Foundation of My Spatial Awareness</h2>
-                    <div style={styles.featureCard}>
-                        <p style={{...styles.paragraph, marginBottom: '1.5rem'}} className="project-paragraph">
-                            Long before I started designing digital interfaces, I was training my eye through a camera lens. Photography taught me that a compelling composition is about what you leave out as much as what you include. Negative space, focal points, and visual hierarchy are not abstract concepts to me; they are instincts I developed through years of deliberate practice.
-                        </p>
-                        <p style={styles.paragraph} className="project-paragraph">
-                            This discipline directly shapes how I design every interface. I treat a digital screen the same way I treat a viewfinder: establishing clear visual hierarchy, protecting whitespace, and guiding the user's eye exactly where it needs to go. Every UI decision I make is informed by this foundation in spatial awareness and visual storytelling.
-                        </p>
-                    </div>
-                </section>
-
-                <section style={styles.gallerySection}>
-                    <h2 style={{...styles.sectionHeader, marginTop: '4rem'}} className="project-section-header">Selected Compositions</h2>
-
-                    <div style={styles.quoteStrip}>
-                        {project.quotes.map((quote) => (
-                            <blockquote key={quote} style={styles.quoteCard}>
-                                "{quote}"
-                            </blockquote>
-                        ))}
-                    </div>
-
-                    <div className="project4-masonry" style={styles.masonry}>
-                        {project.gallery.map((photo, index) => (
-                            <motion.figure
-                                key={photo.src}
-                                style={styles.photoFrame}
-                                initial={{ opacity: 0, y: 22 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, amount: 0.15 }}
-                                transition={{ duration: 0.6, delay: Math.min(index * 0.04, 0.36) }}
-                            >
-                                <img
-                                    src={photo.src}
-                                    alt={photo.alt}
-                                    style={styles.photo}
-                                    loading="lazy"
-                                />
-                            </motion.figure>
-                        ))}
-                    </div>
-                </section>
-            </div>
+            <style>{`
+                @media (max-width: 640px) {
+                    .photo-quote-cell {
+                        border-left: none !important;
+                        border-top: 1px solid ${INK};
+                    }
+                }
+            `}</style>
         </motion.div>
     );
-};
-
-const styles = {
-    heroContainer: {
-        position: 'relative',
-        height: '60vh',
-        minHeight: '400px',
-        display: 'flex',
-        alignItems: 'flex-end',
-        overflow: 'hidden',
-        borderBottom: '1px solid var(--glass-border)',
-    },
-    heroBg: {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '110%',
-        backgroundColor: 'var(--surface-color)',
-        zIndex: -1,
-    },
-    heroGradientOverlay: {
-        position: 'absolute',
-        inset: 0,
-        background: 'linear-gradient(to top, var(--bg-color) 0%, transparent 80%)',
-    },
-    heroContent: {
-        position: 'relative',
-        zIndex: 1,
-        paddingBottom: '3rem',
-    },
-    backLink: {
-        display: 'inline-block',
-        marginBottom: '2rem',
-        color: 'var(--text-secondary)',
-        fontSize: '0.9rem',
-        transition: 'color var(--transition-fast)',
-    },
-    category: {
-        display: 'block',
-        fontSize: '0.9rem',
-        textTransform: 'uppercase',
-        letterSpacing: '0.05em',
-        color: 'var(--accent-color)',
-        marginBottom: '0.5rem',
-    },
-    title: {
-        fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
-    },
-    gallerySection: {
-        maxWidth: '1200px',
-        margin: '0 auto',
-        width: '100%',
-        marginTop: '2rem',
-    },
-    textSection: {
-        maxWidth: '1000px',
-        margin: '0 auto',
-        width: '100%',
-        marginBottom: '2rem',
-    },
-    featureCard: {
-        padding: '2rem',
-        borderRadius: 'var(--radius-md)',
-        border: '1px solid var(--glass-border)',
-        background: 'linear-gradient(160deg, rgba(46, 43, 239, 0.09) 0%, rgba(242, 240, 234, 0.72) 100%)',
-    },
-    paragraph: {
-        fontSize: '1.12rem',
-        color: 'var(--text-secondary)',
-        lineHeight: '1.85',
-        textAlign: 'justify',
-        textJustify: 'inter-word',
-        margin: 0,
-    },
-    sectionHeader: {
-        fontSize: '2rem',
-        marginBottom: '1.25rem',
-        textAlign: 'center',
-    },
-    quoteStrip: {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-        gap: '1rem',
-        marginBottom: '2rem',
-    },
-    quoteCard: {
-        margin: 0,
-        padding: '1rem 1.15rem',
-        background: 'rgba(46, 43, 239, 0.06)',
-        border: '1px solid var(--glass-border)',
-        borderRadius: 'var(--radius-md)',
-        color: 'var(--text-secondary)',
-        fontSize: '0.98rem',
-        lineHeight: '1.7',
-        fontStyle: 'italic',
-        textAlign: 'justify',
-    },
-    masonry: {
-        columnGap: '1.2rem',
-    },
-    photoFrame: {
-        breakInside: 'avoid',
-        margin: '0 0 1.2rem',
-        padding: '0.45rem',
-        borderRadius: 'var(--radius-md)',
-        border: '1px solid var(--glass-border)',
-        background: 'rgba(46, 43, 239, 0.04)',
-    },
-    photo: {
-        width: '100%',
-        height: 'auto',
-        display: 'block',
-        borderRadius: 'calc(var(--radius-md) - 6px)',
-        objectFit: 'contain',
-    },
 };
 
 export default Project4;
