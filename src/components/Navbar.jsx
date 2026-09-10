@@ -27,7 +27,7 @@ const Navbar = () => {
         <nav style={styles.nav} className="site-nav">
             <div style={styles.container} className="container site-nav-inner">
                 <NavLink to="/" style={styles.logoLink}>
-                    <span style={styles.logoText}>kabiroscope</span>
+                    <span style={styles.logoText}>KABIROSCOPE</span>
                 </NavLink>
 
                 {/* Desktop links */}
@@ -39,7 +39,7 @@ const Navbar = () => {
                             className="site-nav-link"
                             style={({ isActive }) => isActive ? styles.activeLink : styles.link}
                         >
-                            {l.label}
+                            {l.label.toUpperCase()}
                         </NavLink>
                     ))}
                     <NavLink to="/contact" className="glass-button btn-primary" style={styles.cta}>
@@ -77,7 +77,7 @@ const Navbar = () => {
                             to={l.to}
                             style={({ isActive }) => ({ ...styles.mobileLink, color: isActive ? 'var(--text-primary)' : 'var(--text-secondary)' })}
                         >
-                            {l.label}
+                            {l.label.toUpperCase()}
                         </NavLink>
                     ))}
                     <NavLink to="/contact" className="glass-button btn-primary" style={{ ...styles.cta, alignSelf: 'flex-start', marginTop: '0.5rem' }}>
@@ -94,11 +94,9 @@ const styles = {
         position: 'sticky',
         top: 0,
         width: '100%',
-        background: 'rgba(247, 243, 234, 0.82)',
-        backdropFilter: 'blur(10px)',
-        WebkitBackdropFilter: 'blur(10px)',
+        background: 'var(--bg-color)',
         zIndex: 100,
-        borderBottom: '1px solid var(--border)',
+        borderBottom: '1px solid var(--border-strong)',
     },
     container: {
         display: 'flex',
@@ -113,9 +111,8 @@ const styles = {
     },
     logoText: {
         fontFamily: 'var(--font-logo)',
-        fontSize: '1.3rem',
-        fontWeight: 600,
-        letterSpacing: '-0.03em',
+        fontSize: '1.15rem',
+        letterSpacing: '0.02em',
         color: 'var(--text-primary)',
     },
     links: {
@@ -124,13 +121,17 @@ const styles = {
         gap: '2.25rem',
     },
     link: {
-        fontSize: '0.92rem',
+        fontFamily: 'var(--font-mono)',
+        fontSize: '0.78rem',
+        letterSpacing: '0.08em',
         fontWeight: '500',
         color: 'var(--text-secondary)',
         transition: 'color var(--transition-fast)',
     },
     activeLink: {
-        fontSize: '0.92rem',
+        fontFamily: 'var(--font-mono)',
+        fontSize: '0.78rem',
+        letterSpacing: '0.08em',
         fontWeight: '500',
         color: 'var(--text-primary)',
     },

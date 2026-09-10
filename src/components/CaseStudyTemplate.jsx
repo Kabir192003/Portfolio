@@ -60,12 +60,9 @@ const CaseStudyTemplate = ({ project, nextProject, decisionsNote, challengesHead
             style={{ background: PAPER, color: INK, fontFamily: "'Source Serif 4', serif" }}
         >
             <div style={{ borderTop: `4px solid ${INK}` }} />
-            <nav style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '1.1rem clamp(1.25rem, 3vw, 3rem)', borderBottom: `1px solid ${INK}` }}>
-                <Link to="/projects" style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.78rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: INK, textDecoration: 'none' }}>← Index</Link>
-                <span style={{ fontFamily: "'Anton', sans-serif", fontSize: '1.15rem', letterSpacing: '0.02em' }}>KABIROSCOPE</span>
-            </nav>
 
-            <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '3.5rem clamp(1.25rem, 3vw, 2rem) 2rem' }}>
+            <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '2.5rem clamp(1.25rem, 3vw, 2rem) 2rem' }}>
+                <Link to="/projects" style={{ display: 'block', marginBottom: '1.5rem', fontFamily: "'JetBrains Mono', monospace", fontSize: '0.78rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: MUTED, textDecoration: 'none' }}>← Index</Link>
                 <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.75rem', letterSpacing: '0.16em', textTransform: 'uppercase', color: RULE }}>{project.category}</span>
                 <h1 style={{ fontFamily: "'Anton', sans-serif", fontSize: 'clamp(2.6rem, 7vw, 5.2rem)', textTransform: 'uppercase', lineHeight: 0.98, margin: '0.8rem 0 1.1rem' }}>{project.title}</h1>
                 {project.tagline && <p style={{ fontSize: '1.2rem', fontStyle: 'italic', color: MUTED, maxWidth: '680px', lineHeight: 1.6, marginBottom: '1.75rem' }}>{project.tagline}</p>}

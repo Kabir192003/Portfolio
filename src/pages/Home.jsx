@@ -1,158 +1,38 @@
-import React, { useRef } from 'react';
-import { motion } from 'framer-motion';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import PortraitReveal from '../components/PortraitReveal';
+import { motion } from 'framer-motion';
 
-const FALLBACK_IMAGE = './sample.jpg';
-const PORTRAIT_IMAGE = './portrait.jpg';
+const INK = '#141414';
+const RULE = '#2e2bef';
+const MUTED = '#3a3833';
 
-const SKILLS = [
-    'Product Design', 'UX Research', 'Interaction Design', 'Design Systems',
-    'Prototyping', 'Front-end Fluency', 'Motion Design', 'Brand Identity',
-];
-
-const TICKER_ITEMS = [
-    'Product Design', 'Available for work', 'Interaction Design', 'Dublin ↔ Hyderabad',
-    'Design Systems', 'Currently at Trinity College Dublin', 'Motion Design', 'Front-end fluent',
-];
-
+const SKILL_STACK = ['PRODUCT DESIGN', 'UX RESEARCH', 'INTERACTION DESIGN', 'DESIGN SYSTEMS'];
+const TOOLS_CRAFT = ['PROTOTYPING', 'FRONT-END', 'MOTION DESIGN', 'FIGMA'];
 const STATS = [
-    { value: '6', label: 'Case studies' },
-    { value: '3', label: 'Live, shippable products' },
-    { value: '2', label: 'Countries called home' },
+    { label: 'CASE STUDIES', value: '6' },
+    { label: 'LIVE, SHIPPABLE PRODUCTS', value: '3' },
+];
+const INDEX_ITEMS = [
+    { num: '01', label: 'STYLEBOOK AI' },
+    { num: '02', label: 'TREK MATE' },
+    { num: '03', label: 'WORK HIVE' },
+    { num: '04', label: 'HUNGER GAMES' },
+    { num: '05', label: 'THIS OR THAT' },
+];
+const FEATURED_TAGS = ['AI PRODUCT', 'TEAM LEAD', 'FIGMA PLUGIN'];
+
+const PROJECTS = [
+    { num: '02', title: 'Trek Mate', tags: ['E-COMMERCE', 'MOBILE'], desc: 'A generic gear storefront, rebuilt around independent makers, field-tested on what actually matters.', img: './trekmate-v2/tm-landing.jpg', link: '/projects/1' },
+    { num: '03', title: 'Work Hive', tags: ['WEB PLATFORM'], desc: 'Inherited a prototype where almost nothing worked. Rebuilt into a live, clickable product — search, endorsements, an editable profile, all of it.', img: './workhive/hero.jpg', link: '/projects/2' },
+    { num: '04', title: 'The Hunger Games', tags: ['UX RESEARCH'], desc: 'A comparative usability study across the major food delivery apps, built from surveys and interviews.', img: './hgx2.jpg', link: '/projects/3' },
+    { num: '05', title: 'This or That', tags: ['FULL STACK'], desc: 'A deployed community decision platform — React, Node, Express, MongoDB — with an algorithm-driven feed and anonymous posting.', img: './sample.jpg', link: '/projects/5' },
 ];
 
-const FEATURED = [
-    {
-        to: '/projects/6',
-        img: './stylebook/sb-hero.png',
-        title: 'StyleBook AI',
-        tag: 'AI Product · Team Lead',
-        desc: 'A written brand description in, a verified, exportable design system out. Led a team of four, wrote nearly all of the implementation, published a Figma plugin.',
-    },
-    {
-        to: '/projects/1',
-        img: './trekmate-v2/tm-landing.jpg',
-        title: 'Trek Mate',
-        tag: 'E-commerce',
-        desc: 'A generic gear storefront, rebuilt around one point of view — independent makers, field-tested, scored on what actually matters.',
-    },
-    {
-        to: '/projects/2',
-        img: './workhive/hero.jpg',
-        title: 'Work Hive',
-        tag: 'Web Platform',
-        desc: 'Inherited a high-fidelity prototype where almost nothing worked. Rebuilt it into a live, clickable product — endorsements, search, an editable profile, all of it.',
-    },
-];
-
-// ─── Reveal on scroll — one easing, no stagger fireworks ─────────────────────
-const Reveal = ({ children, delay = 0, style, as = 'div' }) => {
-    const Tag = motion[as] ?? motion.div;
-    return (
-        <Tag
-            style={style}
-            initial={{ opacity: 0, y: 22 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] }}
-        >
-            {children}
-        </Tag>
-    );
-};
-
-// ─── Magnetic hover — cheap, no dependency, real tactility ───────────────────
-const MagneticLink = ({ to, children, className, style }) => {
-    const ref = useRef(null);
-    const onMove = (e) => {
-        const el = ref.current;
-        if (!el) return;
-        const rect = el.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width / 2;
-        const y = e.clientY - rect.top - rect.height / 2;
-        el.style.transform = `translate(${x * 0.22}px, ${y * 0.28}px)`;
-    };
-    const onLeave = () => { if (ref.current) ref.current.style.transform = 'translate(0, 0)'; };
-    return (
-        <Link
-            ref={ref}
-            to={to}
-            className={className}
-            style={{ ...style, transition: 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)' }}
-            onMouseMove={onMove}
-            onMouseLeave={onLeave}
-        >
-            {children}
-        </Link>
-    );
-};
-
-const Marquee = () => (
-    <div className="marquee">
-        <div className="marquee-track">
-            {[...TICKER_ITEMS, ...TICKER_ITEMS].map((item, i) => (
-                <span key={i} className="marquee-item">{item}</span>
-            ))}
-        </div>
-    </div>
-);
-
-const CardImage = ({ src, alt }) => {
-    const [failed, setFailed] = React.useState(false);
-    if (failed) return <div style={styles.projectImageFallback} />;
-    return (
-        <img
-            src={src || FALLBACK_IMAGE}
-            alt={alt}
-            className="home-project-image"
-            style={styles.projectImg}
-            loading="lazy"
-            decoding="async"
-            onError={() => setFailed(true)}
-        />
-    );
-};
-
-// ─── Editorial index row — the case-study list reads like a masthead
-// contents page: a ghost number, a big title, and an image that only
-// gives up its colour on hover. No cards, no boxes. ─────────────────
-const ProjectCard = ({ to, img, title, tag, desc, index }) => (
-    <Reveal delay={index * 0.06} style={styles.rowWrap}>
-        <Link
-            to={to}
-            style={styles.rowLink}
-            className="home-project-row"
-        >
-            <span style={styles.rowIndex} aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
-            <div style={styles.rowText}>
-                <div style={styles.rowTopLine}>
-                    <h3 style={styles.rowTitle}>{title}</h3>
-                    <span className="eyebrow" style={styles.projectTag}>{tag}</span>
-                </div>
-                <p style={styles.rowDesc}>{desc}</p>
-                <span style={styles.projectArrow}>View case study <span className="home-project-arrow-icon">→</span></span>
-            </div>
-            <div style={styles.rowImageWrap} className="home-project-image-mask">
-                <CardImage src={img} alt={title} />
-            </div>
-        </Link>
-    </Reveal>
+const Chip = ({ children }) => (
+    <span style={{ border: `1px solid ${INK}`, fontFamily: "'JetBrains Mono', monospace", fontSize: '0.7rem', padding: '4px 10px' }}>{children}</span>
 );
 
 const Home = () => {
-    const heroRef = useRef(null);
-
-    const handleHeroMouseMove = (e) => {
-        const el = heroRef.current;
-        if (!el) return;
-        const rect = el.getBoundingClientRect();
-        const x = ((e.clientX - rect.left) / rect.width) * 100;
-        const y = ((e.clientY - rect.top) / rect.height) * 100;
-        el.style.setProperty('--mx', `${x}%`);
-        el.style.setProperty('--my', `${y}%`);
-    };
-
     return (
         <motion.div
             initial={{ opacity: 0 }}
@@ -160,391 +40,169 @@ const Home = () => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
         >
-            {/* ── HERO ─────────────────────────────────────────────────── */}
-            <section
-                ref={heroRef}
-                style={styles.heroSection}
-                className="home-hero"
-                onMouseMove={handleHeroMouseMove}
-            >
-                <motion.div
-                    className="glow-orb"
-                    style={{ width: 520, height: 520, top: '-14%', left: '-8%', background: 'radial-gradient(circle, var(--accent-glow), transparent 70%)' }}
-                    animate={{ x: [0, 30, -10, 0], y: [0, -20, 15, 0] }}
-                    transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut' }}
-                />
-                <motion.div
-                    className="glow-orb"
-                    style={{ width: 420, height: 420, bottom: '-18%', right: '4%', background: 'radial-gradient(circle, var(--accent-2-glow), transparent 70%)' }}
-                    animate={{ x: [0, -24, 12, 0], y: [0, 18, -12, 0] }}
-                    transition={{ duration: 26, repeat: Infinity, ease: 'easeInOut', delay: 1.4 }}
-                />
-                <div className="home-hero-glow" />
-                <div className="container">
-                    <div style={styles.heroGrid} className="home-hero-grid">
-                        <div style={styles.heroContent} className="home-hero-content">
-                            <motion.span
-                                className="eyebrow"
-                                style={styles.heroEyebrow}
-                                initial={{ opacity: 0, y: 12 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.5 }}
-                            >
-                                Kabir Sharma — Product Designer
-                            </motion.span>
+            {/* Page title */}
+            <div style={{ textAlign: 'center', padding: '3rem 1.5rem 2rem' }}>
+                <h1 style={{ fontFamily: "'Anton', sans-serif", fontSize: 'clamp(2.8rem, 9vw, 7.5rem)', letterSpacing: '0.01em', lineHeight: 0.95, margin: 0, textTransform: 'uppercase' }}>Kabir Sharma</h1>
+                <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.95rem', letterSpacing: '0.24em', textTransform: 'uppercase', color: MUTED, marginTop: '1rem' }}>Product Designer &amp; Developer</p>
+            </div>
+            <div style={{ borderTop: `1px solid ${INK}` }} />
 
-                            <motion.h1
-                                style={styles.heroTitle}
-                                className="home-hero-title"
-                                initial={{ opacity: 0, y: 18 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.6, delay: 0.08 }}
-                            >
-                                Most portfolios show you the mockup.{' '}
-                                <span className="text-gradient glow-text">This one shows you what happens when you click it.</span>
-                            </motion.h1>
+            {/* Profile / portrait / stats grid */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) minmax(280px,420px) minmax(0,1fr)', maxWidth: '1400px', margin: '0 auto' }} className="home-profile-grid">
+                <div style={{ padding: '2.75rem clamp(1.25rem,3vw,3rem)', borderRight: `1px solid ${INK}` }}>
+                    <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.72rem', letterSpacing: '0.14em', fontWeight: 700 }}>PROFILE</span>
+                    <h2 style={{ fontFamily: "'Anton', sans-serif", fontSize: 'clamp(1.9rem,3.4vw,2.7rem)', textTransform: 'uppercase', lineHeight: 1.05, margin: '0.9rem 0 1.4rem' }}>
+                        From mockups<br />to <span style={{ color: RULE }}>things that run</span>
+                    </h2>
+                    <p style={{ fontSize: '1.08rem', lineHeight: 1.65, marginBottom: '2rem' }}>
+                        <strong>Six product case studies, three of them live and clickable.</strong> I design interfaces, then use them the way a stranger would — which is usually where the real work starts.
+                    </p>
+                    <a href="#work" style={{ display: 'block', textAlign: 'center', background: RULE, color: '#f2f0ea', fontFamily: "'JetBrains Mono', monospace", fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', fontSize: '0.9rem', padding: '1rem', textDecoration: 'none', marginBottom: '2.25rem' }}>Selected work ↓</a>
 
-                            <motion.p
-                                style={styles.heroSubtitle}
-                                className="home-hero-subtitle"
-                                initial={{ opacity: 0, y: 14 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.6, delay: 0.16 }}
-                            >
-                                I design interfaces, then I use them the way a stranger would — which is
-                                usually where the real work starts. Based between Dublin and Hyderabad,
-                                currently studying interactive digital media at Trinity College Dublin.
-                            </motion.p>
-
-                            <motion.div
-                                style={styles.heroActions}
-                                className="home-hero-actions"
-                                initial={{ opacity: 0, y: 14 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.6, delay: 0.24 }}
-                            >
-                                <MagneticLink to="/projects" className="glass-button btn-primary" style={styles.primaryCta}>
-                                    View the work
-                                </MagneticLink>
-                                <MagneticLink to="/contact" className="home-ghost-link" style={styles.ghostLink}>
-                                    Say hello →
-                                </MagneticLink>
-                            </motion.div>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', borderTop: `1px solid ${INK}`, paddingTop: '1.25rem' }}>
+                        <div>
+                            <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.68rem', letterSpacing: '0.1em', color: MUTED, display: 'block', marginBottom: '0.6rem' }}>SKILL STACK</span>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                                {SKILL_STACK.map((s) => (
+                                    <span key={s} style={{ border: `1px solid ${INK}`, fontFamily: "'JetBrains Mono', monospace", fontSize: '0.72rem', padding: '6px 10px', textAlign: 'center' }}>{s}</span>
+                                ))}
+                            </div>
                         </div>
-
-                        <motion.div
-                            className="home-hero-portrait"
-                            style={{ justifySelf: 'end' }}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.7, delay: 0.15 }}
-                        >
-                            <PortraitReveal
-                                src={PORTRAIT_IMAGE}
-                                alt="Kabir Sharma"
-                                radius={150}
-                                style={styles.heroPortrait}
-                                wrapStyle={styles.heroPortraitWrap}
-                                caption={<span style={styles.heroPortraitCaption}>hover to reveal</span>}
-                            />
-                        </motion.div>
+                        <div>
+                            <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.68rem', letterSpacing: '0.1em', color: MUTED, display: 'block', marginBottom: '0.6rem' }}>TOOLS &amp; CRAFT</span>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                                {TOOLS_CRAFT.map((t) => (
+                                    <span key={t} style={{ border: `1px solid ${INK}`, fontFamily: "'JetBrains Mono', monospace", fontSize: '0.72rem', padding: '6px 10px', textAlign: 'center' }}>{t}</span>
+                                ))}
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </section>
 
-            <Marquee />
-
-            <div className="container">
-                {/* ── STATS ────────────────────────────────────────────── */}
-                <Reveal style={styles.statsBar}>
-                    {STATS.map((s) => (
-                        <div key={s.label} style={styles.statItem}>
-                            <span className="text-gradient" style={styles.statValue}>{s.value}</span>
-                            <span style={styles.statLabel}>{s.label}</span>
-                        </div>
-                    ))}
-                </Reveal>
-                {/* ── SKILLS ───────────────────────────────────────────── */}
-                <section style={styles.section} className="home-section">
-                    <Reveal>
-                        <div style={styles.sectionHeader}>
-                            <span className="eyebrow">What I actually do</span>
-                            <h2 style={styles.sectionTitle}>Core skills</h2>
-                        </div>
-                    </Reveal>
-                    <Reveal delay={0.08}>
-                        <div style={styles.skillsGrid}>
-                            {SKILLS.map((s) => (
-                                <span key={s} className="home-skill-pill" style={styles.skillPill}>{s}</span>
-                            ))}
-                        </div>
-                    </Reveal>
-                </section>
-
-                {/* ── FEATURED PROJECTS ────────────────────────────────── */}
-                <section style={styles.section} className="home-section">
-                    <Reveal>
-                        <div style={styles.sectionHeader}>
-                            <span className="eyebrow">Selected work</span>
-                            <h2 style={styles.sectionTitle}>Case studies</h2>
-                        </div>
-                    </Reveal>
-
-                    <div style={styles.projectList} className="home-project-list">
-                        {FEATURED.map((p, i) => (
-                            <ProjectCard key={p.to} {...p} index={i} />
-                        ))}
+                <div style={{ position: 'relative', padding: '2.75rem 1.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }} className="home-portrait-col">
+                    <div style={{ position: 'relative', width: '100%', maxWidth: '340px', aspectRatio: '4/5', overflow: 'hidden', filter: 'grayscale(1) contrast(1.05)' }}>
+                        <img src="./portrait.jpg" alt="Kabir Sharma" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
                     </div>
 
-                    <Reveal delay={0.15}>
-                        <div style={{ textAlign: 'center', marginTop: '3rem' }}>
-                            <Link to="/projects" className="glass-button" style={{ padding: '13px 32px' }}>
-                                See all projects
-                            </Link>
-                        </div>
-                    </Reveal>
-                </section>
+                    <svg viewBox="0 0 60 40" style={{ position: 'absolute', top: '6%', left: '2%', width: '80px', overflow: 'visible' }}>
+                        <path d="M8 30 L8 12 L28 12 L28 30 Z M8 20 L2 15 L2 25 Z" fill="none" stroke={RULE} strokeWidth="1.4" />
+                        <circle cx="18" cy="21" r="5" fill="none" stroke={RULE} strokeWidth="1.4" />
+                    </svg>
+                    <svg viewBox="0 0 60 40" style={{ position: 'absolute', top: '2%', right: '-38%', width: '130px', overflow: 'visible' }} className="home-doodle-speech">
+                        <path d="M4 30 Q4 8 26 8 Q48 8 48 22 Q48 32 36 32 L20 32 L14 38 L16 30" fill="none" stroke={RULE} strokeWidth="1.4" />
+                        <text x="10" y="24" fontFamily="Anton" fontSize="9" fill={RULE} transform="rotate(-4 10 24)">it runs</text>
+                    </svg>
+                    <svg viewBox="0 0 60 40" style={{ position: 'absolute', bottom: '18%', left: '-6%', width: '90px', overflow: 'visible' }} className="home-doodle-code">
+                        <text x="2" y="24" fontFamily="Anton" fontSize="16" fill={RULE}>&lt;/&gt;</text>
+                    </svg>
 
-                {/* ── CTA ──────────────────────────────────────────────── */}
-                <section style={styles.ctaSection} className="home-section">
-                    <Reveal>
-                        <div style={styles.ctaInner} className="home-cta-inner">
-                            <div className="home-cta-glow" />
-                            <span className="eyebrow" style={{ color: 'var(--text-tertiary)', position: 'relative' }}>Currently open to work</span>
-                            <h2 style={{ ...styles.ctaTitle, position: 'relative' }}>Have something that<br />needs to actually work?</h2>
-                            <MagneticLink to="/contact" className="glass-button btn-primary" style={{ ...styles.ctaButton, position: 'relative' }}>
-                                Get in touch
-                            </MagneticLink>
-                        </div>
-                    </Reveal>
-                </section>
+                    <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.68rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: MUTED, marginTop: '1.1rem' }}>Dublin ↔ Hyderabad</span>
+                </div>
+
+                <div style={{ padding: '2.75rem clamp(1.25rem,3vw,3rem)', borderLeft: `1px solid ${INK}`, display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5em', fontFamily: "'JetBrains Mono', monospace", fontSize: '0.72rem', letterSpacing: '0.1em', fontWeight: 700, color: RULE }}>
+                        <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: RULE, display: 'inline-block' }} />OPEN TO WORK
+                    </span>
+
+                    <div>
+                        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.68rem', letterSpacing: '0.1em', color: MUTED }}>BASED BETWEEN</span>
+                        <h3 style={{ fontFamily: "'Anton', sans-serif", fontSize: '1.6rem', textTransform: 'uppercase', margin: '0.3rem 0' }}>Dublin &amp; Hyderabad</h3>
+                    </div>
+                    <div style={{ borderTop: `1px solid ${INK}`, paddingTop: '1.25rem' }} />
+
+                    {STATS.map((st) => (
+                        <React.Fragment key={st.label}>
+                            <div>
+                                <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.68rem', letterSpacing: '0.1em', color: MUTED }}>{st.label}</span>
+                                <h3 style={{ fontFamily: "'Anton', sans-serif", fontSize: '2rem', margin: '0.25rem 0' }}>{st.value}</h3>
+                            </div>
+                            <div style={{ borderTop: `1px solid ${INK}`, paddingTop: '1.25rem' }} />
+                        </React.Fragment>
+                    ))}
+
+                    <div>
+                        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.68rem', letterSpacing: '0.1em', color: MUTED }}>CURRENTLY STUDYING</span>
+                        <h3 style={{ fontFamily: "'Anton', sans-serif", fontSize: '1.3rem', textTransform: 'uppercase', margin: '0.3rem 0' }}>Interactive Digital Media</h3>
+                        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.75rem', color: MUTED }}>Trinity College Dublin</span>
+                    </div>
+                </div>
             </div>
+
+            <div style={{ borderTop: `1px solid ${INK}` }} />
+            <div style={{ display: 'flex', alignItems: 'center', gap: '2rem', padding: '0.9rem clamp(1.25rem,3vw,3rem)', overflowX: 'auto', borderBottom: `1px solid ${INK}` }}>
+                <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.75rem', letterSpacing: '0.1em', fontWeight: 700, flex: 'none' }}>INDEX</span>
+                {INDEX_ITEMS.map((ix) => (
+                    <span key={ix.num} style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.78rem', whiteSpace: 'nowrap', flex: 'none' }}>
+                        <span style={{ color: RULE, fontWeight: 700 }}>{ix.num}</span> {ix.label}
+                    </span>
+                ))}
+            </div>
+
+            {/* Featured */}
+            <div id="work" style={{ maxWidth: '1400px', margin: '0 auto', padding: '3.5rem clamp(1.25rem,3vw,3rem) 2rem' }}>
+                <h2 style={{ fontFamily: "'Anton', sans-serif", fontSize: 'clamp(2rem,4vw,3rem)', textTransform: 'uppercase', marginBottom: '2.5rem' }}>Featured — a system, not a mockup</h2>
+                <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1.3fr) minmax(280px,420px)', gap: '2.5rem', alignItems: 'start' }} className="home-featured-grid">
+                    <div style={{ position: 'relative', backgroundImage: 'radial-gradient(circle, rgba(20,20,20,0.14) 1px, transparent 1.6px)', backgroundSize: '7px 7px', padding: '1.75rem' }}>
+                        <img src="./stylebook/sb-hero.png" alt="StyleBook AI" style={{ width: '100%', display: 'block', transform: 'rotate(-1deg)', boxShadow: '0 20px 40px -16px rgba(20,20,20,0.35)', border: `1px solid ${INK}` }} />
+                    </div>
+                    <div>
+                        <span style={{ fontFamily: "'Anton', sans-serif", fontSize: '1.4rem', color: RULE }}>01</span>
+                        <div style={{ display: 'flex', gap: '0.6rem', margin: '0.8rem 0 1.1rem', flexWrap: 'wrap' }}>
+                            {FEATURED_TAGS.map((tg) => <Chip key={tg}>{tg}</Chip>)}
+                        </div>
+                        <h3 style={{ fontFamily: "'Anton', sans-serif", fontSize: 'clamp(1.6rem,2.6vw,2.1rem)', textTransform: 'uppercase', lineHeight: 1.1, marginBottom: '1rem' }}>StyleBook AI: a brand brief in, a design system out</h3>
+                        <p style={{ fontSize: '1rem', lineHeight: 1.7, marginBottom: '1.25rem' }}>Led a team of four, wrote nearly all of the implementation, and shipped it as a working Figma plugin — a verified, exportable design system generated from a written brand description.</p>
+                        <Link to="/projects/6" style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.85rem', fontWeight: 700, color: RULE, textDecoration: 'underline' }}>Case study →</Link>
+                    </div>
+                </div>
+            </div>
+
+            {/* Selected work */}
+            <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '1rem clamp(1.25rem,3vw,3rem) 5rem' }}>
+                <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: '2rem', borderTop: `1px solid ${INK}`, paddingTop: '1.5rem' }}>
+                    <h2 style={{ fontFamily: "'Anton', sans-serif", fontSize: 'clamp(1.8rem,3.4vw,2.4rem)', textTransform: 'uppercase' }}>Selected work</h2>
+                    <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.75rem', color: MUTED }}>2023 — 2026</span>
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2.5rem' }}>
+                    {PROJECTS.map((proj) => (
+                        <div key={proj.num}>
+                            <span style={{ fontFamily: "'Anton', sans-serif", fontSize: '1.4rem', color: RULE }}>{proj.num}</span>
+                            <div style={{ margin: '0.8rem 0 1rem', backgroundImage: 'radial-gradient(circle, rgba(20,20,20,0.14) 1px, transparent 1.6px)', backgroundSize: '7px 7px', padding: '1rem' }}>
+                                <img src={proj.img} alt={proj.title} style={{ width: '100%', aspectRatio: '4/3', objectFit: 'cover', display: 'block', border: `1px solid ${INK}` }} />
+                            </div>
+                            <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.75rem', flexWrap: 'wrap' }}>
+                                {proj.tags.map((tg) => (
+                                    <span key={tg} style={{ border: `1px solid ${INK}`, fontFamily: "'JetBrains Mono', monospace", fontSize: '0.68rem', padding: '3px 9px' }}>{tg}</span>
+                                ))}
+                            </div>
+                            <h3 style={{ fontFamily: "'Anton', sans-serif", fontSize: '1.4rem', textTransform: 'uppercase', marginBottom: '0.5rem' }}>{proj.title}</h3>
+                            <p style={{ fontSize: '0.95rem', lineHeight: 1.6, marginBottom: '0.75rem' }}>{proj.desc}</p>
+                            <Link to={proj.link} style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.8rem', fontWeight: 700, color: RULE, textDecoration: 'underline' }}>Case study →</Link>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            <style>{`
+                @media (max-width: 900px) {
+                    .home-profile-grid {
+                        grid-template-columns: 1fr !important;
+                    }
+                    .home-profile-grid > div {
+                        border-right: none !important;
+                        border-left: none !important;
+                        border-bottom: 1px solid ${INK};
+                    }
+                    .home-doodle-speech, .home-doodle-code {
+                        display: none;
+                    }
+                    .home-featured-grid {
+                        grid-template-columns: 1fr !important;
+                    }
+                }
+            `}</style>
         </motion.div>
     );
-};
-
-const styles = {
-    heroSection: {
-        position: 'relative',
-        padding: 'clamp(4rem, 12vh, 8rem) 0 clamp(3rem, 8vh, 5rem)',
-        overflow: 'hidden',
-    },
-    heroGrid: {
-        display: 'grid',
-        gridTemplateColumns: 'minmax(0, 1fr) auto',
-        alignItems: 'center',
-        gap: '2rem',
-        position: 'relative',
-        zIndex: 2,
-    },
-    heroContent: {
-        maxWidth: '680px',
-        position: 'relative',
-        zIndex: 2,
-    },
-    heroPortraitWrap: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        gap: '0.9rem',
-        justifySelf: 'end',
-    },
-    heroPortrait: {
-        filter: 'drop-shadow(0 30px 50px rgba(33, 29, 22, 0.16))',
-    },
-    heroPortraitCaption: {
-        fontFamily: 'var(--font-mono)',
-        fontSize: '0.72rem',
-        letterSpacing: '0.14em',
-        textTransform: 'uppercase',
-        color: 'var(--text-tertiary)',
-    },
-    heroEyebrow: {
-        marginBottom: '1.5rem',
-    },
-    heroTitle: {
-        fontSize: 'clamp(2.6rem, 6.6vw, 4.6rem)',
-        fontWeight: 600,
-        letterSpacing: '-0.03em',
-        lineHeight: 1.06,
-        marginBottom: '1.75rem',
-    },
-    heroSubtitle: {
-        fontSize: 'clamp(1rem, 2vw, 1.15rem)',
-        color: 'var(--text-secondary)',
-        lineHeight: 1.75,
-        maxWidth: '520px',
-        marginBottom: '2.25rem',
-    },
-    heroActions: {
-        display: 'flex',
-        alignItems: 'center',
-        gap: '2rem',
-        flexWrap: 'wrap',
-    },
-    primaryCta: {
-        padding: '14px 32px',
-        fontSize: '0.98rem',
-    },
-    ghostLink: {
-        fontSize: '0.98rem',
-        color: 'var(--text-secondary)',
-        fontWeight: 500,
-        transition: 'color var(--transition-fast)',
-    },
-    statsBar: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        gap: 'clamp(2.5rem, 6vw, 5rem)',
-        padding: '3.5rem 0',
-    },
-    statItem: {
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '0.3rem',
-    },
-    statValue: {
-        fontFamily: 'var(--font-display)',
-        fontSize: 'clamp(2.4rem, 5vw, 3.4rem)',
-        fontWeight: 700,
-        letterSpacing: '-0.03em',
-        lineHeight: 1,
-    },
-    statLabel: {
-        fontSize: '0.85rem',
-        color: 'var(--text-secondary)',
-        letterSpacing: '0.01em',
-    },
-    section: {
-        marginBottom: '6.5rem',
-    },
-    sectionHeader: {
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '0.6rem',
-        marginBottom: '2.25rem',
-    },
-    sectionTitle: {
-        fontSize: 'clamp(1.6rem, 3vw, 2.1rem)',
-        fontWeight: 600,
-        letterSpacing: '-0.02em',
-    },
-    skillsGrid: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        gap: '0.6rem',
-    },
-    skillPill: {
-        padding: '9px 18px',
-        background: 'var(--surface-color)',
-        border: '1px solid var(--border)',
-        borderRadius: 'var(--radius-sm)',
-        fontSize: '0.88rem',
-        color: 'var(--text-secondary)',
-        fontWeight: 500,
-        transition: 'border-color var(--transition-fast), color var(--transition-fast), box-shadow var(--transition-fast)',
-        cursor: 'default',
-    },
-    projectList: {
-        display: 'flex',
-        flexDirection: 'column',
-    },
-    rowWrap: {
-        width: '100%',
-    },
-    rowLink: {
-        display: 'grid',
-        gridTemplateColumns: 'auto minmax(0, 1fr) minmax(180px, 300px)',
-        alignItems: 'center',
-        gap: 'clamp(1.25rem, 3vw, 2.75rem)',
-        padding: 'clamp(1.75rem, 4vw, 2.75rem) 0',
-        textDecoration: 'none',
-    },
-    rowIndex: {
-        fontFamily: 'var(--font-mono)',
-        fontSize: '1rem',
-        color: 'var(--text-tertiary)',
-        letterSpacing: '0.05em',
-    },
-    rowText: {
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '0.6rem',
-        minWidth: 0,
-    },
-    rowTopLine: {
-        display: 'flex',
-        alignItems: 'baseline',
-        flexWrap: 'wrap',
-        gap: '0.85rem',
-    },
-    rowTitle: {
-        fontSize: 'clamp(1.5rem, 3vw, 2.2rem)',
-        fontWeight: 600,
-        letterSpacing: '-0.02em',
-    },
-    projectTag: {
-        flex: 'none',
-    },
-    rowDesc: {
-        fontSize: '0.95rem',
-        color: 'var(--text-secondary)',
-        lineHeight: 1.65,
-        maxWidth: '48ch',
-    },
-    projectArrow: {
-        marginTop: '0.3rem',
-        fontSize: '0.85rem',
-        color: 'var(--accent-color)',
-        fontWeight: 500,
-        display: 'inline-flex',
-        alignItems: 'center',
-        gap: '0.3em',
-    },
-    rowImageWrap: {
-        position: 'relative',
-        width: '100%',
-        aspectRatio: '5/4',
-        overflow: 'visible',
-        justifySelf: 'end',
-    },
-    projectImg: {
-        width: '100%',
-        height: '100%',
-        objectFit: 'cover',
-        objectPosition: 'top',
-        display: 'block',
-    },
-    projectImageFallback: {
-        width: '100%',
-        height: '100%',
-        background: 'var(--surface-light)',
-    },
-    ctaSection: {
-        marginBottom: '4rem',
-    },
-    ctaInner: {
-        position: 'relative',
-        overflow: 'hidden',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'flex-start',
-        padding: '3.5rem',
-        borderRadius: 'var(--radius-lg)',
-        background: 'var(--surface-color)',
-        border: '1px solid var(--border)',
-        gap: '1rem',
-    },
-    ctaTitle: {
-        fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)',
-        fontWeight: 600,
-        letterSpacing: '-0.02em',
-        lineHeight: 1.15,
-    },
-    ctaButton: {
-        padding: '14px 34px',
-        marginTop: '0.75rem',
-    },
 };
 
 export default Home;

@@ -1,41 +1,39 @@
 :root {
-  /* ── Ground: warm paper, not clinical white ────────────────
-     A designer's studio at midday, not a hospital. Off-white
-     with a hint of cream so flat panels still feel considered. */
-  --bg-color: #f7f3ea;
-  --surface-color: #fffdf8;
-  --surface-light: #f0ead9;
+  /* ── Ground: newsprint, not warm paper ──────────────────────
+     A Swiss-poster / press-proof register: flat off-white,
+     ink-black rules, one loud accent. Print, not glow. */
+  --bg-color: #f2f0ea;
+  --surface-color: #f2f0ea;
+  --surface-light: #ece9e1;
 
-  --text-primary: #211d16;
-  --text-secondary: #6b6355;
-  --text-tertiary: #a39a86;
+  --text-primary: #141414;
+  --text-secondary: #3a3833;
+  --text-tertiary: #6b6355;
 
-  /* ── Signal: a worked-brass duotone ─────────────────────────
-     Brass + ember — the "scope" in kabiroscope: warm optics,
-     like gold foil on stationery, not a purple SaaS gradient. */
-  --accent-color: #b3792a;
-  --accent-hover: #96631f;
-  --accent-2: #c14a26;
-  --accent-ink: #fffaf0;
-  --accent-soft: rgba(179, 121, 42, 0.09);
-  --accent-soft-border: rgba(179, 121, 42, 0.34);
-  --accent-glow: rgba(179, 121, 42, 0.28);
-  --accent-2-glow: rgba(193, 74, 38, 0.24);
+  /* ── Signal: one rule-blue accent ────────────────────────── */
+  --accent-color: #2e2bef;
+  --accent-hover: #211fc7;
+  --accent-2: #2e2bef;
+  --accent-ink: #f2f0ea;
+  --accent-soft: rgba(46, 43, 239, 0.07);
+  --accent-soft-border: rgba(46, 43, 239, 0.4);
+  --accent-glow: rgba(46, 43, 239, 0.2);
+  --accent-2-glow: rgba(46, 43, 239, 0.2);
 
-  --border: rgba(33, 29, 22, 0.1);
-  --border-strong: rgba(33, 29, 22, 0.18);
-  --glass-bg: rgba(255, 255, 255, 0.5);
-  --glass-border: var(--border);
+  --border: rgba(20, 20, 20, 0.16);
+  --border-strong: #141414;
+  --glass-bg: rgba(242, 240, 234, 0.6);
+  --glass-border: var(--border-strong);
 
-  --shadow-sm: 0 2px 10px -4px rgba(33, 29, 22, 0.12);
-  --shadow-md: 0 16px 40px -16px rgba(33, 29, 22, 0.22);
-  --shadow-lg: 0 30px 70px -20px rgba(33, 29, 22, 0.28);
+  --shadow-sm: 0 1px 0 0 rgba(20, 20, 20, 0.5);
+  --shadow-md: 6px 6px 0 0 rgba(20, 20, 20, 0.9);
+  --shadow-lg: 10px 10px 0 0 rgba(20, 20, 20, 0.9);
 
   /* ── Type system ────────────────────────────────────────── */
-  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --font-display: 'Space Grotesk', 'Inter', sans-serif;
-  --font-logo: 'Space Grotesk', sans-serif;
-  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-primary: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --font-display: 'Anton', sans-serif;
+  --font-logo: 'Anton', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
   /* Spacing */
   --spacing-sm: 0.5rem;
@@ -43,11 +41,11 @@
   --spacing-lg: 2rem;
   --spacing-xl: 4rem;
 
-  /* Radii — square-ish; an instrument, not a bubble */
-  --radius-sm: 3px;
-  --radius-md: 6px;
-  --radius-lg: 10px;
-  --radius-pill: 999px;
+  /* Radii — a printed sheet has no rounded corners */
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-pill: 0px;
 
   /* Transitions */
   --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
@@ -66,8 +64,6 @@ html {
 
 body {
   background: var(--bg-color);
-  background-image:
-    radial-gradient(circle at 50% -10%, rgba(179, 121, 42, 0.07), transparent 42%);
   color: var(--text-primary);
   font-family: var(--font-primary);
   line-height: 1.6;
@@ -290,19 +286,21 @@ a {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--accent-hover), var(--accent-color));
+  background: var(--accent-color);
   border-color: var(--accent-color);
   color: var(--accent-ink);
-  font-weight: 600;
-  box-shadow: 0 8px 30px -10px var(--accent-glow);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, var(--accent-hover), var(--accent-2));
+  background: var(--accent-hover);
   border-color: var(--accent-hover);
   color: var(--accent-ink);
-  box-shadow: 0 12px 40px -8px var(--accent-glow);
-  transform: translateY(-2px);
+  transform: none;
 }
 
 .content-wrapper {
