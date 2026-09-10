@@ -33,10 +33,10 @@ const INDEX_ITEMS = [
 const FEATURED_TAGS = ['AI PRODUCT', 'TEAM LEAD', 'FIGMA PLUGIN'];
 
 const PROJECTS = [
-    { num: '02', year: '2026 · SHIPPED', title: 'Trek Mate', tags: ['E-COMMERCE', 'MOBILE'], desc: 'A generic gear storefront, rebuilt around independent makers, field-tested on what actually matters.', img: './trekmate-v2/tm-mockup.png', link: '/projects/1' },
-    { num: '03', year: '2025 · SHIPPED', title: 'Work Hive', tags: ['WEB PLATFORM'], desc: 'Inherited a prototype where almost nothing worked. Rebuilt into a live, clickable product — search, endorsements, an editable profile, all of it.', img: './workhive/wh-mockup.png', link: '/projects/2' },
-    { num: '04', year: '2025 · RESEARCH', title: 'The Hunger Games', tags: ['UX RESEARCH'], desc: 'A comparative usability study across the major food delivery apps, built from surveys and interviews.', img: './hg-mockup.png', link: '/projects/3' },
-    { num: '05', year: '2026 · SHIPPED', title: 'This or That', tags: ['FULL STACK'], desc: 'A deployed community decision platform — React, Node, Express, MongoDB — with an algorithm-driven feed and anonymous posting.', img: './tot-mockup.png', link: '/projects/5' },
+    { num: '02', year: '2026 · SHIPPED', title: 'Trek Mate', meta: 'SOLO REDESIGN', tags: ['E-COMMERCE', 'MOBILE'], desc: 'A generic gear storefront, rebuilt around independent makers, field-tested on what actually matters.', img: './trekmate-v2/tm-mockup.png', link: '/projects/1' },
+    { num: '03', year: '2025 · SHIPPED', title: 'Work Hive', meta: 'SOLO REDESIGN', tags: ['WEB PLATFORM'], desc: 'Inherited a prototype where almost nothing worked. Rebuilt into a live, clickable product — search, endorsements, an editable profile, all of it.', img: './workhive/wh-mockup.png', link: '/projects/2' },
+    { num: '04', year: '2025 · RESEARCH', title: 'The Hunger Games', meta: 'SOLO RESEARCH', tags: ['UX RESEARCH'], desc: 'A comparative usability study across the major food delivery apps, built from surveys and interviews.', img: './hg-mockup.png', link: '/projects/3' },
+    { num: '05', year: '2026 · SHIPPED', title: 'This or That', meta: 'TECHNICAL LEAD', tags: ['FULL STACK'], desc: 'A deployed community decision platform — React, Node, Express, MongoDB — with an algorithm-driven feed and anonymous posting.', img: './tot-mockup.png', link: '/projects/5' },
 ];
 
 const Chip = ({ children }) => (
@@ -263,24 +263,39 @@ const Home = () => {
                         <SignatureMark />
                     </div>
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2.5rem' }}>
-                    {PROJECTS.map((proj, idx) => (
-                        <div key={proj.num}>
-                            <span style={{ fontFamily: "'Anton', sans-serif", fontSize: '1.4rem', color: RULE }}>{proj.num}</span>
-                            <div style={{ margin: '0.8rem 0 1rem', backgroundImage: 'radial-gradient(circle, rgba(20,20,20,0.14) 1px, transparent 1.6px)', backgroundSize: '7px 7px', padding: '1rem' }}>
-                                <img src={proj.img} alt={proj.title} style={{ width: '100%', aspectRatio: '3/2', objectFit: 'cover', display: 'block', border: `1px solid ${INK}`, transform: idx % 2 === 0 ? 'rotate(-0.6deg)' : 'rotate(0.6deg)', boxShadow: '0 14px 30px -16px rgba(20,20,20,0.3)' }} />
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', borderTop: `1px solid ${INK}` }} className="home-selected-grid">
+                    {PROJECTS.map((proj, idx) => {
+                        const isLeftCol = idx % 2 === 0;
+                        const isTopRow = idx < PROJECTS.length - (PROJECTS.length % 2 === 0 ? 2 : 1);
+                        return (
+                            <div
+                                key={proj.num}
+                                className="home-selected-cell"
+                                style={{
+                                    padding: 'clamp(1.5rem, 3vw, 2.75rem)',
+                                    borderRight: isLeftCol ? `1px solid ${INK}` : 'none',
+                                    borderBottom: isTopRow ? `1px solid ${INK}` : 'none',
+                                }}
+                            >
+                                <span style={{ fontFamily: "'Anton', sans-serif", fontSize: '1.4rem', color: RULE, display: 'block', marginBottom: '1rem' }}>{proj.num}</span>
+                                <div style={{ marginBottom: '1.5rem' }}>
+                                    <img src={proj.img} alt={proj.title} style={{ width: '100%', display: 'block' }} />
+                                </div>
+                                <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.9rem', flexWrap: 'wrap' }}>
+                                    <HighlightChip>{proj.year}</HighlightChip>
+                                    {proj.tags.map((tg) => (
+                                        <span key={tg} style={{ border: `1px solid ${INK}`, fontFamily: "'JetBrains Mono', monospace", fontSize: '0.68rem', padding: '3px 9px' }}>{tg}</span>
+                                    ))}
+                                </div>
+                                <h3 style={{ fontFamily: "'Anton', sans-serif", fontSize: '1.5rem', textTransform: 'uppercase', marginBottom: '0.6rem' }}>{proj.title}</h3>
+                                <p style={{ fontSize: '0.98rem', lineHeight: 1.65, marginBottom: '1.25rem', maxWidth: '46ch' }}>{proj.desc}</p>
+                                <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: '1rem' }}>
+                                    <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.75rem', color: MUTED, letterSpacing: '0.04em' }}>{proj.meta}</span>
+                                    <Link to={proj.link} style={{ flex: 'none', fontFamily: "'JetBrains Mono', monospace", fontSize: '0.8rem', fontWeight: 700, color: RULE, textDecoration: 'underline' }}>Case study →</Link>
+                                </div>
                             </div>
-                            <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.75rem', flexWrap: 'wrap' }}>
-                                <HighlightChip>{proj.year}</HighlightChip>
-                                {proj.tags.map((tg) => (
-                                    <span key={tg} style={{ border: `1px solid ${INK}`, fontFamily: "'JetBrains Mono', monospace", fontSize: '0.68rem', padding: '3px 9px' }}>{tg}</span>
-                                ))}
-                            </div>
-                            <h3 style={{ fontFamily: "'Anton', sans-serif", fontSize: '1.4rem', textTransform: 'uppercase', marginBottom: '0.5rem' }}>{proj.title}</h3>
-                            <p style={{ fontSize: '0.95rem', lineHeight: 1.6, marginBottom: '0.75rem' }}>{proj.desc}</p>
-                            <Link to={proj.link} style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.8rem', fontWeight: 700, color: RULE, textDecoration: 'underline' }}>Case study →</Link>
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
             </div>
 
@@ -310,6 +325,16 @@ const Home = () => {
                     }
                     .home-featured-grid {
                         grid-template-columns: 1fr !important;
+                    }
+                    .home-selected-grid {
+                        grid-template-columns: 1fr !important;
+                    }
+                    .home-selected-cell {
+                        border-right: none !important;
+                        border-bottom: 1px solid ${INK} !important;
+                    }
+                    .home-selected-cell:last-child {
+                        border-bottom: none !important;
                     }
                 }
             `}</style>
