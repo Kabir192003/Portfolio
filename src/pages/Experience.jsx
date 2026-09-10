@@ -2,41 +2,53 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const Experience = () => {
-    const toBulletPoints = (description) =>
-        description
-            .split('.')
-            .map((item) => item.trim())
-            .filter(Boolean)
-            .map((item) => `${item}.`);
-
     const experiences = [
         {
             id: 0,
-            role: 'Research Assistant, UX/Interaction Designer',
-            company: 'ADAPT Research Centre, Trinity College Dublin',
+            role: 'UX/Interaction Designer',
+            company: 'ADAPT Research Centre',
             period: 'Jul 2026 - Present',
-            description: 'Working inside a university research centre alongside researchers and engineers on pilot projects, turning research goals into concrete, documented outputs rather than open-ended exploration. Reviewed and audited a large set of CC0 images against defined criteria for generative AI dataset pre-processing, flagging inconsistencies and edge cases back to the team. Ran structured testing on outputs and kept detailed records across long review cycles, and helped maintain a documented system used across the team\'s workflows as requirements evolved.'
+            bullets: [
+                'Worked alongside researchers and engineers on pilot projects, translating research objectives into structured workflows and documented outputs.',
+                'Evaluated and audited large image datasets for generative AI preprocessing, identifying inconsistencies, edge cases and data-quality issues.',
+                'Ran structured testing across extended review cycles, documenting findings and helping maintain systems used across project workflows.',
+                'Explored emerging AI workflows and translated experimental outputs into technically grounded artefacts for stakeholder review.'
+            ]
         },
         {
             id: 1,
             role: 'Product Associate',
             company: 'DreamWeavers',
             period: 'Feb 2025 - Aug 2025',
-            description: 'Defined product requirements and use cases from day one alongside engineers, staying involved through QA and release rather than handing off a spec and moving on — a big part of why feature delivery time dropped 25%. Dug into user behaviour and product data myself to find what was actually worth building next, which fed into a 15% lift in overall product performance. Pressure-tested ideas with research and structured analysis before any build work started, and presented the rationale and trade-offs directly to PMs and engineers in sprint reviews rather than leaving it in a doc nobody read.'
+            bullets: [
+                'Defined product requirements and use cases alongside engineers from discovery through QA and release, contributing to a 25% reduction in feature delivery time.',
+                'Analysed user behaviour and product funnels to identify high-impact opportunities, contributing to a 15% improvement in product performance.',
+                'Used LLMs to accelerate specification, edge-case analysis and stakeholder alignment across multiple product releases.',
+                'Worked directly with PMs, engineers and senior stakeholders to evaluate trade-offs and shape product decisions.'
+            ]
         },
         {
             id: 2,
             role: 'UI/UX Design Intern',
             company: 'Divine Labs (IIT Delhi)',
             period: 'Mar 2024 - May 2024',
-            description: 'Restructured interaction flows in data-dense dashboards after closely reviewing how people actually used them, then stayed involved through the build so the shipped product matched the intended design — that follow-through was a big part of the 25% drop in usability issues, not just the redesign itself. Ran usability tests to validate design directions before engineering handoff, documenting what I found in enough detail to actually act on it, which improved key performance metrics by 40%. Presented findings straight to senior stakeholders through sketches, flows and interactive prototypes rather than a slide deck of screenshots.'
+            bullets: [
+                'Restructured interaction flows for data-dense dashboards based on observed user behaviour, contributing to a 25% reduction in usability issues.',
+                'Rapidly prototyped and tested alternative design directions, contributing to a 40% improvement in key performance metrics.',
+                'Synthesised research findings into actionable product and UX improvements for senior stakeholders.',
+                'Worked alongside developers throughout implementation to maintain design intent through to the shipped product.'
+            ]
         },
         {
             id: 3,
             role: 'Visual Storytelling & Composition Foundation',
             company: '',
             period: '',
-            description: 'Directed and executed visual narratives through photography and video editing. Developed a strong foundation in visual hierarchy, composition, and color theory - skills that directly inform my approach to UI design and spatial layout. Managed end-to-end creative projects, ensuring alignment between visual assets and core storytelling objectives.'
+            bullets: [
+                'Directed and executed visual narratives through photography and video editing.',
+                'Developed a strong foundation in visual hierarchy, composition, and color theory, skills that directly inform my approach to UI design and spatial layout.',
+                'Managed end-to-end creative projects, ensuring alignment between visual assets and core storytelling objectives.'
+            ]
         }
     ];
 
@@ -67,7 +79,7 @@ const Experience = () => {
                             <h2 style={styles.role} className="role-heading">{exp.role}</h2>
                             {exp.company && <h3 style={styles.company}>{exp.company}</h3>}
                             <ul style={styles.descriptionList} className="timeline-description">
-                                {toBulletPoints(exp.description).map((point) => (
+                                {exp.bullets.map((point) => (
                                     <li key={point} style={styles.descriptionItem}>
                                         {point}
                                     </li>
