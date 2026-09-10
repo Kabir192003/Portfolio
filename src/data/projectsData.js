@@ -171,7 +171,7 @@ export const projectsData = {
         ],
         tools: ['Google Forms', 'FigJam', 'Miro', 'SPSS', 'Notion'],
         problem: "Despite offering comparable services, Swiggy and Zomato take vastly different UX approaches to navigation, checkout, personalization, and support. No rigorous empirical data existed on how these differences actually impacted user satisfaction. I formulated the core research question: Which platform delivers a superior end-to-end experience, and what specific micro-interactions drive that perception?",
-        methodology: "I designed and executed the complete research methodology independently. First, I conducted a heuristic evaluation of both applications against Nielsen's 10 usability principles. Then I deployed a structured, task-based survey to 48 active users, capturing quantitative satisfaction scores and qualitative pain points across 5 controlled stages: Onboarding, Discovery, Checkout, Delivery Tracking, and Support.",
+        solution: "I designed and ran the full methodology solo: a heuristic evaluation of both apps against Nielsen's 10 principles, then a structured, task-based survey across 48 active users capturing satisfaction scores and pain points across five stages — onboarding, discovery, checkout, delivery tracking, support. I broke the journey into those discrete steps instead of asking a generic 'which app do you prefer', specifically to stop brand loyalty from masking real flaws in individual features. The quantitative scores told me what users preferred; the open-text fields told me why, which is where the actionable detail actually lived.",
         process: [
             { step: '01', title: 'Hypothesis Definition', desc: 'Formulated assumptions about speed vs. depth based on initial heuristic reviews.' },
             { step: '02', title: 'Survey Design', desc: 'Crafted a 20-question survey isolating specific user journeys and pain points.' },
@@ -179,66 +179,37 @@ export const projectsData = {
             { step: '04', title: 'Synthesis & Affinity Mapping', desc: 'Used FigJam to cluster feedback and identify recurring behavioral themes.' },
             { step: '05', title: 'Strategic Recommendations', desc: 'Drafted actionable UX improvements for both platforms based on empirical data.' }
         ],
-        researchDecisions: [
+        designDecisions: [
             {
-                title: 'Isolating the Journey',
-                reason: 'Instead of asking generic "Which app do you prefer?" questions, I broke the journey into discrete steps (Discovery, Checkout, Support). This prevented brand bias from masking specific UI flaws in individual features.'
+                image: './hgx1.jpg',
+                title: 'Simplicity vs. feature depth',
+                description: 'Users perceived Swiggy as significantly faster to use, largely due to its minimal interface. Zomato introduced higher cognitive load but rewarded users with richer discovery features for dine-in scenarios — neither is objectively "better," they\'re optimised for different intents.'
             },
             {
-                title: 'Mixed-Methods Approach',
-                reason: 'Quantitative data told me *what* users preferred (e.g., 70% preferred Swiggy\'s checkout), but qualitative open text fields revealed *why* (e.g., auto-applied coupons reduced cognitive friction).'
+                image: './hgx.jpg',
+                title: 'Speed of task completion wins when intent is delivery',
+                description: 'For food delivery specifically, users prioritise frictionless task completion over exploration. Swiggy\'s auto-applied coupons and straightforward checkout won heavily in the "hungry and in a rush" case — the single clearest finding in the whole study.'
+            },
+            {
+                image: './hgx2.jpg',
+                title: 'Trust is built through transparency, not features',
+                description: 'Real-time delivery tracking accuracy emerged as the biggest trust vector in the entire survey. Users felt Swiggy\'s tracking UI was more reliable and transparent about delays — a single honest status update did more for trust than any discovery feature.'
             }
         ],
-        painPoints: [
+        challenges: [
             {
-                title: 'Promotional Overload (Zomato)',
-                description: 'Users reported high cognitive load due to Zomato’s interface being cluttered with advertisements and flashing promotional banners, making initial navigation overwhelming.'
+                title: 'Promotional overload made Zomato\'s home screen exhausting',
+                solution: 'Users reported high cognitive load from an interface cluttered with ads and flashing promotional banners, making initial navigation overwhelming. The fix isn\'t removing promotions — it\'s grouping them into dedicated zones instead of interspersing them through the feed, and adopting the auto-applied-coupon pattern that already reduces friction on Swiggy\'s checkout.'
             },
             {
-                title: 'Hidden Charges Transparency',
-                description: 'A recurring frustration across both platforms was the sudden appearance of unexpected delivery fees or "surge" charges only at the final checkout step, severely damaging trust.'
+                title: 'Charges that only appeared at the final checkout step',
+                solution: 'A recurring frustration across both platforms was delivery fees or "surge" charges surfacing only at checkout, after a user had already committed mentally to the order. Surfacing the full cost breakdown earlier in the flow — even as an estimate — protects trust more than any amount of checkout polish can recover once it\'s broken.'
             },
             {
-                title: 'Support Loop Frustration',
-                description: 'Users heavily criticized automated chatbot loops when orders were delayed. While Swiggy excelled in ordering efficiency, Zomato was rated slightly higher in human-agent handover responsiveness.'
+                title: 'Support loops that made a bad delivery worse',
+                solution: 'Users heavily criticised automated chatbot loops when orders were delayed, while Swiggy was rated slightly higher on human-agent handover responsiveness. The recommendation for both: faster, clearer escalation to a human during time-sensitive failures, since a chatbot loop is the wrong tool exactly when trust is already at its most fragile.'
             }
         ],
-        researchInsights: [
-            {
-                title: 'Simplicity vs. Feature Depth',
-                description: 'Users perceived Swiggy as significantly faster to use, largely due to its minimal interface. Zomato introduced higher cognitive load but rewarded users with richer discovery features for dine-in scenarios.'
-            },
-            {
-                title: 'Speed of Task Completion',
-                description: 'For food delivery, users prioritize frictionless task completion over exploration. Swiggy’s auto-applied coupons and straightforward checkout won heavily in the "hungry and in a rush" use case.'
-            },
-            {
-                title: 'Trust Through Transparency',
-                description: 'Real-time delivery tracking accuracy emerged as a massive trust vector. Users felt Swiggy’s tracking UI was more reliable and transparent regarding delays.'
-            }
-        ],
-        recommendations: {
-            swiggy: [
-                {
-                    title: 'Improve Customer Support Handoff',
-                    description: 'Reduce reliance on restrictive chatbot loops during critical delivery failures. Faster access to human agents would drastically improve trust.'
-                },
-                {
-                    title: 'Enhance Loyalty Value Communication',
-                    description: 'Clearer onboarding for "Swiggy One" benefits is needed, as many users misunderstood the ROI of the subscription.'
-                }
-            ],
-            zomato: [
-                {
-                    title: 'Reduce Home Screen Cognitive Load',
-                    description: 'Simplify the home architecture. Grouping promotional elements into dedicated zones rather than interspersing them would improve navigation clarity.'
-                },
-                {
-                    title: 'Frictionless Coupon Integration',
-                    description: 'Adopt an auto-apply mechanism for the best available discount during checkout to reduce the cognitive effort of manual code searching.'
-                }
-            ]
-        },
         outcomes: [
             "Synthesized 800+ raw data points from 48 participants into 5 core UX principles for high-frequency transactional app design.",
             "Proved empirically that 'Speed to Checkout' outweighs 'Discovery Features' when user intent is delivery, a finding directly applicable to any transactional mobile app.",
