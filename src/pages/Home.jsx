@@ -108,73 +108,67 @@ const Home = () => {
                     </div>
                 </div>
 
-                <div style={{ position: 'relative', padding: '2.75rem 1.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }} className="home-portrait-col">
-                    <div
-                        style={{
-                            position: 'relative',
-                            width: '100%',
-                            maxWidth: '340px',
-                            aspectRatio: '4/5',
-                            WebkitMaskImage: 'radial-gradient(ellipse 74% 82% at 50% 42%, #000 30%, transparent 100%)',
-                            maskImage: 'radial-gradient(ellipse 74% 82% at 50% 42%, #000 30%, transparent 100%)',
-                        }}
-                    >
-                        <img src="./portrait.jpg" alt="Kabir Sharma" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', filter: 'grayscale(1) contrast(1.05)', display: 'block' }} />
+                <div style={{ position: 'relative', padding: '2.75rem 1.5rem 1.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }} className="home-portrait-col">
+                    <div style={{ position: 'relative', width: '100%', maxWidth: '380px' }}>
+                        <img
+                            src="./portrait-cutout.png"
+                            alt="Kabir Sharma"
+                            style={{ width: '100%', height: 'auto', display: 'block', filter: 'grayscale(1) contrast(1.05)' }}
+                        />
+
+                        {/* Hand-drawn wobble, shared by every doodle below */}
+                        <svg width="0" height="0" style={{ position: 'absolute' }} aria-hidden="true">
+                            <filter id="sketch-wobble" x="-20%" y="-20%" width="140%" height="140%">
+                                <feTurbulence type="fractalNoise" baseFrequency="0.045" numOctaves="2" seed="7" result="noise" />
+                                <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.6" />
+                            </filter>
+                        </svg>
+
+                        {/* Camera */}
+                        <svg viewBox="0 0 60 40" style={{ position: 'absolute', top: '20%', left: '-14%', width: '85px', overflow: 'visible', filter: 'url(#sketch-wobble)' }} className="home-doodle-camera">
+                            <path d="M8 30 L8 12 L28 12 L28 30 Z M8 20 L2 15 L2 25 Z" fill="none" stroke={RULE} strokeWidth="1.4" />
+                            <circle cx="18" cy="21" r="5" fill="none" stroke={RULE} strokeWidth="1.4" />
+                        </svg>
+                        {/* Speech bubble */}
+                        <svg viewBox="0 0 60 40" style={{ position: 'absolute', top: '2%', right: '-16%', width: '100px', overflow: 'visible', filter: 'url(#sketch-wobble)' }} className="home-doodle-speech">
+                            <path d="M4 30 Q4 8 26 8 Q48 8 48 22 Q48 32 36 32 L20 32 L14 38 L16 30" fill="none" stroke={RULE} strokeWidth="1.4" />
+                            <text x="8" y="24" fontFamily="Anton" fontSize="8" fill={RULE} transform="rotate(-4 10 24)">hi, there...</text>
+                        </svg>
+                        {/* TV */}
+                        <svg viewBox="0 0 60 40" style={{ position: 'absolute', top: '42%', right: '-20%', width: '85px', overflow: 'visible', filter: 'url(#sketch-wobble)' }} className="home-doodle-tv">
+                            <rect x="8" y="10" width="34" height="22" rx="1.5" fill="none" stroke={RULE} strokeWidth="1.3" />
+                            <path d="M18 10 L14 3 M32 10 L36 3" fill="none" stroke={RULE} strokeWidth="1.2" />
+                            <circle cx="36" cy="16" r="1.6" fill="none" stroke={RULE} strokeWidth="1" />
+                        </svg>
+                        {/* Pen + notebook */}
+                        <svg viewBox="0 0 60 40" style={{ position: 'absolute', bottom: '30%', left: '-16%', width: '85px', overflow: 'visible', filter: 'url(#sketch-wobble)' }} className="home-doodle-pen">
+                            <path d="M6 34 L6 16 L26 16 L26 34 Z" fill="none" stroke={RULE} strokeWidth="1.2" />
+                            <path d="M9 21 L23 21 M9 25 L23 25 M9 29 L18 29" fill="none" stroke={RULE} strokeWidth="1" />
+                            <path d="M32 34 L44 12 L48 15 L36 37 Z" fill="none" stroke={RULE} strokeWidth="1.2" />
+                            <path d="M44 12 L48 15" stroke={RULE} strokeWidth="1.2" />
+                        </svg>
+                        {/* Code brackets */}
+                        <svg viewBox="0 0 60 40" style={{ position: 'absolute', bottom: '10%', left: '-10%', width: '65px', overflow: 'visible', filter: 'url(#sketch-wobble)' }} className="home-doodle-code">
+                            <text x="2" y="24" fontFamily="Anton" fontSize="16" fill={RULE}>&lt;/&gt;</text>
+                        </svg>
+                        {/* Laptop, Figma */}
+                        <svg viewBox="0 0 60 40" style={{ position: 'absolute', bottom: '-4%', right: '-14%', width: '115px', overflow: 'visible', filter: 'url(#sketch-wobble)' }} className="home-doodle-laptop">
+                            <rect x="10" y="6" width="34" height="22" rx="1.5" fill="none" stroke={RULE} strokeWidth="1.2" />
+                            <path d="M4 32 L50 32 L45 28 L9 28 Z" fill="none" stroke={RULE} strokeWidth="1.2" />
+                            <circle cx="19" cy="14" r="2.2" fill="none" stroke={RULE} strokeWidth="1" />
+                            <circle cx="26" cy="14" r="2.2" fill="none" stroke={RULE} strokeWidth="1" />
+                            <circle cx="19" cy="20" r="2.2" fill="none" stroke={RULE} strokeWidth="1" />
+                            <text x="14" y="26" fontFamily="Anton" fontSize="5.5" fill={RULE}>figma</text>
+                        </svg>
                     </div>
 
-                    {/* Hand-drawn wobble, shared by every doodle below */}
-                    <svg width="0" height="0" style={{ position: 'absolute' }} aria-hidden="true">
-                        <filter id="sketch-wobble" x="-20%" y="-20%" width="140%" height="140%">
-                            <feTurbulence type="fractalNoise" baseFrequency="0.045" numOctaves="2" seed="7" result="noise" />
-                            <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.6" />
-                        </filter>
-                    </svg>
+                    <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.68rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: MUTED, marginTop: '1.5rem' }}>Dublin ↔ Hyderabad</span>
 
-                    {/* Camera */}
-                    <svg viewBox="0 0 60 40" style={{ position: 'absolute', top: '6%', left: '2%', width: '80px', overflow: 'visible', filter: 'url(#sketch-wobble)' }}>
-                        <path d="M8 30 L8 12 L28 12 L28 30 Z M8 20 L2 15 L2 25 Z" fill="none" stroke={RULE} strokeWidth="1.4" />
-                        <circle cx="18" cy="21" r="5" fill="none" stroke={RULE} strokeWidth="1.4" />
-                    </svg>
-                    {/* Speech bubble */}
-                    <svg viewBox="0 0 60 40" style={{ position: 'absolute', top: '4%', right: '-4%', width: '95px', overflow: 'visible', filter: 'url(#sketch-wobble)' }} className="home-doodle-speech">
-                        <path d="M4 30 Q4 8 26 8 Q48 8 48 22 Q48 32 36 32 L20 32 L14 38 L16 30" fill="none" stroke={RULE} strokeWidth="1.4" />
-                        <text x="10" y="24" fontFamily="Anton" fontSize="9" fill={RULE} transform="rotate(-4 10 24)">it runs</text>
-                    </svg>
-                    {/* Code brackets */}
-                    <svg viewBox="0 0 60 40" style={{ position: 'absolute', bottom: '30%', left: '-8%', width: '70px', overflow: 'visible', filter: 'url(#sketch-wobble)' }} className="home-doodle-code">
-                        <text x="2" y="24" fontFamily="Anton" fontSize="16" fill={RULE}>&lt;/&gt;</text>
-                    </svg>
-                    {/* Pen + notebook */}
-                    <svg viewBox="0 0 60 40" style={{ position: 'absolute', bottom: '6%', left: '-10%', width: '90px', overflow: 'visible', filter: 'url(#sketch-wobble)' }} className="home-doodle-pen">
-                        <path d="M6 34 L6 16 L26 16 L26 34 Z" fill="none" stroke={RULE} strokeWidth="1.2" />
-                        <path d="M9 21 L23 21 M9 25 L23 25 M9 29 L18 29" fill="none" stroke={RULE} strokeWidth="1" />
-                        <path d="M32 34 L44 12 L48 15 L36 37 Z" fill="none" stroke={RULE} strokeWidth="1.2" />
-                        <path d="M44 12 L48 15" stroke={RULE} strokeWidth="1.2" />
-                    </svg>
-                    {/* Laptop */}
-                    <svg viewBox="0 0 60 40" style={{ position: 'absolute', bottom: '-8%', right: '-12%', width: '110px', overflow: 'visible', filter: 'url(#sketch-wobble)' }} className="home-doodle-laptop">
-                        <rect x="10" y="6" width="34" height="22" rx="1.5" fill="none" stroke={RULE} strokeWidth="1.2" />
-                        <path d="M4 32 L50 32 L45 28 L9 28 Z" fill="none" stroke={RULE} strokeWidth="1.2" />
-                        <circle cx="19" cy="14" r="2.2" fill="none" stroke={RULE} strokeWidth="1" />
-                        <circle cx="26" cy="14" r="2.2" fill="none" stroke={RULE} strokeWidth="1" />
-                        <circle cx="19" cy="20" r="2.2" fill="none" stroke={RULE} strokeWidth="1" />
-                    </svg>
-
-                    <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.68rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: MUTED, marginTop: '1.1rem' }}>Dublin ↔ Hyderabad</span>
-
-                    <Link to="/about" style={{ marginTop: '2.5rem', textDecoration: 'none', display: 'block', transform: 'rotate(-2deg)' }}>
-                        <span style={{ fontFamily: "'Caveat', cursive", fontSize: '1.6rem', color: RULE, lineHeight: 1.2 }}>
-                            when I'm not building, I'm usually chasing a car event somewhere →
+                    <Link to="/about" style={{ marginTop: '1.75rem', textDecoration: 'none', display: 'block', transform: 'rotate(-2deg)' }}>
+                        <span style={{ fontFamily: "'Caveat', cursive", fontSize: '1.5rem', color: RULE, lineHeight: 1.2 }}>
+                            when I'm not building, I'm usually chasing a car event →
                         </span>
                     </Link>
-
-                    <span style={{ marginTop: '1.75rem', fontFamily: "'Caveat', cursive", fontSize: '1.4rem', color: INK, lineHeight: 1.2, transform: 'rotate(1.5deg)', display: 'block' }}>
-                        also collecting watches, one at a time
-                    </span>
-
-                    <span style={{ marginTop: '1.5rem', fontFamily: "'Caveat', cursive", fontSize: '1.4rem', color: MUTED, lineHeight: 1.2, transform: 'rotate(-1deg)', display: 'block' }}>
-                        15+ countries so far, still counting
-                    </span>
                 </div>
 
                 <div style={{ padding: '2.75rem clamp(1.25rem,3vw,3rem)', borderLeft: `1px solid ${INK}`, display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
@@ -320,7 +314,7 @@ const Home = () => {
                         border-left: none !important;
                         border-bottom: 1px solid ${INK};
                     }
-                    .home-doodle-speech, .home-doodle-code, .home-doodle-pen, .home-doodle-laptop {
+                    .home-doodle-speech, .home-doodle-code, .home-doodle-pen, .home-doodle-laptop, .home-doodle-tv, .home-doodle-camera {
                         display: none;
                     }
                     .home-featured-grid {
