@@ -49,10 +49,10 @@ const Projects = () => {
     // Mock data for projects
     const projects = [
         { id: 6, title: 'StyleBook AI', category: 'AI Product · Design Systems', image: './stylebook/sb-hero.png' },
-        { id: 1, title: 'Trek Mate', category: 'E-commerce', image: './trekmate-v2/tm-landing.jpg' },
-        { id: 2, title: 'Work Hive', category: 'Web Platform', image: './workhive/hero.jpg' },
-        { id: 3, title: 'The Hunger Games: UX Edition', category: 'UX Case Study', image: './hg-mockup.png' },
-        { id: 5, title: 'This or That', category: 'Full Stack Platform', image: './tot-thumb.jpg' }
+        { id: 1, title: 'Trek Mate', category: 'E-commerce', image: './trekmate-v2/tm-mockup.jpg' },
+        { id: 2, title: 'Work Hive', category: 'Web Platform', image: './workhive/wh-mockup.jpg' },
+        { id: 3, title: 'The Hunger Games: UX Edition', category: 'UX Case Study', image: './hg-mockup.jpg' },
+        { id: 5, title: 'This or That', category: 'Full Stack Platform', image: './tot-mockup.jpg' }
     ];
 
     return (

@@ -188,7 +188,7 @@ const About = () => {
                 </div>
 
                 <div style={{ borderTop: `1px solid ${INK}`, paddingTop: '1.5rem', display: 'flex', flexWrap: 'wrap', gap: '0.75rem 3rem', fontSize: '0.95rem' }}>
-                    <span><strong>Based in</strong> <span style={{ color: MUTED }}>Dublin ↔ Hyderabad</span></span>
+                    <span><strong>Based in</strong> <span style={{ color: MUTED }}>Dublin, Ireland</span></span>
                     <span><strong>Languages</strong> <span style={{ color: MUTED }}>English · Hindi · Telugu</span></span>
                     <span><strong>Education</strong> <span style={{ color: MUTED }}>M.Sc. Interactive Digital Media, Trinity College Dublin · B.Tech Computer Science &amp; Engineering, Anurag University</span></span>
                     <span><strong>Status</strong> <span style={{ color: MUTED }}>Open to work</span></span>

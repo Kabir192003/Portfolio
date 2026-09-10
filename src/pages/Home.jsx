@@ -34,10 +34,10 @@ const INDEX_ITEMS = [
 const FEATURED_TAGS = ['AI PRODUCT', 'TEAM LEAD', 'FIGMA PLUGIN'];
 
 const PROJECTS = [
-    { num: '02', year: '2026 · SHIPPED', title: 'Trek Mate', meta: 'SOLO REDESIGN', tags: ['E-COMMERCE', 'MOBILE'], desc: 'A generic gear storefront, rebuilt around independent makers, field-tested on what actually matters.', img: './trekmate-v2/tm-mockup.png', link: '/projects/1' },
-    { num: '03', year: '2025 · SHIPPED', title: 'Work Hive', meta: 'SOLO REDESIGN', tags: ['WEB PLATFORM'], desc: 'Inherited a prototype where almost nothing worked. Rebuilt into a live, clickable product — search, endorsements, an editable profile, all of it.', img: './workhive/wh-mockup.png', link: '/projects/2' },
-    { num: '04', year: '2025 · RESEARCH', title: 'The Hunger Games', meta: 'SOLO RESEARCH', tags: ['UX RESEARCH'], desc: 'A comparative usability study across the major food delivery apps, built from surveys and interviews.', img: './hg-mockup.png', link: '/projects/3' },
-    { num: '05', year: '2026 · SHIPPED', title: 'This or That', meta: 'TECHNICAL LEAD', tags: ['FULL STACK'], desc: 'A deployed community decision platform — React, Node, Express, MongoDB — with an algorithm-driven feed and anonymous posting.', img: './tot-mockup.png', link: '/projects/5' },
+    { num: '02', year: '2026 · SHIPPED', title: 'Trek Mate', meta: 'SOLO REDESIGN', tags: ['E-COMMERCE', 'MOBILE'], desc: 'A generic gear storefront, rebuilt around independent makers, field-tested on what actually matters.', img: './trekmate-v2/tm-mockup.jpg', link: '/projects/1' },
+    { num: '03', year: '2025 · SHIPPED', title: 'Work Hive', meta: 'SOLO REDESIGN', tags: ['WEB PLATFORM'], desc: 'Inherited a prototype where almost nothing worked. Rebuilt into a live, clickable product — search, endorsements, an editable profile, all of it.', img: './workhive/wh-mockup.jpg', link: '/projects/2' },
+    { num: '04', year: '2025 · RESEARCH', title: 'The Hunger Games', meta: 'SOLO RESEARCH', tags: ['UX RESEARCH'], desc: 'A comparative usability study across the major food delivery apps, built from surveys and interviews.', img: './hg-mockup.jpg', link: '/projects/3' },
+    { num: '05', year: '2026 · SHIPPED', title: 'This or That', meta: 'TECHNICAL LEAD', tags: ['FULL STACK'], desc: 'A deployed community decision platform — React, Node, Express, MongoDB — with an algorithm-driven feed and anonymous posting.', img: './tot-mockup.jpg', link: '/projects/5' },
 ];
 
 const Chip = ({ children }) => (
@@ -185,8 +185,8 @@ const Home = () => {
                     </span>
 
                     <div>
-                        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.68rem', letterSpacing: '0.1em', color: MUTED }}>BASED BETWEEN</span>
-                        <h3 style={{ fontFamily: "'Anton', sans-serif", fontSize: '1.6rem', textTransform: 'uppercase', margin: '0.3rem 0' }}>Dublin &amp; Hyderabad</h3>
+                        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.68rem', letterSpacing: '0.1em', color: MUTED }}>BASED IN</span>
+                        <h3 style={{ fontFamily: "'Anton', sans-serif", fontSize: '1.6rem', textTransform: 'uppercase', margin: '0.3rem 0' }}>Dublin</h3>
                     </div>
                     <div style={{ borderTop: `1px solid ${INK}`, paddingTop: '1.25rem' }} />
 
