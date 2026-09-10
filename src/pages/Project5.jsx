@@ -1,12 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { projectsData } from '../data/projectsData';
 
 const Project5 = () => {
-    const { scrollYProgress } = useScroll();
-    const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
-
     const project = projectsData.project5;
 
     return (
@@ -15,23 +12,31 @@ const Project5 = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.4 }}
         >
-            {/* Parallax Hero */}
+            {/* Hero */}
             <div style={styles.heroContainer} className="project-hero">
-                <motion.div style={{ ...styles.heroBg, y }}>
-                    <img src={project.heroImage} alt={`${project.title} Hero`} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
+                <div style={styles.heroBg}>
+                    <img src={project.heroImage} alt={`${project.title} — Home screen`} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
                     <div style={styles.heroGradientOverlay} />
-                </motion.div>
+                </div>
 
                 <div className="container project-hero-content" style={styles.heroContent}>
                     <Link to="/projects" style={styles.backLink}>← Back to Projects</Link>
                     <span style={styles.category}>{project.category}</span>
                     <h1 style={styles.title}>{project.title}</h1>
-                    <div style={{ marginTop: '1.5rem', display: 'flex', gap: '1rem' }}>
-                        <a href={project.liveLink} target="_blank" rel="noopener noreferrer" style={styles.liveButton}>
-                            View Live App ↗
-                        </a>
+                    {project.tagline && <p style={styles.tagline}>{project.tagline}</p>}
+                    <div style={styles.heroCtaRow}>
+                        {project.liveLink && (
+                            <a href={project.liveLink} target="_blank" rel="noopener noreferrer" style={styles.ctaPrimary}>
+                                View live product ↗
+                            </a>
+                        )}
+                        {project.repoLink && (
+                            <a href={project.repoLink} target="_blank" rel="noopener noreferrer" style={styles.ctaSecondary}>
+                                View source
+                            </a>
+                        )}
                     </div>
                 </div>
             </div>
@@ -59,14 +64,16 @@ const Project5 = () => {
                         <p style={styles.metaValue}>{project.timeline}</p>
                     </div>
                     <div>
-                        <span style={styles.metaLabel}>Deliverables</span>
-                        <p style={styles.metaValue}>System Architecture, DB Design, API Development, UI/UX Design, Frontend Dev</p>
+                        <span style={styles.metaLabel}>Live product</span>
+                        <p style={styles.metaValue}>
+                            <a href={project.liveLink} target="_blank" rel="noopener noreferrer" style={styles.inlineLink}>cs7025-this-or-that.onrender.com ↗</a>
+                        </p>
                     </div>
                 </div>
 
                 {/* Tools & Methods */}
                 <div style={styles.toolsContainer}>
-                    <span style={styles.metaLabel}>Tech Stack & Tools</span>
+                    <span style={styles.metaLabel}>Approach</span>
                     <div style={styles.toolsRow}>
                         {project.tools.map((tool) => (
                             <span key={tool} style={styles.toolPill}>{tool}</span>
@@ -79,34 +86,31 @@ const Project5 = () => {
 
                     {/* Overview */}
                     <section style={styles.textSection}>
-                        <h2 style={styles.sectionHeader} className="project-section-header">Project Context & Motivation</h2>
+                        <h2 style={styles.sectionHeader} className="project-section-header">What this is</h2>
                         <div style={styles.featureCard}>
                             {project.overview.map((para, idx) => (
-                                <p key={idx} style={{...styles.paragraph, marginBottom: idx !== project.overview.length - 1 ? '1.5rem' : 0}} className="project-paragraph">
+                                <p key={idx} style={{ ...styles.paragraph, marginBottom: idx !== project.overview.length - 1 ? '1.5rem' : 0 }} className="project-paragraph">
                                     {para}
                                 </p>
                             ))}
                         </div>
                     </section>
 
-                    {/* Problem & Solution */}
+                    {/* Problem */}
                     <section style={styles.textSection}>
-                        <div style={styles.splitLayout} className="project-split-layout">
-                            <div style={styles.splitContentCard}>
-                                <h2 style={styles.sectionHeader} className="project-section-header">The Challenge</h2>
-                                <p style={styles.paragraph} className="project-paragraph">{project.problem}</p>
-                            </div>
-                            <div style={styles.splitContentCard}>
-                                <h2 style={styles.sectionHeader} className="project-section-header">The Solution</h2>
-                                <p style={styles.paragraph} className="project-paragraph">{project.solution}</p>
-                            </div>
-                        </div>
+                        <h2 style={styles.sectionHeader} className="project-section-header">Where it started</h2>
+                        <p style={styles.paragraph} className="project-paragraph">{project.problem}</p>
                     </section>
 
-                    {/* My Process */}
+                    {/* Solution */}
                     <section style={styles.textSection}>
-                        <h2 style={styles.sectionHeader} className="project-section-header">Full-Stack Development Process</h2>
-                        <p style={styles.paragraph}>As a core architect of this group project, I ensured we followed a structured lifecycle, moving logically from data modeling to final UI implementation.</p>
+                        <h2 style={styles.sectionHeader} className="project-section-header">My approach</h2>
+                        <p style={styles.paragraph} className="project-paragraph">{project.solution}</p>
+                    </section>
+
+                    {/* Process */}
+                    <section style={styles.textSection}>
+                        <h2 style={styles.sectionHeader} className="project-section-header">Process</h2>
                         <div style={styles.processGrid}>
                             {project.process.map((step, idx) => (
                                 <div key={idx} style={styles.processCard}>
@@ -118,47 +122,33 @@ const Project5 = () => {
                         </div>
                     </section>
 
-                    {/* Technical & Design Decisions */}
+                    {/* Key Decisions, each with a real screenshot */}
                     <section style={styles.textSection}>
-                        <h2 style={styles.sectionHeader} className="project-section-header">Key Architectural & UX Decisions</h2>
-                        <div style={styles.decisionGrid}>
-                            {project.designDecisions.map((decision, idx) => (
-                                <article key={idx} style={styles.showcaseCard}>
-                                    <h4 style={styles.showcaseTitle}>{decision.title}</h4>
-                                    <p style={styles.detailParagraph}>{decision.reason}</p>
-                                </article>
-                            ))}
-                        </div>
-                    </section>
-
-                    {/* Design Rationale */}
-                    <section style={styles.textSection}>
-                        <h2 style={styles.sectionHeader} className="project-section-header">Design Rationale: High-Fidelity UI</h2>
-                        <p style={styles.paragraph}>Every pixel was placed with intent. Here is a breakdown of the core screens, highlighting the specific problems they solve, the trade-offs considered, and why these particular UX patterns were chosen.</p>
-                        
+                        <h2 style={styles.sectionHeader} className="project-section-header">Key decisions</h2>
+                        <p style={styles.paragraph}>Every screen below is a screenshot of the live, deployed product — not a mockup.</p>
                         <div style={styles.rationaleGrid}>
-                            {project.designRationale.map((item, idx) => (
-                                <div key={item.title} style={{...styles.rationaleRow, flexDirection: idx % 2 === 0 ? 'row-reverse' : 'row'}}>
+                            {project.designDecisions.map((mockup, idx) => (
+                                <div key={idx} style={{ ...styles.rationaleRow, flexDirection: idx % 2 === 0 ? 'row' : 'row-reverse' }}>
                                     <div style={styles.rationaleImageHolder} className="project2-wireframe-holder">
-                                        <img src={item.image} alt={`Interface ${idx + 1}`} className="project2-wireframe-image" />
+                                        <img src={mockup.image} alt={mockup.title} className="project2-wireframe-image" />
                                     </div>
                                     <div style={styles.rationaleContent}>
-                                        <h4 style={styles.subSectionHeader}>{item.title}</h4>
-                                        <p style={styles.detailParagraph}>{item.description}</p>
+                                        <h3 style={styles.subSectionHeader}>{mockup.title}</h3>
+                                        <p style={styles.detailParagraph}>{mockup.description}</p>
                                     </div>
                                 </div>
                             ))}
                         </div>
                     </section>
 
-                    {/* Key Challenges */}
+                    {/* Challenges */}
                     <section style={styles.textSection}>
-                        <h2 style={styles.sectionHeader} className="project-section-header">Technical Challenges & Team Collaboration</h2>
+                        <h2 style={styles.sectionHeader} className="project-section-header">Two things worth calling out</h2>
                         <div style={styles.painPointList}>
                             {project.challenges.map((challenge, idx) => (
                                 <article key={idx} style={styles.painPointItem}>
-                                    <h3 style={styles.subSectionHeader}>Challenge: {challenge.title}</h3>
-                                    <p style={styles.detailParagraph}><strong>Solution:</strong> {challenge.solution}</p>
+                                    <h3 style={styles.subSectionHeader}>{challenge.title}</h3>
+                                    <p style={styles.detailParagraph}>{challenge.solution}</p>
                                 </article>
                             ))}
                         </div>
@@ -166,16 +156,19 @@ const Project5 = () => {
 
                     {/* Outcomes & Reflections */}
                     <section style={styles.textSection}>
-                        <h2 style={styles.sectionHeader} className="project-section-header">Outcomes & Growth</h2>
+                        <h2 style={styles.sectionHeader} className="project-section-header">Where it landed</h2>
                         <div style={styles.conclusionCard}>
-                            <h3 style={styles.subSectionHeader}>Project Impact</h3>
                             <ul style={styles.outcomeList}>
                                 {project.outcomes.map((outcome, idx) => (
                                     <li key={idx} style={styles.detailParagraph}>{outcome}</li>
                                 ))}
                             </ul>
-                            
-                            <h3 style={{...styles.subSectionHeader, marginTop: '1.5rem'}}>Reflections</h3>
+                            {project.liveLink && (
+                                <a href={project.liveLink} target="_blank" rel="noopener noreferrer" style={{ ...styles.ctaPrimary, alignSelf: 'flex-start', marginTop: '0.5rem' }}>
+                                    Try it yourself ↗
+                                </a>
+                            )}
+                            <h3 style={{ ...styles.subSectionHeader, marginTop: '1.5rem' }}>Reflection</h3>
                             <p style={styles.detailParagraph}>{project.reflections}</p>
                         </div>
                     </section>
@@ -189,8 +182,8 @@ const Project5 = () => {
 const styles = {
     heroContainer: {
         position: 'relative',
-        height: '60vh',
-        minHeight: '400px',
+        height: '58vh',
+        minHeight: '380px',
         display: 'flex',
         alignItems: 'flex-end',
         overflow: 'hidden',
@@ -198,10 +191,7 @@ const styles = {
     },
     heroBg: {
         position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '110%',
+        inset: 0,
         backgroundColor: 'var(--surface-color)',
         zIndex: -1,
     },
@@ -233,30 +223,50 @@ const styles = {
     title: {
         fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
     },
-    liveButton: {
-        display: 'inline-flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '0.8rem 1.8rem',
-        backgroundColor: 'var(--accent-color)',
-        color: '#fff',
+    tagline: {
+        fontSize: '1.15rem',
+        color: 'var(--text-secondary)',
+        maxWidth: '640px',
+        marginTop: '0.75rem',
+        lineHeight: '1.6',
+    },
+    heroCtaRow: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: '0.9rem',
+        marginTop: '1.75rem',
+    },
+    ctaPrimary: {
+        display: 'inline-block',
+        padding: '0.75rem 1.5rem',
         borderRadius: 'var(--radius-pill)',
-        textDecoration: 'none',
+        background: 'var(--accent-color)',
+        color: '#141126',
         fontWeight: '600',
-        fontSize: '1rem',
-        transition: 'all 0.3s ease',
-        boxShadow: '0 4px 14px rgba(185, 140, 232, 0.4)',
+        fontSize: '0.95rem',
+    },
+    ctaSecondary: {
+        display: 'inline-block',
+        padding: '0.75rem 1.5rem',
+        borderRadius: 'var(--radius-pill)',
+        border: '1px solid var(--glass-border)',
+        color: 'var(--text-primary)',
+        fontWeight: '500',
+        fontSize: '0.95rem',
+    },
+    inlineLink: {
+        color: 'var(--accent-color)',
     },
     impactBanner: {
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
         gap: '2rem',
         padding: '2.5rem',
-        background: 'linear-gradient(160deg, rgba(185, 140, 232, 0.08) 0%, rgba(20, 17, 38, 0.65) 100%)',
+        background: 'linear-gradient(160deg, rgba(179, 121, 42, 0.1) 0%, rgba(255, 253, 248, 0.9) 100%)',
         borderRadius: 'var(--radius-lg)',
         border: '1px solid var(--glass-border)',
         marginBottom: '3rem',
-        marginTop: '-2rem', // Pull up slightly
+        marginTop: '-2rem',
     },
     impactItem: {
         display: 'flex',
@@ -266,13 +276,13 @@ const styles = {
         gap: '0.5rem',
     },
     impactValue: {
-        fontSize: '3rem',
+        fontSize: '2.4rem',
         fontWeight: '700',
-        lineHeight: '1',
+        lineHeight: '1.1',
         margin: 0,
     },
     impactLabel: {
-        fontSize: '0.95rem',
+        fontSize: '0.9rem',
         color: 'var(--text-secondary)',
         textTransform: 'uppercase',
         letterSpacing: '0.05em',
@@ -308,17 +318,16 @@ const styles = {
     },
     toolPill: {
         padding: '0.4rem 1.2rem',
-        background: 'rgba(185, 140, 232, 0.06)',
+        background: 'rgba(200, 147, 63, 0.06)',
         border: '1px solid var(--glass-border)',
         borderRadius: 'var(--radius-pill)',
         fontSize: '0.9rem',
         color: 'var(--text-primary)',
-        transition: 'all 0.3s ease',
     },
     contentSections: {
         display: 'flex',
         flexDirection: 'column',
-        gap: '5.25rem',
+        gap: '4.5rem',
     },
     textSection: {
         maxWidth: '1000px',
@@ -326,8 +335,8 @@ const styles = {
         width: '100%',
     },
     sectionHeader: {
-        fontSize: '2rem',
-        marginBottom: '1.5rem',
+        fontSize: '1.85rem',
+        marginBottom: '1.25rem',
     },
     subSectionHeader: {
         fontSize: '1.3rem',
@@ -335,36 +344,20 @@ const styles = {
         color: 'var(--text-primary)',
     },
     paragraph: {
-        fontSize: '1.12rem',
+        fontSize: '1.1rem',
         color: 'var(--text-secondary)',
-        lineHeight: '1.85',
-        textAlign: 'justify',
-        textJustify: 'inter-word',
+        lineHeight: '1.8',
     },
     detailParagraph: {
-        fontSize: '1.05rem',
+        fontSize: '1.03rem',
         color: 'var(--text-secondary)',
         lineHeight: '1.75',
-        textAlign: 'justify',
     },
     featureCard: {
         padding: '2rem',
         borderRadius: 'var(--radius-md)',
         border: '1px solid var(--glass-border)',
-        background: 'linear-gradient(160deg, rgba(185, 140, 232, 0.09) 0%, rgba(20, 17, 38, 0.72) 100%)',
-    },
-    splitLayout: {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-        gap: 'clamp(1.5rem, 4vw, 3rem)',
-    },
-    splitContentCard: {
-        display: 'flex',
-        flexDirection: 'column',
-        padding: '2rem',
-        borderRadius: 'var(--radius-md)',
-        border: '1px solid var(--glass-border)',
-        background: 'rgba(185, 140, 232, 0.055)',
+        background: 'linear-gradient(160deg, rgba(179, 121, 42, 0.1) 0%, rgba(255, 253, 248, 0.92) 100%)',
     },
     processGrid: {
         display: 'grid',
@@ -373,11 +366,10 @@ const styles = {
         marginTop: '1rem',
     },
     processCard: {
-        background: 'rgba(185, 140, 232, 0.03)',
+        background: 'rgba(200, 147, 63, 0.03)',
         border: '1px solid var(--glass-border)',
         borderRadius: 'var(--radius-md)',
         padding: '1.8rem',
-        position: 'relative',
         display: 'flex',
         flexDirection: 'column',
         gap: '0.8rem',
@@ -397,14 +389,9 @@ const styles = {
         marginBottom: '0.5rem',
     },
     processTitle: {
-        fontSize: '1.2rem',
+        fontSize: '1.15rem',
         color: 'var(--text-primary)',
         margin: 0,
-    },
-    decisionGrid: {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-        gap: '1.5rem',
     },
     painPointList: {
         display: 'flex',
@@ -415,12 +402,12 @@ const styles = {
         padding: '1.8rem',
         borderRadius: 'var(--radius-md)',
         border: '1px solid var(--glass-border)',
-        background: 'linear-gradient(90deg, rgba(185, 140, 232, 0.06) 0%, transparent 100%)',
+        background: 'linear-gradient(90deg, rgba(200, 147, 63, 0.06) 0%, transparent 100%)',
     },
     conclusionCard: {
         borderRadius: 'var(--radius-md)',
         border: '1px solid var(--glass-border)',
-        background: 'rgba(185, 140, 232, 0.06)',
+        background: 'rgba(200, 147, 63, 0.06)',
         padding: '2.5rem',
         display: 'flex',
         flexDirection: 'column',
@@ -428,85 +415,31 @@ const styles = {
     },
     outcomeList: {
         margin: 0,
-        paddingLeft: '1.5rem',
+        paddingLeft: '1.4rem',
         display: 'flex',
         flexDirection: 'column',
         gap: '0.8rem',
     },
-    showcaseGrid: {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-        gap: '1.35rem',
-        marginTop: '0.85rem',
-    },
-    showcaseCard: {
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '0.95rem',
-        padding: '1.5rem',
-        borderRadius: 'var(--radius-md)',
-        border: '1px solid var(--glass-border)',
-        background: 'rgba(185, 140, 232, 0.055)',
-    },
-    showcaseTextWrap: {
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '0.5rem',
-    },
-    showcaseTitle: {
-        margin: 0,
-        fontSize: '1.1rem',
-        fontWeight: '600',
-        color: 'var(--text-primary)',
-        lineHeight: '1.35',
-    },
-    wireframePlaceholder: {
-        width: '100%',
-        aspectRatio: '16/10',
-        backgroundColor: 'var(--surface-color)',
-        borderRadius: 'var(--radius-md)',
-        border: '1px solid var(--glass-border)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        overflow: 'hidden',
-    },
-    wireframeDescription: {
-        margin: 0,
-        fontSize: '1.05rem',
-        color: 'var(--text-secondary)',
-        lineHeight: '1.72',
-        textAlign: 'justify',
-        textJustify: 'inter-word',
-        padding: '0.15rem 0.15rem 0',
-    },
-    project2WireframeImage: {
-        width: '100%',
-        height: '100%',
-        display: 'block',
-        objectFit: 'cover',
-        objectPosition: 'center top',
-    },
     rationaleGrid: {
         display: 'flex',
         flexDirection: 'column',
-        gap: '5rem',
-        marginTop: '3rem',
+        gap: '4rem',
+        marginTop: '2rem',
     },
     rationaleRow: {
         display: 'flex',
         flexWrap: 'wrap',
-        gap: '3rem',
+        gap: '2.5rem',
         alignItems: 'center',
     },
     rationaleImageHolder: {
-        flex: '1 1 450px',
+        flex: '1 1 480px',
         aspectRatio: '16/10',
         backgroundColor: 'var(--surface-color)',
         borderRadius: 'var(--radius-md)',
         border: '1px solid var(--glass-border)',
         display: 'flex',
-        alignItems: 'center',
+        alignItems: 'flex-start',
         justifyContent: 'center',
         overflow: 'hidden',
     },
@@ -514,8 +447,8 @@ const styles = {
         flex: '1 1 300px',
         display: 'flex',
         flexDirection: 'column',
-        gap: '1rem',
-    }
+        gap: '0.85rem',
+    },
 };
 
 export default Project5;

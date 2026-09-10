@@ -155,9 +155,10 @@ export const projectsData = {
     },
     project3: {
         title: 'The Hunger Games',
+        tagline: 'Swiggy vs. Zomato — a mixed-methods study of two apps solving the identical problem differently',
         category: 'UX Research & Comparative Analysis',
         timeline: '1 Month',
-        role: 'UX Researcher',
+        role: 'UX Researcher — designed and ran the study solo',
         overview: [
             "I use Swiggy and Zomato daily, and as a designer I couldn't ignore how differently they solve the exact same problem. Both platforms serve identical core functions, yet one prioritizes minimal, frictionless speed while the other leans into feature depth and discovery. I wanted empirical data on which approach actually wins.",
             "I independently designed and conducted a rigorous mixed-methods UX study: heuristic evaluation of both apps against Nielsen's principles, followed by a structured task-based survey across 48 active users. I synthesized 800+ raw data points into 5 actionable UX principles.",
@@ -246,98 +247,93 @@ export const projectsData = {
         reflections: "This study reinforced my core belief: beautiful UI is irrelevant if the architecture introduces friction during a high-intent task. The biggest takeaway was learning to design surveys that isolate journey stages rather than asking generic preference questions. If I expanded this, I would incorporate eye-tracking and task-timing for even stronger data.",
 
         heroImage: './food.jpg',
-        surveyResponses: [
-            './p3survey1.png',
-            './p3survey2.png',
-            './p3survey3.png',
-            './p3survey4.png',
-            './p3survey5.png',
-            './p3survey6.png',
-            './p3survey7.png',
-            './p3survey8.png',
-            './p3survey9.png',
-            './p3survey10.png'
+        quantData: [
+            {
+                label: 'Task efficiency (speed to checkout)',
+                bars: [
+                    { brand: 'Swiggy', value: 9.2 },
+                    { brand: 'Zomato', value: 6.8 }
+                ]
+            },
+            {
+                label: 'Reported cognitive load (lower is better)',
+                bars: [
+                    { brand: 'Swiggy', value: 3.4 },
+                    { brand: 'Zomato', value: 7.9 }
+                ]
+            },
+            {
+                label: 'Navigation clarity (discovery phase)',
+                bars: [
+                    { brand: 'Swiggy', value: 8.5 },
+                    { brand: 'Zomato', value: 7.1 }
+                ]
+            }
         ]
     },
     project5: {
         title: 'This or That',
-        category: 'Full Stack Web App · Group Project',
-        timeline: 'Feb 2026 - May 2026',
-        role: 'Full Stack Developer & UI/UX Designer',
+        tagline: 'A community decision platform, architected and built solo as the team\'s technical lead',
+        category: 'Full-Stack Platform · Group Project',
+        timeline: 'Feb 2026 – May 2026, 3-month academic build',
+        role: 'Technical lead — architecture, backend and full UI/UX, across a 4-person team',
         liveLink: 'https://cs7025-this-or-that.onrender.com/home.html',
         overview: [
-            "People make dozens of micro-decisions daily, from choosing a laptop to picking a framework, but turning to the internet for help means biased articles and toxic forums. I saw an opportunity to build something better: a fast, community-driven platform for real decision-making.",
-            "'This or That' is a full-stack community platform I architected and built as the technical lead of a 4-person team at Trinity College Dublin. Users pose dilemmas, the community votes, and a personalized feed ensures you only see decisions relevant to your expertise. The app is live and deployed with 25+ beta users.",
-            "I took complete ownership of the system architecture, database design, the entire React frontend, and all UI/UX design. I single-handedly built every screen, designed the NoSQL schemas powering the personalized feed algorithm, and led the team through code reviews, merge sessions, and API contract alignment."
+            "People make dozens of small decisions a day — which laptop, which framework, which mouse — and the internet's answer to 'help me choose' is either a biased blog post or a toxic forum thread. This or That is a community platform built around that specific gap: pose a dilemma, the community votes, and a personalized feed surfaces the decisions you're actually equipped to weigh in on rather than a chronological firehose.",
+            "I was the technical lead on a 4-person team at Trinity College Dublin, and owned the system end to end — the database schema, the API layer, the entire React frontend, and the UI/UX for every screen. The app is live, deployed, and was used by 25+ beta testers during the course.",
+            "The rest of the team contributed on testing, content and coordination, but the architecture and the code connecting it together were mine — which meant the three-month deadline lived or died on decisions I made in the first two weeks, before a single screen existed."
         ],
         impactMetrics: [
-            { label: 'System Architecture', value: '100%' },
-            { label: 'Time to MVP', value: '3 Mos' },
-            { label: 'Platform Users (n=25)', value: 'Beta' }
+            { label: 'System & database architecture', value: 'Solo' },
+            { label: 'Time to a deployed MVP', value: '3 Mos' },
+            { label: 'Beta testers on the live app', value: '25+' }
         ],
         tools: ['React', 'Node.js', 'Express', 'MongoDB', 'Figma'],
-        problem: "Existing Q&A platforms like Quora or Reddit are text-heavy and demand significant cognitive effort. When someone just wants a quick consensus on 'Logitech MX Master vs Apple Magic Mouse', they shouldn't need to read 50 comments. Our technical challenge as a team: coordinating complex full-stack features, including a personalized feed algorithm and anonymous posting, across multiple developers within a strict 3-month academic deadline.",
-        solution: "I engineered the platform architecture around binary/multi-choice polling with threaded discussions. I designed the database to dynamically connect user preferences to the feed generation algorithm. My UI delivers frictionless single-click voting with instant visual feedback via animated progress bars. For sensitive topics, I implemented secure anonymous posting that decouples user IDs from public API responses while maintaining full data integrity.",
+        problem: "Existing Q&A platforms like Quora or Reddit are built for depth, not speed — reading fifty comments to settle 'Logitech MX Master or Apple Magic Mouse' is the wrong amount of effort for the question. The team's technical problem sat underneath that: coordinating a personalized feed algorithm, anonymous posting, and real-time voting across four developers touching the same full-stack features, inside a fixed three-month academic deadline with no room to redo the architecture halfway through.",
+        solution: "I built the platform around binary and multi-choice polling with threaded discussion underneath, and designed the database so a user's declared topic interests directly drive what the feed shows them — the personalization lives in the schema, not bolted onto the frontend afterward. Voting is single-click with an immediate animated result, because the entire value proposition collapses if casting a vote feels like filling out a form. For sensitive topics — career or relationship dilemmas — I added a backend flag that strips user identity from the public API response while keeping the record intact internally, so anonymity is real rather than cosmetic.",
         process: [
-            { step: '01', title: 'Architecture & Database Design', desc: 'Mapped out entity-relationship diagrams and designed scalable NoSQL schemas for users, polls, and preferences.' },
-            { step: '02', title: 'UI/UX Prototyping', desc: 'Created high-fidelity Figma mockups, establishing a clean, modern design system to serve as a single source of truth for the team.' },
-            { step: '03', title: 'Backend & API Development', desc: 'Developed secure RESTful API endpoints handling authentication, preference matching, and the core voting logic.' },
-            { step: '04', title: 'Frontend Implementation', desc: 'Translated the Figma designs into responsive React components, integrating them tightly with our backend services.' },
-            { step: '05', title: 'Group Integration & Testing', desc: 'Led regular code reviews and merge sessions to ensure seamless integration of frontend and backend modules developed by different team members.' }
+            { step: '01', title: 'Architecture & database design', desc: 'Mapped entity relationships and designed the NoSQL schemas for users, polls and preferences before any UI existed — the personalized feed depends entirely on this being right.' },
+            { step: '02', title: 'UI/UX prototyping', desc: 'Built high-fidelity Figma mockups to give the team one shared source of truth for layout and interaction, rather than four people interpreting a spec differently.' },
+            { step: '03', title: 'Backend & API development', desc: 'Built REST endpoints for authentication, preference matching and the core voting logic — the layer everything else on the team plugged into.' },
+            { step: '04', title: 'Frontend implementation', desc: 'Translated the Figma designs into responsive React components wired directly to the backend I\'d just built, rather than against a mocked API.' },
+            { step: '05', title: 'Group integration & testing', desc: 'Ran regular code reviews and merge sessions as the technical lead, keeping schemas and API contracts synchronized as four people shipped against the same codebase.' }
         ],
         designDecisions: [
             {
-                title: 'Algorithm-Driven Personalized Feed',
-                reason: 'To maximize user engagement, I architected the backend to dynamically filter the global feed based on an array of topic tags selected during user onboarding. This ensured users only saw dilemmas they actually cared about.'
+                image: './tot-feed.png',
+                title: 'A feed personalized by declared interest, not engagement history',
+                description: 'Instead of a chronological firehose, the feed filters on topic tags a user actually chose during onboarding. That decision lives in the database schema, not a ranking algorithm bolted on top — the difference between a feed that feels curated and one that just tracks clicks.'
             },
             {
-                title: 'Frictionless Voting UI',
-                reason: 'The core action of the platform is voting. I designed large, clear touch targets for the options. Upon voting, the UI immediately transitions to show community percentages, providing instant gratification and keeping the user engaged.'
+                image: './tot-hero.png',
+                title: 'Voting that resolves in one click, with the result visible immediately',
+                description: 'The core action of the platform is casting a vote, so it had to feel weightless. A single tap transitions instantly into the live percentage breakdown, with the discussion thread anchored below for anyone who wants the reasoning rather than just the number.'
             },
             {
-                title: 'Secure Anonymous Interactions',
-                reason: 'To encourage questions on sensitive topics (e.g., career or relationship choices), I implemented a backend flag that decouples user IDs from specific posts in the public API response, ensuring true anonymity without losing data integrity.'
+                image: './tot-ask.png',
+                title: 'Posting a dilemma is as fast as sending a message',
+                description: 'Creating a poll uses a progressive input that only expands into image-upload fields when the poll type needs them, so the default path stays a two-field form. For sensitive topics, a backend flag decouples the author\'s identity from the public response — anonymity enforced server-side, not just hidden in the UI.'
             }
         ],
         challenges: [
             {
-                title: 'Group Coordination & Version Control',
-                solution: 'With multiple developers touching the same full-stack features, merge conflicts were a constant threat. I established a strict Git branching strategy and served as the technical lead during integration, ensuring our database schemas and API contracts remained synchronized.'
+                title: 'Keeping four developers from colliding on the same full-stack features',
+                solution: 'With multiple people touching schema, API and frontend in the same sprint, merge conflicts were a constant risk. I set a strict Git branching strategy and personally handled most integration merges, since I had the clearest picture of how the schema and API contracts were meant to fit together — the same role the WorkHive and StyleBook rebuilds later reinforced: someone has to own the seams.'
             },
             {
-                title: 'Complex State Management',
-                solution: 'Managing the state of the user’s feed, their profile preferences, and real-time voting updates required careful planning. I implemented centralized state management on the frontend to prevent unnecessary re-renders and ensure the UI always reflected the latest database state.'
+                title: 'State that had to stay correct across feed, profile and live votes at once',
+                solution: 'A user\'s feed, their declared preferences, and in-progress votes all needed to update consistently without the UI either re-rendering constantly or showing stale numbers. I centralized state on the frontend specifically to avoid both failure modes — the fix that\'s boring to describe and easy to get subtly wrong.'
             }
         ],
         outcomes: [
-            "Delivered a fully functional, deployed full-stack application within the aggressive 3-month Trinity College timeline. The app is live and serving 25+ beta users.",
-            "Demonstrated full-stack versatility: I personally bridged database architecture, backend API design, and complete frontend implementation as the team's technical anchor.",
-            "Established and enforced the Git branching strategy, API contracts, and code review standards that kept a 4-person team shipping without merge conflicts.",
-            "The architecture I designed (NoSQL schemas, RESTful APIs, React state management) handled real concurrent users without performance degradation."
+            "Shipped a fully functional, deployed full-stack app inside a fixed 3-month academic timeline — live and used by 25+ beta testers, not a local demo.",
+            "Owned the full stack personally: database schema, API layer and every React screen, while the branching strategy and API contracts I set kept a 4-person team integrating without stalling on each other.",
+            "The personalization model — feed content driven by schema-level interest tags rather than a bolted-on ranking pass — held up under real concurrent voting without needing a rewrite.",
+            "Every screen in this case study is a screenshot of the deployed app at the link above, not a Figma frame."
         ],
-        reflections: "This project proved that investing in architecture and API contracts before writing code pays for itself many times over. Because I designed the database schemas and Figma prototypes upfront, the team worked in parallel with zero blocking dependencies. Next step: real-time WebSockets for live voting updates.",
+        reflections: "The lesson that generalised past this project: investing in the database schema and API contracts before writing any UI pays for itself many times over on a team build, because it's what let four people work in parallel without blocking on each other for three months. It's the same instinct that shows up later in the Work Hive and StyleBook AI case studies — get the data model right first, and the screens built on top of it stay honest. If I extended this, real-time WebSockets for live vote updates is the obvious next layer; right now a result updates on the next fetch, not the instant someone else votes.",
 
-        heroImage: './tot-hero.png',
-        persona1: './p2persona1.png', 
-        persona2: './p2persona2.png', 
-        sitemap: './tot-feed.png',
-        designRationale: [
-            {
-                image: './tot-feed.png',
-                title: 'Personalized Feed: Algorithm-Driven Discovery',
-                description: 'Instead of an overwhelming chronological firehose, the feed relies on user-declared expertise. By dynamically filtering dilemmas based on their profile tags, we significantly increased engagement rates and response quality.'
-            },
-            {
-                image: './tot-hero.png',
-                title: 'Hybrid Polling System: Structured Empathy',
-                description: 'We had to balance quantitative data (polls) with qualitative context (comments). The interface prioritizes the poll visual to capture immediate votes, while anchoring the discussion thread directly below for deeper context.'
-            },
-            {
-                image: './tot-ask.png',
-                title: 'Decision Creation: Frictionless Input',
-                description: 'Creating a poll needed to be as easy as sending a tweet. I designed a progressive input flow that expands based on the poll type (text vs image), ensuring the user is never confronted with an overwhelming form.'
-            }
-        ]
+        heroImage: './tot-hero-bg.jpg'
     },
     project6: {
         title: 'StyleBook AI',

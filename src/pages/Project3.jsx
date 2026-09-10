@@ -1,12 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { projectsData } from '../data/projectsData';
 
 const Project3 = () => {
-    const { scrollYProgress } = useScroll();
-    const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
-
     const project = projectsData.project3;
 
     return (
@@ -15,19 +12,20 @@ const Project3 = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.4 }}
         >
-            {/* Parallax Hero */}
+            {/* Hero */}
             <div style={styles.heroContainer} className="project-hero">
-                <motion.div style={{ ...styles.heroBg, y }}>
-                    <img src={project.heroImage} alt={`${project.title} Hero`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <div style={styles.heroBg}>
+                    <img src={project.heroImage} alt={`${project.title} — research subject`} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} />
                     <div style={styles.heroGradientOverlay} />
-                </motion.div>
+                </div>
 
                 <div className="container project-hero-content" style={styles.heroContent}>
                     <Link to="/projects" style={styles.backLink}>← Back to Projects</Link>
                     <span style={styles.category}>{project.category}</span>
                     <h1 style={styles.title}>{project.title}</h1>
+                    {project.tagline && <p style={styles.tagline}>{project.tagline}</p>}
                 </div>
             </div>
 
@@ -54,14 +52,14 @@ const Project3 = () => {
                         <p style={styles.metaValue}>{project.timeline}</p>
                     </div>
                     <div>
-                        <span style={styles.metaLabel}>Deliverables</span>
-                        <p style={styles.metaValue}>Survey Design, Data Synthesis, Heuristic Evaluation, UX Recommendations</p>
+                        <span style={styles.metaLabel}>Deliverable</span>
+                        <p style={styles.metaValue}>Comparative UX research report</p>
                     </div>
                 </div>
 
                 {/* Tools & Methods */}
                 <div style={styles.toolsContainer}>
-                    <span style={styles.metaLabel}>Tools & Methods</span>
+                    <span style={styles.metaLabel}>Tools & methods</span>
                     <div style={styles.toolsRow}>
                         {project.tools.map((tool) => (
                             <span key={tool} style={styles.toolPill}>{tool}</span>
@@ -74,10 +72,10 @@ const Project3 = () => {
 
                     {/* Overview */}
                     <section style={styles.textSection}>
-                        <h2 style={styles.sectionHeader} className="project-section-header">Context & Motivation</h2>
+                        <h2 style={styles.sectionHeader} className="project-section-header">What this is</h2>
                         <div style={styles.featureCard}>
                             {project.overview.map((para, idx) => (
-                                <p key={idx} style={{...styles.paragraph, marginBottom: idx !== project.overview.length - 1 ? '1.5rem' : 0}} className="project-paragraph">
+                                <p key={idx} style={{ ...styles.paragraph, marginBottom: idx !== project.overview.length - 1 ? '1.5rem' : 0 }} className="project-paragraph">
                                     {para}
                                 </p>
                             ))}
@@ -88,19 +86,19 @@ const Project3 = () => {
                     <section style={styles.textSection}>
                         <div style={styles.splitLayout} className="project-split-layout">
                             <div style={styles.splitContentCard}>
-                                <h2 style={styles.sectionHeader} className="project-section-header">The Research Problem</h2>
-                                <p style={styles.paragraph} className="project-paragraph">{project.problem}</p>
+                                <h3 style={styles.subSectionHeader}>The research question</h3>
+                                <p style={styles.detailParagraph}>{project.problem}</p>
                             </div>
                             <div style={styles.splitContentCard}>
-                                <h2 style={styles.sectionHeader} className="project-section-header">Methodology</h2>
-                                <p style={styles.paragraph} className="project-paragraph">{project.methodology}</p>
+                                <h3 style={styles.subSectionHeader}>Methodology</h3>
+                                <p style={styles.detailParagraph}>{project.methodology}</p>
                             </div>
                         </div>
                     </section>
 
-                    {/* My Process */}
+                    {/* Process */}
                     <section style={styles.textSection}>
-                        <h2 style={styles.sectionHeader} className="project-section-header">Research Process</h2>
+                        <h2 style={styles.sectionHeader} className="project-section-header">Process</h2>
                         <div style={styles.processGrid}>
                             {project.process.map((step, idx) => (
                                 <div key={idx} style={styles.processCard}>
@@ -111,10 +109,10 @@ const Project3 = () => {
                             ))}
                         </div>
                     </section>
-                    
-                    {/* Research Design Decisions */}
+
+                    {/* Research design choices */}
                     <section style={styles.textSection}>
-                        <h2 style={styles.sectionHeader} className="project-section-header">Research Design Choices</h2>
+                        <h2 style={styles.sectionHeader} className="project-section-header">Research design choices</h2>
                         <div style={styles.decisionGrid}>
                             {project.researchDecisions.map((decision, idx) => (
                                 <article key={idx} style={styles.showcaseCard}>
@@ -125,104 +123,36 @@ const Project3 = () => {
                         </div>
                     </section>
 
-                    {/* Survey Responses Visuals */}
+                    {/* Quantitative comparison */}
                     <section style={styles.textSection}>
-                        <h2 style={styles.sectionHeader} className="project-section-header">Raw Data & Survey Responses</h2>
-                        <p style={styles.paragraph}>Quantitative data was gathered across 20 distinct metrics, capturing user sentiment across the entire application lifecycle.</p>
-                        <div style={styles.imageGrid} className="project-image-grid">
-                            {project.surveyResponses.map((response, idx) => (
-                                <div key={idx} style={styles.imagePlaceholder} className="persona-image-holder">
-                                    <img
-                                        src={response}
-                                        alt={`Survey Response ${idx + 1}`}
-                                        className="persona-image"
-                                        style={{ width: '100%', height: '100%' }}
-                                    />
+                        <h2 style={styles.sectionHeader} className="project-section-header">What the numbers said</h2>
+                        <p style={styles.paragraph}>Normalised on a 1–10 scale from the 48-user survey — the comparison the rest of this case study is built on.</p>
+
+                        <div style={styles.chartContainer}>
+                            {project.quantData.map((metric) => (
+                                <div key={metric.label} style={styles.chartRow}>
+                                    <div style={styles.chartLabels}>
+                                        <span style={styles.chartMetricTitle}>{metric.label}</span>
+                                    </div>
+                                    <div style={styles.barGroup}>
+                                        {metric.bars.map((bar) => (
+                                            <div key={bar.brand} style={styles.barWrapper}>
+                                                <span style={styles.barBrandLabel}>{bar.brand}</span>
+                                                <div style={styles.barTrack}>
+                                                    <div style={{ ...styles.barFill, width: `${bar.value * 10}%`, background: bar.brand === 'Swiggy' ? 'var(--accent-2)' : 'var(--accent-color)' }} />
+                                                </div>
+                                                <span style={styles.barValue}>{bar.value.toFixed(1)}</span>
+                                            </div>
+                                        ))}
+                                    </div>
                                 </div>
                             ))}
                         </div>
                     </section>
 
-                    {/* Quantitative Data Visualization */}
+                    {/* Core insights */}
                     <section style={styles.textSection}>
-                        <h2 style={styles.sectionHeader} className="project-section-header">Quantitative Data Snapshot</h2>
-                        <p style={styles.paragraph}>Based on our 48-user survey, here is a normalized comparison (scale of 1-10) of how users rated both platforms across critical UX vectors.</p>
-                        
-                        <div style={styles.chartContainer}>
-                            {/* Metric 1 */}
-                            <div style={styles.chartRow}>
-                                <div style={styles.chartLabels}>
-                                    <span style={styles.chartMetricTitle}>Task Efficiency (Speed to Checkout)</span>
-                                </div>
-                                <div style={styles.barGroup}>
-                                    <div style={styles.barWrapper}>
-                                        <span style={styles.barBrandLabel}>Swiggy</span>
-                                        <div style={styles.barTrack}>
-                                            <div style={{...styles.barFill, width: '92%', backgroundColor: '#fc8019'}}></div>
-                                        </div>
-                                        <span style={styles.barValue}>9.2</span>
-                                    </div>
-                                    <div style={styles.barWrapper}>
-                                        <span style={styles.barBrandLabel}>Zomato</span>
-                                        <div style={styles.barTrack}>
-                                            <div style={{...styles.barFill, width: '68%', backgroundColor: '#e23744'}}></div>
-                                        </div>
-                                        <span style={styles.barValue}>6.8</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Metric 2 */}
-                            <div style={styles.chartRow}>
-                                <div style={styles.chartLabels}>
-                                    <span style={styles.chartMetricTitle}>Reported Cognitive Load (Lower is better)</span>
-                                </div>
-                                <div style={styles.barGroup}>
-                                    <div style={styles.barWrapper}>
-                                        <span style={styles.barBrandLabel}>Swiggy</span>
-                                        <div style={styles.barTrack}>
-                                            <div style={{...styles.barFill, width: '34%', backgroundColor: '#fc8019'}}></div>
-                                        </div>
-                                        <span style={styles.barValue}>3.4</span>
-                                    </div>
-                                    <div style={styles.barWrapper}>
-                                        <span style={styles.barBrandLabel}>Zomato</span>
-                                        <div style={styles.barTrack}>
-                                            <div style={{...styles.barFill, width: '79%', backgroundColor: '#e23744'}}></div>
-                                        </div>
-                                        <span style={styles.barValue}>7.9</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Metric 3 */}
-                            <div style={styles.chartRow}>
-                                <div style={styles.chartLabels}>
-                                    <span style={styles.chartMetricTitle}>Navigation Clarity (Discovery Phase)</span>
-                                </div>
-                                <div style={styles.barGroup}>
-                                    <div style={styles.barWrapper}>
-                                        <span style={styles.barBrandLabel}>Swiggy</span>
-                                        <div style={styles.barTrack}>
-                                            <div style={{...styles.barFill, width: '85%', backgroundColor: '#fc8019'}}></div>
-                                        </div>
-                                        <span style={styles.barValue}>8.5</span>
-                                    </div>
-                                    <div style={styles.barWrapper}>
-                                        <span style={styles.barBrandLabel}>Zomato</span>
-                                        <div style={styles.barTrack}>
-                                            <div style={{...styles.barFill, width: '71%', backgroundColor: '#e23744'}}></div>
-                                        </div>
-                                        <span style={styles.barValue}>7.1</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Key Research Insights */}
-                    <section style={styles.textSection}>
-                        <h2 style={styles.sectionHeader} className="project-section-header">Core Research Insights</h2>
+                        <h2 style={styles.sectionHeader} className="project-section-header">Core insights</h2>
                         <div style={styles.insightGrid}>
                             {project.researchInsights.map((insight, idx) => (
                                 <article key={insight.title} style={styles.insightCard}>
@@ -234,9 +164,9 @@ const Project3 = () => {
                         </div>
                     </section>
 
-                    {/* Pain Points Discovered */}
+                    {/* Pain points */}
                     <section style={styles.textSection}>
-                        <h2 style={styles.sectionHeader} className="project-section-header">Critical User Pain Points</h2>
+                        <h2 style={styles.sectionHeader} className="project-section-header">Where both apps lose people</h2>
                         <div style={styles.painPointList}>
                             {project.painPoints.map((point) => (
                                 <article key={point.title} style={styles.painPointItem}>
@@ -247,12 +177,12 @@ const Project3 = () => {
                         </div>
                     </section>
 
-                    {/* Strategic Recommendations */}
+                    {/* Recommendations */}
                     <section style={styles.textSection}>
-                        <h2 style={styles.sectionHeader} className="project-section-header">Strategic Recommendations</h2>
+                        <h2 style={styles.sectionHeader} className="project-section-header">Strategic recommendations</h2>
                         <div style={styles.recommendationGrid}>
                             <article style={styles.recommendationCard}>
-                                <h3 style={styles.recommendationHeader}>Recommendations for Swiggy</h3>
+                                <h3 style={styles.recommendationHeader}>For Swiggy</h3>
                                 <div style={styles.recommendationList}>
                                     {project.recommendations.swiggy.map((item) => (
                                         <div key={item.title} style={styles.recommendationItem}>
@@ -264,7 +194,7 @@ const Project3 = () => {
                             </article>
 
                             <article style={styles.recommendationCard}>
-                                <h3 style={styles.recommendationHeader}>Recommendations for Zomato</h3>
+                                <h3 style={styles.recommendationHeader}>For Zomato</h3>
                                 <div style={styles.recommendationList}>
                                     {project.recommendations.zomato.map((item) => (
                                         <div key={item.title} style={styles.recommendationItem}>
@@ -279,16 +209,14 @@ const Project3 = () => {
 
                     {/* Outcomes & Reflections */}
                     <section style={styles.textSection}>
-                        <h2 style={styles.sectionHeader} className="project-section-header">Outcomes & Reflections</h2>
+                        <h2 style={styles.sectionHeader} className="project-section-header">Where it landed</h2>
                         <div style={styles.conclusionCard}>
-                            <h3 style={styles.subSectionHeader}>Study Impact</h3>
                             <ul style={styles.outcomeList}>
                                 {project.outcomes.map((outcome, idx) => (
                                     <li key={idx} style={styles.detailParagraph}>{outcome}</li>
                                 ))}
                             </ul>
-                            
-                            <h3 style={{...styles.subSectionHeader, marginTop: '1.5rem'}}>Personal Reflections</h3>
+                            <h3 style={{ ...styles.subSectionHeader, marginTop: '1.5rem' }}>Reflection</h3>
                             <p style={styles.detailParagraph}>{project.reflections}</p>
                         </div>
                     </section>
@@ -302,8 +230,8 @@ const Project3 = () => {
 const styles = {
     heroContainer: {
         position: 'relative',
-        height: '60vh',
-        minHeight: '400px',
+        height: '58vh',
+        minHeight: '380px',
         display: 'flex',
         alignItems: 'flex-end',
         overflow: 'hidden',
@@ -311,10 +239,7 @@ const styles = {
     },
     heroBg: {
         position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '110%',
+        inset: 0,
         backgroundColor: 'var(--surface-color)',
         zIndex: -1,
     },
@@ -346,16 +271,23 @@ const styles = {
     title: {
         fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
     },
+    tagline: {
+        fontSize: '1.15rem',
+        color: 'var(--text-secondary)',
+        maxWidth: '640px',
+        marginTop: '0.75rem',
+        lineHeight: '1.6',
+    },
     impactBanner: {
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
         gap: '2rem',
         padding: '2.5rem',
-        background: 'linear-gradient(160deg, rgba(185, 140, 232, 0.08) 0%, rgba(20, 17, 38, 0.65) 100%)',
+        background: 'linear-gradient(160deg, rgba(179, 121, 42, 0.1) 0%, rgba(255, 253, 248, 0.9) 100%)',
         borderRadius: 'var(--radius-lg)',
         border: '1px solid var(--glass-border)',
         marginBottom: '3rem',
-        marginTop: '-2rem', // Pull up slightly
+        marginTop: '-2rem',
     },
     impactItem: {
         display: 'flex',
@@ -365,13 +297,13 @@ const styles = {
         gap: '0.5rem',
     },
     impactValue: {
-        fontSize: '3rem',
+        fontSize: '2.4rem',
         fontWeight: '700',
-        lineHeight: '1',
+        lineHeight: '1.1',
         margin: 0,
     },
     impactLabel: {
-        fontSize: '0.95rem',
+        fontSize: '0.9rem',
         color: 'var(--text-secondary)',
         textTransform: 'uppercase',
         letterSpacing: '0.05em',
@@ -407,17 +339,16 @@ const styles = {
     },
     toolPill: {
         padding: '0.4rem 1.2rem',
-        background: 'rgba(185, 140, 232, 0.06)',
+        background: 'rgba(200, 147, 63, 0.06)',
         border: '1px solid var(--glass-border)',
         borderRadius: 'var(--radius-pill)',
         fontSize: '0.9rem',
         color: 'var(--text-primary)',
-        transition: 'all 0.3s ease',
     },
     contentSections: {
         display: 'flex',
         flexDirection: 'column',
-        gap: '5.25rem',
+        gap: '4.5rem',
     },
     textSection: {
         maxWidth: '1000px',
@@ -425,8 +356,8 @@ const styles = {
         width: '100%',
     },
     sectionHeader: {
-        fontSize: '2rem',
-        marginBottom: '1.5rem',
+        fontSize: '1.85rem',
+        marginBottom: '1.25rem',
     },
     subSectionHeader: {
         fontSize: '1.3rem',
@@ -434,36 +365,33 @@ const styles = {
         color: 'var(--text-primary)',
     },
     paragraph: {
-        fontSize: '1.12rem',
+        fontSize: '1.1rem',
         color: 'var(--text-secondary)',
-        lineHeight: '1.85',
-        textAlign: 'justify',
-        textJustify: 'inter-word',
+        lineHeight: '1.8',
     },
     detailParagraph: {
-        fontSize: '1.05rem',
+        fontSize: '1.03rem',
         color: 'var(--text-secondary)',
         lineHeight: '1.75',
-        textAlign: 'justify',
     },
     featureCard: {
         padding: '2rem',
         borderRadius: 'var(--radius-md)',
         border: '1px solid var(--glass-border)',
-        background: 'linear-gradient(160deg, rgba(185, 140, 232, 0.09) 0%, rgba(20, 17, 38, 0.72) 100%)',
+        background: 'linear-gradient(160deg, rgba(179, 121, 42, 0.1) 0%, rgba(255, 253, 248, 0.92) 100%)',
     },
     splitLayout: {
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-        gap: 'clamp(1.5rem, 4vw, 3rem)',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+        gap: 'clamp(1.5rem, 4vw, 2.5rem)',
     },
     splitContentCard: {
         display: 'flex',
         flexDirection: 'column',
-        padding: '2rem',
+        padding: '1.8rem',
         borderRadius: 'var(--radius-md)',
         border: '1px solid var(--glass-border)',
-        background: 'rgba(185, 140, 232, 0.055)',
+        background: 'rgba(200, 147, 63, 0.05)',
     },
     processGrid: {
         display: 'grid',
@@ -472,11 +400,10 @@ const styles = {
         marginTop: '1rem',
     },
     processCard: {
-        background: 'rgba(185, 140, 232, 0.03)',
+        background: 'rgba(200, 147, 63, 0.03)',
         border: '1px solid var(--glass-border)',
         borderRadius: 'var(--radius-md)',
         padding: '1.8rem',
-        position: 'relative',
         display: 'flex',
         flexDirection: 'column',
         gap: '0.8rem',
@@ -496,7 +423,7 @@ const styles = {
         marginBottom: '0.5rem',
     },
     processTitle: {
-        fontSize: '1.2rem',
+        fontSize: '1.15rem',
         color: 'var(--text-primary)',
         margin: 0,
     },
@@ -512,13 +439,76 @@ const styles = {
         padding: '1.8rem',
         borderRadius: 'var(--radius-md)',
         border: '1px solid var(--glass-border)',
-        background: 'rgba(185, 140, 232, 0.05)',
+        background: 'rgba(200, 147, 63, 0.05)',
     },
     showcaseTitle: {
         margin: 0,
-        fontSize: '1.2rem',
+        fontSize: '1.15rem',
         fontWeight: '600',
         color: 'var(--text-primary)',
+    },
+    chartContainer: {
+        marginTop: '1.5rem',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '2.25rem',
+        padding: '2.25rem',
+        borderRadius: 'var(--radius-lg)',
+        border: '1px solid var(--glass-border)',
+        background: 'rgba(200, 147, 63, 0.04)',
+    },
+    chartRow: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '0.8rem',
+    },
+    chartLabels: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'flex-end',
+    },
+    chartMetricTitle: {
+        fontSize: '1.05rem',
+        fontWeight: '500',
+        color: 'var(--text-primary)',
+    },
+    barGroup: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '0.6rem',
+    },
+    barWrapper: {
+        display: 'flex',
+        alignItems: 'center',
+        gap: '1rem',
+    },
+    barBrandLabel: {
+        width: '64px',
+        fontSize: '0.88rem',
+        color: 'var(--text-secondary)',
+        fontWeight: '500',
+        flex: 'none',
+    },
+    barTrack: {
+        flex: 1,
+        height: '12px',
+        background: 'var(--surface-color)',
+        borderRadius: '99px',
+        overflow: 'hidden',
+        border: '1px solid var(--glass-border)',
+    },
+    barFill: {
+        height: '100%',
+        borderRadius: '99px',
+        transition: 'width 1s ease-out',
+    },
+    barValue: {
+        width: '28px',
+        fontSize: '0.88rem',
+        color: 'var(--text-primary)',
+        fontWeight: '600',
+        textAlign: 'right',
+        flex: 'none',
     },
     insightGrid: {
         display: 'grid',
@@ -527,7 +517,7 @@ const styles = {
         marginTop: '1rem',
     },
     insightCard: {
-        background: 'rgba(185, 140, 232, 0.05)',
+        background: 'rgba(200, 147, 63, 0.05)',
         border: '1px solid var(--glass-border)',
         borderRadius: 'var(--radius-md)',
         padding: '1.8rem',
@@ -544,7 +534,6 @@ const styles = {
         padding: '0.35rem 0.65rem',
         border: '1px solid var(--glass-border)',
         borderRadius: '999px',
-        marginBottom: '0.2rem',
     },
     painPointList: {
         display: 'flex',
@@ -555,7 +544,7 @@ const styles = {
         padding: '1.8rem',
         borderRadius: 'var(--radius-md)',
         border: '1px solid var(--glass-border)',
-        background: 'linear-gradient(90deg, rgba(185, 140, 232, 0.06) 0%, transparent 100%)',
+        background: 'linear-gradient(90deg, rgba(200, 147, 63, 0.06) 0%, transparent 100%)',
     },
     recommendationGrid: {
         display: 'grid',
@@ -565,31 +554,31 @@ const styles = {
     recommendationCard: {
         borderRadius: 'var(--radius-md)',
         border: '1px solid var(--glass-border)',
-        background: 'linear-gradient(160deg, rgba(185, 140, 232, 0.08) 0%, rgba(20, 17, 38, 0.65) 100%)',
+        background: 'linear-gradient(160deg, rgba(179, 121, 42, 0.1) 0%, rgba(255, 253, 248, 0.92) 100%)',
         padding: '2rem',
     },
     recommendationHeader: {
-        fontSize: '1.4rem',
-        marginBottom: '1.5rem',
+        fontSize: '1.3rem',
+        marginBottom: '1.25rem',
     },
     recommendationList: {
         display: 'flex',
         flexDirection: 'column',
-        gap: '1.5rem',
+        gap: '1.25rem',
     },
     recommendationItem: {
-        paddingBottom: '1.25rem',
-        borderBottom: '1px solid rgba(185, 140, 232, 0.18)',
+        paddingBottom: '1.1rem',
+        borderBottom: '1px solid var(--glass-border)',
     },
     recommendationTitle: {
-        fontSize: '1.15rem',
-        marginBottom: '0.5rem',
+        fontSize: '1.1rem',
+        marginBottom: '0.4rem',
         color: 'var(--text-primary)',
     },
     conclusionCard: {
         borderRadius: 'var(--radius-md)',
         border: '1px solid var(--glass-border)',
-        background: 'rgba(185, 140, 232, 0.06)',
+        background: 'rgba(200, 147, 63, 0.06)',
         padding: '2.5rem',
         display: 'flex',
         flexDirection: 'column',
@@ -597,90 +586,11 @@ const styles = {
     },
     outcomeList: {
         margin: 0,
-        paddingLeft: '1.5rem',
+        paddingLeft: '1.4rem',
         display: 'flex',
         flexDirection: 'column',
         gap: '0.8rem',
     },
-    imageGrid: {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-        gap: '2rem',
-        marginTop: '2rem',
-    },
-    imagePlaceholder: {
-        width: '100%',
-        aspectRatio: '4/3',
-        backgroundColor: 'var(--surface-color)',
-        borderRadius: 'var(--radius-md)',
-        border: '1px solid var(--glass-border)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        color: 'var(--text-secondary)',
-        overflow: 'hidden',
-    },
-    chartContainer: {
-        marginTop: '2rem',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '2.5rem',
-        padding: '2.5rem',
-        borderRadius: 'var(--radius-lg)',
-        border: '1px solid var(--glass-border)',
-        background: 'rgba(185, 140, 232, 0.04)',
-    },
-    chartRow: {
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '0.8rem',
-    },
-    chartLabels: {
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'flex-end',
-    },
-    chartMetricTitle: {
-        fontSize: '1.1rem',
-        fontWeight: '500',
-        color: 'var(--text-primary)',
-    },
-    barGroup: {
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '0.6rem',
-    },
-    barWrapper: {
-        display: 'flex',
-        alignItems: 'center',
-        gap: '1rem',
-    },
-    barBrandLabel: {
-        width: '70px',
-        fontSize: '0.9rem',
-        color: 'var(--text-secondary)',
-        fontWeight: '500',
-    },
-    barTrack: {
-        flex: 1,
-        height: '14px',
-        background: 'var(--surface-color)',
-        borderRadius: '99px',
-        overflow: 'hidden',
-        border: '1px solid var(--glass-border)',
-    },
-    barFill: {
-        height: '100%',
-        borderRadius: '99px',
-        transition: 'width 1s ease-out',
-    },
-    barValue: {
-        width: '30px',
-        fontSize: '0.9rem',
-        color: 'var(--text-primary)',
-        fontWeight: '600',
-        textAlign: 'right',
-    }
 };
 
 export default Project3;
