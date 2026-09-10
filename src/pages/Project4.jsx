@@ -166,7 +166,7 @@ const styles = {
         padding: '2rem',
         borderRadius: 'var(--radius-md)',
         border: '1px solid var(--glass-border)',
-        background: 'linear-gradient(160deg, rgba(185, 140, 232, 0.09) 0%, rgba(20, 17, 38, 0.72) 100%)',
+        background: 'linear-gradient(160deg, rgba(46, 43, 239, 0.09) 0%, rgba(242, 240, 234, 0.72) 100%)',
     },
     paragraph: {
         fontSize: '1.12rem',
@@ -190,7 +190,7 @@ const styles = {
     quoteCard: {
         margin: 0,
         padding: '1rem 1.15rem',
-        background: 'rgba(185, 140, 232, 0.06)',
+        background: 'rgba(46, 43, 239, 0.06)',
         border: '1px solid var(--glass-border)',
         borderRadius: 'var(--radius-md)',
         color: 'var(--text-secondary)',
@@ -208,7 +208,7 @@ const styles = {
         padding: '0.45rem',
         borderRadius: 'var(--radius-md)',
         border: '1px solid var(--glass-border)',
-        background: 'rgba(185, 140, 232, 0.04)',
+        background: 'rgba(46, 43, 239, 0.04)',
     },
     photo: {
         width: '100%',

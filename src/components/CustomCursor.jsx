@@ -93,14 +93,14 @@ const CustomCursor = () => {
                     width: '6px',
                     height: '6px',
                     borderRadius: '50%',
-                    background: '#c8933f',
+                    background: '#2e2bef',
                     pointerEvents: 'none',
                     zIndex: 9999,
                     marginLeft: '-3px',
                     marginTop: '-3px',
                     transition: 'width 0.2s, height 0.2s, background 0.2s, opacity 0.2s',
                     willChange: 'transform',
-                    boxShadow: '0 0 10px 2px rgba(200,147,63,0.4)',
+                    boxShadow: '0 0 10px 2px rgba(46,43,239,0.4)',
                     opacity: 0,
                 }}
                 className="cursor-dot"
@@ -115,7 +115,7 @@ const CustomCursor = () => {
                     width: '36px',
                     height: '36px',
                     borderRadius: '50%',
-                    border: '1.5px solid rgba(200, 147, 63, 0.35)',
+                    border: '1.5px solid rgba(46, 43, 239, 0.35)',
                     pointerEvents: 'none',
                     zIndex: 9998,
                     marginLeft: '-18px',
@@ -133,16 +133,16 @@ const CustomCursor = () => {
                     height: 60px !important;
                     margin-left: -30px !important;
                     margin-top: -30px !important;
-                    border-color: rgba(200, 147, 63, 0.55) !important;
-                    background: rgba(200, 147, 63, 0.08) !important;
+                    border-color: rgba(46, 43, 239, 0.55) !important;
+                    background: rgba(46, 43, 239, 0.08) !important;
                 }
                 .cursor-dot--hover {
                     width: 10px !important;
                     height: 10px !important;
                     margin-left: -5px !important;
                     margin-top: -5px !important;
-                    background: #c14a26 !important;
-                    box-shadow: 0 0 14px 3px rgba(200,147,63,0.55) !important;
+                    background: #211fc7 !important;
+                    box-shadow: 0 0 14px 3px rgba(46,43,239,0.55) !important;
                 }
 
                 /* Hide the browser default cursor globally when custom cursor is active */

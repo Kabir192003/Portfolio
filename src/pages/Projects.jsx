@@ -131,7 +131,7 @@ const styles = {
         width: '150px',
         height: '3px',
         borderRadius: '999px',
-        background: 'linear-gradient(90deg, rgba(200, 147, 63, 0.95), rgba(200, 147, 63, 0.08))',
+        background: 'linear-gradient(90deg, rgba(46, 43, 239, 0.95), rgba(46, 43, 239, 0.08))',
         transformOrigin: 'left center',
         marginBottom: '2.4rem',
     },
@@ -166,7 +166,7 @@ const styles = {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        background: 'radial-gradient(circle at 20% 25%, rgba(179, 121, 42, 0.16), rgba(255, 253, 248, 0.95) 65%)',
+        background: 'radial-gradient(circle at 20% 25%, rgba(46, 43, 239, 0.16), rgba(242, 240, 234, 0.95) 65%)',
     },
     fallbackText: {
         fontSize: '0.82rem',
