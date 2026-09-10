@@ -8,8 +8,8 @@ const MUTED = '#3a3833';
 
 const TODAY = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
 
-const SKILL_STACK = ['PRODUCT DESIGN', 'UX RESEARCH', 'INTERACTION DESIGN', 'DESIGN SYSTEMS'];
-const TOOLS_CRAFT = ['PROTOTYPING', 'FRONT-END', 'MOTION DESIGN', 'FIGMA'];
+const SKILL_STACK = ['PRODUCT DESIGN', 'UX RESEARCH', 'INTERACTION DESIGN', 'DESIGN SYSTEMS', 'INFORMATION ARCHITECTURE', 'USABILITY TESTING', 'PRODUCT ANALYTICS'];
+const TOOLS_CRAFT = ['PROTOTYPING', 'FRONT-END', 'MOTION DESIGN', 'FIGMA', 'PYTHON', 'SQL', 'REACT'];
 const STATS = [
     { label: 'CASE STUDIES', value: '5' },
     { label: 'LIVE, SHIPPABLE PRODUCTS', value: '4' },
@@ -77,7 +77,7 @@ const Home = () => {
             <div style={{ borderTop: `1px solid ${INK}` }} />
 
             {/* Profile / portrait / stats grid */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) minmax(280px,420px) minmax(0,1fr)', maxWidth: '1400px', margin: '0 auto' }} className="home-profile-grid">
+            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) minmax(320px,560px) minmax(0,1fr)', maxWidth: '1400px', margin: '0 auto' }} className="home-profile-grid">
                 <div style={{ padding: '2.75rem clamp(1.25rem,3vw,3rem)', borderRight: `1px solid ${INK}` }}>
                     <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.72rem', letterSpacing: '0.14em', fontWeight: 700 }}>PROFILE</span>
                     <h2 style={{ fontFamily: "'Anton', sans-serif", fontSize: 'clamp(1.9rem,3.4vw,2.7rem)', textTransform: 'uppercase', lineHeight: 1.05, margin: '0.9rem 0 1.4rem' }}>
@@ -86,7 +86,7 @@ const Home = () => {
                     <p style={{ fontSize: '1.08rem', lineHeight: 1.65, marginBottom: '2rem' }}>
                         <strong>Five product case studies, four of them live and clickable.</strong> I design interfaces, then use them the way a stranger would — which is usually where the real work starts.
                     </p>
-                    <a href="#work" style={{ display: 'block', textAlign: 'center', background: RULE, color: '#f2f0ea', fontFamily: "'JetBrains Mono', monospace", fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', fontSize: '0.9rem', padding: '1rem', textDecoration: 'none', marginBottom: '2.25rem' }}>Selected work ↓</a>
+                    <Link to="/projects/6" style={{ display: 'block', textAlign: 'center', background: RULE, color: '#f2f0ea', fontFamily: "'JetBrains Mono', monospace", fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', fontSize: '0.9rem', padding: '1rem', textDecoration: 'none', marginBottom: '2.25rem' }}>Selected work ↓</Link>
 
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', borderTop: `1px solid ${INK}`, paddingTop: '1.25rem' }}>
                         <div>
@@ -108,8 +108,8 @@ const Home = () => {
                     </div>
                 </div>
 
-                <div style={{ position: 'relative', padding: '2.75rem 1.5rem 1.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }} className="home-portrait-col">
-                    <div style={{ position: 'relative', width: '100%', maxWidth: '380px' }}>
+                <div style={{ position: 'relative', padding: '1rem 1.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }} className="home-portrait-col">
+                    <div style={{ position: 'relative', width: '100%', maxWidth: '560px' }}>
                         <img
                             src="./portrait-cutout.png"
                             alt="Kabir Sharma"
@@ -141,14 +141,14 @@ const Home = () => {
                             <circle cx="36" cy="16" r="1.6" fill="none" stroke={RULE} strokeWidth="1" />
                         </svg>
                         {/* Pen + notebook */}
-                        <svg viewBox="0 0 60 40" style={{ position: 'absolute', bottom: '30%', left: '-16%', width: '85px', overflow: 'visible', filter: 'url(#sketch-wobble)' }} className="home-doodle-pen">
+                        <svg viewBox="0 0 60 40" style={{ position: 'absolute', bottom: '38%', left: '-9%', width: '75px', overflow: 'visible', filter: 'url(#sketch-wobble)' }} className="home-doodle-pen">
                             <path d="M6 34 L6 16 L26 16 L26 34 Z" fill="none" stroke={RULE} strokeWidth="1.2" />
                             <path d="M9 21 L23 21 M9 25 L23 25 M9 29 L18 29" fill="none" stroke={RULE} strokeWidth="1" />
                             <path d="M32 34 L44 12 L48 15 L36 37 Z" fill="none" stroke={RULE} strokeWidth="1.2" />
                             <path d="M44 12 L48 15" stroke={RULE} strokeWidth="1.2" />
                         </svg>
                         {/* Code brackets */}
-                        <svg viewBox="0 0 60 40" style={{ position: 'absolute', bottom: '10%', left: '-10%', width: '65px', overflow: 'visible', filter: 'url(#sketch-wobble)' }} className="home-doodle-code">
+                        <svg viewBox="0 0 60 40" style={{ position: 'absolute', bottom: '20%', left: '-6%', width: '55px', overflow: 'visible', filter: 'url(#sketch-wobble)' }} className="home-doodle-code">
                             <text x="2" y="24" fontFamily="Anton" fontSize="16" fill={RULE}>&lt;/&gt;</text>
                         </svg>
                         {/* Laptop, Figma */}
@@ -160,15 +160,14 @@ const Home = () => {
                             <circle cx="19" cy="20" r="2.2" fill="none" stroke={RULE} strokeWidth="1" />
                             <text x="14" y="26" fontFamily="Anton" fontSize="5.5" fill={RULE}>figma</text>
                         </svg>
+
+                        {/* Handwritten aside, floating over the lower-left of the frame */}
+                        <Link to="/about" style={{ position: 'absolute', bottom: '2%', left: '1%', textDecoration: 'none', display: 'block', transform: 'rotate(-3deg)', maxWidth: '140px' }}>
+                            <span style={{ fontFamily: "'Caveat', cursive", fontSize: '1.35rem', color: RULE, lineHeight: 1.15 }}>
+                                chasing car events when I'm not building →
+                            </span>
+                        </Link>
                     </div>
-
-                    <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.68rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: MUTED, marginTop: '1.5rem' }}>Dublin ↔ Hyderabad</span>
-
-                    <Link to="/about" style={{ marginTop: '1.75rem', textDecoration: 'none', display: 'block', transform: 'rotate(-2deg)' }}>
-                        <span style={{ fontFamily: "'Caveat', cursive", fontSize: '1.5rem', color: RULE, lineHeight: 1.2 }}>
-                            when I'm not building, I'm usually chasing a car event →
-                        </span>
-                    </Link>
                 </div>
 
                 <div style={{ padding: '2.75rem clamp(1.25rem,3vw,3rem)', borderLeft: `1px solid ${INK}`, display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
