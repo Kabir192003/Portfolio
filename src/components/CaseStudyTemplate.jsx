@@ -37,7 +37,7 @@ const SectionHeading = ({ num, children }) => (
     </div>
 );
 
-const CaseStudyTemplate = ({ project, nextProject, decisionsNote, challengesHeading }) => {
+const CaseStudyTemplate = ({ project, nextProject, decisionsNote, challengesHeading, logo }) => {
     useCaseStudyFonts();
     const n = project.impactMetrics.length;
 
@@ -64,7 +64,10 @@ const CaseStudyTemplate = ({ project, nextProject, decisionsNote, challengesHead
             <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '2.5rem clamp(1.25rem, 3vw, 2rem) 2rem' }}>
                 <Link to="/projects" style={{ display: 'block', marginBottom: '1.5rem', fontFamily: "'JetBrains Mono', monospace", fontSize: '0.78rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: MUTED, textDecoration: 'none' }}>← Index</Link>
                 <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.75rem', letterSpacing: '0.16em', textTransform: 'uppercase', color: RULE }}>{project.category}</span>
-                <h1 style={{ fontFamily: "'Anton', sans-serif", fontSize: 'clamp(2.6rem, 7vw, 5.2rem)', textTransform: 'uppercase', lineHeight: 0.98, margin: '0.8rem 0 1.1rem' }}>{project.title}</h1>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
+                    {logo && <div style={{ flex: 'none' }}>{logo}</div>}
+                    <h1 style={{ fontFamily: "'Anton', sans-serif", fontSize: 'clamp(2.6rem, 7vw, 5.2rem)', textTransform: 'uppercase', lineHeight: 0.98, margin: '0.8rem 0 1.1rem' }}>{project.title}</h1>
+                </div>
                 {project.tagline && <p style={{ fontSize: '1.2rem', fontStyle: 'italic', color: MUTED, maxWidth: '680px', lineHeight: 1.6, marginBottom: '1.75rem' }}>{project.tagline}</p>}
                 <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
                     {project.liveLink && (
