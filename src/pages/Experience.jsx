@@ -5,14 +5,14 @@ const Experience = () => {
     const experiences = [
         {
             id: 0,
-            role: 'UX/Interaction Designer',
+            role: 'Research Assistant, UX/Interaction Designer',
             company: 'ADAPT Research Centre',
             period: 'Jul 2026 - Present',
             bullets: [
-                'Worked alongside researchers and engineers on pilot projects, translating research objectives into structured workflows and documented outputs.',
-                'Evaluated and audited large image datasets for generative AI preprocessing, identifying inconsistencies, edge cases and data-quality issues.',
-                'Ran structured testing across extended review cycles, documenting findings and helping maintain systems used across project workflows.',
-                'Explored emerging AI workflows and translated experimental outputs into technically grounded artefacts for stakeholder review.'
+                'Built an atomic design system from scratch and used it to design the project website UI, establishing the components and patterns that kept the interface consistent as the project grew.',
+                'Developed an AI detection model to identify and extract frames from paintings, integrating the DD Color library for image colourisation and using Affinity for cropping and colour correction across the resulting asset set.',
+                'Audited and normalised a large CC0 image dataset for generative AI preprocessing, defining evaluation criteria and catching inconsistencies, edge cases and data-quality issues before they reached model training.',
+                'Ran structured testing across extended review cycles, maintaining data catalogues and documented systems, and turning experimental outputs into technically grounded artefacts for researchers, engineers and stakeholders.'
             ]
         },
         {
@@ -21,10 +21,10 @@ const Experience = () => {
             company: 'DreamWeavers',
             period: 'Feb 2025 - Aug 2025',
             bullets: [
-                'Defined product requirements and use cases alongside engineers from discovery through QA and release, contributing to a 25% reduction in feature delivery time.',
-                'Analysed user behaviour and product funnels to identify high-impact opportunities, contributing to a 15% improvement in product performance.',
-                'Used LLMs to accelerate specification, edge-case analysis and stakeholder alignment across multiple product releases.',
-                'Worked directly with PMs, engineers and senior stakeholders to evaluate trade-offs and shape product decisions.'
+                'Led market analysis and customer insight research for PawFect, a client pet care app, turning findings into product requirements, use cases and documented specifications.',
+                'Defined requirements alongside engineers from discovery through QA and release, cutting feature delivery time by 25%.',
+                'Analysed user behaviour and product funnels to identify high-impact opportunities, lifting overall product performance by 15%.',
+                'Used LLMs to accelerate specification drafting, edge-case analysis and stakeholder alignment across multiple releases, and presented trade-offs directly to PMs, engineers and senior stakeholders.'
             ]
         },
         {
@@ -33,10 +33,10 @@ const Experience = () => {
             company: 'Divine Labs (IIT Delhi)',
             period: 'Mar 2024 - May 2024',
             bullets: [
-                'Restructured interaction flows for data-dense dashboards, including an LMS (Learning Management System) and the Unimoni portal, based on observed user behaviour, contributing to a 25% reduction in usability issues.',
-                'Rapidly prototyped and tested alternative design directions, contributing to a 40% improvement in key performance metrics.',
-                'Synthesised research findings into actionable product and UX improvements for senior stakeholders.',
-                'Worked alongside developers throughout implementation to maintain design intent through to the shipped product.'
+                'Restructured interaction flows across data-dense dashboards for a Learning Management System and the Unimoni portal, working within the team on a full LMS redesign and reducing usability issues by 25%.',
+                'Ran usability testing with students and professors who used the LMS daily, documenting findings and iterating on the design, which improved key performance metrics by 40%.',
+                'Prototyped and tested alternative design directions rapidly before engineering handoff, synthesising research findings into actionable product and UX improvements for senior stakeholders.',
+                'Worked alongside developers through implementation to keep design intent intact in the shipped product, joining design critiques and handoff reviews.'
             ]
         },
         {
