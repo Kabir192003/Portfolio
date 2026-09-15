@@ -6,7 +6,6 @@ export const projectsData = {
         timeline: 'Solo redesign',
         role: 'Product Designer — repositioned, redesigned and shipped',
         liveLink: 'https://kabir192003.github.io/Trek-Mate/',
-        repoLink: 'https://github.com/Kabir192003/Trek-Mate',
         overview: [
             "Trek Mate started as a fairly generic outdoor-gear storefront — a product grid, a cart, the usual e-commerce scaffolding. It worked, but it didn't say anything. Big-box gear sites already do 'browse tents, filter by price' perfectly well, and a student project that just re-skins that pattern isn't a reason for anyone to choose it over Amazon.",
             "I redesigned it around a specific point of view instead: gear from independent makers, scored on the things that actually decide a purchase outdoors — weight, durability, pack volume — not marketing copy, and field-tested before it ships rather than dropped straight from a warehouse. That positioning had to show up in the writing, the photography direction, and the actual mechanics of browsing and buying, not just the hero copy.",
@@ -81,7 +80,6 @@ export const projectsData = {
         timeline: 'Solo, rapid iteration',
         role: 'Product Designer — audited, redesigned and shipped',
         liveLink: 'https://kabir192003.github.io/WorkHive/',
-        repoLink: 'https://github.com/Kabir192003/WorkHive',
         overview: [
             "Work Hive is a hiring platform built around a simple idea: a short, named endorsement from someone you actually worked with tells a recruiter more than another line on a resume. I inherited a high-fidelity click-through of it — good bones, real visual craft — but almost nothing underneath actually worked. Applying to a job silently did nothing. Every company on the ratings page showed the same hard-coded write-up. The 'people you may know' panel showed contacts with no relationship to whatever job you'd just been looking at.",
             "My job was to close that gap: take a design that looked finished and make it behave like a real product, without losing the visual language that made it worth building in the first place. That meant auditing every screen as a user would actually use it, deciding what 'done' meant for each core flow, and rebuilding the data and interaction layer underneath the UI — not just patching the parts that were visibly broken."
