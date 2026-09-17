@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import IntroBoot from '../components/IntroBoot';
 
 const INK = '#141414';
 const RULE = '#2e2bef';
@@ -101,12 +102,14 @@ const KabirCycle = () => {
 
 const Home = () => {
     return (
-        <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.4 }}
-        >
+        <>
+            <IntroBoot />
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.4 }}
+            >
             {/* Page title */}
             <div style={{ textAlign: 'center', padding: '3rem 1.5rem 2rem' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', maxWidth: '900px', margin: '0 auto 1.5rem', paddingBottom: '0.6rem', borderBottom: `1px solid rgba(20,20,20,0.16)`, fontFamily: "'JetBrains Mono', monospace", fontSize: '0.68rem', letterSpacing: '0.04em', color: MUTED, flexWrap: 'wrap', gap: '0.5rem' }}>
@@ -382,7 +385,8 @@ const Home = () => {
                     }
                 }
             `}</style>
-        </motion.div>
+            </motion.div>
+        </>
     );
 };
 
