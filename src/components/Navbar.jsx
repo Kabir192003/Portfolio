@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
+import LogoMark from './LogoMark';
 
 const LINKS = [
     { to: '/projects', label: 'Work' },
@@ -28,6 +29,7 @@ const Navbar = () => {
         <nav style={styles.nav} className="site-nav">
             <div style={styles.container} className="container site-nav-inner">
                 <NavLink to="/" style={styles.logoLink}>
+                    <LogoMark size={26} />
                     <span style={styles.logoText}>KABIROSCOPE</span>
                 </NavLink>
 
@@ -108,6 +110,7 @@ const styles = {
     logoLink: {
         display: 'inline-flex',
         alignItems: 'center',
+        gap: '0.55rem',
         textDecoration: 'none',
     },
     logoText: {
