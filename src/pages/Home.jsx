@@ -60,6 +60,8 @@ const SignatureMark = ({ size = 44 }) => (
 const KABIR_LANGS = [
     { text: 'Kabir', lang: 'en' },
     { text: 'कबीर', lang: 'hi' },
+    { text: 'కబీర్', lang: 'te' },
+    { text: 'કબીર', lang: 'gu' },
     { text: 'カビール', lang: 'ja' },
     { text: 'Кабир', lang: 'ru' },
     { text: '카비르', lang: 'ko' },
