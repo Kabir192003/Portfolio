@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const INK = '#141414';
 const RULE = '#2e2bef';
@@ -57,6 +57,46 @@ const SignatureMark = ({ size = 44 }) => (
     </svg>
 );
 
+const KABIR_LANGS = [
+    { text: 'Kabir', lang: 'en' },
+    { text: 'कबीर', lang: 'hi' },
+    { text: 'カビール', lang: 'ja' },
+    { text: 'Кабир', lang: 'ru' },
+    { text: '카비르', lang: 'ko' },
+    { text: '卡比尔', lang: 'zh' },
+    { text: 'কবির', lang: 'bn' },
+    { text: 'கபீர்', lang: 'ta' },
+];
+
+const KabirCycle = () => {
+    const [index, setIndex] = useState(0);
+
+    useEffect(() => {
+        const id = setInterval(() => {
+            setIndex((i) => (i + 1) % KABIR_LANGS.length);
+        }, 3000);
+        return () => clearInterval(id);
+    }, []);
+
+    return (
+        <span style={{ display: 'inline-grid' }}>
+            <AnimatePresence mode="wait">
+                <motion.span
+                    key={KABIR_LANGS[index].lang}
+                    lang={KABIR_LANGS[index].lang}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                    style={{ gridArea: '1 / 1' }}
+                >
+                    {KABIR_LANGS[index].text}
+                </motion.span>
+            </AnimatePresence>
+        </span>
+    );
+};
+
 const Home = () => {
     return (
         <motion.div
@@ -71,7 +111,7 @@ const Home = () => {
                     <span>Portfolio — Vol. 01</span>
                     <span>{TODAY}</span>
                 </div>
-                <h1 style={{ fontFamily: "'Anton', sans-serif", fontSize: 'clamp(2.8rem, 9vw, 7.5rem)', letterSpacing: '0.01em', lineHeight: 0.95, margin: 0, textTransform: 'uppercase' }}>Kabir Sharma</h1>
+                <h1 style={{ fontFamily: "'Anton', 'Noto Sans', sans-serif", fontSize: 'clamp(2.8rem, 9vw, 7.5rem)', letterSpacing: '0.01em', lineHeight: 0.95, margin: 0, textTransform: 'uppercase', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '0 0.35em' }}><KabirCycle /><span>Sharma</span></h1>
                 <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 'clamp(0.85rem, 2vw, 1.05rem)', letterSpacing: '0.2em', textTransform: 'uppercase', color: RULE, fontWeight: 700, marginTop: '1.1rem' }}>Technology × Product × Design</p>
                 <p style={{ fontSize: '1.05rem', color: MUTED, maxWidth: '560px', margin: '0.9rem auto 0', lineHeight: 1.65 }}>I turn complex problems into practical digital products through research, data, design and technology.</p>
             </div>
