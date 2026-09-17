@@ -17,6 +17,18 @@ const Experience = () => {
         },
         {
             id: 1,
+            role: 'Project Consultant',
+            company: 'AnamVR (via Irish Student Consulting Group), Dublin',
+            period: 'Oct 2025 - Dec 2025',
+            bullets: [
+                "Conducted a full UX audit of AnamVR's immersive product suite, synthesising qualitative research into a structured insight report with prioritised, actionable design recommendations for the product team.",
+                'Identified critical usability gaps in the VR onboarding and interaction flows; recommendations were directly adopted into the next product roadmap cycle.',
+                'Delivered the engagement on time within a 3-month consulting scope, operating independently in an early-stage startup environment.',
+                'Presented findings and recommendations directly to founders and senior stakeholders, translating research into decisions the team could act on immediately.'
+            ]
+        },
+        {
+            id: 2,
             role: 'Product Associate',
             company: 'DreamWeavers',
             period: 'Feb 2025 - Aug 2025',
@@ -28,7 +40,7 @@ const Experience = () => {
             ]
         },
         {
-            id: 2,
+            id: 3,
             role: 'UI/UX Design Intern',
             company: 'Divine Labs (IIT Delhi)',
             period: 'Mar 2024 - May 2024',
@@ -40,7 +52,7 @@ const Experience = () => {
             ]
         },
         {
-            id: 3,
+            id: 4,
             role: 'Visual Storytelling & Composition Foundation',
             company: '',
             period: '',
