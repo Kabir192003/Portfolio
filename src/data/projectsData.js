@@ -75,79 +75,79 @@ export const projectsData = {
     },
     project2: {
         title: 'Work Hive',
-        tagline: 'Endorsement-based hiring, rebuilt from a broken prototype into a working product',
-        category: 'Web Platform · Product Design',
-        timeline: 'Solo, rapid iteration',
-        role: 'Product Designer — audited, redesigned and shipped',
+        tagline: 'Endorsement-based hiring, rebuilt twice — first from a broken prototype into a believable product, then from a believable product into a real one with accounts, a database and enforced security',
+        category: 'Full-Stack Platform · Product Design',
+        timeline: 'Solo, two rebuild passes',
+        role: 'Product Designer & Full-Stack Developer — audited, redesigned, and rebuilt on a real backend',
         liveLink: 'https://kabir192003.github.io/WorkHive/',
         overview: [
             "Work Hive is a hiring platform built around a simple idea: a short, named endorsement from someone you actually worked with tells a recruiter more than another line on a resume. I inherited a high-fidelity click-through of it — good bones, real visual craft — but almost nothing underneath actually worked. Applying to a job silently did nothing. Every company on the ratings page showed the same hard-coded write-up. The 'people you may know' panel showed contacts with no relationship to whatever job you'd just been looking at.",
-            "My job was to close that gap: take a design that looked finished and make it behave like a real product, without losing the visual language that made it worth building in the first place. That meant auditing every screen as a user would actually use it, deciding what 'done' meant for each core flow, and rebuilding the data and interaction layer underneath the UI — not just patching the parts that were visibly broken."
+            "The first pass closed that gap with a large, varied dataset and real interaction logic, so every flow behaved correctly against something like real data. But it still reset on reload and had no concept of an account — closer to a very convincing demo than a product. The second pass replaced that entirely: a real Postgres database behind Supabase, real email/password accounts, Row Level Security enforced at the database layer rather than assumed in the UI, and every one of the eighteen screens rewired to read and write real rows instead of local state."
         ],
         impactMetrics: [
-            { label: 'Core flows taken from broken to working', value: '6' },
-            { label: 'Companies & roles modelled for real filtering', value: '100 / 112' },
-            { label: 'Cities in the live cost-of-living tool', value: '15' }
+            { label: 'Screens rebuilt on a real, persisted backend', value: '18' },
+            { label: 'Companies & jobs seeded into a real database', value: '100 / 111' },
+            { label: 'Database tables, every one RLS-protected', value: '20' }
         ],
-        tools: ['Rapid UI iteration', 'Component-driven prototyping', 'Shipped as a live, working build'],
-        problem: "The prototype read well in a click-through but fell apart under real use. Search returned six jobs total, so every filter looked broken because there was nothing to filter. Apply Direct — the platform's entire reason for existing — didn't navigate anywhere from the job list. Company Ratings showed one company's numbers no matter which company you picked. Connections showed a network with no relationship to the role you came from. The profile page was read-only. And the top navigation had grown to nine items plus a row of unlabeled icons, so on a normal window it visibly overlapped itself.",
-        solution: "I treated this as a systems problem, not a set of one-off fixes. Every screen that displayed data needed real data behind it, so I modelled 100 companies across 12 industries and 112 roles across 11 job functions and five seniority levels — enough variety that facet filters, company search and role matching all produce genuinely different results instead of the same six items reordered. Every flow that ended in a dead click got rebuilt end to end: Apply Direct now validates, accepts a resume, and lands a real record in the candidate's dashboard; Connections now reflects the specific job and company you arrived from, not a fixed default. And the navigation got restructured around what a candidate actually does most — search and apply — with everything else collapsed behind a single 'More' menu.",
+        tools: ['React · Vite · React Router', 'Supabase — Postgres, Auth, Storage', 'Row Level Security policies', 'GitHub Actions → GitHub Pages'],
+        problem: "The prototype read well in a click-through but fell apart under real use. Search returned six jobs total, so every filter looked broken because there was nothing to filter. Apply Direct — the platform's entire reason for existing — didn't navigate anywhere from the job list. Company Ratings showed one company's numbers no matter which company you picked. And even once those flows worked, the whole thing lived in memory: reloading the page reset every application, every message, every saved job. There was no way to sign in as yourself and come back to find your own data still there.",
+        solution: "I treated this as a systems problem twice over. First, every screen that displayed data needed real data behind it, so I modelled 100 companies and 111 jobs with enough variety that facet filters and search produced genuinely different results instead of the same handful reordered. Then I replaced the memory-only state entirely: a Postgres schema with twenty tables, Row Level Security policies on every one of them, real Supabase Auth accounts (plus a seeded demo account so anyone can try it without signing up), and Storage buckets for resume uploads. Apply Direct now writes a real application row and uploads a real file; accepting an endorsement request writes a real endorsement and moves a real score; the salary, cost-of-living and relocation calculators recompute live in whichever currency you pick first, before any other number on the page.",
         process: [
             { step: '01', title: 'Use it like a candidate would', desc: 'Clicked every button on every screen and logged what actually happened versus what the UI implied would happen — the fastest way to find out how much of a "finished" design is load-bearing.' },
-            { step: '02', title: 'Prioritise by the core loop', desc: 'Search, apply, get endorsed. Anything that blocked that loop got fixed first; supporting screens (settings, mentorship, events) came after.' },
-            { step: '03', title: 'Rebuild the data underneath', desc: 'A UI with three sample jobs can\'t honestly demonstrate a filtering system. I generated a large, varied dataset so the existing filter and search logic had something real to prove itself against.' },
-            { step: '04', title: 'Make screens context-aware', desc: 'Company Ratings, Connections and Quick Links were static regardless of what you clicked. I rewired each to respond to the actual company, city or role in front of the user.' },
-            { step: '05', title: 'Ship it, not just show it', desc: 'The prototype is deployed and clickable at the link above — not a set of static frames. If a flow is described here, it works on the live site right now.' }
+            { step: '02', title: 'Rebuild the data and interaction layer first', desc: 'Modelled a large, varied company and job dataset and rewired every dead-end flow, so the UI was provably correct before it needed to be provably persistent.' },
+            { step: '03', title: 'Design the real schema before writing a line of app code', desc: 'Mapped every screen back to the tables it actually needed — public reference data (companies, jobs) versus private per-account data (profile, applications, messages) — and wrote Row Level Security policies for each before touching the frontend.' },
+            { step: '04', title: 'Wire every screen to Supabase, not just the obvious ones', desc: 'Search, Apply, Messages were the visible core loop; Settings toggles, onboarding steps and the "add a connection" flow needed the same real persistence or the product would only feel finished in the parts a demo covers.' },
+            { step: '05', title: 'Verify the security claim, not just assume it', desc: 'Signed up a second, unrelated account and confirmed via direct API calls that it could not read the first account\'s applications, messages or profile — RLS enforced at the database, not just hidden in the UI.' }
         ],
         designDecisions: [
             {
                 image: './workhive/search.jpg',
                 title: 'A dataset large enough to make the design tell the truth',
-                description: 'Thirteen refine-search facets on six jobs is a UI that can\'t be honestly evaluated — every filter either returns everything or nothing. I built out 112 roles across 11 functions, five seniority bands and 100 companies so the search and filter interactions the original design promised actually have something real to demonstrate against.'
+                description: 'Thirteen refine-search facets on six jobs is a UI that can\'t be honestly evaluated — every filter either returns everything or nothing. I built out 111 real jobs across 100 companies, seeded straight into Postgres, so the search and filter interactions the original design promised actually have something real to run against — and every save, dismiss and filter selection persists to the account that made it.'
             },
             {
                 image: './workhive/apply.jpg',
-                title: 'Apply Direct actually applies',
-                description: 'This is the platform\'s core conversion moment, and it was completely non-functional — the button had no handler. I rebuilt it as a real form with validation, a working resume upload, and a submission that creates a genuine record in the candidate\'s dashboard, including an optional endorsement request tied to that specific role.'
+                title: 'Apply Direct actually applies — and actually persists',
+                description: 'This is the platform\'s core conversion moment, and it was completely non-functional in the original prototype. It now writes a real application row to Postgres, uploads the resume file to Supabase Storage, and optionally creates a real endorsement request thread scoped to that exact job — all of it still there when you sign back in tomorrow.'
             },
             {
                 image: './workhive/ratings.jpg',
                 title: 'Company Ratings that respond to the company you picked',
-                description: 'Every company page showed identical numbers. I designed a rating model that produces a distinct, consistent score and review breakdown per company per category (compensation, benefits, culture, career progression), so switching companies changes what you see — the way a real ratings product has to.'
+                description: 'Every company page showed identical numbers. Ratings, salary bands and relocation costs now derive deterministically from the company and inputs you actually chose, so switching companies or currencies changes what you see, live, the way a real product has to.'
             },
             {
                 image: './workhive/connections.jpg',
-                title: 'A network that reflects the job you came from',
-                description: 'Clicking "Refer someone" from a specific role used to drop you into a generic, unrelated network view. I rebuilt Connections to carry that context through — the people, company and match score shown are tied to the actual job you clicked from, with a visible "showing people connected to X" state so it\'s never ambiguous why you\'re seeing what you\'re seeing.'
+                title: 'A network you can actually build, not just browse',
+                description: 'The original network view was read-only and disconnected from context. I added a real "Add connection" flow — pick from suggested people already in the system, or add someone manually — because a brand-new real account previously had zero connections and no way to get any, which quietly broke endorsements and referrals for everyone except a pre-seeded demo user.'
             },
             {
                 image: './workhive/cost.jpg',
-                title: 'A cost-of-living tool that calculates something',
-                description: 'The calculator had a single free-text field and a static result. I rebuilt it around real city and currency selectors — 15 cities spanning the Gulf, South Asia and other global hubs, 10 currencies — so changing either input live-recomputes every line item, not just a headline number.'
+                title: 'Currency first, then real numbers — genuinely live',
+                description: 'Salary, cost-of-living and relocation are money, so currency is the first control on each page, not a setting buried in a form. Every other field recomputes instantly on change across ten currencies — no submit button, nothing decorative.'
             },
             {
                 image: './workhive/profile.jpg',
-                title: 'A profile you can actually edit',
-                description: 'The candidate profile — the thing a recruiter judges you on — had no edit state at all. I added one: name, headline, location, skills and each experience entry become real inputs, with add and remove controls, and changes persist after save.'
+                title: 'A profile that persists because it\'s a real account',
+                description: 'Name, headline, skills and each experience entry are real inputs backed by real tables, with add/remove controls — and because there\'s now a real account underneath, the edits are still there on your next visit, from any device.'
             }
         ],
         challenges: [
             {
-                title: 'Making 100 companies feel distinct without writing 100 company profiles by hand',
-                solution: 'Hand-authoring unique ratings, review counts and category breakdowns for 100 companies wasn\'t realistic. I designed a deterministic model that derives each company\'s numbers from its own identity, so the same company always shows the same figures across visits, every company is genuinely different from its neighbours, and nothing needed writing by hand — the difference between the page reading as flexible versus wallpapered was in whether that variation held up under repeated use.'
+                title: 'Proving the security boundary instead of just building it',
+                solution: 'Row Level Security policies are easy to write and easy to get subtly wrong — a missing `with check` clause can let a policy read correctly but write anywhere. I signed up a genuinely separate account and queried the API directly rather than through the UI, confirming applications, messages and profile data all returned empty for data that belonged to someone else, before treating the schema as done.'
             },
             {
-                title: 'A navigation bar that broke itself on first load',
-                solution: 'After collapsing the top navigation, it intermittently rendered with two sections overlapping on the very first paint. I traced it to a flex-grow calculation racing the browser\'s first layout pass, and rebuilt the header to size itself with a self-pushing margin instead of grow, which removed the dependency on layout-timing entirely rather than papering over the symptom.'
+                title: 'A seed script that silently produced a 278KB single paste',
+                solution: 'The first generated seed file was too large for the Supabase SQL editor to reliably accept in one paste and failed midway with a cryptic parser error. I split it into three smaller files by table, and cut the redundant duplicated arrays that had bloated every job row, which fixed the reliability problem and shrank the file at the same time.'
             }
         ],
         outcomes: [
-            "Every core screen — Home, Search, Job Detail, Apply, Company Ratings, Connections, Salaries, Cost of Living, Relocation, Profile, Messages, Onboarding, Settings — is live and clickable, not a static frame.",
-            "The candidate's primary loop (search a role, apply, request an endorsement) now works end to end and is verifiable on the deployed link, not just described in a deck.",
-            "Search, company lookup and the connections network all run against a 100-company, 112-role dataset, so the filtering UI the original design promised is genuinely exercised rather than looking broken on contact.",
-            "Shipped as a public, working build rather than a private file — the fastest way I know to make a design case study verifiable instead of just asserted."
+            "Every one of the 18 original screens is backed by a real, persisted Postgres table — nothing resets on reload, and nothing is held together by in-memory state.",
+            "Verified, not assumed: a second real account was confirmed via direct API calls to be unable to read the first account's applications, messages or profile data.",
+            "The candidate's primary loop — search, apply with a real resume upload, request an endorsement, get accepted and watch a real score move — works end to end against a live database.",
+            "Deployed as a public, working build with its own Supabase backend rather than a private file — verifiable by clicking through it, not just described."
         ],
-        reflections: "The gap between a design that looks finished and a product that behaves like one is almost always in the parts that don't show up in a click-through — what happens on the tenth click, not the first. This project sharpened how I audit: assume nothing is wired until I've clicked it myself, and treat a screen with three sample rows the same way I'd treat a screen with none, because both are demos, not products. If I kept going, the next layer would be persistence (the app resets on reload) and a real backend behind the endorsement flow, which is the natural next step once the front-end behaviour is trustworthy.",
+        reflections: "The gap between a design that looks finished and a product that behaves like one is almost always in the parts that don't show up in a click-through — what happens on the tenth click, and what happens after you close the tab and come back tomorrow. The first rebuild pass fixed the first kind of gap; it took a second pass, and an actual database, to fix the second. The real lesson was in verifying rather than assuming the parts that don't show up visually — a security policy that looks right in the code and a security policy confirmed by an unrelated account actually failing to read your data are two different claims, and only one of them belongs in a case study.",
 
         heroImage: './workhive/hero.jpg'
     },

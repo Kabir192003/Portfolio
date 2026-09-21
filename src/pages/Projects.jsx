@@ -27,11 +27,11 @@ const WORKS = [
         img: './trekmate-v2/tm-hero-bg.jpg',
     },
     {
-        num: '03', id: 2, title: 'Work Hive', tags: ['WEB PLATFORM'], year: '2025',
+        num: '03', id: 2, title: 'Work Hive', tags: ['WEB PLATFORM', 'FULL STACK'], year: '2026',
         role: projectsData.project2.role,
         status: 'LIVE — SHIPPED',
         stack: projectsData.project2.tools.join(' · '),
-        desc: 'Inherited a prototype where almost nothing worked. Rebuilt into a live, clickable product — search, endorsements, an editable profile, all of it.',
+        desc: 'Rebuilt twice — first into a working click-through, then onto a real Postgres backend with accounts, Row Level Security and persistence.',
         img: './workhive/hero.jpg',
     },
     {
