@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
@@ -19,6 +19,25 @@ const TIMELINE = [
 const INTEREST_STATS = [
     { value: '15+', label: 'Countries visited' },
     { value: '12,000+', label: 'KM driven across Europe' },
+];
+
+const FAQS = [
+    {
+        q: 'What kind of products do you design?',
+        a: "Everything from an AI design-system generator to full e-commerce and community platforms, with a UX research study on food delivery apps in between. I'm drawn to work that sits between a real interface and a real backend, right now that's a research role at ADAPT auditing datasets and testing generative AI workflows, and before that shipping products end to end as both the designer and the person who built them.",
+    },
+    {
+        q: 'What got you into design?',
+        a: "I came up through computer science, not design. Across my engineering degree I was the one building the backend and just enough of the front end to make it work, and I kept noticing the same thing: the logic underneath was solid, but the interface on top rarely matched it. I already understood how the system worked, so learning design felt like closing a loop rather than starting a new one. I picked it up properly, graphic design first, then UX, and it's stuck ever since.",
+    },
+    {
+        q: 'How do you use AI in your work?',
+        a: "Mostly as a collaborator for the parts of the process that reward speed: synthesising research, drafting variations, stress-testing my own assumptions. StyleBook AI, one of my shipped products, generates a full design system from a written brand brief, and every colour pairing it proposes gets measured and corrected in code rather than trusted outright. At ADAPT the work is the other side of that same question, auditing and normalising the datasets generative models get trained on.",
+    },
+    {
+        q: 'Where are you based, and are you eligible to work?',
+        a: "I'm based in Dublin, on a Stamp 1G, which means I'm eligible to work in Ireland without sponsorship for two years. I can also adjust to whatever timezone an international remote team needs.",
+    },
 ];
 
 const CAPABILITIES = [
@@ -51,7 +70,36 @@ const SpireMark = ({ size = 70 }) => (
     </svg>
 );
 
+const FaqRow = ({ item, open, onToggle }) => (
+    <div style={{ borderTop: `1px solid ${INK}` }}>
+        <button
+            onClick={onToggle}
+            style={{
+                width: '100%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: '1rem',
+                padding: '1.25rem 0',
+                background: 'none',
+                border: 0,
+                cursor: 'pointer',
+                textAlign: 'left',
+                font: 'inherit',
+                color: INK,
+            }}
+        >
+            <span style={{ fontFamily: "'Anton', sans-serif", fontSize: 'clamp(1.05rem, 2.2vw, 1.4rem)', textTransform: 'uppercase', letterSpacing: '0.01em' }}>{item.q}</span>
+            <span style={{ flex: 'none', width: '1.6rem', height: '1.6rem', border: `1px solid ${INK}`, display: 'grid', placeItems: 'center', fontFamily: "'JetBrains Mono', monospace", fontSize: '1rem', color: open ? RULE : INK, borderColor: open ? RULE : INK, transform: open ? 'rotate(45deg)' : 'none', transition: 'transform 0.2s' }}>+</span>
+        </button>
+        <div style={{ maxHeight: open ? '400px' : '0px', overflow: 'hidden', transition: 'max-height 0.35s ease' }}>
+            <p style={{ fontSize: '1.02rem', lineHeight: 1.75, color: MUTED, maxWidth: '760px', padding: '0 0 1.5rem' }}>{item.a}</p>
+        </div>
+    </div>
+);
+
 const About = () => {
+    const [openFaq, setOpenFaq] = useState(0);
     return (
         <motion.div
             initial={{ opacity: 0 }}
@@ -170,6 +218,19 @@ const About = () => {
                             {['Motorsport', 'Car culture', 'Watch collecting', 'Photography', 'Road trips'].map((tg) => <Chip key={tg}>{tg.toUpperCase()}</Chip>)}
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div style={{ borderTop: `1px solid ${INK}` }} />
+
+            {/* FAQ */}
+            <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '3.5rem clamp(1.25rem,3vw,2rem)' }}>
+                <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.72rem', letterSpacing: '0.14em', fontWeight: 700, color: RULE, display: 'block', marginBottom: '1.5rem' }}>FAQ</span>
+                <div>
+                    {FAQS.map((item, i) => (
+                        <FaqRow key={item.q} item={item} open={openFaq === i} onToggle={() => setOpenFaq(openFaq === i ? -1 : i)} />
+                    ))}
+                    <div style={{ borderTop: `1px solid ${INK}` }} />
                 </div>
             </div>
 
