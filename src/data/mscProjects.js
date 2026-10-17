@@ -256,16 +256,18 @@ export const mscProjects = [
         module: 'Visual Computing and Design · A5.2',
         kind: 'Data visualisation',
         tool: 'Processing → JavaScript canvas',
-        summary: 'An interactive bubble chart of 186 countries in 2018: income against life expectancy, sized by population and coloured by region. Hover any bubble, filter regions, and see the wealth-health curve for yourself.',
+        summary: 'An interactive bubble chart of 186 countries in 2018: income against life expectancy, sized by population and coloured by region. It is not a static picture. Hover any bubble, filter regions, and see the wealth-health curve for yourself.',
         stats: [
             { value: '186', label: 'Countries plotted' },
             { value: '4', label: 'Variables in one chart' },
             { value: '6', label: 'Region filters' },
         ],
-        poster: './msc/data-viz/viz.jpg',
+        poster: './msc/data-viz/banner.jpg',
+        banner: './msc/data-viz/banner.jpg',
         embed: 'viz',
         embedTitle: 'Explore the data',
-        embedNote: 'A web version of my Processing sketch, drawn with the same scales and colours. Try hiding Asia to see the smaller countries underneath.',
+        embedNote: 'Hover any bubble to see the country, its income and life expectancy. Click a region name on the right to hide or show it, for example hide Asia to see the smaller countries underneath.',
+        embedBadge: 'THIS CHART IS INTERACTIVE · HOVER AND CLICK',
         brief: {
             intro: 'Turn a country-level dataset into a single chart that a reader can explore, without having to explain it to them first.',
             objectives: [

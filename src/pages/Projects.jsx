@@ -55,8 +55,8 @@ const WORKS = [
         role: 'Designer and developer. Chart design, scales and interaction',
         status: 'LIVE — PLAYABLE',
         stack: 'Processing · Canvas · CSV data',
-        desc: 'An interactive bubble chart of 186 countries: income against life expectancy, sized by population, with hover details and region filters.',
-        img: './msc/data-viz/viz.jpg',
+        desc: 'An interactive bubble chart of 186 countries: hover any bubble for its data, click the legend to filter regions. Open it and play.',
+        img: './msc/data-viz/banner.jpg',
     },
 ];
 

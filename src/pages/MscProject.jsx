@@ -66,9 +66,19 @@ const MscProject = ({ slug: fixedSlug }) => {
                 <p style={{ fontSize: '1.15rem', color: MUTED, lineHeight: 1.7, maxWidth: '720px', marginTop: '1.25rem' }}>{p.summary}</p>
             </header>
 
+            {p.banner && (
+                <div style={{ ...wrap, paddingBottom: '2rem' }}>
+                    <img src={p.banner} alt={p.title} style={{ width: '100%', display: 'block', border: `1px solid ${INK}` }} />
+                </div>
+            )}
             <div style={wrap}>
                 {p.embed ? (
                     <div style={{ paddingBottom: '1.5rem' }}>
+                        {p.embedBadge && (
+                            <div style={{ background: RULE, color: '#f2f0ea', fontFamily: MONO, fontWeight: 700, fontSize: '0.8rem', letterSpacing: '0.1em', padding: '0.7rem 1rem', marginBottom: '0.9rem', display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+                                <span style={{ fontSize: '1.1rem' }}>☝</span> {p.embedBadge}
+                            </div>
+                        )}
                         <span style={label}>{p.embedTitle}</span>
                         <p style={{ color: MUTED, margin: '0.4rem 0 0.9rem', lineHeight: 1.6 }}>{p.embedNote}</p>
                         <Suspense fallback={<div style={{ height: 480, background: '#000' }} />}>

@@ -27,7 +27,7 @@ const CAPABILITIES = [
 
 const INDEX_ITEMS = [
     { num: '01', label: 'STYLEBOOK AI' },
-    { num: '02', label: 'TREK MATE' },
+    { num: '02', label: 'DATA VIZ' },
     { num: '03', label: 'WORK HIVE' },
     { num: '04', label: 'HUNGER GAMES' },
     { num: '05', label: 'THIS OR THAT' },
@@ -35,7 +35,7 @@ const INDEX_ITEMS = [
 const FEATURED_TAGS = ['AI PRODUCT', 'TEAM LEAD', 'FIGMA PLUGIN'];
 
 const PROJECTS = [
-    { num: '02', year: '2026 · SHIPPED', title: 'Trek Mate', meta: 'SOLO REDESIGN', tags: ['E-COMMERCE', 'MOBILE'], desc: 'A generic gear storefront, rebuilt around independent makers, field-tested on what actually matters.', img: './trekmate-v2/tm-mockup.jpg', link: '/projects/1' },
+    { num: '02', year: '2026 · LIVE', title: 'Global Health & Wealth', meta: 'DATA VISUALISATION', tags: ['DATA VIZ', 'INTERACTIVE'], desc: 'An interactive bubble chart of 186 countries. Hover any bubble for its data and click the legend to filter regions. Try it, it responds.', img: './msc/data-viz/banner.jpg', link: '/projects/data-viz' },
     { num: '03', year: '2026 · SHIPPED', title: 'Work Hive', meta: 'FULL-STACK REBUILD', tags: ['WEB PLATFORM', 'FULL STACK'], desc: 'Inherited a prototype where almost nothing worked. Rebuilt twice — first into a working click-through, then onto a real Postgres backend with accounts, security and persistence.', img: './workhive/wh-mockup.jpg', link: '/projects/2' },
     { num: '04', year: '2025 · RESEARCH', title: 'The Hunger Games', meta: 'SOLO RESEARCH', tags: ['UX RESEARCH'], desc: 'A comparative usability study across the major food delivery apps, built from surveys and interviews.', img: './hg-mockup.jpg', link: '/projects/3' },
     { num: '05', year: '2026 · SHIPPED', title: 'This or That', meta: 'TECHNICAL LEAD', tags: ['FULL STACK'], desc: 'A deployed community decision platform — React, Node, Express, MongoDB — with an algorithm-driven feed and anonymous posting.', img: './tot-mockup.jpg', link: '/projects/5' },

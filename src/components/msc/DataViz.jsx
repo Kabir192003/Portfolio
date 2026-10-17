@@ -45,6 +45,8 @@ const DataViz = () => {
     const [rows, setRows] = useState(null);
     const [show, setShow] = useState(() => Object.fromEntries(KEYS.map((k) => [k, true])));
     const mouse = useRef({ x: -1, y: -1 });
+    const touched = useRef(false);
+    const saving = useRef(false);
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
     useEffect(() => {
@@ -66,6 +68,12 @@ const DataViz = () => {
         ctx.font = `bold 20px ${FONT}`;
         ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
         ctx.fillText('Global Health, Wealth & Population 2018', M.left, 40);
+
+        if (!touched.current && !saving.current) {
+            ctx.font = `bold 13px ${FONT}`;
+            ctx.fillStyle = '#2e2bef';
+            ctx.fillText('INTERACTIVE: hover a bubble · click a region name to filter', M.left, 56);
+        }
 
         // axes and grid
         ctx.lineWidth = 1;
@@ -161,9 +169,10 @@ const DataViz = () => {
         const r = ref.current.getBoundingClientRect();
         return [(e.clientX - r.left) * (LW / r.width), (e.clientY - r.top) * (LH / r.height)];
     };
-    const onMove = (e) => { const [x, y] = pos(e); mouse.current = { x, y }; draw(); };
+    const onMove = (e) => { const [x, y] = pos(e); mouse.current = { x, y }; if (x > 0 && y > 0) touched.current = true; draw(); };
     const onLeave = () => { mouse.current = { x: -1, y: -1 }; draw(); };
     const onDown = (e) => {
+        touched.current = true;
         const [x, y] = pos(e);
         mouse.current = { x, y };
         const lx = LW - M.right + 20, ly = M.top + 40;
@@ -173,8 +182,10 @@ const DataViz = () => {
         draw();
     };
     const save = () => {
+        saving.current = true; draw();
         const a = document.createElement('a');
         a.href = ref.current.toDataURL('image/png');
+        saving.current = false; draw();
         a.download = 'global-health-wealth-population.png';
         a.click();
     };
