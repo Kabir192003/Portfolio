@@ -82,7 +82,9 @@ const MscProject = ({ slug: fixedSlug }) => {
                         <span style={label}>{p.embedTitle}</span>
                         <p style={{ color: MUTED, margin: '0.4rem 0 0.9rem', lineHeight: 1.6 }}>{p.embedNote}</p>
                         <Suspense fallback={<div style={{ height: 480, background: '#000' }} />}>
-                            {React.createElement(EMBEDS[p.embed])}
+                            {p.embed === 'iframe' ? (
+                                <iframe src={p.embedSrc} title={p.title} loading="lazy" style={{ width: '100%', height: `${p.embedHeight || 720}px`, border: `1px solid ${INK}`, background: '#000', display: 'block' }} />
+                            ) : React.createElement(EMBEDS[p.embed])}
                         </Suspense>
                     </div>
                 ) : p.video ? (
