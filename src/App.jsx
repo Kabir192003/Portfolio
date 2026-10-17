@@ -19,6 +19,8 @@ import Education from './pages/Education';
 import Research from './pages/Research';
 import Contact from './pages/Contact';
 import About from './pages/About';
+import Msc from './pages/Msc';
+import MscProject from './pages/MscProject';
 
 // Scroll to top on route change
 const ScrollToTop = () => {
@@ -44,6 +46,8 @@ const AnimatedRoutes = () => {
           <Route path="projects/3" element={<Project3 />} />
           <Route path="projects/5" element={<Project5 />} />
           <Route path="projects/6" element={<Project6 />} />
+          <Route path="msc" element={<Msc />} />
+          <Route path="msc/:slug" element={<MscProject />} />
           <Route path="photography" element={<Project4 />} />
           <Route path="about" element={<About />} />
           <Route path="experience" element={<Experience />} />

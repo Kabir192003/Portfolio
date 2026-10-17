@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const Education = () => {
     const education = [
@@ -46,6 +47,7 @@ const Education = () => {
                             <h2 style={styles.degree} className="role-heading">{edu.degree}</h2>
                             <h3 style={styles.institution}>{edu.institution}</h3>
                             <p style={styles.description} className="timeline-description">{edu.description}</p>
+                            {edu.id === 1 && <Link to="/msc" style={{ display: 'inline-block', marginTop: '0.75rem', color: 'inherit', textDecoration: 'underline' }}>See my studio work from the course →</Link>}
                         </div>
                     </motion.div>
                 ))}

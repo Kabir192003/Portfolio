@@ -215,6 +215,10 @@ const Projects = () => {
                 </div>
             </div>
 
+            <Link to="/msc" className="scope-run-link" style={{ borderTop: `1px solid ${INK}`, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '1.25rem clamp(1.25rem,3vw,3rem)', color: INK, textDecoration: 'none', gap: '1rem', flexWrap: 'wrap' }}>
+                <span style={{ fontSize: '0.8rem', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Also: M.Sc. studio work · 3D, interaction and playable sketches</span>
+                <span style={{ fontSize: '0.8rem', letterSpacing: '0.08em', color: RULE }}>OPEN →</span>
+            </Link>
             <div style={{ borderTop: `1px solid ${INK}`, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '1rem clamp(1.25rem,3vw,3rem)', flexWrap: 'wrap', gap: '0.75rem' }}>
                 <span style={{ fontSize: '0.7rem', letterSpacing: '0.1em', color: MUTED }}>{String(WORKS.length).padStart(2, '0')} CASE STUDIES · 04 LIVE, SHIPPABLE</span>
                 <span style={{ fontSize: '0.7rem', letterSpacing: '0.1em', color: MUTED }}>DUBLIN</span>

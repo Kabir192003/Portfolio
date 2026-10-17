@@ -1,0 +1,137 @@
+// Coursework from the M.Sc. Interactive Digital Media at Trinity College Dublin.
+// Kept separate from the five product case studies in projectsData.js so the
+// main work list stays product-focused and this reads as studio practice.
+export const mscProjects = [
+    {
+        slug: 'blender-tabletop-room',
+        title: 'Tabletop Toy Room',
+        module: 'Modelling & Rendering · Assignment 3',
+        kind: '3D modelling, materials and lighting',
+        tool: 'Blender',
+        summary: 'A cosy, retro-meets-modern workspace built from scratch in Blender: a desk of toy pieces lit by a low sun, designed so every surface demonstrates a different rendering technique.',
+        stats: [
+            { value: '8', label: 'Objects modelled from scratch' },
+            { value: '6', label: 'Brief objectives, all met' },
+            { value: '24s', label: 'Camera walkthrough' },
+        ],
+        poster: './msc/blender-room/poster.jpg',
+        video: './msc/blender-room/walkthrough.mp4',
+        brief: {
+            intro: 'The assignment asked for a rendered 3D scene that demonstrates six specific techniques. I chose a tabletop toy theme so that each technique had a natural home in the scene rather than being bolted on.',
+            objectives: [
+                'A transmissive / refractive object (e.g. glass)',
+                'A highly reflective surface',
+                'A bump-mapped / normal-mapped object',
+                'A texture-mapped object',
+                'Lights and shadows',
+                'A surrounding 3D environment',
+            ],
+        },
+        concept: 'The idea came from studying minimalist workspaces: something that feels calm and aesthetic but still playful. Old decorative pieces paired with a well-finished table and leather chair give a retro-modern balance. The palette is deliberately subtle (dark blue carpet, off-white wall with small imperfections, walnut table, light-brown leather chair, light-grain wood for the shelves, beige for the teddy) so the materials do the talking.',
+        renders: [
+            {
+                src: './msc/blender-room/render-close-up.jpg',
+                title: 'Close-up: reflection, refraction and fabric',
+                caption: 'The chrome dice mirrors the whole room, including the chair and chessboard. The glass vase bends the red ball behind it. The normal-mapped teddy gets a soft stuffed-toy surface.',
+            },
+            {
+                src: './msc/blender-room/render-desk.jpg',
+                title: 'The desk: light and shadow',
+                caption: 'The sun sits opposite the desk rather than above it, so objects throw long shadows onto the wall and the leather and walnut grain catch the light.',
+            },
+            {
+                src: './msc/blender-room/render-room.jpg',
+                title: 'The room: a three-walled environment',
+                caption: 'Textured walls with displacement, a thick carpeted floor and a wall light frame the desk. The room began as two walls; a third wall and an extra wooden shelf were added mid-project to give the chrome dice more to reflect.',
+            },
+        ],
+        objectiveMap: [
+            { object: 'Glass vase', objectives: 'Transmissive / refractive; light bending' },
+            { object: 'Chrome dice', objectives: 'Highly reflective; light and shadow' },
+            { object: 'Teddy', objectives: 'Normal-mapped; texture-mapped' },
+            { object: 'Leather chair', objectives: 'Texture-mapped; normal-mapped' },
+            { object: 'Wooden table', objectives: 'Texture-mapped; bump / normal-mapped; displacement' },
+            { object: 'Chessboard', objectives: 'Procedural / texture mapping; slightly reflective' },
+            { object: 'Walls', objectives: 'Bump / normal / displacement; surrounding environment' },
+            { object: 'Carpet', objectives: 'Texture-mapped; displacement / bump; surrounding environment' },
+            { object: 'Wooden shelf', objectives: 'Texture-mapped; normal-mapped' },
+            { object: 'Red ball', objectives: 'Light and shadow; simple reflective shader' },
+        ],
+        built: [
+            { name: 'Teddy', how: 'Several spheres shaped into body, arms, legs, ears and eyes. Principled BSDF with a fabric base texture and a normal map for soft fibre detail.' },
+            { name: 'Chrome dice', how: 'A bevelled cube with the pips cut by boolean operations. Metallic at 1, very low roughness for sharp reflections, adjusted IOR and a clear coat for extra shine.' },
+            { name: 'Chessboard', how: 'A flat plane scaled to a square, with a checker texture matched to an 8×8 grid, colours refined through a colour ramp and a little gloss to read as polished tiles.' },
+            { name: 'Glass vase', how: 'A cylinder shaped with loop cuts and proportional editing, thickened with a solidify modifier. Glass BSDF with low roughness and standard glass IOR (1.5), connected straight to the output for clean refraction.' },
+            { name: 'Wooden table', how: 'A cube top and smaller cube legs, lightly bevelled. Wood-grain colour texture plus roughness, normal and displacement maps for real height in the grain.' },
+            { name: 'Leather chair', how: 'Built from cubes, then extruded, bevelled and sculpted for the padded areas. Leather colour texture, with roughness and normal maps for worn patches and creases.' },
+            { name: 'Wooden shelf and frame', how: 'Simple cubes arranged in a grid with slight bevels, wood textures with roughness and normal maps. The chessboard frame uses a solidify modifier for thickness.' },
+            { name: 'Red ball', how: 'A UV sphere with finger holes cut by cylinders and booleans, shaded smooth. Semi-gloss red Principled BSDF with a realistic IOR.' },
+        ],
+        lighting: 'Lighting is intentionally simple: one sun at strength 7 and 4500K to give a golden, sunset-like warmth. Placing it opposite the desk instead of overhead is what makes the shadows land on the wall, and what lets light visibly pass through and bend inside the glass vase.',
+        imported: [
+            'Plant and pot',
+            'Display shelf',
+            'White horse statue',
+            'Antique camera',
+            'Wall light',
+        ],
+        credits: [
+            { label: 'Props', source: 'Poly Haven', href: 'https://polyhaven.com/all' },
+            { label: 'Textures', source: 'AmbientCG', href: 'https://ambientcg.com' },
+        ],
+        creditNote: 'Everything else in the scene, including all models, materials, lighting and renders, was made or arranged by me.',
+    },
+    {
+        slug: 'solar-system',
+        title: 'Interactive Solar System',
+        module: 'Visual Computing and Design · A5.4',
+        kind: 'Interactive 3D graphics',
+        tool: 'Processing (P3D) → p5.js',
+        summary: 'A real-time 3D model of the Sun and eight planets that you can orbit, speed up, slow down and click for facts. Built in Processing, ported to the web so you can play it right here.',
+        stats: [
+            { value: '10', label: 'Textured bodies incl. Sun and Moon' },
+            { value: '0.0–5.0×', label: 'Live orbit speed control' },
+            { value: '0', label: 'Third-party libraries (original)' },
+        ],
+        poster: './msc/solar-system/poster.jpg',
+        embed: 'solar',
+        embedTitle: 'Play it',
+        embedNote: 'This is a web port of my Processing sketch, rebuilt in p5.js so it runs in the browser. Same planets, lighting, camera and controls as the original.',
+        brief: {
+            intro: 'The brief was an interactive 3D scene using only core Processing functions. I chose the solar system because it forces every 3D basic into one place: textured spheres, nested transforms, lighting, camera control and screen-space UI.',
+            objectives: [
+                'A 3D scene with textured objects',
+                'Orbits built from nested transformations',
+                'Lighting that produces real shading',
+                'User-controlled camera (rotate and zoom)',
+                'Clickable objects with an information display',
+                'Custom interface built from primitives',
+            ],
+        },
+        concept: 'Each body is one Planet class: radius, orbit distance, orbit speed, texture, name and a block of real-world stats. A planet orbits by rotating around the Sun and then translating outward, so a moon can be nested inside its parent with the same code. Starting angles are random, so no two loads look the same. The orbit distances and speeds are scaled for readability rather than to real proportions.',
+        renders: [],
+        objectiveMap: [
+            { object: 'Skybox', objectives: 'A huge inside-out textured sphere gives the starfield' },
+            { object: 'Sun', objectives: 'Drawn with lights off so it glows, and it is the only light source' },
+            { object: 'Planets', objectives: 'Textured spheres; point light from the Sun plus low ambient light for day/night shading' },
+            { object: 'Earth and Moon', objectives: 'The Moon is a child planet nested inside Earth\'s transform' },
+            { object: 'Saturn', objectives: 'Rings drawn as two stroked circles rotated flat into the orbital plane' },
+            { object: 'Labels and click picking', objectives: 'Each body projects a point above itself to screen space; labels sit there and clicks test distance to it' },
+            { object: 'Speed slider', objectives: 'Hand-built from rectangles; map() and constrain() turn the mouse X into a global speed multiplier' },
+        ],
+        built: [
+            { name: 'Camera', how: 'Dragging rotates the whole scene around the Sun; the up and down arrow keys move the scene toward or away from the viewer.' },
+            { name: 'Lighting', how: 'The Sun is drawn first with lights off. A white point light is then placed at the Sun with a dim ambient light so far sides of planets are dark but not black.' },
+            { name: 'Interface', how: 'Switching off depth testing and resetting the camera lets 2D text and panels draw on top of the 3D scene. A blue label shows which body is selected.' },
+            { name: 'Web port', how: 'p5.js has no 3D screen projection, so label positions are computed by hand with the same rotation and perspective maths. Textures were compressed from over 28 MB to about 2.4 MB for the web.' },
+        ],
+        lighting: 'The effect depends on draw order: the unlit Sun is drawn first, then lights are switched on for everything else. Without that, the Sun would be shaded by its own light and look dark on one side.',
+        imported: [],
+        credits: [
+            { label: 'Textures', source: 'Solar System Scope (copyright free)', href: 'https://www.solarsystemscope.com/textures/' },
+        ],
+        creditNote: 'All code, structure and interaction design are mine. The original ran in Processing; the version on this page is a p5.js port.',
+    },
+];
+
+export const getMscProject = (slug) => mscProjects.find((p) => p.slug === slug);
