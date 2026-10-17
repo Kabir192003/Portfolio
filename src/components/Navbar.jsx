@@ -4,6 +4,7 @@ import LogoMark from './LogoMark';
 
 const LINKS = [
     { to: '/projects', label: 'Work' },
+    { to: '/msc', label: 'Studio' },
     { to: '/about', label: 'About' },
     { to: '/experience', label: 'Experience' },
     { to: '/education', label: 'Education' },

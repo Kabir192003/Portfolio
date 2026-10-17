@@ -7,7 +7,6 @@ const MONO = "'JetBrains Mono', monospace";
 const W = 800;
 const H = 600;
 const FILTERS = ['None', 'Grayscale', 'Invert', 'Color Swap', 'Red Tint', 'Green Tint', 'Blue Tint', 'Posterize', 'Noise', 'Sepia', 'Blur'];
-const KEYS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'Q'];
 
 const clamp = (v) => Math.min(255, Math.max(0, v));
 
@@ -128,31 +127,47 @@ const ImageLab = () => {
         e.preventDefault();
     };
 
-    const btn = (active) => ({ fontFamily: MONO, fontSize: '0.72rem', border: `1px solid ${INK}`, background: active ? INK : 'transparent', color: active ? '#f2f0ea' : INK, padding: '6px 10px', cursor: 'pointer' });
+    const btn = (active) => ({ fontFamily: MONO, fontSize: '0.78rem', border: `1px solid ${INK}`, background: active ? INK : 'transparent', color: active ? '#f2f0ea' : INK, padding: '8px 12px', cursor: 'pointer' });
+    const group = { borderTop: `1px solid ${INK}`, padding: '0.9rem 0 0.2rem', marginTop: '0.9rem' };
+    const heading = { fontFamily: MONO, fontSize: '0.7rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: RULE, marginBottom: '0.55rem' };
+    const hint = { fontFamily: MONO, fontSize: '0.7rem', color: '#8a8578', marginLeft: '0.5rem' };
 
     return (
-        <div tabIndex={0} onKeyDown={onKey} style={{ outline: 'none' }} aria-label="Image filter lab. Number keys choose filters, arrow keys change brightness, space toggles split view.">
+        <div tabIndex={0} onKeyDown={onKey} style={{ outline: 'none' }} aria-label="Image filter lab. Number keys choose filters, arrow keys change brightness, space toggles before and after.">
             <div style={{ position: 'relative', border: `1px solid ${INK}`, background: '#000', lineHeight: 0 }}>
                 <canvas ref={canvasRef} width={W} height={H} style={{ width: '100%', height: 'auto', display: 'block' }} />
+                <span style={{ position: 'absolute', left: 12, top: 12, background: INK, color: '#f2f0ea', fontFamily: MONO, fontSize: '0.72rem', letterSpacing: '0.08em', padding: '6px 10px', lineHeight: 1.2 }}>
+                    {split ? 'BEFORE (LEFT) · AFTER (RIGHT)' : filter === 0 ? 'ORIGINAL PHOTO' : `FILTER: ${FILTERS[filter].toUpperCase()}`}
+                </span>
                 {saved && <span style={{ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%,-50%)', background: '#00c800', color: '#fff', fontFamily: MONO, fontSize: '0.9rem', padding: '14px 28px', lineHeight: 1 }}>IMAGE SAVED!</span>}
                 {!ready && <span style={{ position: 'absolute', left: 16, top: 16, color: '#aaa', fontFamily: MONO, fontSize: '0.75rem' }}>LOADING…</span>}
             </div>
-            <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap', marginTop: '0.8rem' }}>
-                {FILTERS.map((name, i) => (
-                    <button key={name} style={btn(filter === i)} onClick={() => setFilter(i)}>
-                        {KEYS[i]} · {name}
-                    </button>
-                ))}
+
+            <div style={group}>
+                <div style={heading}>1 · Pick a filter <span style={hint}>(click one, then try another)</span></div>
+                <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
+                    {FILTERS.map((name, i) => (
+                        <button key={name} style={btn(filter === i)} onClick={() => setFilter(i)} aria-pressed={filter === i}>
+                            {i === 0 ? 'No filter' : name}
+                        </button>
+                    ))}
+                </div>
             </div>
-            <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap', marginTop: '0.6rem', alignItems: 'center' }}>
-                <button style={btn(false)} onClick={() => bright(-5)}>BRIGHTNESS −</button>
-                <span style={{ fontFamily: MONO, fontSize: '0.78rem', minWidth: '5.5rem', textAlign: 'center', color: RULE }}>{brightness > 0 ? '+' : ''}{brightness}</span>
-                <button style={btn(false)} onClick={() => bright(5)}>BRIGHTNESS +</button>
-                <button style={btn(split)} onClick={() => setSplit((s) => !s)}>SPLIT VIEW</button>
-                <button style={btn(false)} onClick={reset}>RESET</button>
-                <button style={btn(false)} onClick={save}>SAVE IMAGE</button>
+
+            <div style={group}>
+                <div style={heading}>2 · Brightness <span style={{ ...hint, color: RULE }}>{brightness > 0 ? '+' : ''}{brightness}</span></div>
+                <input type="range" min={-100} max={100} step={5} value={brightness} onChange={(e) => setBrightness(Number(e.target.value))} aria-label="Brightness" style={{ width: '100%', maxWidth: '420px', accentColor: RULE }} />
             </div>
-            <p style={{ fontFamily: MONO, fontSize: '0.7rem', color: '#8a8578', marginTop: '0.6rem' }}>Keys work too: 0–9 and Q pick filters, ↑ ↓ brightness, space split, S save. Click the image first.</p>
+
+            <div style={group}>
+                <div style={heading}>3 · Compare and save</div>
+                <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
+                    <button style={btn(split)} onClick={() => setSplit((s) => !s)} aria-pressed={split}>{split ? 'Showing before / after' : 'Show before / after'}</button>
+                    <button style={btn(false)} onClick={reset}>Reset everything</button>
+                    <button style={btn(false)} onClick={save}>Download image</button>
+                </div>
+                <p style={{ ...hint, marginLeft: 0, marginTop: '0.8rem', lineHeight: 1.6 }}>Keyboard shortcuts (click the image first): 1–9 and Q choose filters, 0 resets, ↑ ↓ change brightness, space toggles before / after, S downloads.</p>
+            </div>
         </div>
     );
 };

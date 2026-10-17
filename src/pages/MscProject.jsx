@@ -6,6 +6,7 @@ import { getMscProject } from '../data/mscProjects';
 const EMBEDS = {
     solar: lazy(() => import('../components/msc/SolarSystem')),
     image: lazy(() => import('../components/msc/ImageLab')),
+    velocity: lazy(() => import('../components/msc/Velocity')),
 };
 
 const INK = '#141414';
@@ -126,7 +127,7 @@ const MscProject = () => {
                 <p style={{ color: MUTED, lineHeight: 1.7, maxWidth: '760px' }}>{p.lighting}</p>
             </Section>
 
-            <Section eyebrow="Credits" title="What I didn't make">
+            <Section eyebrow="Credits" title={p.credits.length || p.imported.length ? "What I didn't make" : 'Authorship'}>
                 {p.imported.length > 0 && (
                     <p style={{ color: MUTED, lineHeight: 1.7 }}>Imported assets: {p.imported.join(', ')}.</p>
                 )}
