@@ -369,6 +369,63 @@ export const mscProjects = [
         ],
         creditNote: 'Story, structure and interaction design are mine.',
     },
+    {
+        slug: 'florafictions',
+        title: 'FloraFictions',
+        module: 'VR assignment · Parts 1 and 2',
+        kind: 'VR sketching, speculative design',
+        tool: 'Open Brush',
+        summary: 'Plants as characters instead of scenery. A solo 3D sketch painted in Open Brush, then a shared plant world built with two teammates. Both models are below, and you can orbit them.',
+        stats: [
+            { value: '2', label: 'Linked tasks: solo sketch, then group world' },
+            { value: '3', label: 'People in the group' },
+            { value: '3D', label: 'Painted in VR, viewable in your browser' },
+        ],
+        poster: './msc/open-brush/individual.jpg',
+        embed: 'sketchfab',
+        embedTitle: 'Explore the models',
+        embedBadge: 'THESE ARE 3D MODELS · DRAG TO ROTATE · SCROLL TO ZOOM',
+        embedNote: 'Both were painted in Open Brush and are hosted on Sketchfab. Start with the individual sketch (part 1), then the shared world (part 2).',
+        models: [
+            { id: 'e2edf03cb88e47669406dba75846b23b', title: 'Part 1 · Individual sketch', caption: 'My own Open Brush drawing: a palm-like tree over a patch of layered, angular grass.' },
+            { id: '6ea7c4e409c440f1aa8fe82908d08027', title: 'Part 2 · Group world', caption: 'The shared world made with Amna and Dhanashri. Zoom in on the small island near the middle: a tree, rocks and a pool of water.' },
+        ],
+        brief: {
+            intro: 'The assignment was framed by plant fictions and the TV show Scavengers Reign: imagine plants as active participants that react, change, guide, obstruct or communicate, rather than as decoration. It ran in two linked parts.',
+            objectives: [
+                'Part 1 (individual): turn a moment from the show into a speculative design concept and sketch it in VR with Open Brush',
+                'Spend time with a real plant first, and notice what does not map cleanly to interactive design',
+                'Think through agency, interaction and ethics for plants that act',
+                'Part 2 (group): combine individual ideas into one shared plant ecology',
+                'Tell the story through the space itself: shape, placement, scale and behaviour of the plants',
+                'No single author: decisions negotiated, layered or left unresolved',
+            ],
+        },
+        concept: 'Part 1 was about clarifying a relationship, not polish: the brief said the sketch could be rough. Part 2 asked for something harder, a world where three people\'s ideas share one ecology and the plants, not a narrator, organise the story. The two models below are those two outputs side by side.',
+        renders: [],
+        objectiveMap: [
+            { object: 'Plants as participants', objectives: 'Treat plants as characters, systems or forces that shape what a person does, not as backdrop' },
+            { object: 'Open Brush', objectives: 'Sketch spatially in VR, so scale and placement carry meaning' },
+            { object: 'Co-authorship', objectives: 'Three people building one scene, with no single authorial voice' },
+            { object: 'Space as story', objectives: 'The shape and arrangement of the plants should drive how the story is experienced' },
+        ],
+        built: [
+            { name: 'Part 1', how: 'An individual 3D sketch in Open Brush, exported to Sketchfab so it can be viewed in any browser.' },
+            { name: 'Part 2', how: 'A shared world made with Amna and Dhanashri, merging the individual ideas into one scene.' },
+            { name: 'Tool', how: 'Open Brush is a VR painting app: you draw in the air with strokes that become 3D geometry.' },
+        ],
+        noteEyebrow: 'Context',
+        noteTitle: 'Rough on purpose',
+        lighting: 'The brief asked for experiments through making and sketching, not a finished product. These models are exactly that: an idea about plants as active characters, drawn at body scale.',
+        imported: [],
+        credits: [
+            { label: 'Group world', source: 'Made with Amna and Dhanashri', href: '' },
+            { label: 'Hosting', source: 'Sketchfab (individual sketch)', href: 'https://sketchfab.com/3d-models/kabir-individual-e2edf03cb88e47669406dba75846b23b' },
+            { label: 'Hosting', source: 'Sketchfab (group world)', href: 'https://sketchfab.com/3d-models/group-kabiramnadhanashri-6ea7c4e409c440f1aa8fe82908d08027' },
+            { label: 'Tool', source: 'Open Brush', href: 'https://openbrush.app/' },
+        ],
+        creditNote: 'Part 1 is my own work. Part 2 is shared authorship.',
+    },
 ];
 
 export const getMscProject = (slug) => mscProjects.find((p) => p.slug === slug);

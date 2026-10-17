@@ -82,7 +82,25 @@ const MscProject = ({ slug: fixedSlug }) => {
                         <span style={label}>{p.embedTitle}</span>
                         <p style={{ color: MUTED, margin: '0.4rem 0 0.9rem', lineHeight: 1.6 }}>{p.embedNote}</p>
                         <Suspense fallback={<div style={{ height: 480, background: '#000' }} />}>
-                            {p.embed === 'iframe' ? (
+                            {p.embed === 'sketchfab' ? (
+                                <div style={{ display: 'grid', gap: '2rem' }}>
+                                    {p.models.map((m) => (
+                                        <figure key={m.id} style={{ margin: 0 }}>
+                                            <iframe
+                                                src={`https://sketchfab.com/models/${m.id}/embed`}
+                                                title={m.title}
+                                                loading="lazy"
+                                                allow="autoplay; fullscreen; xr-spatial-tracking"
+                                                allowFullScreen
+                                                style={{ width: '100%', aspectRatio: '16 / 10', border: `1px solid ${INK}`, background: '#000', display: 'block' }}
+                                            />
+                                            <figcaption style={{ marginTop: '0.7rem', color: MUTED, lineHeight: 1.6 }}>
+                                                <strong style={{ fontFamily: MONO, fontSize: '0.8rem', textTransform: 'uppercase' }}>{m.title}.</strong> {m.caption}
+                                            </figcaption>
+                                        </figure>
+                                    ))}
+                                </div>
+                            ) : p.embed === 'iframe' ? (
                                 <iframe src={p.embedSrc} title={p.title} loading="lazy" style={{ width: '100%', height: `${p.embedHeight || 720}px`, border: `1px solid ${INK}`, background: '#000', display: 'block' }} />
                             ) : React.createElement(EMBEDS[p.embed])}
                         </Suspense>
