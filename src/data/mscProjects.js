@@ -263,7 +263,6 @@ export const mscProjects = [
             { value: '6', label: 'Region filters' },
         ],
         poster: './msc/data-viz/banner.jpg',
-        banner: './msc/data-viz/banner.jpg',
         embed: 'viz',
         embedTitle: 'Explore the data',
         embedNote: 'Hover any bubble to see the country, its income and life expectancy. Click a region name on the right to hide or show it, for example hide Asia to see the smaller countries underneath.',
