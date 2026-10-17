@@ -3,7 +3,10 @@ import { Link, useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { getMscProject } from '../data/mscProjects';
 
-const SolarSystem = lazy(() => import('../components/msc/SolarSystem'));
+const EMBEDS = {
+    solar: lazy(() => import('../components/msc/SolarSystem')),
+    image: lazy(() => import('../components/msc/ImageLab')),
+};
 
 const INK = '#141414';
 const RULE = '#2e2bef';
@@ -61,12 +64,12 @@ const MscProject = () => {
             </header>
 
             <div style={wrap}>
-                {p.embed === 'solar' ? (
+                {p.embed ? (
                     <div style={{ paddingBottom: '1.5rem' }}>
                         <span style={label}>{p.embedTitle}</span>
                         <p style={{ color: MUTED, margin: '0.4rem 0 0.9rem', lineHeight: 1.6 }}>{p.embedNote}</p>
                         <Suspense fallback={<div style={{ height: 480, background: '#000' }} />}>
-                            <SolarSystem />
+                            {React.createElement(EMBEDS[p.embed])}
                         </Suspense>
                     </div>
                 ) : p.video ? (
@@ -97,7 +100,7 @@ const MscProject = () => {
             </Section>
 
             {p.renders.length > 0 && (
-                <Section eyebrow="Renders" title="Final frames">
+                <Section eyebrow="Renders" title={p.rendersTitle || 'Final frames'}>
                     <div style={{ display: 'grid', gap: '2rem' }}>
                         {p.renders.map((r) => (
                             <figure key={r.src} style={{ margin: 0 }}>
@@ -111,7 +114,7 @@ const MscProject = () => {
                 </Section>
             )}
 
-            <Section eyebrow="Mapping" title="Requirement to object">
+            <Section eyebrow="Mapping" title={p.mapTitle || 'Requirement to object'}>
                 <Table rows={p.objectiveMap} cols={['object', 'objectives']} />
             </Section>
 
@@ -119,7 +122,7 @@ const MscProject = () => {
                 <Table rows={p.built} cols={['name', 'how']} />
             </Section>
 
-            <Section eyebrow="Lighting" title="Light and order">
+            <Section eyebrow={p.noteEyebrow || 'Lighting'} title={p.noteTitle || 'Light and shadow'}>
                 <p style={{ color: MUTED, lineHeight: 1.7, maxWidth: '760px' }}>{p.lighting}</p>
             </Section>
 
