@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { projectsData } from '../data/projectsData';
 
@@ -71,6 +71,7 @@ const rowVariants = {
 
 const Projects = () => {
     const [active, setActive] = useState(0);
+    const navigate = useNavigate();
     const crosshairRef = useRef(null);
     const labelRef = useRef(null);
 
@@ -142,6 +143,10 @@ const Projects = () => {
                                 variants={rowVariants}
                                 onMouseEnter={() => setActive(i)}
                                 onFocus={() => setActive(i)}
+                                onClick={() => navigate(`/projects/${w.id}`)}
+                                onKeyDown={(e) => { if (e.key === 'Enter') navigate(`/projects/${w.id}`); }}
+                                role="link"
+                                aria-label={`Open ${w.title} case study`}
                                 tabIndex={0}
                                 style={{
                                     position: 'relative',
@@ -152,6 +157,7 @@ const Projects = () => {
                                     padding: '1.6rem clamp(1.25rem,3vw,3rem)',
                                     borderTop: `1px solid ${INK}`,
                                     cursor: 'pointer',
+                                    userSelect: 'none',
                                     outline: 'none',
                                     transition: 'background 0.25s',
                                     background: isActive ? 'rgba(46,43,239,0.04)' : 'transparent',
