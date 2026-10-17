@@ -44,6 +44,7 @@ const AnimatedRoutes = () => {
           <Route path="projects/1" element={<Project1 />} />
           <Route path="projects/2" element={<Project2 />} />
           <Route path="projects/3" element={<Project3 />} />
+          <Route path="projects/data-viz" element={<MscProject slug="data-visualisation" />} />
           <Route path="projects/5" element={<Project5 />} />
           <Route path="projects/6" element={<Project6 />} />
           <Route path="msc" element={<Msc />} />

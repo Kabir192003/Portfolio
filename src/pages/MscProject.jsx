@@ -6,6 +6,7 @@ import { getMscProject } from '../data/mscProjects';
 const EMBEDS = {
     solar: lazy(() => import('../components/msc/SolarSystem')),
     image: lazy(() => import('../components/msc/ImageLab')),
+    viz: lazy(() => import('../components/msc/DataViz')),
     velocity: lazy(() => import('../components/msc/Velocity')),
 };
 
@@ -40,8 +41,9 @@ const Table = ({ rows, cols }) => (
     </div>
 );
 
-const MscProject = () => {
-    const { slug } = useParams();
+const MscProject = ({ slug: fixedSlug }) => {
+    const params = useParams();
+    const slug = fixedSlug || params.slug;
     const p = getMscProject(slug);
 
     if (!p) {
@@ -56,7 +58,7 @@ const MscProject = () => {
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }}>
             <div style={{ borderTop: `4px solid ${INK}` }} />
             <header style={{ ...wrap, padding: '3rem clamp(1.25rem,3vw,2rem) 2rem' }}>
-                <Link to="/msc" style={{ ...label, textDecoration: 'none' }}>← Studio work</Link>
+                <Link to={p.backTo || '/msc'} style={{ ...label, textDecoration: 'none' }}>{p.backLabel || '← Studio work'}</Link>
                 <h1 style={{ fontFamily: "'Anton', sans-serif", fontSize: 'clamp(2.4rem, 6.5vw, 4.8rem)', textTransform: 'uppercase', lineHeight: 0.98, margin: '0.9rem 0 1rem' }}>{p.title}</h1>
                 <div style={{ fontFamily: MONO, fontSize: '0.78rem', color: FAINT, letterSpacing: '0.06em', textTransform: 'uppercase' }}>
                     {p.module} · {p.tool}
@@ -133,7 +135,7 @@ const MscProject = () => {
                 )}
                 <ul style={{ listStyle: 'none', padding: 0, margin: '0.5rem 0 1rem', lineHeight: 1.9 }}>
                     {p.credits.map((c) => (
-                        <li key={c.source}>{c.label}: <a href={c.href} target="_blank" rel="noreferrer" style={{ color: RULE }}>{c.source}</a></li>
+                        <li key={c.source}>{c.label}: {c.href ? <a href={c.href} target="_blank" rel="noreferrer" style={{ color: RULE }}>{c.source}</a> : c.source}</li>
                     ))}
                 </ul>
                 <p style={{ color: MUTED, lineHeight: 1.7 }}>{p.creditNote}</p>

@@ -21,7 +21,7 @@ const Msc = () => (
         <div style={{ borderTop: `1px solid ${INK}` }} />
 
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-            {mscProjects.map((p, i) => (
+            {mscProjects.filter((p) => p.listed !== false).map((p, i) => (
                 <Link
                     key={p.slug}
                     to={`/msc/${p.slug}`}

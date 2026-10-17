@@ -50,6 +50,14 @@ const WORKS = [
         desc: 'A deployed community decision platform — React, Node, Express, MongoDB — with an algorithm-driven feed and anonymous posting.',
         img: './tot-hero-bg.jpg',
     },
+    {
+        num: '06', id: 'data-viz', title: 'Global Health & Wealth', tags: ['DATA VIZ', 'INTERACTIVE'], year: '2026',
+        role: 'Designer and developer. Chart design, scales and interaction',
+        status: 'LIVE — PLAYABLE',
+        stack: 'Processing · Canvas · CSV data',
+        desc: 'An interactive bubble chart of 186 countries: income against life expectancy, sized by population, with hover details and region filters.',
+        img: './msc/data-viz/viz.jpg',
+    },
 ];
 
 const rowVariants = {
@@ -115,7 +123,7 @@ const Projects = () => {
                     Selected<br />Traces<span style={{ color: RULE }}>.</span>
                 </h1>
                 <p style={{ maxWidth: '560px', fontSize: '1rem', lineHeight: 1.65, color: MUTED, marginTop: '1.5rem' }}>
-                    Five products, run through their paces. Hover an entry to pull it up on the scope — role, status and stack on the right update live.
+                    Five products and a data visualisation, run through their paces. Hover an entry to pull it up on the scope — role, status and stack on the right update live.
                 </p>
             </div>
             <div style={{ borderTop: `1px solid ${INK}` }} />
@@ -220,7 +228,7 @@ const Projects = () => {
                 <span style={{ fontSize: '0.8rem', letterSpacing: '0.08em', color: RULE }}>OPEN →</span>
             </Link>
             <div style={{ borderTop: `1px solid ${INK}`, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '1rem clamp(1.25rem,3vw,3rem)', flexWrap: 'wrap', gap: '0.75rem' }}>
-                <span style={{ fontSize: '0.7rem', letterSpacing: '0.1em', color: MUTED }}>{String(WORKS.length).padStart(2, '0')} CASE STUDIES · 04 LIVE, SHIPPABLE</span>
+                <span style={{ fontSize: '0.7rem', letterSpacing: '0.1em', color: MUTED }}>{String(WORKS.length).padStart(2, '0')} CASE STUDIES · 05 LIVE, SHIPPABLE</span>
                 <span style={{ fontSize: '0.7rem', letterSpacing: '0.1em', color: MUTED }}>DUBLIN</span>
             </div>
             <div style={{ borderTop: `4px solid ${INK}` }} />
