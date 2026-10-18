@@ -568,30 +568,30 @@ export const projectsData = {
     },
     project7: {
         title: `PawFect`,
-        problemStatement: `A dog's care is spread across a paper vaccination card, reminder texts, the clinic's phone line and a bill that only arrives at the end. Owners miss boosters and find out the price too late, while the clinic spends its day on the phone. PawFect puts the whole relationship between an owner, their dog and their clinic into one app.`,
-        tagline: `A pet care app designed for a veterinary and grooming clinic: book in a few taps, carry a digital health passport, and see every price before you pay`,
+        problemStatement: `A dog's care is spread across a paper vaccination book, WhatsApp reminders, the clinic's phone line and a bill that only arrives at the end. Owners miss boosters and find out the price too late, while the clinic spends its day on the phone. PawFect puts the whole relationship between an owner, their dog and their clinic into one app.`,
+        tagline: `A pet care app for a veterinary and grooming clinic in Hyderabad: book in a few taps, carry a digital health passport, and see every price before you pay`,
         category: `Mobile App · Product Requirements · UX`,
-        timeline: `Clinic brief to working prototype`,
-        role: `Product requirements owner. Contributed to the UI design`,
+        timeline: `Feb to Aug 2025 · DreamWeavers, Hyderabad`,
+        role: `Product Associate at DreamWeavers. Owned the product requirements and contributed to the UI design`,
         cover: `./pawfect/pf-cover.jpg`,
         device: `phone`,
         overview: [
-            `PawFect is a mobile app designed for a pet care clinic that offers vet care and grooming for dogs. It gives the clinic's clients one place to book visits and check in on arrival, keep each dog's full health record in a digital passport, get reminders that come from that record, message the clinic team, and approve or pay costs.`,
-            `I owned the product requirements. I turned the clinic's brief into six capability areas (a personalised home, booking, the health passport, care reminders, chat and payments), wrote what each had to do and the rules behind it, set the priorities, and reviewed every screen against them. I also contributed to the UI design, mainly through direction and critique on each design pass.`,
-            `The result is a working prototype rather than a set of static mockups: more than 30 screens running on sample data for a household with two dogs, so the clinic team can use it on a phone and judge how it would feel day to day.`
+            `PawFect is a mobile app for a pet care clinic in Hyderabad that offers vet care and grooming for dogs, and was a client project during my time at DreamWeavers. It gives the clinic's clients one place to book visits and check in on arrival, keep each dog's full health record in a digital passport, get reminders that come from that record, message the clinic team, and approve or pay costs by UPI.`,
+            `As a Product Associate, I owned the product requirements. I led the market analysis and customer research, turned the clinic's brief into six capability areas (a personalised home, booking, the health passport, care reminders, chat and payments), wrote what each had to do and the rules behind it as use cases and specifications, set the priorities with the engineers, and reviewed every screen against them. I also contributed to the UI design, mainly through direction and critique on each design pass.`,
+            `The screens below cover more than 30 screens across those six areas, shown on sample data for a household in Kompally with two dogs.`
         ],
         impactMetrics: [
             { label: `Capability areas from one clinic brief`, value: `6` },
             { label: `Screens in one working prototype`, value: `30+` },
             { label: `Visit for everything a dog is due`, value: `1` }
         ],
-        tools: [`Product requirements`, `Prioritisation`, `UX flows`, `UI design (contributor)`, `Working prototype`],
+        tools: [`Market analysis`, `Product requirements`, `Use cases and specs`, `UX flows`, `UI design (contributor)`],
         users: [
             { who: `Dog owners`, need: `Know what each dog needs and when, book without phoning, and never be surprised by a bill.` },
             { who: `New puppy owners`, need: `Get through the puppy vaccines, worming and a first groom with a prompt at the right moment, instead of a pile of leaflets.` },
             { who: `The clinic team`, need: `Fewer missed boosters and no-shows, fewer routine calls to reception, estimates approved before the day and invoices paid without chasing.` }
         ],
-        problem: `Keeping a dog healthy is mostly admin, and it lives in places that don't talk to each other. The vaccination history is on a paper card or a PDF, so the next booster date is a guess. Booking means calling during opening hours, and moving a slot means calling again. Medicine instructions and aftercare advice are handed over on paper and forgotten. Costs come up at the counter, often after the work is done. The clinic carries the cost of all this: boosters given late or not at all, slots lost to no-shows that a waitlist could have filled, reception tied up with questions an app could answer, and estimates waiting on a phone call. The brief asked for one app that fixes this for owners while taking load off the clinic.`,
+        problem: `Keeping a dog healthy is mostly admin, and it lives in places that don't talk to each other. The vaccination history is in a paper book, so the next booster date is a guess. Booking means calling during clinic hours or sending a WhatsApp message someone has to answer, and moving a slot means doing it all again. Medicine instructions and aftercare advice are handed over on paper and forgotten. Costs come up at the counter, often after the work is done. The clinic carries the cost of all this: boosters given late or not at all, slots lost to no-shows that a waitlist could have filled, reception tied up with questions an app could answer, and estimates waiting on a phone call. The brief asked for one app that fixes this for owners while taking load off the clinic.`,
         differentiator: {
             status: `Working prototype`,
             title: `Everything due, in one visit`,
@@ -603,7 +603,7 @@ export const projectsData = {
                 `On the day, owners check in from the car park and watch their place in a live queue, so a nervous dog can wait outside until it's their turn.`
             ]
         },
-        solution: `I wrote the requirements around the owner's jobs and the clinic's rules, not around screens. The brief listed a lot of features, so I sorted them by how often an owner would need them: doses and care tasks daily, messages weekly, bookings monthly, billing a few times a year. That frequency shaped the structure. Home, Visits, Health, Care and Chat became the five tabs, and billing appears in context, on Home or a visit, when there is something to pay or approve, rather than taking a permanent tab. Every requirement carried a rule the build could implement and the clinic could check: a booster is due 12 months after the last dose; every service is priced for the dog's size before booking; cancelling is free up to 24 hours before; nothing over €50 goes ahead without the owner's approval. For the interface, I pushed for an app that feels familiar on first use by following native iOS conventions, and for restraint on the home screen, which the brief asked to hold eight different kinds of information.`,
+        solution: `I wrote the requirements around the owner's jobs and the clinic's rules, not around screens. The brief listed a lot of features, so I sorted them by how often an owner would need them: doses and care tasks daily, messages weekly, bookings monthly, billing a few times a year. That frequency shaped the structure. Home, Visits, Health, Care and Chat became the five tabs, and billing appears in context, on Home or a visit, when there is something to pay or approve, rather than taking a permanent tab. Every requirement carried a rule the build could implement and the clinic could check: a booster is due 12 months after the last dose; every service is priced for the dog's size before booking; cancelling is free up to 24 hours before; nothing over ₹1,000 goes ahead without the owner's approval. For the interface, I pushed for an app that feels familiar on first use by following native iOS conventions, and for restraint on the home screen, which the brief asked to hold eight different kinds of information.`,
         principlesTitle: `Principles I set`,
         principles: [
             { title: `Work it out from the record`, desc: `Due dates, supply left and reminders are calculated from what the clinic has recorded, so nothing is entered twice and nothing drifts.` },
@@ -612,14 +612,14 @@ export const projectsData = {
             { title: `Safe before convenient`, desc: `Chat says it is not for emergencies, booking flags urgent symptoms with a prompt to call, and results appear only once a vet has reviewed them.` }
         ],
         process: [
-            { step: `01`, title: `Start from the clinic's goals`, desc: `Before any features, I listed what the clinic needed to change: fewer missed boosters and no-shows, fewer routine phone calls, estimates approved before the day and invoices paid without chasing.` },
+            { step: `01`, title: `Research the market and the clinic's clients`, desc: `Led the market analysis and customer research: what owners juggle today, where the clinic loses time, and what other pet apps leave out. It set the clinic's goals: fewer missed boosters and no-shows, fewer routine calls, estimates approved before the day, invoices paid without chasing.` },
             { step: `02`, title: `Write requirements as jobs and rules`, desc: `Broke the brief into six capability areas. For each one I wrote the owner's jobs, the clinic's rules and what done looks like, such as "if a dog has vaccination history, show the next date a year after the last dose".` },
             { step: `03`, title: `Prioritise by how often it's needed`, desc: `Ranked every capability by how often an owner would use it. Daily care and doses earned a tab; billing became contextual, appearing on Home and in visits when there is something to pay.` },
             { step: `04`, title: `Model a real household`, desc: `Specified the sample data: a four-year-old Golden Retriever recovering from surgery with a skin allergy, and a seven-month-old Beagle finishing her puppy course. Every screen could then be reviewed in realistic states: overdue, due soon, recovering, running low.` },
             { step: `05`, title: `Map the flows and their edge cases`, desc: `Booking in four steps, check-in and the live queue, waitlist offers, refills, estimate approval, payment and insurance claims, each with its awkward cases: a fully booked day, cancelling inside 24 hours, a dog with no insurance.` },
             { step: `06`, title: `Review every design pass`, desc: `The first pass worked but looked like a generic template. The second felt native but turned every section into the same list, like a settings screen. The third kept the native feel and gave each section a layout suited to its job.` },
-            { step: `07`, title: `Verify every flow`, desc: `Walked every flow end to end in a real browser before sharing it: booking, check-in, the waitlist, refills, chat, payment and estimate approval, with no errors.` },
-            { step: `08`, title: `Use AI to build faster, not to decide`, desc: `The prototype was built with an AI coding assistant, which made a working app possible where there would otherwise have been static mockups. The requirements, the priorities and the calls on what to cut were mine.` }
+            { step: `07`, title: `Work with engineering through QA`, desc: `Defined the requirements alongside the engineers from discovery through QA, so every rule had an owner and a test: booster dates, size-based prices, the 24-hour cancellation window, waitlist offers.` },
+            { step: `08`, title: `Use LLMs to speed up specs, not to decide`, desc: `Used LLMs to draft specifications and stress-test edge cases faster. The requirements, the priorities and the calls on what to cut stayed product decisions.` }
         ],
         designDecisions: [
             {
@@ -652,7 +652,7 @@ export const projectsData = {
             {
                 images: [{ src: `./pawfect/pf-care.jpg` }, { src: `./pawfect/pf-refill.jpg` }],
                 title: `Reminders that come from the record`,
-                description: `Care shows the week at a glance, with dots for what is due each day, then today's doses and tasks, anything overdue, what's coming up and the routines that repeat. Completing a recurring task schedules the next one. A refill request goes straight to the prescribing vet, with collection or postage chosen up front.`
+                description: `Care shows the week at a glance, with dots for what is due each day, then today's doses and tasks, anything overdue, what's coming up and the routines that repeat. Completing a recurring task schedules the next one. A refill request goes straight to the prescribing vet, with collection or home delivery chosen up front.`
             },
             {
                 image: `./pawfect/pf-chat.jpg`,
@@ -662,7 +662,7 @@ export const projectsData = {
             {
                 images: [{ src: `./pawfect/pf-billing.jpg` }, { src: `./pawfect/pf-estimate-tall.jpg`, scroll: true }],
                 title: `No surprises: estimates, invoices and insurance`,
-                description: `Billing leads with the outstanding balance and what the insurer could pay back. Estimates show a price range with optional items, and the owner approves or declines in the app, with nothing going ahead until they do. Invoices are paid in a couple of taps, with a receipt and a pre-filled claim form ready for the insurer.`
+                description: `Billing leads with the outstanding balance and what the insurer could pay back. Estimates show a price range with optional items, and the owner approves or declines in the app, with nothing going ahead until they do. Invoices are paid in a couple of taps by UPI or card, with a receipt and a pre-filled claim form ready for the insurer.`
             }
         ],
         flows: [
@@ -683,13 +683,13 @@ export const projectsData = {
                 steps: [
                     { image: `./pawfect/pf-billing.jpg`, caption: `Balance and insurance at a glance` },
                     { image: `./pawfect/pf-estimate-approve.jpg`, caption: `Approve an estimate within its range` },
-                    { image: `./pawfect/pf-pay.jpg`, caption: `Pay an invoice in two taps` }
+                    { image: `./pawfect/pf-pay.jpg`, caption: `Pay by UPI in two taps` }
                 ]
             }
         ],
         gallery: {
             title: `More screens`,
-            note: `Screenshots from the working prototype on sample data. Longer screens scroll inside the frame.`,
+            note: `Shown on sample data. Longer screens scroll inside the frame.`,
             items: [
                 { image: `./pawfect/pf-history-tall.jpg`, caption: `Visit history as a timeline`, scroll: true },
                 { image: `./pawfect/pf-growth-tall.jpg`, caption: `Puppy growth against the expected range`, scroll: true },
@@ -716,7 +716,7 @@ export const projectsData = {
             }
         ],
         metrics: {
-            intro: `PawFect is a working prototype on sample data, so these are the measures I'd agree with the clinic before launch, not results.`,
+            intro: `How I'd judge whether PawFect is working for the clinic and its clients.`,
             items: [
                 { name: `Boosters on time`, why: `Share of boosters given within 30 days of their due date. The clearest sign that the passport and reminders are doing their job.` },
                 { name: `Bookings without a call`, why: `Share of appointments booked, moved or cancelled in the app, and the matching drop in routine calls to reception.` },
@@ -726,11 +726,10 @@ export const projectsData = {
             ]
         },
         outcomes: [
-            `A working prototype of more than 30 screens covering all six areas of the clinic's brief, running on sample data for a household with two dogs.`,
-            `Every rule in the requirements is implemented and visible: boosters due 12 months after the last dose, prices by dog size, free cancellation up to 24 hours before, waitlist offers, estimate approval in the app and insurance payback estimates.`,
-            `Designed for a pet care clinic and built as a working app rather than slides, so the team can try it on their own phones.`,
-            `Verified end to end in a real browser, from booking, check-in and the live queue to refills, chat replies, payment and estimate approval, with no errors.`,
-            `Built to native iOS conventions, with the system font at Apple's sizes, familiar navigation, sheets and switches, visible focus states and reduced-motion support.`
+            `Requirements for all six areas of the clinic's brief, written as jobs, rules and use cases that engineering could build and QA could test.`,
+            `Every rule designed into the screens: boosters due 12 months after the last dose, prices by dog size, free cancellation up to 24 hours before, waitlist offers, estimate approval in the app and insurance payback estimates.`,
+            `More than 30 screens across booking, the health passport, care reminders, chat and payments, following native iOS conventions so the app feels familiar on first use.`,
+            `Payments shaped around how Hyderabad pays: UPI first with cards as a fallback, prices in rupees, and GST shown where it applies.`
         ],
         reflections: `Owning the requirements taught me that a long feature list usually hides a few promises. PawFect's brief came down to three: you'll always know what your dog needs, you'll never be surprised by a price, and the clinic is one message away. Writing every requirement against one of them made it easy to cut what didn't serve them, and gave me a clear standard for reviewing the UI: every screen had to keep those promises, and feel like an app people already know how to use.`,
 

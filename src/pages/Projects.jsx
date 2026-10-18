@@ -27,11 +27,11 @@ const WORKS = [
         img: './msc/data-viz/banner.jpg',
     },
     {
-        num: '03', id: 'pawfect', title: 'PawFect', tags: ['MOBILE APP', 'PRODUCT REQUIREMENTS'], year: '2026',
+        num: '03', id: 'pawfect', title: 'PawFect', tags: ['MOBILE APP', 'PRODUCT REQUIREMENTS'], year: '2025',
         role: projectsData.project7.role,
-        status: 'WORKING PROTOTYPE',
+        status: 'CLIENT PROJECT · DREAMWEAVERS',
         stack: projectsData.project7.tools.join(' · '),
-        desc: 'A pet care app designed for a veterinary clinic: book in a few taps, carry a digital health passport, get reminders from the record and see every price before you pay.',
+        desc: 'A pet care app for a veterinary clinic in Hyderabad, from my time at DreamWeavers: book in a few taps, carry a digital health passport, get reminders from the record and see every price before you pay.',
         img: './pawfect/pf-cover.jpg',
     },
     {

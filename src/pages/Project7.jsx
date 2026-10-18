@@ -21,7 +21,7 @@ const Project7 = () => (
         project={projectsData.project7}
         nextProject={{ title: 'Trek Mate', to: '/projects/1' }}
         logo={<PawFectLogo />}
-        decisionsNote="Every screen below is a screenshot of the working prototype, running on sample data."
+        decisionsNote="Every screen below is from the PawFect design, shown on sample data."
     />
 );
 
