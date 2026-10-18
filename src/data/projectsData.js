@@ -11,16 +11,16 @@ export const projectsData = {
         role: `Product designer and front-end developer, solo: positioning, UX, UI and build`,
         liveLink: `https://kabir192003.github.io/Trek-Mate/`,
         overview: [
-            `Trek Mate is an outdoor gear store for people who plan trips around weight. It sells gear from independent makers, and every listing leads with what decides a purchase on trail: what it weighs, how small it packs and how it held up in field testing, rather than marketing copy.`,
-            `I designed and built it on my own, from positioning to the deployed React storefront: search and browse with real filters across 25 products, product pages, saved gear, cart, checkout and an account area that keeps its state between visits.`,
-            `What makes it different is the Pack Planner. You plan your whole pack inside the store, see your base weight live, and get lighter swaps from the catalogue ranked by what each gram saved costs you. It turns the store from a place that sells boxes into one that helps you decide what to carry.`
+            `Trek Mate is an outdoor gear store for people who plan trips around weight. It sells gear from seven independent makers, and every listing leads with what decides a purchase on trail: what it weighed on our scale, what the maker claims, how small it packs and how many days it spent with field testers.`,
+            `Its centre is the Pack Planner. You set the trip (nights, people, season, the overnight low), add gear from the store or anything you already own, and Trek Mate shows your base weight live, what is missing for those conditions, and which lighter swaps are worth making, ranked by what each gram saved costs you.`,
+            `I designed and built it on my own, from positioning and the design system to the deployed React and TypeScript app: ten screens from the homepage to Base Camp, all reading from the same pack, so a change in one place shows up everywhere.`
         ],
         impactMetrics: [
-            { label: `Gear categories, real filters`, value: `8` },
-            { label: `Independent makers`, value: `7` },
-            { label: `Products, each with a reason to compare`, value: `25` }
+            { label: `Top 3 swaps on the sample pack, for $379`, value: `−1.90 kg` },
+            { label: `Products, measured and listed weight`, value: `25` },
+            { label: `Screens, all sharing one live pack`, value: `10` }
         ],
-        tools: [`Positioning & copy`, `React · TypeScript · Vite`, `Shipped as a live, working build`],
+        tools: [`Positioning & UX`, `Design system`, `React · TypeScript · Vite`, `Live on GitHub Pages`],
         users: [
             { who: `Weight-conscious backpackers`, need: `Know what their whole kit weighs, where the weight sits, and where money saves the most grams.` },
             { who: `Hikers moving up a level`, need: `Go from day hikes to overnights without buying the wrong thing twice, with a clear list of what is missing for the trip.` },
@@ -28,72 +28,86 @@ export const projectsData = {
         ],
         problem: `Shopping for a lighter pack is split across two kinds of tool that don't talk to each other. Gear stores, from big-box retailers to cottage-gear marketplaces, list each product on its own with the maker's quoted weight, and a cart totals your price, never your weight. Pack-weight apps like LighterPack and Packstack understand a whole pack, but they sell nothing and suggest nothing: you type every weight in by hand, and Packstack, for one, doesn't connect to any store or recommend lighter swaps. Hikers bridge the gap with spreadsheets that work out dollars per ounce saved, a metric the ultralight community uses to decide whether an upgrade is worth it, while forum threads regularly report gear arriving heavier than its listed weight. The decision people actually make, "what should I change in my pack, and what will it cost me?", has no home.`,
         differentiator: {
-            status: `In build`,
+            status: `Live`,
             title: `The Pack Planner`,
             body: `Plan your whole pack inside the store. Add gear from the catalogue or anything you already own, set the trip, and Trek Mate shows your base weight live, flags what is missing for those conditions, and ranks lighter swaps by cost per gram saved.`,
             points: [
-                `Base weight, worn weight and a breakdown by system, updated as you plan.`,
-                `Like-for-like swaps only: a lighter tent must still sleep your party, and a lighter bag must still be warm enough for the trip's low.`,
+                `Base weight, worn weight, weight class and a breakdown by system, updated as you plan.`,
+                `Like-for-like swaps only: a lighter tent must still sleep your party, a lighter bag must still be warm enough for the trip's low, a lighter pack must still hold enough for the nights.`,
                 `A swap's real cost depends on what you own: the full price if you already have one, the price difference if you haven't bought either yet.`,
-                `One action buys only what is missing; gear you already own stays in the plan.`
-            ],
-            note: `Designed and specified. Shipping in the next release of the live store.`
+                `One action buys only what is missing; after checkout those items count as owned, so the planner never suggests paying twice.`
+            ]
         },
-        solution: `I designed Trek Mate around the job, not the transaction. Nobody wants a tent; they want a pack light enough for the trip without wasting money. That reframing changes what the store is for: it should help people decide what to carry, then sell them only the pieces that change the answer. Three commitments follow. Weight is the primary attribute everywhere, presented like a measurement rather than a spec, because it is the number people compare. The catalogue has to be varied enough for decisions to be real, so price, weight and rating filters change what you see. And the promise of independent makers and field testing has to survive the quiet screens (empty states, cart, account), not just the hero.`,
+        solution: `I designed Trek Mate around the job, not the transaction. Nobody wants a tent; they want a pack light enough for the trip without wasting money. That reframing changes what the store is for: it should help people decide what to carry, then sell them only the pieces that change the answer. So weight is presented everywhere as a measurement, not a spec: the number from our scale, beside the maker's claim, positioned against every like-for-like alternative. The pack follows you through the whole store: the header carries your live base weight, shop filters can show only gear lighter than what you carry, product pages say exactly what an item would replace, and the cart says what an order does to your pack. The hardest part was restraint. The system can compute every swap and every gap, but showing all of it at once would bury the one decision that matters, so the interface leads with the few numbers worth acting on and keeps the rest one tap away.`,
         principles: [
-            { title: `Decide at the level of the pack`, desc: `A product only looks light or heavy next to what it replaces, so the interface keeps showing that comparison.` },
-            { title: `Every number must be checkable`, desc: `Weights say where they came from, and every saving shows its maths.` },
-            { title: `Lead with what matters on trail`, desc: `Weight, packed size and field evidence first; colourways and marketing language last.` },
-            { title: `The quiet screens carry the brand`, desc: `Empty states, the cart and the account area get the same voice and care as the homepage.` }
+            { title: `Decide at the level of the pack`, desc: `A product only looks light or heavy next to what it replaces, so every screen keeps showing that comparison.` },
+            { title: `Every number must be checkable`, desc: `Weights say where they came from, savings show their maths, and all of them trace back to one calculation.` },
+            { title: `Show the decision, not the data`, desc: `Lead with the base weight, the gaps and the best three swaps. Everything else is one tap away.` },
+            { title: `The quiet screens carry the brand`, desc: `Empty states, the cart, checkout and Base Camp get the same voice and care as the homepage.` }
         ],
         process: [
             { step: `01`, title: `Frame the job, not the store`, desc: `Wrote the core job before any screen: when I'm planning a trip, I want to see what my whole kit weighs and where the weight is, so I can spend money where it saves the most.` },
             { step: `02`, title: `Map the gap competitors leave`, desc: `Compared gear stores, cottage-gear marketplaces and pack-weight apps on one question: who helps you decide what to change? Stores sell single products, pack apps know your pack but sell nothing, and hikers bridge the two with dollars-per-ounce spreadsheets.` },
-            { step: `03`, title: `Set the promise, then test it everywhere`, desc: `Independent makers, field-tested, scored on what matters. Every line of copy, every badge and every empty state was checked against it: "Your pack is empty", not "Cart (0)".` },
-            { step: `04`, title: `Build a catalogue worth deciding with`, desc: `Modelled 25 products across 8 categories and 7 makers with varied prices, ratings and weights, so filters return genuinely different results and swaps have real alternatives to rank.` },
-            { step: `05`, title: `Design the Pack Planner`, desc: `Specified the flows (add from the store or your own kit, set the trip, read the base weight, apply a swap, buy what's missing) and the rules that keep suggestions honest: like-for-like only, priced by what you own.` },
-            { step: `06`, title: `Ship it, then verify it`, desc: `Every flow described here, apart from the Pack Planner marked as in build, works on the live site at the link above.` },
-            { step: `07`, title: `Use AI to draft, not to decide`, desc: `Generated first-pass copy and component scaffolding with an AI assistant to move through the mechanical parts faster, then rewrote everything against the positioning by hand. A model can produce ten headlines; it can't tell you which one is true to the brand.` }
+            { step: `03`, title: `Model the data the promise needs`, desc: `Gave every product a measured and a listed weight, packed size, a field-test record and like-for-like attributes (capacity, temperature rating, volume), so filters and swaps compare things that do the same job.` },
+            { step: `04`, title: `Write the rules before the screens`, desc: `Defined base weight, the weight classes, trip readiness checks and swap pricing as pure functions in one module, so every number the interface shows has a single, testable source.` },
+            { step: `05`, title: `Design a system, then the pages`, desc: `Built a field-instrument design system first: Archivo and IBM Plex Mono, a forest, ember and stone palette with every text pair checked for WCAG AA, and weight presented as a readout rather than a spec line.` },
+            { step: `06`, title: `Calm the planner`, desc: `The first pass showed a swap, a quantity stepper and a worn toggle on every row. I cut it back: only the three best swaps appear inline, the rest sit behind "See a lighter option", and row controls appear on hover or focus.` },
+            { step: `07`, title: `Ship it, then verify it`, desc: `Ran a scripted end-to-end session in a real browser: swap and undo, apply three, add your own gear, search, pack-aware filters, unit switching, checkout, and the order appearing in Base Camp.` },
+            { step: `08`, title: `Use AI to build faster, not to decide`, desc: `Used an AI coding assistant to move quickly through implementation, while the positioning, the swap rules and the cuts to the interface were product decisions made and checked by hand. A model can generate a planner; it can't tell you which three numbers deserve the screen.` }
         ],
         designDecisions: [
             {
-                image: `./trekmate-v2/tm-landing.jpg`,
-                title: `A homepage that argues a point`,
-                description: `The three-card strip under the hero (scored on what matters, field-tested, independent makers only) compresses the whole positioning into one scannable moment, so a visitor knows why this store is different before they open a single product.`
+                image: `./trekmate-v3/tm3-hero.jpg`,
+                title: `A homepage that opens on your pack`,
+                description: `Instead of a seasonal promotion, the hero shows a live readout of your own pack: trip, base weight, weight class, a breakdown bar and the best two swaps with their combined saving and cost. The product's whole argument is visible, and true for you, before you scroll.`
             },
             {
-                image: `./trekmate-v2/tm-browse.jpg`,
-                title: `Filters with something real to filter`,
-                description: `Category counts down the rail, a price range and a rating threshold: ordinary facets that are only honest if the catalogue behind them is real. With 25 products across 8 categories and 7 makers, choosing "Under $100" or "4.5 & up" actually changes what is on screen.`
+                image: `./trekmate-v3/tm3-planner.jpg`,
+                title: `The trip first, then the gear`,
+                description: `Nights, people, season and the overnight low come before any gear, because they define what "right" means: whether a bag is warm enough, a tent big enough, a pack roomy enough. Gear is grouped by system, owned kit sits alongside store items, and the base weight reads like an instrument, with its class on a scale and the distance to the next one.`
             },
             {
-                image: `./trekmate-v2/tm-wishlist.jpg`,
-                title: `Saved gear that remembers why`,
-                description: `Saving a product lands it here with its badge intact (Editor's Pick, Bestseller), so a returning shopper sees not just what they saved but why it stood out. The count in the header and this page always agree because they read from the same state.`
+                image: `./trekmate-v3/tm3-swaps.jpg`,
+                title: `Swaps you can trust, and only the ones worth making`,
+                description: `Every suggestion is like-for-like and priced by what you own, then ranked by cost per 100 g saved. The readiness list checks the pack against the trip, here flagging missing water treatment. Only the top three swaps appear inline; the rest wait behind a quiet link, so the planner stays calm with ten items or forty.`
             },
             {
-                image: `./trekmate-v2/tm-cart.jpg`,
-                title: `An empty cart that still sounds like the brand`,
-                description: `"Your pack is empty" instead of "Your cart is empty" is one line, but it is the kind of detail that either holds a positioning together or quietly breaks it. Every state got the same pass, including the ones nobody deliberately designs.`
+                image: `./trekmate-v3/tm3-shop.jpg`,
+                title: `Shopping that knows what you carry`,
+                description: `"Lighter than what I carry" and "Fits my trip" are filters no ordinary store can offer, because no ordinary store knows your pack. Every card shows the weight from our scale, where it sits between the lightest and heaviest like-for-like option, and the difference against the item it would replace.`
             },
             {
-                image: `./trekmate-v2/tm-profile.jpg`,
-                title: `An account built for a returning shopper`,
-                description: `Orders, addresses, payment methods and notification preferences, each editable rather than static, because a store only feels real once it remembers you.`
+                image: `./trekmate-v3/tm3-product.jpg`,
+                title: `Product pages that answer "what does this change?"`,
+                description: `Measured against listed weight, packed size and field-test days sit above the fold. The In your pack panel states the saving against your current item, the cost per gram, and what happens to the old one, with a one-tap swap. A buying decision becomes a packing decision.`
+            },
+            {
+                image: `./trekmate-v3/tm3-basecamp.jpg`,
+                title: `Base Camp: progress, not just orders`,
+                description: `The account opens on base weight over time, drawn against the class thresholds, then a short to-do list for the next trip pulled from the readiness checks and the best swap. Orders, a gear closet and settings follow. It gives returning customers a reason to come back that isn't a sale.`
+            },
+            {
+                image: `./trekmate-v3/tm3-mobile.jpg`,
+                title: `Built for the phone at the trailhead`,
+                description: `On a phone the live base weight docks at the bottom of the planner, controls stay touch-sized, and everything hidden behind hover on desktop is simply visible. The weight chip in the header follows you through the whole store.`
             }
         ],
         challenges: [
             {
-                title: `Making "field-tested" show up beyond the headline`,
-                solution: `A trust claim is easy to put in a hero and never touch again. I pushed it into the product data instead: badges are assigned per product rather than sprinkled for decoration, ratings vary across a realistic range instead of clustering near 4.8, and the copy keeps returning to weight, durability and pack volume instead of drifting into generic retail language.`
+                title: `A planner that could show everything, and shouldn't`,
+                solution: `Once the logic worked, the first screen showed a swap suggestion, a quantity stepper and a worn toggle on every single row. It was accurate and exhausting. I kept the computation and changed what surfaces: the three best-value swaps appear inline, every other row gets a quiet "See a lighter option" link, and row controls appear on hover or keyboard focus while staying visible on touch screens.`
             },
             {
-                title: `Twenty-five products: a catalogue or a demo?`,
-                solution: `Round numbers and repeated prices read as placeholder data at a glance. I varied price precision ($389 against a crossed-out $449, $78, $525), spread ratings across a realistic range and split inventory unevenly across categories: the kind of irregularity that makes a dataset read as real.`
+                title: `Making the cost of a swap honest`,
+                solution: `"Cost per gram saved" is only meaningful if the cost is real. If you already own a tent, replacing it costs the full price of the new one; if the old one was only a planned purchase, you pay the difference. The planner prices every swap that way, keeps replaced gear in a closet rather than deleting it, and marks purchases as owned after checkout, so it never suggests paying twice.`
+            },
+            {
+                title: `Like-for-like or nothing`,
+                solution: `A lighter sleeping bag that won't keep you warm isn't a saving. Swaps are filtered by the trip: tents must sleep the party, bags must be rated for the overnight low, packs must hold enough for the nights. On a three-night trip the 28 L daypack is never offered as a replacement for a 65 L pack, however light it is.`
             }
         ],
         metrics: {
-            intro: `These are the measures I'd put on the dashboard at launch. None of them have been collected yet.`,
+            intro: `The product is live but not running with real customers, so these are the measures I'd put on the dashboard at launch, not results.`,
             items: [
                 { name: `Planner to cart`, why: `Share of planning sessions that end with at least one swap in the cart. The core bet is that deciding at the pack level drives purchases.` },
                 { name: `Grams saved per order`, why: `Average weight removed from a customer's pack by what they bought. The number the brand should be proudest of.` },
@@ -102,14 +116,15 @@ export const projectsData = {
             ]
         },
         outcomes: [
-            `Every core surface (home, search with working filters, product pages, saved gear, cart, checkout and account) is live and clickable at the link above.`,
-            `A catalogue of 25 products across 8 categories and 7 makers, varied enough that filters change results instead of reordering the same handful.`,
-            `Saved gear, cart and account state persist between visits, so the store remembers a returning shopper.`,
-            `The Pack Planner is designed and specified, and ships in the next release.`
+            `Live at the link above: ten screens from the homepage to Base Camp, all reading from the same pack state.`,
+            `The Pack Planner works end to end. On the sample pack, the top three swaps take base weight from 7.99 kg to 6.09 kg for $379, and every number on screen traces back to one calculation.`,
+            `Every product carries measured and listed weight, packed size, a field-test record and like-for-like attributes, so filters and swaps compare things that do the same job.`,
+            `Verified with a scripted end-to-end run in a real browser, from swap and undo through checkout to the order appearing in Base Camp, with no console errors.`,
+            `Accessible by construction: text colour pairs checked against WCAG AA, keyboard-reachable controls with visible focus, reduced-motion support, and layouts tested down to a 390 px phone.`
         ],
-        reflections: `The lesson here wasn't visual. A point of view has to survive contact with the boring screens: it's easy to nail a hero and let the cart, the empty states and the account drift back into generic defaults. The bigger shift was moving from "what should this store look like?" to "what decision is the customer actually making?". The answer, what to carry and what to change, is what turned a good-looking store into a product with a reason to exist.`,
+        reflections: `The hardest design work here was subtraction. Once the store could compute everything (every swap, every delta, every gap), the temptation was to show all of it, and the planner only became good when it showed the three swaps worth making and kept the rest one tap away. The deeper lesson was the reframe: a gear store usually competes on catalogue and price, but the decision people actually make is what to carry. Designing for that decision, rather than the transaction, is what gave Trek Mate a reason to exist.`,
 
-        heroImage: `./trekmate-v2/tm-hero-bg.jpg`
+        heroImage: `./trekmate-v3/tm3-hero.jpg`
     },
     project2: {
         title: `Work Hive`,

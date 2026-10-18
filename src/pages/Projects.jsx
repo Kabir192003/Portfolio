@@ -32,7 +32,7 @@ const WORKS = [
         status: 'LIVE — SHIPPED',
         stack: projectsData.project1.tools.join(' · '),
         desc: 'An outdoor gear store for independent makers, designed around the whole pack: plan your kit, see your base weight, buy only what makes it lighter.',
-        img: './trekmate-v2/tm-hero-bg.jpg',
+        img: './trekmate-v3/tm3-hero.jpg',
     },
     {
         num: '04', id: 2, title: 'Work Hive', tags: ['WEB PLATFORM', 'FULL STACK'], year: '2026',
