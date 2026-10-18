@@ -5,7 +5,8 @@ import React, { useEffect, useRef } from 'react';
 const INK = '20,20,20';
 const BAYER = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5];
 
-const PixelPortrait = ({ src, alt, cell = 4, radius = 100, style }) => {
+// mode: 'halftone' (print-style dots that shrink away under the pointer) or 'dots' (square dither)
+const PixelPortrait = ({ src, alt, mode = 'halftone', cell = 4, radius = 100, style }) => {
     const wrapRef = useRef(null);
     const canvasRef = useRef(null);
 
@@ -14,7 +15,7 @@ const PixelPortrait = ({ src, alt, cell = 4, radius = 100, style }) => {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');
         const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        let img, dots, mask, mctx, tmp, tctx;
+        let img, dots, mask, mctx, tmp, tctx, ht, small, sctx;
         let W = 0, H = 0, dpr = 1;
         let raf = 0, alive = true;
         let last = null;
@@ -23,7 +24,34 @@ const PixelPortrait = ({ src, alt, cell = 4, radius = 100, style }) => {
         let lastActive = 0;
         let cur = null;
 
+        const buildHalftone = () => {
+            const sm = document.createElement('canvas');
+            sm.width = Math.round(W); sm.height = Math.round(H);
+            const sx = sm.getContext('2d', { willReadFrequently: true });
+            sx.drawImage(img, 0, 0, sm.width, sm.height);
+            const d = sx.getImageData(0, 0, sm.width, sm.height).data;
+            const sp = 6.5, ang = Math.PI / 4, ca = Math.cos(ang), sa = Math.sin(ang);
+            const list = [];
+            const span = Math.hypot(W, H);
+            for (let u = -span; u < span; u += sp) {
+                for (let v = -span; v < span; v += sp) {
+                    const x = W / 2 + u * ca - v * sa, y = H / 2 + u * sa + v * ca;
+                    if (x < 0 || y < 0 || x >= W || y >= H) continue;
+                    const i = ((Math.floor(y) * sm.width) + Math.floor(x)) * 4;
+                    if (d[i + 3] < 128) continue;
+                    let lum = (0.299 * d[i] + 0.587 * d[i + 1] + 0.114 * d[i + 2]) / 255;
+                    lum = Math.min(1, Math.max(0, (Math.pow(lum, 0.8) - 0.5) * 1.3 + 0.5));
+                    list.push([x, y, 1 - lum]);
+                }
+            }
+            ht = { list, maxR: sp * 0.75 };
+            small = document.createElement('canvas');
+            small.width = Math.max(1, Math.round(W / 4)); small.height = Math.max(1, Math.round(H / 4));
+            sctx = small.getContext('2d', { willReadFrequently: true });
+        };
+
         const buildDots = () => {
+            if (mode === 'halftone') { buildHalftone(); return; }
             // sample the photo at cell resolution, then dither to dots
             const cols = Math.max(1, Math.round(W / cell));
             const rows = Math.max(1, Math.round(H / cell));
@@ -71,7 +99,23 @@ const PixelPortrait = ({ src, alt, cell = 4, radius = 100, style }) => {
         const render = () => {
             ctx.setTransform(1, 0, 0, 1, 0, 0);
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.drawImage(dots, 0, 0);
+            if (mode === 'halftone') {
+                sctx.clearRect(0, 0, small.width, small.height);
+                sctx.drawImage(mask, 0, 0, small.width, small.height);
+                const m = sctx.getImageData(0, 0, small.width, small.height).data;
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                ctx.fillStyle = `rgb(${INK})`;
+                ctx.beginPath();
+                for (const [x, y, dark] of ht.list) {
+                    const a = m[((Math.floor(y / 4) * small.width) + Math.floor(x / 4)) * 4 + 3] / 255;
+                    const r = ht.maxR * Math.sqrt(dark) * (1 - a);
+                    if (r < 0.25) continue;
+                    ctx.moveTo(x + r, y);
+                    ctx.arc(x, y, r, 0, Math.PI * 2);
+                }
+                ctx.fill();
+                ctx.setTransform(1, 0, 0, 1, 0, 0);
+            } else ctx.drawImage(dots, 0, 0);
             // colour photo, cut by the mask
             tctx.globalCompositeOperation = 'source-over';
             tctx.clearRect(0, 0, tmp.width, tmp.height);
@@ -164,7 +208,7 @@ const PixelPortrait = ({ src, alt, cell = 4, radius = 100, style }) => {
             wrap.removeEventListener('pointerleave', onLeave);
             wrap.removeEventListener('pointerdown', onEnter);
         };
-    }, [src, cell, radius]);
+    }, [src, cell, radius, mode]);
 
     return (
         <div ref={wrapRef} style={{ position: 'relative', width: '100%', touchAction: 'pan-y', cursor: 'crosshair', ...style }}>
