@@ -128,14 +128,12 @@ const PixelPortrait = ({ src, alt, mode = 'halftone', cell = 4, radius = 100, st
 
         const stamp = (x, y, r) => {
             const g = mctx.createRadialGradient(x * dpr, y * dpr, 0, x * dpr, y * dpr, r * dpr);
-            g.addColorStop(0, 'rgba(0,0,0,1)');
-            g.addColorStop(0.72, 'rgba(0,0,0,1)');
-            g.addColorStop(0.9, 'rgba(0,0,0,0.5)');
-            g.addColorStop(1, 'rgba(0,0,0,0)');
+            // smooth bell-shaped falloff so the brush edge never reads as a circle
+            [[0, 1], [0.25, 0.98], [0.45, 0.88], [0.62, 0.65], [0.78, 0.36], [0.9, 0.14], [1, 0]].forEach(([o, al]) => g.addColorStop(o, `rgba(0,0,0,${al})`));
             mctx.fillStyle = g;
             mctx.beginPath(); mctx.arc(x * dpr, y * dpr, r * dpr, 0, Math.PI * 2); mctx.fill();
         };
-        const R = () => Math.max(radius, W * 0.3); // big enough to uncover a whole face
+        const R = () => Math.max(radius, W * 0.36); // big enough to uncover a whole face
         const stroke = (x, y) => {
             lastActive = performance.now();
             if (last) {
