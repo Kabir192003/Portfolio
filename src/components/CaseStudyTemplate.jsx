@@ -40,6 +40,21 @@ const SectionHeading = ({ num, children }) => (
 const MONO = "'JetBrains Mono', monospace";
 const ANTON = "'Anton', sans-serif";
 
+// Mobile products show their screens in a phone frame. Full-length captures can
+// scroll inside the frame, so a long screen reads the way it does on a phone.
+const Phone = ({ src, alt, scroll = false, width = 260 }) => (
+    <figure style={{ width, maxWidth: '100%', margin: 0, flex: 'none' }}>
+        <div style={{ borderRadius: width * 0.15, padding: Math.round(width * 0.03), background: INK, boxShadow: '0 28px 50px -30px rgba(20,20,20,0.55)' }}>
+            <div className={scroll ? 'cs-phone-scroll' : undefined} style={{ borderRadius: width * 0.12, overflowX: 'hidden', overflowY: scroll ? 'auto' : 'hidden', aspectRatio: '390 / 844', background: '#f2f2f7' }}>
+                <img src={src} alt={alt} loading="lazy" style={{ width: '100%', display: 'block' }} />
+            </div>
+        </div>
+        {scroll && <figcaption style={{ fontFamily: MONO, fontSize: '0.66rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: MUTED, textAlign: 'center', marginTop: '0.7rem' }}>Scroll inside the screen</figcaption>}
+    </figure>
+);
+
+const HALFTONE = { backgroundImage: 'radial-gradient(circle, rgba(20,20,20,0.14) 1px, transparent 1.6px)', backgroundSize: '7px 7px' };
+
 const CaseStudyTemplate = ({ project, nextProject, decisionsNote, decisionsHeading, challengesHeading, logo }) => {
     useCaseStudyFonts();
     const n = project.impactMetrics.length;
@@ -81,6 +96,12 @@ const CaseStudyTemplate = ({ project, nextProject, decisionsNote, decisionsHeadi
                     )}
                 </div>
             </div>
+
+            {project.cover && (
+                <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 clamp(1.25rem, 3vw, 2rem) 2.25rem' }}>
+                    <img src={project.cover} alt={`${project.title} screens`} style={{ width: '100%', display: 'block', border: `1px solid ${INK}` }} />
+                </div>
+            )}
 
             <div style={{ borderTop: `1px solid ${INK}`, borderBottom: `1px solid ${INK}`, maxWidth: '1100px', margin: '0 auto', display: 'grid', gridTemplateColumns: `repeat(${n}, 1fr)` }}>
                 {project.impactMetrics.map((m, i) => (
@@ -232,6 +253,8 @@ const CaseStudyTemplate = ({ project, nextProject, decisionsNote, decisionsHeadi
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
                         {project.designDecisions.map((dec, idx) => {
                             const imageFirst = idx % 2 === 0;
+                            const phone = project.device === 'phone';
+                            const shots = dec.images ?? [{ src: dec.image, scroll: dec.scroll }];
                             return (
                                 <div
                                     key={dec.title}
@@ -243,9 +266,17 @@ const CaseStudyTemplate = ({ project, nextProject, decisionsNote, decisionsHeadi
                                     }}
                                     className="cs-decision-row"
                                 >
-                                    <div style={{ order: imageFirst ? 0 : 2, backgroundImage: 'radial-gradient(circle, rgba(20,20,20,0.14) 1px, transparent 1.6px)', backgroundSize: '7px 7px', padding: '1rem' }}>
+                                    {phone ? (
+                                        <div className="cs-phones" style={{ order: imageFirst ? 0 : 2, ...HALFTONE, padding: '2rem 1rem', display: 'flex', justifyContent: 'center', alignItems: 'flex-start', gap: '1.25rem' }}>
+                                            {shots.map((shot) => (
+                                                <Phone key={shot.src} src={shot.src} alt={dec.title} scroll={shot.scroll} width={shots.length > 1 ? 210 : 250} />
+                                            ))}
+                                        </div>
+                                    ) : (
+                                    <div style={{ order: imageFirst ? 0 : 2, ...HALFTONE, padding: '1rem' }}>
                                         <img src={dec.image} alt={dec.title} style={{ width: '100%', display: 'block', border: `1px solid ${INK}` }} />
                                     </div>
+                                    )}
                                     <div style={{ order: 1 }}>
                                         <h3 style={{ fontFamily: "'Anton', sans-serif", fontSize: '1.35rem', textTransform: 'uppercase', marginBottom: '0.6rem' }}>{dec.title}</h3>
                                         <p style={{ fontSize: '0.98rem', lineHeight: 1.7, color: MUTED }}>{dec.description}</p>
@@ -255,6 +286,38 @@ const CaseStudyTemplate = ({ project, nextProject, decisionsNote, decisionsHeadi
                         })}
                     </div>
                 </section>
+
+                {project.flows?.map((flow) => (
+                    <section key={flow.title}>
+                        <SectionHeading num={nextSection()}>{flow.title}</SectionHeading>
+                        {flow.desc && <p style={{ fontSize: '1.02rem', lineHeight: 1.7, color: MUTED, maxWidth: '760px', marginBottom: '1.75rem' }}>{flow.desc}</p>}
+                        <div className="cs-rail" style={{ ...HALFTONE, display: 'flex', gap: '1.5rem', overflowX: 'auto', padding: '2rem 1.5rem 1.5rem' }}>
+                            {flow.steps.map((st, i) => (
+                                <div key={st.image} style={{ flex: 'none', width: 200 }}>
+                                    <Phone src={st.image} alt={st.caption} width={200} />
+                                    <p style={{ fontFamily: MONO, fontSize: '0.72rem', lineHeight: 1.5, marginTop: '0.9rem' }}>
+                                        <span style={{ color: RULE, fontWeight: 700 }}>{String(i + 1).padStart(2, '0')}</span> {st.caption}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
+                ))}
+
+                {project.gallery && (
+                    <section>
+                        <SectionHeading num={nextSection()}>{project.gallery.title}</SectionHeading>
+                        {project.gallery.note && <p style={{ fontFamily: MONO, fontSize: '0.78rem', color: MUTED, marginBottom: '1.75rem' }}>{project.gallery.note}</p>}
+                        <div className="cs-gallery" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, minmax(0, 1fr))', gap: '2rem 1.5rem' }}>
+                            {project.gallery.items.map((g) => (
+                                <div key={g.image}>
+                                    <Phone src={g.image} alt={g.caption} scroll={g.scroll} width={230} />
+                                    <p style={{ fontFamily: MONO, fontSize: '0.72rem', lineHeight: 1.5, marginTop: '0.75rem', textAlign: 'center' }}>{g.caption}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
+                )}
 
                 <section>
                     <SectionHeading num={nextSection()}>{challengesLabel}</SectionHeading>
@@ -323,7 +386,23 @@ const CaseStudyTemplate = ({ project, nextProject, decisionsNote, decisionsHeadi
                     .cs-decision-row > div {
                         order: initial !important;
                     }
+                    .cs-gallery {
+                        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+                    }
                 }
+                @media (max-width: 1000px) and (min-width: 721px) {
+                    .cs-gallery {
+                        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+                    }
+                }
+                @media (max-width: 480px) {
+                    .cs-phones { gap: 0.75rem !important; padding: 1.5rem 0.5rem !important; }
+                    .cs-phones figure { width: 46% !important; }
+                }
+                .cs-gallery figure { margin: 0 auto !important; }
+                .cs-phone-scroll { scrollbar-width: none; }
+                .cs-phone-scroll::-webkit-scrollbar { display: none; }
+                .cs-rail { scrollbar-width: thin; }
             `}</style>
         </motion.div>
     );

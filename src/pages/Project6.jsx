@@ -5,7 +5,7 @@ import { projectsData } from '../data/projectsData';
 const Project6 = () => (
     <CaseStudyTemplate
         project={projectsData.project6}
-        nextProject={{ title: 'Trek Mate', to: '/projects/1' }}
+        nextProject={{ title: 'PawFect', to: '/projects/pawfect' }}
     />
 );
 

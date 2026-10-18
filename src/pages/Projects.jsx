@@ -27,7 +27,15 @@ const WORKS = [
         img: './msc/data-viz/banner.jpg',
     },
     {
-        num: '03', id: 1, title: 'Trek Mate', tags: ['E-COMMERCE', 'MOBILE'], year: '2026',
+        num: '03', id: 'pawfect', title: 'PawFect', tags: ['MOBILE APP', 'PRODUCT REQUIREMENTS'], year: '2026',
+        role: projectsData.project7.role,
+        status: 'WORKING PROTOTYPE',
+        stack: projectsData.project7.tools.join(' · '),
+        desc: 'A pet care app designed for a veterinary clinic: book in a few taps, carry a digital health passport, get reminders from the record and see every price before you pay.',
+        img: './pawfect/pf-cover.jpg',
+    },
+    {
+        num: '04', id: 1, title: 'Trek Mate', tags: ['E-COMMERCE', 'MOBILE'], year: '2026',
         role: projectsData.project1.role,
         status: 'LIVE — SHIPPED',
         stack: projectsData.project1.tools.join(' · '),
@@ -35,7 +43,7 @@ const WORKS = [
         img: './trekmate-v3/tm3-hero.jpg',
     },
     {
-        num: '04', id: 2, title: 'Work Hive', tags: ['WEB PLATFORM', 'FULL STACK'], year: '2026',
+        num: '05', id: 2, title: 'Work Hive', tags: ['WEB PLATFORM', 'FULL STACK'], year: '2026',
         role: projectsData.project2.role,
         status: 'LIVE — SHIPPED',
         stack: projectsData.project2.tools.join(' · '),
@@ -43,7 +51,7 @@ const WORKS = [
         img: './workhive/hero.jpg',
     },
     {
-        num: '05', id: 3, title: 'The Hunger Games', tags: ['UX RESEARCH'], year: '2025',
+        num: '06', id: 3, title: 'The Hunger Games', tags: ['UX RESEARCH'], year: '2025',
         role: projectsData.project3.role,
         status: 'RESEARCH',
         stack: projectsData.project3.tools.join(' · '),
@@ -51,7 +59,7 @@ const WORKS = [
         img: './food.jpg',
     },
     {
-        num: '06', id: 5, title: 'This or That', tags: ['FULL STACK'], year: '2026',
+        num: '07', id: 5, title: 'This or That', tags: ['FULL STACK'], year: '2026',
         role: projectsData.project5.role,
         status: 'LIVE — SHIPPED',
         stack: projectsData.project5.tools.join(' · '),
@@ -124,7 +132,7 @@ const Projects = () => {
                     Selected<br />Traces<span style={{ color: RULE }}>.</span>
                 </h1>
                 <p style={{ maxWidth: '560px', fontSize: '1rem', lineHeight: 1.65, color: MUTED, marginTop: '1.5rem' }}>
-                    Five products and a data visualisation, run through their paces. Hover an entry to pull it up on the scope — role, status and stack on the right update live.
+                    Six products and a data visualisation, run through their paces. Hover an entry to pull it up on the scope: role, status and stack on the right update live.
                 </p>
             </div>
             <div style={{ borderTop: `1px solid ${INK}` }} />
