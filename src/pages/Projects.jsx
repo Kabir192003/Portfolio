@@ -19,7 +19,15 @@ const WORKS = [
         img: './stylebook/sb-hero-bg.jpg',
     },
     {
-        num: '02', id: 1, title: 'Trek Mate', tags: ['E-COMMERCE', 'MOBILE'], year: '2026',
+        num: '02', id: 'data-viz', title: 'Global Health & Wealth', tags: ['DATA VIZ', 'INTERACTIVE'], year: '2026',
+        role: 'Designer and developer. Chart design, scales and interaction',
+        status: 'LIVE — PLAYABLE',
+        stack: 'Processing · Canvas · CSV data',
+        desc: 'An interactive bubble chart of 186 countries: hover any bubble for its data, click the legend to filter regions. Open it and play.',
+        img: './msc/data-viz/banner.jpg',
+    },
+    {
+        num: '03', id: 1, title: 'Trek Mate', tags: ['E-COMMERCE', 'MOBILE'], year: '2026',
         role: projectsData.project1.role,
         status: 'LIVE — SHIPPED',
         stack: projectsData.project1.tools.join(' · '),
@@ -27,7 +35,7 @@ const WORKS = [
         img: './trekmate-v2/tm-hero-bg.jpg',
     },
     {
-        num: '03', id: 2, title: 'Work Hive', tags: ['WEB PLATFORM', 'FULL STACK'], year: '2026',
+        num: '04', id: 2, title: 'Work Hive', tags: ['WEB PLATFORM', 'FULL STACK'], year: '2026',
         role: projectsData.project2.role,
         status: 'LIVE — SHIPPED',
         stack: projectsData.project2.tools.join(' · '),
@@ -35,7 +43,7 @@ const WORKS = [
         img: './workhive/hero.jpg',
     },
     {
-        num: '04', id: 3, title: 'The Hunger Games', tags: ['UX RESEARCH'], year: '2025',
+        num: '05', id: 3, title: 'The Hunger Games', tags: ['UX RESEARCH'], year: '2025',
         role: projectsData.project3.role,
         status: 'RESEARCH',
         stack: projectsData.project3.tools.join(' · '),
@@ -43,20 +51,12 @@ const WORKS = [
         img: './food.jpg',
     },
     {
-        num: '05', id: 5, title: 'This or That', tags: ['FULL STACK'], year: '2026',
+        num: '06', id: 5, title: 'This or That', tags: ['FULL STACK'], year: '2026',
         role: projectsData.project5.role,
         status: 'LIVE — SHIPPED',
         stack: projectsData.project5.tools.join(' · '),
         desc: 'A deployed community decision platform — React, Node, Express, MongoDB — with an algorithm-driven feed and anonymous posting.',
         img: './tot-hero-bg.jpg',
-    },
-    {
-        num: '06', id: 'data-viz', title: 'Global Health & Wealth', tags: ['DATA VIZ', 'INTERACTIVE'], year: '2026',
-        role: 'Designer and developer. Chart design, scales and interaction',
-        status: 'LIVE — PLAYABLE',
-        stack: 'Processing · Canvas · CSV data',
-        desc: 'An interactive bubble chart of 186 countries: hover any bubble for its data, click the legend to filter regions. Open it and play.',
-        img: './msc/data-viz/banner.jpg',
     },
 ];
 
