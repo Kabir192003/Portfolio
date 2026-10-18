@@ -5,7 +5,7 @@ import React, { useEffect, useRef } from 'react';
 const INK = '20,20,20';
 const BAYER = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5];
 
-const PixelPortrait = ({ src, alt, cell = 4, radius = 70, style }) => {
+const PixelPortrait = ({ src, alt, cell = 4, radius = 100, style }) => {
     const wrapRef = useRef(null);
     const canvasRef = useRef(null);
 
@@ -21,6 +21,7 @@ const PixelPortrait = ({ src, alt, cell = 4, radius = 70, style }) => {
         let sweep = null;
         let busy = false;
         let lastActive = 0;
+        let cur = null;
 
         const buildDots = () => {
             // sample the photo at cell resolution, then dither to dots
@@ -84,18 +85,20 @@ const PixelPortrait = ({ src, alt, cell = 4, radius = 70, style }) => {
         const stamp = (x, y, r) => {
             const g = mctx.createRadialGradient(x * dpr, y * dpr, 0, x * dpr, y * dpr, r * dpr);
             g.addColorStop(0, 'rgba(0,0,0,1)');
-            g.addColorStop(0.55, 'rgba(0,0,0,0.85)');
+            g.addColorStop(0.72, 'rgba(0,0,0,1)');
+            g.addColorStop(0.9, 'rgba(0,0,0,0.5)');
             g.addColorStop(1, 'rgba(0,0,0,0)');
             mctx.fillStyle = g;
             mctx.beginPath(); mctx.arc(x * dpr, y * dpr, r * dpr, 0, Math.PI * 2); mctx.fill();
         };
+        const R = () => Math.max(radius, W * 0.3); // big enough to uncover a whole face
         const stroke = (x, y) => {
             lastActive = performance.now();
             if (last) {
                 const dx = x - last.x, dy = y - last.y;
-                const n = Math.max(1, Math.ceil(Math.hypot(dx, dy) / (radius * 0.35)));
-                for (let i = 1; i <= n; i++) stamp(last.x + (dx * i) / n, last.y + (dy * i) / n, radius);
-            } else stamp(x, y, radius);
+                const n = Math.max(1, Math.ceil(Math.hypot(dx, dy) / (R() * 0.3)));
+                for (let i = 1; i <= n; i++) stamp(last.x + (dx * i) / n, last.y + (dy * i) / n, R());
+            } else stamp(x, y, R());
             last = { x, y };
         };
 
@@ -107,6 +110,7 @@ const PixelPortrait = ({ src, alt, cell = 4, radius = 70, style }) => {
             mctx.fillStyle = 'rgba(0,0,0,0.035)';
             mctx.fillRect(0, 0, mask.width, mask.height);
             mctx.globalCompositeOperation = 'source-over';
+            if (busy && cur) { stamp(cur.x, cur.y, R()); lastActive = performance.now(); }
             if (sweep) {
                 const t = (performance.now() - sweep.t0) / sweep.dur;
                 if (t >= 1) sweep = null;
@@ -128,9 +132,9 @@ const PixelPortrait = ({ src, alt, cell = 4, radius = 70, style }) => {
             const r = canvas.getBoundingClientRect();
             return [e.clientX - r.left, e.clientY - r.top];
         };
-        const onMove = (e) => { const [x, y] = pos(e); sweep = null; stroke(x, y); kick(); };
-        const onEnter = (e) => { busy = true; last = null; const [x, y] = pos(e); sweep = null; stroke(x, y); kick(); };
-        const onLeave = () => { busy = false; last = null; kick(); };
+        const onMove = (e) => { const [x, y] = pos(e); cur = { x, y }; sweep = null; stroke(x, y); kick(); };
+        const onEnter = (e) => { busy = true; last = null; const [x, y] = pos(e); cur = { x, y }; sweep = null; stroke(x, y); kick(); };
+        const onLeave = () => { busy = false; cur = null; last = null; kick(); };
         wrap.addEventListener('pointermove', onMove);
         wrap.addEventListener('pointerenter', onEnter);
         wrap.addEventListener('pointerleave', onLeave);
