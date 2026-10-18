@@ -6,7 +6,8 @@ const Project3 = () => (
     <CaseStudyTemplate
         project={projectsData.project3}
         nextProject={{ title: 'This or That', to: '/projects/5' }}
-        decisionsNote="Photography for illustration — every figure alongside is from the 48-user survey, not a mockup."
+        decisionsNote="Photography for illustration. Every figure alongside comes from the 48-user survey, not a mockup."
+        decisionsHeading="What the research found"
         challengesHeading="Where both apps lose people"
     />
 );

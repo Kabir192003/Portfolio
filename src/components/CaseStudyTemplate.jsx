@@ -37,7 +37,10 @@ const SectionHeading = ({ num, children }) => (
     </div>
 );
 
-const CaseStudyTemplate = ({ project, nextProject, decisionsNote, challengesHeading, logo }) => {
+const MONO = "'JetBrains Mono', monospace";
+const ANTON = "'Anton', sans-serif";
+
+const CaseStudyTemplate = ({ project, nextProject, decisionsNote, decisionsHeading, challengesHeading, logo }) => {
     useCaseStudyFonts();
     const n = project.impactMetrics.length;
 
@@ -120,15 +123,66 @@ const CaseStudyTemplate = ({ project, nextProject, decisionsNote, challengesHead
                     ))}
                 </section>
 
+                {project.users && (
+                    <section>
+                        <SectionHeading num={nextSection()}>Who it's for</SectionHeading>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.25rem' }}>
+                            {project.users.map((u) => (
+                                <div key={u.who} style={{ border: `1px solid ${INK}`, padding: '1.4rem 1.5rem' }}>
+                                    <span style={{ fontFamily: MONO, fontSize: '0.72rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: RULE }}>{u.who}</span>
+                                    <p style={{ fontSize: '0.98rem', lineHeight: 1.65, marginTop: '0.6rem' }}>{u.need}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
+                )}
+
                 <section>
                     <SectionHeading num={nextSection()}>The gap it addresses</SectionHeading>
                     <p style={{ fontSize: '1.05rem', lineHeight: 1.75 }}>{project.problem}</p>
                 </section>
 
+                {project.differentiator && (
+                    <section>
+                        <SectionHeading num={nextSection()}>What makes it different</SectionHeading>
+                        <div style={{ background: INK, color: PAPER, padding: 'clamp(1.5rem, 3vw, 2.25rem)' }}>
+                            <span style={{ display: 'inline-block', fontFamily: MONO, fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '4px 10px', background: project.differentiator.status === 'Live' ? RULE : 'transparent', border: `1px solid ${project.differentiator.status === 'Live' ? RULE : PAPER}`, color: PAPER }}>{project.differentiator.status}</span>
+                            <h3 style={{ fontFamily: ANTON, fontSize: 'clamp(1.5rem, 3vw, 2.1rem)', textTransform: 'uppercase', lineHeight: 1.05, margin: '1rem 0 0.9rem' }}>{project.differentiator.title}</h3>
+                            <p style={{ fontSize: '1.08rem', lineHeight: 1.7, maxWidth: '760px', color: 'rgba(242,240,234,0.88)' }}>{project.differentiator.body}</p>
+                            <div className="cs-diff-points" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem 2rem', marginTop: '1.5rem' }}>
+                                {project.differentiator.points.map((pt) => (
+                                    <div key={pt} style={{ display: 'flex', gap: '0.7rem', alignItems: 'flex-start', borderTop: '1px solid rgba(242,240,234,0.22)', paddingTop: '0.9rem' }}>
+                                        <span style={{ color: '#8f8dff', fontFamily: ANTON, flex: 'none' }}>→</span>
+                                        <p style={{ fontSize: '0.95rem', lineHeight: 1.6, margin: 0, color: 'rgba(242,240,234,0.92)' }}>{pt}</p>
+                                    </div>
+                                ))}
+                            </div>
+                            {project.differentiator.note && (
+                                <p style={{ fontFamily: MONO, fontSize: '0.74rem', letterSpacing: '0.04em', color: 'rgba(242,240,234,0.7)', marginTop: '1.5rem' }}>{project.differentiator.note}</p>
+                            )}
+                        </div>
+                    </section>
+                )}
+
                 <section>
                     <SectionHeading num={nextSection()}>My approach</SectionHeading>
                     <p style={{ fontSize: '1.05rem', lineHeight: 1.75 }}>{project.solution}</p>
                 </section>
+
+                {project.principles && (
+                    <section>
+                        <SectionHeading num={nextSection()}>{project.principlesTitle || 'Principles I designed by'}</SectionHeading>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))', gap: '1.5rem' }}>
+                            {project.principles.map((pr, i) => (
+                                <div key={pr.title} style={{ borderTop: `4px solid ${INK}`, paddingTop: '1rem' }}>
+                                    <span style={{ fontFamily: MONO, fontSize: '0.72rem', color: RULE, letterSpacing: '0.1em' }}>P{i + 1}</span>
+                                    <h3 style={{ fontFamily: ANTON, fontSize: '1.2rem', textTransform: 'uppercase', lineHeight: 1.1, margin: '0.4rem 0 0.55rem' }}>{pr.title}</h3>
+                                    <p style={{ fontSize: '0.94rem', lineHeight: 1.65, color: MUTED }}>{pr.desc}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
+                )}
 
                 <section>
                     <SectionHeading num={nextSection()}>Process</SectionHeading>
@@ -170,10 +224,10 @@ const CaseStudyTemplate = ({ project, nextProject, decisionsNote, challengesHead
                 <section>
                     <div style={{ display: 'flex', alignItems: 'baseline', gap: '1rem', marginBottom: '0.5rem' }}>
                         <span style={{ fontFamily: "'Anton', sans-serif", fontSize: '1.4rem', color: RULE }}>{String(nextSection()).padStart(2, '0')}</span>
-                        <h2 style={{ fontFamily: "'Anton', sans-serif", fontSize: 'clamp(1.5rem, 2.6vw, 2rem)', textTransform: 'uppercase' }}>Key decisions</h2>
+                        <h2 style={{ fontFamily: "'Anton', sans-serif", fontSize: 'clamp(1.5rem, 2.6vw, 2rem)', textTransform: 'uppercase' }}>{decisionsHeading || 'Key decisions'}</h2>
                     </div>
                     <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.78rem', color: MUTED, marginBottom: '2rem' }}>
-                        {decisionsNote || 'Every screen below is a screenshot of the live, deployed product — not a mockup.'}
+                        {decisionsNote || 'Every screen below is a screenshot of the live, deployed product, not a mockup.'}
                     </p>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
                         {project.designDecisions.map((dec, idx) => {
@@ -215,6 +269,22 @@ const CaseStudyTemplate = ({ project, nextProject, decisionsNote, challengesHead
                     </div>
                 </section>
 
+                {project.metrics && (
+                    <section>
+                        <SectionHeading num={nextSection()}>{project.metrics.title || "How I'd measure success"}</SectionHeading>
+                        {project.metrics.intro && <p style={{ fontFamily: MONO, fontSize: '0.8rem', lineHeight: 1.6, color: MUTED, marginBottom: '1.25rem', maxWidth: '760px' }}>{project.metrics.intro}</p>}
+                        <div>
+                            {project.metrics.items.map((m) => (
+                                <div key={m.name} className="cs-metric-row" style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 0.42fr) minmax(0, 1fr)', gap: '1.5rem', borderTop: `1px solid ${INK}`, padding: '1.1rem 0', alignItems: 'baseline' }}>
+                                    <h3 style={{ fontFamily: ANTON, fontSize: '1.1rem', textTransform: 'uppercase', lineHeight: 1.15 }}>{m.name}</h3>
+                                    <p style={{ fontSize: '0.98rem', lineHeight: 1.65, color: MUTED, margin: 0 }}>{m.why}</p>
+                                </div>
+                            ))}
+                            <div style={{ borderTop: `1px solid ${INK}` }} />
+                        </div>
+                    </section>
+                )}
+
                 <section>
                     <SectionHeading num={nextSection()}>Where it landed</SectionHeading>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.9rem', marginBottom: '1.5rem' }}>
@@ -246,9 +316,10 @@ const CaseStudyTemplate = ({ project, nextProject, decisionsNote, challengesHead
 
             <style>{`
                 @media (max-width: 720px) {
-                    .cs-decision-row {
+                    .cs-decision-row, .cs-metric-row, .cs-diff-points {
                         grid-template-columns: 1fr !important;
                     }
+                    .cs-metric-row { gap: 0.4rem !important; }
                     .cs-decision-row > div {
                         order: initial !important;
                     }

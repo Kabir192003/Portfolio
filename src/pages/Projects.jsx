@@ -31,7 +31,7 @@ const WORKS = [
         role: projectsData.project1.role,
         status: 'LIVE — SHIPPED',
         stack: projectsData.project1.tools.join(' · '),
-        desc: 'A generic gear storefront, rebuilt around independent makers, field-tested on what actually matters.',
+        desc: 'An outdoor gear store for independent makers, designed around the whole pack: plan your kit, see your base weight, buy only what makes it lighter.',
         img: './trekmate-v2/tm-hero-bg.jpg',
     },
     {
@@ -39,7 +39,7 @@ const WORKS = [
         role: projectsData.project2.role,
         status: 'LIVE — SHIPPED',
         stack: projectsData.project2.tools.join(' · '),
-        desc: 'Rebuilt twice — first into a working click-through, then onto a real Postgres backend with accounts, Row Level Security and persistence.',
+        desc: 'A hiring platform where named, job-specific endorsements from real colleagues travel with your application. Live on a real Postgres backend.',
         img: './workhive/hero.jpg',
     },
     {

@@ -37,7 +37,7 @@ const FEATURED_TAGS = ['AI PRODUCT', 'TEAM LEAD', 'FIGMA PLUGIN'];
 
 const PROJECTS = [
     { num: '02', year: '2026 · LIVE', title: 'Global Health & Wealth', meta: 'DATA VISUALISATION', tags: ['DATA VIZ', 'INTERACTIVE'], desc: 'An interactive bubble chart of 186 countries. Hover any bubble for its data and click the legend to filter regions. Try it, it responds.', img: './msc/data-viz/banner.jpg', link: '/projects/data-viz' },
-    { num: '03', year: '2026 · SHIPPED', title: 'Work Hive', meta: 'FULL-STACK REBUILD', tags: ['WEB PLATFORM', 'FULL STACK'], desc: 'Inherited a prototype where almost nothing worked. Rebuilt twice — first into a working click-through, then onto a real Postgres backend with accounts, security and persistence.', img: './workhive/wh-mockup.jpg', link: '/projects/2' },
+    { num: '03', year: '2026 · SHIPPED', title: 'Work Hive', meta: 'PRODUCT DESIGN · FULL STACK', tags: ['WEB PLATFORM', 'FULL STACK'], desc: 'A hiring platform built on proof: named, job-specific endorsements from real colleagues travel with every application, instead of arriving at the reference check.', img: './workhive/wh-mockup.jpg', link: '/projects/2' },
     { num: '04', year: '2025 · RESEARCH', title: 'The Hunger Games', meta: 'SOLO RESEARCH', tags: ['UX RESEARCH'], desc: 'A comparative usability study across the major food delivery apps, built from surveys and interviews.', img: './hg-mockup.jpg', link: '/projects/3' },
     { num: '05', year: '2026 · SHIPPED', title: 'This or That', meta: 'TECHNICAL LEAD', tags: ['FULL STACK'], desc: 'A deployed community decision platform — React, Node, Express, MongoDB — with an algorithm-driven feed and anonymous posting.', img: './tot-mockup.jpg', link: '/projects/5' },
 ];
