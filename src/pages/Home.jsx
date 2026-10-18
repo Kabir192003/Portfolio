@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import PixelPortrait from '../components/PixelPortrait';
 import { motion, AnimatePresence } from 'framer-motion';
 import IntroBoot from '../components/IntroBoot';
 
@@ -156,11 +157,7 @@ const Home = () => {
 
                 <div style={{ position: 'relative', padding: '1rem 0.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }} className="home-portrait-col">
                     <div style={{ position: 'relative', width: '460px', maxWidth: '100%' }}>
-                        <img
-                            src="./portrait-cutout.png"
-                            alt="Kabir Sharma"
-                            style={{ width: '100%', height: 'auto', display: 'block', filter: 'grayscale(1) contrast(1.05)' }}
-                        />
+                        <PixelPortrait src="./portrait-cutout.webp" alt="Kabir Sharma" />
 
                         {/* Hand-drawn wobble, shared by every doodle below */}
                         <svg width="0" height="0" style={{ position: 'absolute' }} aria-hidden="true">
