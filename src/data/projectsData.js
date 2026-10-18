@@ -728,7 +728,7 @@ export const projectsData = {
         outcomes: [
             `A working prototype of more than 30 screens covering all six areas of the clinic's brief, running on sample data for a household with two dogs.`,
             `Every rule in the requirements is implemented and visible: boosters due 12 months after the last dose, prices by dog size, free cancellation up to 24 hours before, waitlist offers, estimate approval in the app and insurance payback estimates.`,
-            `Designed for a pet care clinic and shared with the team as a working app rather than slides, so they can try it on their own phones.`,
+            `Designed for a pet care clinic and built as a working app rather than slides, so the team can try it on their own phones.`,
             `Verified end to end in a real browser, from booking, check-in and the live queue to refills, chat replies, payment and estimate approval, with no errors.`,
             `Built to native iOS conventions, with the system font at Apple's sizes, familiar navigation, sheets and switches, visible focus states and reduced-motion support.`
         ],
