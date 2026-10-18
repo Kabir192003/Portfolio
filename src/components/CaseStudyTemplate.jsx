@@ -106,6 +106,13 @@ const CaseStudyTemplate = ({ project, nextProject, decisionsNote, challengesHead
 
             <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '3.5rem clamp(1.25rem, 3vw, 2rem) 0', display: 'flex', flexDirection: 'column', gap: '4rem' }}>
 
+                {project.problemStatement && (
+                    <section style={{ borderLeft: `4px solid ${RULE}`, paddingLeft: '1.25rem' }}>
+                        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.72rem', letterSpacing: '0.16em', textTransform: 'uppercase', color: RULE }}>Problem statement</span>
+                        <p style={{ fontSize: 'clamp(1.15rem, 2vw, 1.4rem)', lineHeight: 1.6, marginTop: '0.6rem', maxWidth: '820px' }}>{project.problemStatement}</p>
+                    </section>
+                )}
+
                 <section>
                     <SectionHeading num={nextSection()}>What this is</SectionHeading>
                     {project.overview.map((para, idx) => (

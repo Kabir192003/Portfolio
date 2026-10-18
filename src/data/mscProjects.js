@@ -249,6 +249,7 @@ export const mscProjects = [
     },
     {
         slug: 'data-visualisation',
+        problemStatement: 'Country data is hard to read in a table, because income, health and population all matter at once. This chart puts them on one screen so you can see the pattern, hover for exact figures and filter by region.',
         listed: false,
         backTo: '/projects',
         backLabel: '← Work',

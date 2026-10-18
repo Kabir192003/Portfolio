@@ -1,6 +1,7 @@
 export const projectsData = {
     project1: {
         title: 'Trek Mate',
+        problemStatement: 'Most outdoor gear stores look the same, so a shopper has little reason to trust one over a giant marketplace. Trek Mate\'s first version was also thin underneath: few products, filters with nothing to filter, and static account pages. The redesign gives the store a point of view and makes it work like a real one.',
         tagline: 'An outdoor gear storefront rebuilt around one idea: independent makers, scored on what actually matters',
         category: 'E-commerce · Product Design',
         timeline: 'Solo redesign',
@@ -76,6 +77,7 @@ export const projectsData = {
     },
     project2: {
         title: 'Work Hive',
+        problemStatement: 'Work Hive\'s prototype looked fine in a click-through but broke under real use: filters had almost nothing to filter, the main Apply action went nowhere, and every reload wiped your data. The goal was to turn it into a product people can sign in to and come back to.',
         tagline: 'Endorsement-based hiring, rebuilt twice — first from a broken prototype into a believable product, then from a believable product into a real one with accounts, a database and enforced security',
         category: 'Full-Stack Platform · Product Design',
         timeline: 'Solo, two rebuild passes',
@@ -155,6 +157,7 @@ export const projectsData = {
     },
     project3: {
         title: 'The Hunger Games',
+        problemStatement: 'Swiggy and Zomato do the same job but feel very different to use, and there was little solid evidence about which differences actually change satisfaction. This study asks which app gives the better end-to-end experience, and which small interactions drive that feeling.',
         tagline: 'Swiggy vs. Zomato — a mixed-methods study of two apps solving the identical problem differently',
         category: 'UX Research & Comparative Analysis',
         timeline: '1 Month',
@@ -245,6 +248,7 @@ export const projectsData = {
     },
     project5: {
         title: 'This or That',
+        problemStatement: 'Forums like Quora and Reddit are built for depth, but choosing between two products only needs a fast answer. This or That gives people a quick either-or vote. The build challenge was shipping a personalised feed, anonymous posting and live voting with four developers in three months.',
         tagline: 'A community decision platform, architected and built solo as the team\'s technical lead',
         category: 'Full-Stack Platform · Group Project',
         timeline: 'Feb 2026 – May 2026, 3-month academic build',
@@ -310,6 +314,7 @@ export const projectsData = {
     },
     project6: {
         title: 'StyleBook AI',
+        problemStatement: 'Designers juggle a different app for every part of a design system: one for colour, another for fonts, another for accessibility. Nothing connected those steps, so checking happened by hand across separate tools. StyleBook AI turns one written brand description into a single verified, exportable system.',
         tagline: 'A written brand description in, a verified, exportable design system out — built and shipped with a team of four',
         category: 'AI Product · Design Systems · Team Lead',
         timeline: '9 weeks build, 3 weeks research — Summer 2026',

@@ -71,6 +71,14 @@ const MscProject = ({ slug: fixedSlug }) => {
                     <img src={p.banner} alt={p.title} style={{ width: '100%', display: 'block', border: `1px solid ${INK}` }} />
                 </div>
             )}
+            {p.problemStatement && (
+                <div style={{ ...wrap, paddingBottom: '2rem' }}>
+                    <div style={{ borderLeft: `4px solid ${RULE}`, paddingLeft: '1.25rem' }}>
+                        <span style={label}>Problem statement</span>
+                        <p style={{ fontSize: 'clamp(1.15rem, 2vw, 1.4rem)', lineHeight: 1.6, marginTop: '0.6rem', maxWidth: '820px' }}>{p.problemStatement}</p>
+                    </div>
+                </div>
+            )}
             <div style={wrap}>
                 {p.embed ? (
                     <div style={{ paddingBottom: '1.5rem' }}>
