@@ -22,12 +22,23 @@ import Contact from './pages/Contact';
 import About from './pages/About';
 import Msc from './pages/Msc';
 import MscProject from './pages/MscProject';
+import Stats from './pages/Stats';
+import { trackPageview } from './lib/analytics';
 
 // Scroll to top on route change
 const ScrollToTop = () => {
   const { pathname } = useLocation();
   React.useEffect(() => {
     window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+};
+
+// Counts each page view (anonymously, no cookies). See lib/analytics.js.
+const Analytics = () => {
+  const { pathname } = useLocation();
+  React.useEffect(() => {
+    trackPageview(pathname);
   }, [pathname]);
   return null;
 };
@@ -57,6 +68,7 @@ const AnimatedRoutes = () => {
           <Route path="education" element={<Education />} />
           <Route path="research" element={<Research />} />
           <Route path="contact" element={<Contact />} />
+          <Route path="stats" element={<Stats />} />
         </Route>
       </Routes>
     </AnimatePresence>
@@ -67,6 +79,7 @@ const App = () => {
   return (
     <Router>
       <ScrollToTop />
+      <Analytics />
       <AnimatedRoutes />
     </Router>
   );

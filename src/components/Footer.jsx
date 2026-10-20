@@ -8,6 +8,7 @@ const Footer = () => {
                 <div style={styles.left}>
                     <p style={styles.wordmark}>kabiroscope</p>
                     <p style={styles.text}>Product & interaction design, looked at closely.</p>
+                    <p style={styles.privacy}>Visits are counted anonymously, with no cookies.</p>
                 </div>
                 <div style={styles.links} className="site-footer-links">
                     <Link to="/contact" style={styles.link}>Contact</Link>
@@ -53,6 +54,12 @@ const styles = {
     text: {
         color: 'var(--text-tertiary)',
         fontSize: '0.85rem',
+    },
+    privacy: {
+        color: 'var(--text-tertiary)',
+        fontSize: '0.72rem',
+        fontFamily: 'var(--font-mono)',
+        marginTop: '0.35rem',
     },
     links: {
         display: 'flex',
