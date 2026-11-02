@@ -14,9 +14,9 @@ const TODAY = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'n
 const SKILL_STACK = ['PRODUCT DESIGN', 'UX RESEARCH', 'INTERACTION DESIGN', 'DESIGN SYSTEMS', 'INFORMATION ARCHITECTURE', 'USABILITY TESTING', 'PRODUCT ANALYTICS'];
 const TOOLS_CRAFT = ['PROTOTYPING', 'FRONT-END', 'MOTION DESIGN', 'FIGMA', 'PYTHON', 'SQL', 'REACT'];
 const STATS = [
-    { label: 'CASE STUDIES', value: '5' },
+    { label: 'CASE STUDIES', value: '7' },
     { label: 'LIVE, SHIPPABLE PRODUCTS', value: '4' },
-    { label: 'PRODUCT & DESIGN — EXPERIENCE', value: '1+ YRS' },
+    { label: 'USERS SURVEYED IN MY OWN STUDY', value: '48' },
 ];
 
 const CAPABILITIES = [
@@ -131,7 +131,7 @@ const Home = () => {
                         From mockups<br />to <span style={{ color: RULE }}>things that run</span>
                     </h2>
                     <p style={{ fontSize: '1.08rem', lineHeight: 1.65, marginBottom: '2rem' }}>
-                        <strong>Five product case studies, four of them live and clickable.</strong> I design interfaces, then use them the way a stranger would — which is usually where the real work starts.
+                        <strong>Seven case studies, five of them live and clickable.</strong> I design interfaces, then use them the way a stranger would, which is usually where the real work starts.
                     </p>
                     <Link to="/projects/6" style={{ display: 'block', textAlign: 'center', background: RULE, color: '#f2f0ea', fontFamily: "'JetBrains Mono', monospace", fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', fontSize: '0.9rem', padding: '1rem', textDecoration: 'none', marginBottom: '2.25rem' }}>Selected work ↓</Link>
 
