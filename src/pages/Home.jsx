@@ -119,7 +119,7 @@ const Home = () => {
                 </div>
                 <h1 style={{ fontFamily: "'Anton', 'Noto Sans', sans-serif", fontSize: 'clamp(2.8rem, 9vw, 7.5rem)', letterSpacing: '0.01em', lineHeight: 0.95, margin: 0, textTransform: 'uppercase', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '0 0.35em' }}><KabirCycle /><span>Sharma</span></h1>
                 <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 'clamp(0.85rem, 2vw, 1.05rem)', letterSpacing: '0.2em', textTransform: 'uppercase', color: RULE, fontWeight: 700, marginTop: '1.1rem' }}>Technology × Product × Design</p>
-                <p style={{ fontSize: '1.05rem', color: MUTED, maxWidth: '560px', margin: '0.9rem auto 0', lineHeight: 1.65 }}>I turn complex problems into practical digital products through research, data, design and technology.</p>
+                <p style={{ fontSize: '1.05rem', color: MUTED, maxWidth: '560px', margin: '0.9rem auto 0', lineHeight: 1.65 }}>I design and build interactive products from evidence: research, data and code.</p>
             </div>
             <div style={{ borderTop: `1px solid ${INK}` }} />
 
