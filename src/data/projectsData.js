@@ -735,4 +735,156 @@ export const projectsData = {
 
         heroImage: `./pawfect/pf-cover.jpg`
     },
+    project8: {
+        title: `Settld`,
+        problemStatement: `Every year thousands of students land in Dublin and sign a lease for a place they have never seen, in one of the most expensive rental markets in Europe. The rent figures are scattered, the commute is a guess, and the listing sites only show what a landlord wants shown. Settld lets a student compare Dublin areas on rent, the real timetabled journey to their college, groceries and part-time work, and says where every number came from.`,
+        tagline: `A free, open-data tool that helps students and renters choose where to live in Dublin before they sign a lease, with the source and confidence of every figure shown`,
+        category: `Web App · Product Design · Data · Full Stack`,
+        timeline: `Nov 2026 · Solo, pre-launch`,
+        role: `Sole designer and builder. Research, product and UX, visual design, data pipeline, routing and front end`,
+        liveLink: `https://which-dublin.vercel.app/`,
+        repoLink: `https://github.com/Kabir192003/WhichDublin`,
+        device: `desktop`,
+        overview: [
+            `Settld (built as Which Dublin) is a web app for students and renters choosing where to live in Dublin. You pick your college, how you will live (own one-bed, a room in a shared two, three or four-bed), a monthly budget and how you will travel. It ranks the city's areas for you and shows, for each one, your monthly share of the rent, the real door-to-door journey at 8am, the nearest Lidl, Aldi and Tesco, and where the part-time jobs are.`,
+            `I built it because I was the user. Moving to Dublin for my master's, I could not answer the simplest question: if I live here, how long is my journey and what will it really cost me? Everything I found was either a listing site with an agenda or a forum thread from three years ago.`,
+            `It is designed, built and deployed by me alone, on open government data only: no listing scraping, no accounts, no cookies and no tracking. It is live and pre-launch, so I make no claims about usage here, and say plainly below what is shipped and what is only designed.`
+        ],
+        impactMetrics: [
+            { label: `Dublin areas compared`, value: `106` },
+            { label: `Rent figures back-tested, median error`, value: `2%` },
+            { label: `Accounts, cookies or trackers`, value: `0` }
+        ],
+        tools: [`React`, `Vite`, `MapLibre GL`, `Postgres (Neon)`, `GTFS and GTFS-Realtime`, `Own routing engine`, `Vercel`, `User research`, `UX and visual design`],
+        users: [
+            { who: `Incoming students`, need: `Decide where to live from abroad, before ever seeing the city, and know the real cost and the real commute.` },
+            { who: `Renters moving within Dublin`, need: `Check whether the place they are viewing is priced fairly and whether the journey holds up on a wet Monday.` },
+            { who: `Students who need to earn`, need: `Know how many hours they may legally work, what that pays and which areas have the jobs.` }
+        ],
+        problem: `Choosing where to live in Dublin means stitching together five tools that do not agree. A listing site gives you rent for one flat, not an area. A journey planner gives you a route, but not for 8am on a Monday with the delays that really happen. A map shows shops but not whether you can afford the area. Student rules on part-time work and deposits sit on separate official pages. Worse, most of what is online carries no source and no date, so a student cannot tell a published figure from a guess. The result is people signing leases on a number they cannot check, in a market where a bad choice costs a deposit and a year.`,
+        differentiator: {
+            status: `Live`,
+            title: `Every number says where it came from`,
+            body: `Settld does not just show figures, it shows how much to trust each one. Every figure carries a label for its provenance (Published, Carried forward or Estimated), a confidence level and a date. Where the data is thin, the app says so, instead of showing a confident number it cannot back up.`,
+            points: [
+                `Rent comes from the Residential Tenancies Board register through the CSO, and is scaled to the home type you chose. When an area has no current figure it is carried forward or estimated, and is flagged "Rent estimated" with low confidence.`,
+                `I back-tested the rent model against 132 published figures: the median error is 2.0%, and 8 in 10 estimates land within 6.3%. The method page shows this, including where it is weakest.`,
+                `Journeys come from my own routing over the official NTA timetables, with live delay data from the NTA feed, so a short commute on paper is not shown as reliable if the route runs late.`,
+                `The data is validated at build time. If a figure fails a check, the build fails and nothing ships. There are 27 unit tests around the routing and the rent logic.`
+            ]
+        },
+        solution: `I designed Settld around the questions a student actually asks, in the order they ask them. The Start page takes five answers and shows a ranked list and map. Each area opens into one page with the three numbers that decide it (your share of the rent, the journey to your college, the walk to the nearest Lidl or Aldi) and a monthly cost range, with the source one tap away. Around that sit the practical guides a student needs in the same sitting: part-time work rules and pay, a first-weeks checklist, a scam checker and the deposit rules. The visual language is deliberately calm and plain: a deep green, large numbers, and orange reserved for the one action on each screen. The aim was a tool that feels trustworthy before you have read a word of it. I also chose to do the heavy lifting in the browser: the routing runs on the user's own device, which is why the app needs no accounts and stores nothing about the people using it.`,
+        principlesTitle: `Principles I set`,
+        principles: [
+            { title: `Show the source, then the number`, desc: `Every figure carries its provenance, confidence and date. An honest estimate beats a confident guess.` },
+            { title: `Answer the question people have`, desc: `Not "what is the rent", but "can I afford this area and get to college on time". The key numbers sit together.` },
+            { title: `Nothing to sign up for`, desc: `No accounts, no cookies, no tracking. A shortlist lives in the link and in the browser, so it can be shared with housemates.` },
+            { title: `Open data only`, desc: `Government and open sources, no listing scraping. It can be checked, reproduced and kept up to date without a licence.` }
+        ],
+        process: [
+            { step: `01`, title: `Start from my own problem`, desc: `I moved to Dublin as a student and could not answer where to live and what it would cost me. I wrote down the questions I was actually asking and used them as the brief.` },
+            { step: `02`, title: `Check the data before designing`, desc: `Before any interface I confirmed what open data could support: RTB rents through the CSO, NTA timetables and live feed, OpenStreetMap for shops and Wikipedia for area context. I only designed what the data could back.` },
+            { step: `03`, title: `Choose the smaller, sharper problem`, desc: `I scoped to students first, with nine colleges and 25 home sizes and types, rather than "all renters, everywhere". Narrow enough to get right, and the foundation for widening later.` },
+            { step: `04`, title: `Build my own routing`, desc: `Journey planners answer one trip at a time. To rank 106 areas I wrote a Connection Scan Algorithm over the timetable data, which also runs in the browser so nothing about the user's trip leaves their device.` },
+            { step: `05`, title: `Design confidence into the interface`, desc: `Labels for Published, Carried forward and Estimated, with confidence levels, became part of every figure, not a footnote.` },
+            { step: `06`, title: `Back-test and break my own numbers`, desc: `I checked the rent model against 132 published figures, and the data checks run on every build. Two serious bugs surfaced this way (see below) and both changed the product.` },
+            { step: `07`, title: `Design for the phone first`, desc: `Students will often look while standing outside a flat, so the list and map tabs and the Eircode check are built to work properly at phone width, not just shrink.` },
+            { step: `08`, title: `Use AI as a tool, not an author`, desc: `I used AI assistants to move faster on code and drafting. The scope, the data choices, the honesty rules and every product decision were mine, and I read and tested what shipped.` }
+        ],
+        designDecisions: [
+            {
+                image: `./settld/desktop-start.jpg`,
+                title: `Five answers, then a ranked city`,
+                description: `The Start page does one job: take five answers (college, how you will live, type of home, budget and travel) and show areas that fit. A live line beneath ("2,843 buses and trams reporting, 13% running 5+ minutes late") shows the real NTA feed is behind it, and the counters (106 areas, 9 colleges, 0 accounts or cookies) say what it is before you scroll. There is a second way in for people who already have a place in mind: an Eircode box that checks one address.`
+            },
+            {
+                image: `./settld/desktop-areas.jpg`,
+                title: `One list and map that explain themselves`,
+                description: `Areas are ranked for your choices, each as a card with the three numbers that decide it: your monthly share of the rent, the journey to college at 8am and the walk to the nearest Lidl or Aldi. A "Rent estimated" tag sits on any card where the number is not a published one. Filters stay pinned so changing a budget re-ranks the city at once.`
+            },
+            {
+                image: `./settld/desktop-detail.jpg`,
+                title: `An area page that shows its working`,
+                description: `Tap an area and you get your share of the rent, the journey and the walk first, then a monthly cost range (rent, travel, bills, food and phone) with low, typical and high figures. The rent card states exactly how the figure was derived, and links to how it was worked out and how it compares with other sources. Save and compare sit beside it, with a route to Google Maps for the live trip.`
+            },
+            {
+                image: `./settld/desktop-eircode.jpg`,
+                title: `Viewing a flat? Check the actual address`,
+                description: `Enter an Eircode and Settld shows the trip from that address to every college, the nearest groceries, bikes and jobs. Because Google only knows roughly where many Eircodes are, the page shows an "Approximate location" tag and asks the user to tap the map at the property. It would have been easy to pin the guess and look precise. I chose to be honest about it.`
+            },
+            {
+                image: `./settld/desktop-work.jpg`,
+                title: `Part-time work, with the rules attached`,
+                description: `Students need to earn, and the rules are easy to get wrong. The work page gives the minimum wage by age, the weekly hour limits for non-EEA students on Stamp 2 permission, and a slider that turns hours into weekly and monthly pay. Each rule is dated and sourced, and links to the official page it was checked against.`
+            },
+            {
+                image: `./settld/desktop-renting.jpg`,
+                title: `A scam checker for the most common traps`,
+                description: `Renting safely turns warning signs into a checklist: money before a viewing, a landlord who is "abroad", cash-only payments, pressure to pay today. Tick what applies and it tells you what to do next. Beside it, the plain rules on deposits (two months at most), digs and housing assistance.`
+            },
+            {
+                image: `./settld/desktop-settle.jpg`,
+                title: `The first weeks, in a sensible order`,
+                description: `Settling in sequences what to do after landing: register with immigration within 90 days, get a Leap card, open a bank account, choose a mobile plan, check the energy rating. Each step has a deadline tag and expands to the detail, so the checklist is short and the depth is there when needed.`
+            },
+            {
+                image: `./settld/desktop-method.jpg`,
+                title: `A method page, because trust is the product`,
+                description: `How we know lays out every source, how rent is scaled and where the model is weakest, with the back-test results in the open. It is the page most apps hide. For a tool that asks students to rely on its numbers before they sign a lease, it is the page that earns the right to be believed.`
+            }
+        ],
+        flows: [
+            {
+                title: `On a phone, standing outside the flat`,
+                desc: `The same product at phone width: from the first answer, to the ranked list, to checking the exact address of the place you are viewing.`,
+                steps: [
+                    { image: `./settld/mobile-start.jpg`, caption: `Start, with the Eircode check up front` },
+                    { image: `./settld/mobile-areas.jpg`, caption: `Ranked areas, with List and Map tabs` },
+                    { image: `./settld/mobile-eircode.jpg`, caption: `Check a specific address on the map` }
+                ]
+            }
+        ],
+        challenges: [
+            {
+                title: `The rent figures that looked right and were not`,
+                solution: `Early on, some area rents looked plausible but did not hold up against the published sources. I found it only because I compared the output with the raw RTB data line by line. The fix was a method change, not a patch: scale from the published existing-tenancy figures, label every figure as Published, Carried forward or Estimated, and back-test the whole model. That back-test (132 figures, median error 2.0%) became both the safeguard and a feature on the method page.`
+            },
+            {
+                title: `A geocoding bug that hid in plain sight`,
+                solution: `One area, Rush, was placed in the wrong spot because a place name matched a different one. Rankings and journeys for it were quietly wrong. No test caught it; looking at the map did. I fixed the lookup, then added checks that fail the build when an area lands outside its expected boundary. Lesson: a data product needs checks that look at the data, not only at the code.`
+            },
+            {
+                title: `Approximate is not exact, so say so`,
+                solution: `Google's geocoder is only accurate to the area for many Eircodes. Dropping a confident pin would have looked polished and misled a renter about a specific building. The page labels the result "Approximate location", asks the user to tap the exact spot, and recalculates from there. Google Maps is used on this page only, with daily caps to keep it free for the people using it.`
+            },
+            {
+                title: `Short on paper is not the same as reliable`,
+                solution: `A 20-minute journey that is late one day in four is not a 20-minute journey. I added the live NTA delay feed so the commute is judged on how the route performs, not only the timetable. The live strip on the Start page shows the system's real state at that moment, so the reliability claim can be seen, not just read.`
+            },
+            {
+                title: `A feature I designed but have not shipped: the bus stop lookup`,
+                solution: `The delay data was only useful if you already knew the route you cared about, but a person standing at a stop thinks "what is coming from this pole, and is it late?". I designed a lookup by the number printed on the stop: enter it, see every route that serves it with live status, pick one for its path and the ETA at that stop. I weighed it against a full journey planner. The planner needs path reconstruction on top of my routing and is a much bigger build; the stop lookup matches the real moment of use and reuses data I already have (the GTFS stop_code, stop_times and the live feed, which I confirmed against production for bus, Luas and DART). I chose the stop lookup first. It is specified and validated against the data, but it is not in the live build yet, and I would rather say that than imply it is.`
+            }
+        ],
+        metrics: {
+            intro: `Settld is pre-launch, so these are the measures I plan to use, not results I can report.`,
+            items: [
+                { name: `Time to first useful answer`, why: `How quickly someone goes from landing to a ranked list of areas they can act on. The five-answer flow should keep this to under a minute.` },
+                { name: `Shortlists created and shared`, why: `The share of visitors who save areas and send the link on. Sharing with a housemate is the clearest sign it is being used to decide.` },
+                { name: `Eircode checks per visitor`, why: `Whether people use it while viewing real places, not only while browsing.` },
+                { name: `Method page reach`, why: `How many people open how we know. A healthy share would mean the trust labelling is being read, not ignored.` },
+                { name: `Reports of a wrong figure`, why: `Feedback flagging a number that does not match reality, fixed and published openly. Each one improves the data.` }
+            ]
+        },
+        outcomes: [
+            `A live, deployed product covering 106 Dublin areas, 9 colleges and 25 home sizes and types, built end to end by one person.`,
+            `A rent model back-tested against 132 published figures, with a median error of 2.0%, and a build that fails if the data fails its checks.`,
+            `My own routing engine over official timetables with live delay data, running in the browser, so there are no accounts, cookies or tracking.`,
+            `A design language where every figure carries its source, confidence and date, including on the screens where it would be easier not to.`,
+            `Practical guides (part-time work, settling in, renting safely) built from official sources, each dated and linked.`
+        ],
+        reflections: `The most important decision in Settld was a design one: to treat trust as the product. A rent figure with no source is worth nothing to someone about to pay a deposit, so provenance, confidence and the back-test became features rather than footnotes. The two bugs that shaped it were both found by looking at the output, not the code, which is why I now check data the way I check an interface. The honest gaps matter as well: it is pre-launch, so I have no usage numbers, I have not run documented usability tests with students yet, and the bus stop lookup is designed but not built. Next I would put it in front of real incoming students, instrument the plan above, and ship the stop lookup.`,
+
+        heroImage: `./settld/desktop-start.jpg`
+    },
 };

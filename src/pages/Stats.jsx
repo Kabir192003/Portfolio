@@ -19,7 +19,7 @@ const PAGE_NAMES = {
     '/projects/3': 'The Hunger Games',
     '/projects/5': 'This or That',
     '/projects/6': 'StyleBook AI',
-    '/projects/pawfect': 'PawFect',
+    '/projects/pawfect': 'PawFect', '/projects/settld': 'Settld',
     '/projects/data-viz': 'Global Health & Wealth',
     '/msc': 'Studio',
     '/photography': 'Photography',

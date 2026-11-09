@@ -14,8 +14,8 @@ const TODAY = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'n
 const SKILL_STACK = ['PRODUCT DESIGN', 'UX RESEARCH', 'INTERACTION DESIGN', 'DESIGN SYSTEMS', 'INFORMATION ARCHITECTURE', 'USABILITY TESTING', 'PRODUCT ANALYTICS'];
 const TOOLS_CRAFT = ['PROTOTYPING', 'FRONT-END', 'MOTION DESIGN', 'FIGMA', 'PYTHON', 'SQL', 'REACT'];
 const STATS = [
-    { label: 'CASE STUDIES', value: '7' },
-    { label: 'LIVE, SHIPPABLE PRODUCTS', value: '4' },
+    { label: 'CASE STUDIES', value: '8' },
+    { label: 'LIVE, SHIPPABLE PRODUCTS', value: '5' },
     { label: 'USERS SURVEYED IN MY OWN STUDY', value: '48' },
 ];
 
@@ -27,19 +27,19 @@ const CAPABILITIES = [
 ];
 
 const INDEX_ITEMS = [
-    { num: '01', label: 'STYLEBOOK AI' },
+    { num: '01', label: 'SETTLD' },
     { num: '02', label: 'DATA VIZ' },
     { num: '03', label: 'WORK HIVE' },
     { num: '04', label: 'HUNGER GAMES' },
-    { num: '05', label: 'THIS OR THAT' },
+    { num: '05', label: 'STYLEBOOK AI' },
 ];
-const FEATURED_TAGS = ['AI PRODUCT', 'TEAM LEAD', 'FIGMA PLUGIN'];
+const FEATURED_TAGS = ['SOLO BUILD', 'OPEN DATA', 'FULL STACK'];
 
 const PROJECTS = [
     { num: '02', year: '2026 · LIVE', title: 'Global Health & Wealth', meta: 'DATA VISUALISATION', tags: ['DATA VIZ', 'INTERACTIVE'], desc: 'An interactive bubble chart of 186 countries. Hover any bubble for its data and click the legend to filter regions. Try it, it responds.', img: './msc/data-viz/banner.jpg', link: '/projects/data-viz' },
     { num: '03', year: '2026 · SHIPPED', title: 'Work Hive', meta: 'PRODUCT DESIGN · FULL STACK', tags: ['WEB PLATFORM', 'FULL STACK'], desc: 'A hiring platform built on proof: named, job-specific endorsements from real colleagues travel with every application, instead of arriving at the reference check.', img: './workhive/wh-mockup.jpg', link: '/projects/2' },
     { num: '04', year: '2025 · RESEARCH', title: 'The Hunger Games', meta: 'SOLO RESEARCH', tags: ['UX RESEARCH'], desc: 'A comparative usability study across the major food delivery apps, built from surveys and interviews.', img: './hg-mockup.jpg', link: '/projects/3' },
-    { num: '05', year: '2026 · SHIPPED', title: 'This or That', meta: 'TECHNICAL LEAD', tags: ['FULL STACK'], desc: 'A deployed community decision platform — React, Node, Express, MongoDB — with an algorithm-driven feed and anonymous posting.', img: './tot-mockup.jpg', link: '/projects/5' },
+    { num: '05', year: '2026 · SHIPPED', title: 'StyleBook AI', meta: 'TEAM LEAD · FIGMA PLUGIN', tags: ['AI PRODUCT', 'FIGMA PLUGIN'], desc: 'Led a team of four and shipped a working Figma plugin: a verified, exportable design system generated from a written brand description.', img: './stylebook/sb-mockup.jpg', link: '/projects/6' },
 ];
 
 const Chip = ({ children }) => (
@@ -131,7 +131,7 @@ const Home = () => {
                         From mockups<br />to <span style={{ color: RULE }}>things that run</span>
                     </h2>
                     <p style={{ fontSize: '1.08rem', lineHeight: 1.65, marginBottom: '2rem' }}>
-                        <strong>Seven case studies, five of them live and clickable.</strong> I design interfaces, then use them the way a stranger would, which is usually where the real work starts.
+                        <strong>Eight case studies, six of them live and clickable.</strong> I design interfaces, then use them the way a stranger would, which is usually where the real work starts.
                     </p>
                     <Link to="/projects/6" style={{ display: 'block', textAlign: 'center', background: RULE, color: '#f2f0ea', fontFamily: "'JetBrains Mono', monospace", fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', fontSize: '0.9rem', padding: '1rem', textDecoration: 'none', marginBottom: '2.25rem' }}>Selected work ↓</Link>
 
@@ -280,20 +280,20 @@ const Home = () => {
 
             {/* Featured */}
             <div id="work" style={{ maxWidth: '1400px', margin: '0 auto', padding: '3.5rem clamp(1.25rem,3vw,3rem) 2rem' }}>
-                <h2 style={{ fontFamily: "'Anton', sans-serif", fontSize: 'clamp(2rem,4vw,3rem)', textTransform: 'uppercase', marginBottom: '2.5rem' }}>Featured — a system, not a mockup</h2>
+                <h2 style={{ fontFamily: "'Anton', sans-serif", fontSize: 'clamp(2rem,4vw,3rem)', textTransform: 'uppercase', marginBottom: '2.5rem' }}>Featured: a real problem, built end to end</h2>
                 <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1.3fr) minmax(280px,420px)', gap: '2.5rem', alignItems: 'start' }} className="home-featured-grid">
                     <div style={{ position: 'relative', backgroundImage: 'radial-gradient(circle, rgba(20,20,20,0.14) 1px, transparent 1.6px)', backgroundSize: '7px 7px', padding: '1.75rem' }}>
-                        <img src="./stylebook/sb-hero.png" alt="StyleBook AI" style={{ width: '100%', display: 'block', transform: 'rotate(-1deg)', boxShadow: '0 20px 40px -16px rgba(20,20,20,0.35)', border: `1px solid ${INK}` }} />
+                        <img src="./settld/desktop-start.jpg" alt="Settld, a Dublin area finder for students" style={{ width: '100%', display: 'block', transform: 'rotate(-1deg)', boxShadow: '0 20px 40px -16px rgba(20,20,20,0.35)', border: `1px solid ${INK}` }} />
                     </div>
                     <div>
                         <span style={{ fontFamily: "'Anton', sans-serif", fontSize: '1.4rem', color: RULE }}>01</span>
                         <div style={{ display: 'flex', gap: '0.6rem', margin: '0.8rem 0 1.1rem', flexWrap: 'wrap' }}>
-                            <HighlightChip>2026 · SHIPPED</HighlightChip>
+                            <HighlightChip>2026 · LIVE</HighlightChip>
                             {FEATURED_TAGS.map((tg) => <Chip key={tg}>{tg}</Chip>)}
                         </div>
-                        <h3 style={{ fontFamily: "'Anton', sans-serif", fontSize: 'clamp(1.6rem,2.6vw,2.1rem)', textTransform: 'uppercase', lineHeight: 1.1, marginBottom: '1rem' }}>StyleBook AI: a brand brief in, a design system out</h3>
-                        <p style={{ fontSize: '1rem', lineHeight: 1.7, marginBottom: '1.25rem' }}>Led a team of four, wrote nearly all of the implementation, and shipped it as a working Figma plugin — a verified, exportable design system generated from a written brand description.</p>
-                        <Link to="/projects/6" style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.85rem', fontWeight: 700, color: RULE, textDecoration: 'underline' }}>Case study →</Link>
+                        <h3 style={{ fontFamily: "'Anton', sans-serif", fontSize: 'clamp(1.6rem,2.6vw,2.1rem)', textTransform: 'uppercase', lineHeight: 1.1, marginBottom: '1rem' }}>Settld: find your part of Dublin before you sign a lease</h3>
+                        <p style={{ fontSize: '1rem', lineHeight: 1.7, marginBottom: '1.25rem' }}>Students sign Dublin leases for places they have never seen, on rent figures they cannot check. I designed and built a free, open-data tool that ranks 106 areas by rent, the real journey to college and nearby jobs, and shows the source and confidence of every number. Solo, no accounts, no tracking.</p>
+                        <Link to="/projects/settld" style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.85rem', fontWeight: 700, color: RULE, textDecoration: 'underline' }}>Case study →</Link>
                     </div>
                 </div>
             </div>

@@ -15,6 +15,7 @@ import Project4 from './pages/Project4';
 import Project5 from './pages/Project5';
 import Project6 from './pages/Project6';
 import Project7 from './pages/Project7';
+import Project8 from './pages/Project8';
 import Experience from './pages/Experience';
 import Education from './pages/Education';
 import Research from './pages/Research';
@@ -60,6 +61,7 @@ const AnimatedRoutes = () => {
           <Route path="projects/5" element={<Project5 />} />
           <Route path="projects/6" element={<Project6 />} />
           <Route path="projects/pawfect" element={<Project7 />} />
+          <Route path="projects/settld" element={<Project8 />} />
           <Route path="msc" element={<Msc />} />
           <Route path="msc/:slug" element={<MscProject />} />
           <Route path="photography" element={<Project4 />} />

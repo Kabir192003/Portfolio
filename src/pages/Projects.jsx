@@ -11,7 +11,15 @@ const FAINT = '#8a8578';
 
 const WORKS = [
     {
-        num: '01', id: 6, title: 'StyleBook AI', tags: ['AI PRODUCT', 'TEAM LEAD', 'FIGMA PLUGIN'], year: '2026',
+        num: '01', id: 'settld', title: 'Settld', tags: ['FLAGSHIP', 'DATA', 'FULL STACK'], year: '2026',
+        role: projectsData.project8.role,
+        status: 'LIVE · PRE-LAUNCH',
+        stack: projectsData.project8.tools.join(' · '),
+        desc: 'A free, open-data tool that helps students choose where to live in Dublin: rent, the real journey to college and where the jobs are, with the source and confidence of every number shown.',
+        img: './settld/desktop-start.jpg',
+    },
+    {
+        num: '02', id: 6, title: 'StyleBook AI', tags: ['AI PRODUCT', 'TEAM LEAD', 'FIGMA PLUGIN'], year: '2026',
         role: projectsData.project6.role,
         status: 'LIVE — SHIPPED',
         stack: projectsData.project6.tools.join(' · '),
@@ -19,7 +27,7 @@ const WORKS = [
         img: './stylebook/sb-hero-bg.jpg',
     },
     {
-        num: '02', id: 'data-viz', title: 'Global Health & Wealth', tags: ['DATA VIZ', 'INTERACTIVE'], year: '2026',
+        num: '03', id: 'data-viz', title: 'Global Health & Wealth', tags: ['DATA VIZ', 'INTERACTIVE'], year: '2026',
         role: 'Designer and developer. Chart design, scales and interaction',
         status: 'LIVE — PLAYABLE',
         stack: 'Processing · Canvas · CSV data',
@@ -27,7 +35,7 @@ const WORKS = [
         img: './msc/data-viz/banner.jpg',
     },
     {
-        num: '03', id: 'pawfect', title: 'PawFect', tags: ['MOBILE APP', 'PRODUCT REQUIREMENTS'], year: '2025',
+        num: '04', id: 'pawfect', title: 'PawFect', tags: ['MOBILE APP', 'PRODUCT REQUIREMENTS'], year: '2025',
         role: projectsData.project7.role,
         status: 'CLIENT PROJECT · DREAMWEAVERS',
         stack: projectsData.project7.tools.join(' · '),
@@ -35,7 +43,7 @@ const WORKS = [
         img: './pawfect/pf-cover.jpg',
     },
     {
-        num: '04', id: 1, title: 'Trek Mate', tags: ['E-COMMERCE', 'MOBILE'], year: '2026',
+        num: '05', id: 1, title: 'Trek Mate', tags: ['E-COMMERCE', 'MOBILE'], year: '2026',
         role: projectsData.project1.role,
         status: 'LIVE — SHIPPED',
         stack: projectsData.project1.tools.join(' · '),
@@ -43,7 +51,7 @@ const WORKS = [
         img: './trekmate-v3/tm3-hero.jpg',
     },
     {
-        num: '05', id: 2, title: 'Work Hive', tags: ['WEB PLATFORM', 'FULL STACK'], year: '2026',
+        num: '06', id: 2, title: 'Work Hive', tags: ['WEB PLATFORM', 'FULL STACK'], year: '2026',
         role: projectsData.project2.role,
         status: 'LIVE — SHIPPED',
         stack: projectsData.project2.tools.join(' · '),
@@ -51,7 +59,7 @@ const WORKS = [
         img: './workhive/hero.jpg',
     },
     {
-        num: '06', id: 3, title: 'The Hunger Games', tags: ['UX RESEARCH'], year: '2025',
+        num: '07', id: 3, title: 'The Hunger Games', tags: ['UX RESEARCH'], year: '2025',
         role: projectsData.project3.role,
         status: 'RESEARCH',
         stack: projectsData.project3.tools.join(' · '),
@@ -59,7 +67,7 @@ const WORKS = [
         img: './food.jpg',
     },
     {
-        num: '07', id: 5, title: 'This or That', tags: ['FULL STACK'], year: '2026',
+        num: '08', id: 5, title: 'This or That', tags: ['FULL STACK'], year: '2026',
         role: projectsData.project5.role,
         status: 'LIVE — SHIPPED',
         stack: projectsData.project5.tools.join(' · '),
@@ -132,7 +140,7 @@ const Projects = () => {
                     Selected<br />Traces<span style={{ color: RULE }}>.</span>
                 </h1>
                 <p style={{ maxWidth: '560px', fontSize: '1rem', lineHeight: 1.65, color: MUTED, marginTop: '1.5rem' }}>
-                    Six products and a data visualisation, run through their paces. Hover an entry to pull it up on the scope: role, status and stack on the right update live.
+                    Seven products and a data visualisation, run through their paces. Hover an entry to pull it up on the scope: role, status and stack on the right update live.
                 </p>
             </div>
             <div style={{ borderTop: `1px solid ${INK}` }} />
@@ -242,7 +250,7 @@ const Projects = () => {
                 <span style={{ fontSize: '0.8rem', letterSpacing: '0.08em', color: RULE }}>OPEN →</span>
             </Link>
             <div style={{ borderTop: `1px solid ${INK}`, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '1rem clamp(1.25rem,3vw,3rem)', flexWrap: 'wrap', gap: '0.75rem' }}>
-                <span style={{ fontSize: '0.7rem', letterSpacing: '0.1em', color: MUTED }}>{String(WORKS.length).padStart(2, '0')} CASE STUDIES · 05 LIVE, SHIPPABLE</span>
+                <span style={{ fontSize: '0.7rem', letterSpacing: '0.1em', color: MUTED }}>{String(WORKS.length).padStart(2, '0')} CASE STUDIES · 06 LIVE, SHIPPABLE</span>
                 <span style={{ fontSize: '0.7rem', letterSpacing: '0.1em', color: MUTED }}>DUBLIN</span>
             </div>
             <div style={{ borderTop: `4px solid ${INK}` }} />
