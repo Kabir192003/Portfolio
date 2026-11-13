@@ -90,6 +90,15 @@ const DOODLES = [
         </>),
     },
     {
+        key: 'github', cls: 'd-github', vb: '0 0 60 60', label: 'github',
+        body: (<>
+            <circle {...D} cx="30" cy="30" r="26" />
+            <path {...D} d="M19 27 L18 17 L25 21 Q30 19.5 35 21 L42 17 L41 27 Q44 31 41 36 Q38 40 30 40 Q22 40 19 36 Q16 31 19 27 Z" />
+            <path {...D} d="M26 40 L26 50 M34 40 L34 50" />
+            <path {...D} d="M26 45 Q20 46 17 41" />
+        </>),
+    },
+    {
         key: 'code', cls: 'd-code', vb: '0 0 64 40', label: null,
         body: (<>
             <path {...D} strokeWidth={2.6} d="M18 8 L6 20 L18 32" />
@@ -318,10 +327,12 @@ const Home = () => {
                 @keyframes doodle-fade { to { opacity: 1; } }
                 /* doodles sit in the dark margins of the photo, around the subject (who stands at ~55-75% across) */
                 .d-speech { width: 120px; top: 14%; left: 63%; }
-                .d-camera { width: 64px; top: 16%; left: 30%; }
-                .d-claude { width: 48px; top: 44%; left: 36%; }
-                .d-claude-label { top: calc(44% + 50px); left: 35%; }
-                .d-code { width: 62px; top: 70%; left: 30%; }
+                .d-claude { width: 50px; top: 15%; left: 30%; }
+                .d-claude-label { top: calc(15% + 52px); left: 29.5%; }
+                .d-github { width: 48px; top: 30%; left: 38%; }
+                .d-github-label { top: calc(30% + 52px); left: 38%; }
+                .d-code { width: 62px; top: 56%; left: 30%; }
+                .d-camera { width: 64px; top: 80%; left: 31%; }
                 .d-figma { width: 36px; top: 34%; left: 85%; }
                 .d-figma-label { top: calc(34% + 58px); left: 84%; }
                 .d-python { width: 50px; top: 58%; left: 86%; }
