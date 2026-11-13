@@ -765,3 +765,39 @@ main {
     opacity: 0.75;
   }
 }
+
+/* Project cards, shared by Home and Work */
+.work-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.5rem 2rem; margin-top: 2.5rem; }
+.work-card { display: flex; flex-direction: column; color: #141414; text-decoration: none; border: 1px solid #141414; background: #f2f0ea; transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s; }
+.work-card:hover { transform: translateY(-4px); box-shadow: 8px 8px 0 #141414; }
+.work-card:focus-visible { outline: 3px solid #2e2bef; outline-offset: 3px; }
+.work-card-media { position: relative; aspect-ratio: 3 / 2; overflow: hidden; border-bottom: 1px solid #141414; background: #e6e3db; }
+.work-card-media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s cubic-bezier(0.16,1,0.3,1); }
+.work-card:hover .work-card-media img { transform: scale(1.03); }
+.work-card-status { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; background: rgba(46,43,239,0.08); color: #2e2bef; border: 1px solid #2e2bef; padding: 2px 7px; white-space: nowrap; }
+.work-card-body { padding: 1.4rem 1.5rem 1.5rem; display: flex; flex-direction: column; flex: 1; }
+.work-card-top { display: flex; align-items: center; flex-wrap: wrap; gap: 0.4rem 0.8rem; margin-bottom: 0.6rem; }
+.work-card-num { font-family: 'Anton', sans-serif; font-size: 1.15rem; color: #2e2bef; }
+.work-card-meta { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; color: #3a3833; }
+.work-card-title { font-family: 'Anton', sans-serif; font-size: clamp(1.6rem, 2.6vw, 2.2rem); text-transform: uppercase; line-height: 1; margin: 0 0 0.7rem; }
+.work-card-desc { font-size: 0.98rem; line-height: 1.6; color: #3a3833; margin: 0 0 1.25rem; max-width: 58ch; }
+.work-card-foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.work-card-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.work-card-tags span { font-family: 'JetBrains Mono', monospace; font-size: 0.64rem; letter-spacing: 0.04em; border: 1px solid #141414; padding: 3px 8px; }
+.work-card-cta { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; font-weight: 700; color: #2e2bef; white-space: nowrap; }
+.work-card:hover .work-card-cta { text-decoration: underline; }
+.work-card-featured { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); }
+.work-card-featured .work-card-media { border-bottom: none; border-right: 1px solid #141414; aspect-ratio: auto; min-height: 100%; }
+.work-card-featured .work-card-body { padding: 2rem 2.25rem; justify-content: center; }
+.work-card-featured .work-card-title { font-size: clamp(2.2rem, 4vw, 3.4rem); }
+.work-card-featured .work-card-desc { font-size: 1.05rem; }
+@media (max-width: 900px) {
+.work-grid { grid-template-columns: minmax(0, 1fr); gap: 1.75rem; margin-top: 1.75rem; }
+.work-card-featured { grid-template-columns: minmax(0, 1fr); }
+.work-card-featured .work-card-media { border-right: none; border-bottom: 1px solid #141414; aspect-ratio: 3 / 2; }
+.work-card-featured .work-card-body { padding: 1.4rem 1.5rem 1.5rem; }
+.work-card:hover { transform: none; box-shadow: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+.work-card, .work-card-media img { transition: none; }
+}
