@@ -18,7 +18,15 @@ const STATS = [
     { value: '5', label: 'Live products, designed and built' },
     { value: '500+', label: 'People surveyed for my products' },
     { value: '8', label: 'Case studies' },
-    { value: 'M.Sc.', label: 'Interactive Digital Media, Trinity College Dublin' },
+    { value: 'Stamp 1G', label: 'Right to work in Ireland · No visa sponsorship needed', highlight: true },
+];
+
+// Grouped like the CV's skills section, so the site and the CV say the same thing.
+const STACK = [
+    { group: 'Design', items: ['Figma', 'FigJam', 'Adobe Creative Suite', 'Claude Design', 'Google Stitch', 'Design systems', 'WCAG accessibility', 'User research', 'Usability testing'] },
+    { group: 'Engineering', items: ['TypeScript', 'JavaScript', 'React', 'Next.js', 'Vite', 'Node.js', 'Supabase', 'REST APIs', 'Git', 'GitHub Actions', 'Playwright'] },
+    { group: 'Data & analytics', items: ['Python', 'OpenCV', 'NumPy', 'SQL', 'Postgres', 'Qlik Sense', 'Google Analytics 4', 'Funnel analysis', 'Data visualisation'] },
+    { group: 'AI & workflow', items: ['Claude Code', 'Claude API', 'Gemini API', 'Cursor', 'RAG (pgvector)', 'Jira', 'Scrum', 'AWS'] },
 ];
 
 const CAPABILITIES = [
@@ -132,6 +140,12 @@ const Home = () => {
             {/* Hero */}
             <section className="home-hero">
                 <div className="home-hero-text">
+                    <motion.p custom={0} variants={fade} initial="hidden" animate="visible" className="home-visa">
+                        <span className="home-visa-tick" aria-hidden="true">✓</span>
+                        <strong>Stamp 1G</strong>
+                        <span className="home-visa-sep" aria-hidden="true" />
+                        Eligible to work in Ireland, no visa sponsorship needed
+                    </motion.p>
                     <motion.p custom={0} variants={fade} initial="hidden" animate="visible" className="home-eyebrow">
                         Kabir Sharma <span>·</span> Product Design Engineer <span>·</span> Dublin
                     </motion.p>
@@ -147,7 +161,7 @@ const Home = () => {
                         <a href="mailto:kabiroscope@gmail.com" className="home-mail">kabiroscope@gmail.com</a>
                     </motion.div>
                     <motion.p custom={4} variants={fade} initial="hidden" animate="visible" className="home-status">
-                        <span className="home-dot" /> Open to product designer, design engineer and data roles · Stamp 1G, no sponsorship needed
+                        <span className="home-dot" /> Open to product designer, design engineer and data &amp; analytics roles in Dublin or remote
                     </motion.p>
                 </div>
 
@@ -160,7 +174,7 @@ const Home = () => {
             {/* Stats */}
             <section className="home-stats" aria-label="At a glance">
                 {STATS.map((s) => (
-                    <div key={s.label}>
+                    <div key={s.label} className={s.highlight ? 'home-stat-hl' : undefined}>
                         <span className="home-stat-value">{s.value}</span>
                         <span className="home-stat-label">{s.label}</span>
                     </div>
@@ -197,7 +211,30 @@ const Home = () => {
                             <span className="home-cap-num">{String(i + 1).padStart(2, '0')}</span>
                             <h3>{c.area}</h3>
                             <p>{c.text}</p>
-                            <span className="home-cap-tools">{c.tools}</span>
+                        </div>
+                    ))}
+                </div>
+            </section>
+
+            {/* Tech stack */}
+            <section className="home-section home-section-rule" aria-labelledby="stack-h">
+                <div className="home-section-head">
+                    <div>
+                        <span className="home-kicker">Tech stack</span>
+                        <h2 id="stack-h" className="home-h2">The tools I <em>ship with.</em></h2>
+                    </div>
+                    <a href="./Kabir_Sharma_CV.pdf" target="_blank" rel="noreferrer" className="home-link">Full CV (PDF) →</a>
+                </div>
+                <div className="home-stack">
+                    {STACK.map((g) => (
+                        <div key={g.group} className="home-stack-group">
+                            <div className="home-stack-head">
+                                <h3>{g.group}</h3>
+                                <span>{String(g.items.length).padStart(2, '0')}</span>
+                            </div>
+                            <ul>
+                                {g.items.map((t) => <li key={t}>{t}</li>)}
+                            </ul>
                         </div>
                     ))}
                 </div>
@@ -214,6 +251,11 @@ const Home = () => {
 
             <style>{`
                 .home-hero { overflow-x: clip; max-width: 1320px; margin: 0 auto; padding: clamp(3rem, 7vw, 6rem) clamp(1.25rem, 3vw, 3rem) clamp(3rem, 6vw, 5rem); display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(1.5rem, 3vw, 3rem); align-items: center; }
+                .home-visa { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 0.55rem; margin: 0 0 1.8rem; padding: 0.55rem 1rem 0.55rem 0.55rem; border: 1px solid rgba(125,255,176,0.55); background: rgba(125,255,176,0.08); border-radius: 999px; font-family: ${MONO}; font-size: 0.76rem; letter-spacing: 0.03em; color: #e9fff1; line-height: 1.4; }
+                .home-visa strong { font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #7dffb0; }
+                .home-visa-tick { flex: none; display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: #7dffb0; color: ${NIGHT}; font-size: 0.75rem; font-weight: 700; }
+                .home-visa-sep { width: 1px; height: 14px; background: rgba(125,255,176,0.45); }
+                .home-hero-text > .home-visa { max-width: none; }
                 .home-eyebrow { font-family: ${MONO}; font-size: 0.74rem; letter-spacing: 0.16em; text-transform: uppercase; color: ${MUTED}; margin: 0 0 1.6rem; }
                 .home-eyebrow span { color: ${RULE}; margin: 0 0.35em; }
                 .home-title { font-family: ${SERIF}; font-weight: 400; font-size: clamp(2.5rem, 5.4vw, 4.9rem); line-height: 1.04; letter-spacing: -0.02em; margin: 0; text-transform: none; }
@@ -273,7 +315,7 @@ const Home = () => {
                 .d-figma-label { top: calc(34% + 58px); left: 84%; }
                 .d-python { width: 50px; top: 58%; left: 86%; }
                 .d-python-label { top: calc(58% + 52px); left: 86%; }
-                .d-pen { width: 62px; top: 82%; left: 22%; }
+                .d-pen { width: 58px; top: 6%; left: 47%; }
                 @media (max-width: 960px) {
                     .home-hero.home-hero { display: flex; flex-direction: column-reverse; }
                     .home-photo { position: relative; width: 100%; }
@@ -309,6 +351,19 @@ const Home = () => {
                 .home-h2 { font-family: ${SERIF}; font-weight: 400; font-size: clamp(2rem, 3.8vw, 3.2rem); line-height: 1.05; letter-spacing: -0.015em; text-transform: none; margin: 0; }
                 .home-link { font-family: ${MONO}; font-size: 0.82rem; font-weight: 700; color: ${RULE}; text-decoration: underline; text-underline-offset: 4px; }
 
+                .home-stats > div.home-stat-hl { background: ${RULE}; color: ${PAPER}; }
+                .home-stat-hl .home-stat-label { color: rgba(242,240,234,0.85); }
+
+                .home-stack { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid ${INK}; margin-bottom: 4rem; }
+                .home-stack-group { padding: 1.4rem 1.4rem 1.6rem; border-right: 1px solid ${INK}; }
+                .home-stack-group:last-child { border-right: none; }
+                .home-stack-head { display: flex; align-items: baseline; justify-content: space-between; border-bottom: 2px solid ${INK}; padding-bottom: 0.6rem; margin-bottom: 1rem; }
+                .home-stack-head h3 { font-family: ${ANTON}; font-size: 1.25rem; text-transform: uppercase; margin: 0; }
+                .home-stack-head span { font-family: ${MONO}; font-size: 0.7rem; color: ${RULE}; font-weight: 700; }
+                .home-stack ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.45rem; }
+                .home-stack li { font-family: ${MONO}; font-size: 0.74rem; border: 1px solid ${INK}; padding: 5px 9px; background: #fff; transition: background 0.2s, color 0.2s; }
+                .home-stack li:hover { background: ${INK}; color: ${PAPER}; }
+
                 .home-caps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem; padding-bottom: 4rem; }
                 .home-caps > div { border-top: 2px solid ${INK}; padding-top: 1rem; display: flex; flex-direction: column; }
                 .home-cap-num { font-family: ${MONO}; font-size: 0.7rem; color: ${FAINT}; }
@@ -326,9 +381,17 @@ const Home = () => {
                     .home-stats > div:nth-child(2) { border-right: none; }
                     .home-stats > div:nth-child(-n+2) { border-bottom: 1px solid ${INK}; }
                     .home-caps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+                    .home-stack { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+                    .home-stack-group:nth-child(2) { border-right: none; }
+                    .home-stack-group:nth-child(-n+2) { border-bottom: 1px solid ${INK}; }
                 }
                 @media (max-width: 560px) {
                     .home-caps { grid-template-columns: minmax(0, 1fr); }
+                    .home-stack { grid-template-columns: minmax(0, 1fr); }
+                    .home-stack-group { border-right: none !important; border-bottom: 1px solid ${INK}; }
+                    .home-stack-group:last-child { border-bottom: none; }
+                    .home-visa-sep { display: none; }
+                    .home-visa { border-radius: 14px; }
                     .home-mail { margin-left: 0; }
                 }
             `}</style>
