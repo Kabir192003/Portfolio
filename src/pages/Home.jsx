@@ -39,7 +39,7 @@ const FEATURED_TAGS = ['300+ STUDENTS SURVEYED', 'OPEN DATA', 'DESIGN + BUILD'];
 
 const PROJECTS = [
     { num: '02', year: '2026 · LIVE', title: 'StyleBook AI', meta: 'TEAM LEAD · DESIGN + BUILD', tags: ['AI PRODUCT', 'FIGMA PLUGIN'], desc: 'Shaped by a survey of 200+ designers. I led a team of four and built a tool that turns a written brand brief into a checked, exportable design system, published as a Figma plugin.', img: './stylebook/sb-mockup.jpg', link: '/projects/6' },
-    { num: '03', year: '2025 · CLIENT WORK', title: 'PawFect', meta: 'PRODUCT ASSOCIATE · DREAMWEAVERS', tags: ['MOBILE APP', 'REQUIREMENTS'], desc: 'A pet care app for a veterinary clinic in Hyderabad. I owned the requirements: booking, a digital health passport, reminders worked out from the record, and prices shown before you pay.', img: './pawfect/pf-cover.jpg', link: '/projects/pawfect' },
+    { num: '03', year: '2025 · CLIENT WORK', title: 'PawFect', meta: 'PRODUCT ASSOCIATE · DREAMWEAVERS', tags: ['MOBILE APP', 'REQUIREMENTS'], desc: 'A pet care app for a veterinary clinic in Hyderabad. I owned the requirements: booking, a digital health passport, reminders worked out from the record, and prices shown before you pay.', img: './pawfect/pf-mockup.jpg', link: '/projects/pawfect' },
     { num: '04', year: '2026 · LIVE', title: 'Work Hive', meta: 'SOLO · DESIGN + BUILD', tags: ['WEB PLATFORM', 'FULL STACK'], desc: 'A hiring platform where named, job-specific endorsements from real colleagues travel with every application. 18 screens on a real Postgres backend, with the security boundary tested.', img: './workhive/wh-mockup.jpg', link: '/projects/2' },
     { num: '05', year: '2026 · LIVE', title: 'Trek Mate', meta: 'SOLO · DESIGN + BUILD', tags: ['E-COMMERCE', 'REACT'], desc: 'An outdoor gear store designed around the whole pack. A live planner shows your base weight and ranks lighter swaps by what each gram saved costs you.', img: './trekmate-v3/tm3-mockup.jpg', link: '/projects/1' },
 ];
@@ -289,7 +289,7 @@ const Home = () => {
                 <h2 style={{ fontFamily: "'Anton', sans-serif", fontSize: 'clamp(2rem,4vw,3rem)', textTransform: 'uppercase', marginBottom: '2.5rem' }}>Featured: a real problem, built end to end</h2>
                 <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1.3fr) minmax(280px,420px)', gap: '2.5rem', alignItems: 'start' }} className="home-featured-grid">
                     <div style={{ position: 'relative', backgroundImage: 'radial-gradient(circle, rgba(20,20,20,0.14) 1px, transparent 1.6px)', backgroundSize: '7px 7px', padding: '1.75rem' }}>
-                        <img src="./settld/desktop-start.jpg" alt="Settld, a Dublin area finder for students" style={{ width: '100%', display: 'block', transform: 'rotate(-1deg)', boxShadow: '0 20px 40px -16px rgba(20,20,20,0.35)', border: `1px solid ${INK}` }} />
+                        <img src="./settld/settld-mockup.jpg" alt="Settld, a Dublin area finder for students" style={{ width: '100%', display: 'block', transform: 'rotate(-1deg)', boxShadow: '0 20px 40px -16px rgba(20,20,20,0.35)', border: `1px solid ${INK}` }} />
                     </div>
                     <div>
                         <span style={{ fontFamily: "'Anton', sans-serif", fontSize: '1.4rem', color: RULE }}>01</span>
