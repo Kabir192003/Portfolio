@@ -9,37 +9,39 @@ const RULE = '#2e2bef';
 const MUTED = '#3a3833';
 const PAPER = '#f2f0ea';
 
-const TODAY = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
 
-const SKILL_STACK = ['PRODUCT DESIGN', 'UX RESEARCH', 'INTERACTION DESIGN', 'DESIGN SYSTEMS', 'INFORMATION ARCHITECTURE', 'USABILITY TESTING', 'PRODUCT ANALYTICS'];
-const TOOLS_CRAFT = ['PROTOTYPING', 'FRONT-END', 'MOTION DESIGN', 'FIGMA', 'PYTHON', 'SQL', 'REACT'];
+const STACK = [
+    { group: 'DESIGN', items: ['Product design', 'UX research', 'Interaction design', 'Design systems', 'Prototyping', 'Usability testing', 'Figma'] },
+    { group: 'ENGINEERING', items: ['React', 'TypeScript', 'JavaScript', 'Python', 'SQL', 'Postgres / Supabase', 'AI agent workflows'] },
+    { group: 'DATA', items: ['Product analytics', 'Survey research', 'Data visualisation', 'Data pipelines'] },
+];
 const STATS = [
+    { label: 'LIVE PRODUCTS, DESIGNED AND BUILT', value: '5' },
+    { label: 'PEOPLE SURVEYED FOR MY PRODUCTS', value: '500+' },
     { label: 'CASE STUDIES', value: '8' },
-    { label: 'LIVE, SHIPPABLE PRODUCTS', value: '5' },
-    { label: 'USERS SURVEYED IN MY OWN STUDY', value: '48' },
 ];
 
 const CAPABILITIES = [
-    { area: 'PRODUCT', items: 'Research · Requirements · Prioritisation · Product Analytics · Testing' },
-    { area: 'TECHNOLOGY', items: 'Python · SQL · React · JavaScript · REST APIs · AI/LLM workflows' },
-    { area: 'DESIGN', items: 'UX · Interaction Design · Prototyping · Information Architecture · Usability Testing' },
-    { area: 'DATA', items: 'Analysis · Visualisation · Funnel Analysis · Structured Problem Solving' },
+    { area: 'DESIGN', items: 'Research, flows, interfaces and design systems. From a 300-student survey to the shipped Settld interface, and the brand and site for Cimelium.' },
+    { area: 'ENGINEERING', items: 'I build what I design in React and TypeScript, on real backends. At Cimelium I own product decisions on an AI-agent engineering workflow.' },
+    { area: 'DATA', items: 'Open-data pipelines, back-tested models and survey analysis. Settld\'s rent model is checked against 132 published figures.' },
+    { area: 'PRODUCT', items: 'Requirements, scope and trade-offs. Written as rules engineers can build and QA can test, from PawFect to Cimelium\'s sprint gates.' },
 ];
 
 const INDEX_ITEMS = [
     { num: '01', label: 'SETTLD' },
-    { num: '02', label: 'DATA VIZ' },
-    { num: '03', label: 'WORK HIVE' },
-    { num: '04', label: 'HUNGER GAMES' },
-    { num: '05', label: 'STYLEBOOK AI' },
+    { num: '02', label: 'STYLEBOOK AI' },
+    { num: '03', label: 'PAWFECT' },
+    { num: '04', label: 'WORK HIVE' },
+    { num: '05', label: 'TREK MATE' },
 ];
-const FEATURED_TAGS = ['SOLO BUILD', 'OPEN DATA', 'FULL STACK'];
+const FEATURED_TAGS = ['300+ STUDENTS SURVEYED', 'OPEN DATA', 'DESIGN + BUILD'];
 
 const PROJECTS = [
-    { num: '02', year: '2026 · LIVE', title: 'Global Health & Wealth', meta: 'DATA VISUALISATION', tags: ['DATA VIZ', 'INTERACTIVE'], desc: 'An interactive bubble chart of 186 countries. Hover any bubble for its data and click the legend to filter regions. Try it, it responds.', img: './msc/data-viz/banner.jpg', link: '/projects/data-viz' },
-    { num: '03', year: '2026 · SHIPPED', title: 'Work Hive', meta: 'PRODUCT DESIGN · FULL STACK', tags: ['WEB PLATFORM', 'FULL STACK'], desc: 'A hiring platform built on proof: named, job-specific endorsements from real colleagues travel with every application, instead of arriving at the reference check.', img: './workhive/wh-mockup.jpg', link: '/projects/2' },
-    { num: '04', year: '2025 · RESEARCH', title: 'The Hunger Games', meta: 'SOLO RESEARCH', tags: ['UX RESEARCH'], desc: 'A comparative usability study across the major food delivery apps, built from surveys and interviews.', img: './hg-mockup.jpg', link: '/projects/3' },
-    { num: '05', year: '2026 · SHIPPED', title: 'StyleBook AI', meta: 'TEAM LEAD · FIGMA PLUGIN', tags: ['AI PRODUCT', 'FIGMA PLUGIN'], desc: 'Led a team of four and shipped a working Figma plugin: a verified, exportable design system generated from a written brand description.', img: './stylebook/sb-mockup.jpg', link: '/projects/6' },
+    { num: '02', year: '2026 · LIVE', title: 'StyleBook AI', meta: 'TEAM LEAD · DESIGN + BUILD', tags: ['AI PRODUCT', 'FIGMA PLUGIN'], desc: 'Shaped by a survey of 200+ designers. I led a team of four and built a tool that turns a written brand brief into a checked, exportable design system, published as a Figma plugin.', img: './stylebook/sb-mockup.jpg', link: '/projects/6' },
+    { num: '03', year: '2025 · CLIENT WORK', title: 'PawFect', meta: 'PRODUCT ASSOCIATE · DREAMWEAVERS', tags: ['MOBILE APP', 'REQUIREMENTS'], desc: 'A pet care app for a veterinary clinic in Hyderabad. I owned the requirements: booking, a digital health passport, reminders worked out from the record, and prices shown before you pay.', img: './pawfect/pf-cover.jpg', link: '/projects/pawfect' },
+    { num: '04', year: '2026 · LIVE', title: 'Work Hive', meta: 'SOLO · DESIGN + BUILD', tags: ['WEB PLATFORM', 'FULL STACK'], desc: 'A hiring platform where named, job-specific endorsements from real colleagues travel with every application. 18 screens on a real Postgres backend, with the security boundary tested.', img: './workhive/wh-mockup.jpg', link: '/projects/2' },
+    { num: '05', year: '2026 · LIVE', title: 'Trek Mate', meta: 'SOLO · DESIGN + BUILD', tags: ['E-COMMERCE', 'REACT'], desc: 'An outdoor gear store designed around the whole pack. A live planner shows your base weight and ranks lighter swaps by what each gram saved costs you.', img: './trekmate-v3/tm3-mockup.jpg', link: '/projects/1' },
 ];
 
 const Chip = ({ children }) => (
@@ -73,17 +75,21 @@ const KABIR_LANGS = [
 ];
 
 const KabirCycle = () => {
+    // Reads "Kabir" in English by default; hovering the name cycles through scripts.
     const [index, setIndex] = useState(0);
+    const [hover, setHover] = useState(false);
 
     useEffect(() => {
+        if (!hover) { setIndex(0); return undefined; }
+        setIndex(1);
         const id = setInterval(() => {
             setIndex((i) => (i + 1) % KABIR_LANGS.length);
-        }, 3000);
+        }, 900);
         return () => clearInterval(id);
-    }, []);
+    }, [hover]);
 
     return (
-        <span style={{ display: 'inline-grid' }}>
+        <span style={{ display: 'inline-grid' }} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} title="Kabir, in ten scripts">
             <AnimatePresence mode="wait">
                 <motion.span
                     key={KABIR_LANGS[index].lang}
@@ -114,11 +120,11 @@ const Home = () => {
             {/* Page title */}
             <div style={{ textAlign: 'center', padding: '3rem 1.5rem 2rem' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', maxWidth: '900px', margin: '0 auto 1.5rem', paddingBottom: '0.6rem', borderBottom: `1px solid rgba(20,20,20,0.16)`, fontFamily: "'JetBrains Mono', monospace", fontSize: '0.68rem', letterSpacing: '0.04em', color: MUTED, flexWrap: 'wrap', gap: '0.5rem' }}>
-                    <span>Portfolio — Vol. 01</span>
-                    <span>{TODAY}</span>
+                    <span>Kabir Sharma · Portfolio</span>
+                    <span>Dublin · Stamp 1G, no visa sponsorship needed</span>
                 </div>
                 <h1 style={{ fontFamily: "'Anton', 'Noto Sans', sans-serif", fontSize: 'clamp(2.8rem, 9vw, 7.5rem)', letterSpacing: '0.01em', lineHeight: 0.95, margin: 0, textTransform: 'uppercase', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '0 0.35em' }}><KabirCycle /><span>Sharma</span></h1>
-                <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 'clamp(0.85rem, 2vw, 1.05rem)', letterSpacing: '0.2em', textTransform: 'uppercase', color: RULE, fontWeight: 700, marginTop: '1.1rem' }}>Technology × Product × Design</p>
+                <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 'clamp(0.85rem, 2vw, 1.05rem)', letterSpacing: '0.2em', textTransform: 'uppercase', color: RULE, fontWeight: 700, marginTop: '1.1rem' }}>Product Design Engineer</p>
                 <p style={{ fontSize: '1.05rem', color: MUTED, maxWidth: '560px', margin: '0.9rem auto 0', lineHeight: 1.65 }}>I design and build interactive products from evidence: research, data and code.</p>
             </div>
             <div style={{ borderTop: `1px solid ${INK}` }} />
@@ -128,30 +134,24 @@ const Home = () => {
                 <div style={{ padding: '2.75rem clamp(1.25rem,3vw,3rem)', borderRight: `1px solid ${INK}` }}>
                     <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.72rem', letterSpacing: '0.14em', fontWeight: 700 }}>PROFILE</span>
                     <h2 style={{ fontFamily: "'Anton', sans-serif", fontSize: 'clamp(1.9rem,3.4vw,2.7rem)', textTransform: 'uppercase', lineHeight: 1.05, margin: '0.9rem 0 1.4rem' }}>
-                        From mockups<br />to <span style={{ color: RULE }}>things that run</span>
+                        Designer who<br /><span style={{ color: RULE }}>ships the code</span>
                     </h2>
                     <p style={{ fontSize: '1.08rem', lineHeight: 1.65, marginBottom: '2rem' }}>
-                        <strong>Eight case studies, six of them live and clickable.</strong> I design interfaces, then use them the way a stranger would, which is usually where the real work starts.
+                        <strong>I research the problem, design the product and build it.</strong> Five of my products are live, so you can click through them, not just look at mockups. Open to product designer, design engineer and data roles.
                     </p>
-                    <Link to="/projects/6" style={{ display: 'block', textAlign: 'center', background: RULE, color: '#f2f0ea', fontFamily: "'JetBrains Mono', monospace", fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', fontSize: '0.9rem', padding: '1rem', textDecoration: 'none', marginBottom: '2.25rem' }}>Selected work ↓</Link>
+                    <a href="#work" onClick={(e) => { e.preventDefault(); document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' }); }} style={{ display: 'block', textAlign: 'center', background: RULE, color: '#f2f0ea', fontFamily: "'JetBrains Mono', monospace", fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', fontSize: '0.9rem', padding: '1rem', textDecoration: 'none', marginBottom: '2.25rem' }}>See the work ↓</a>
 
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', borderTop: `1px solid ${INK}`, paddingTop: '1.25rem' }}>
-                        <div>
-                            <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.68rem', letterSpacing: '0.1em', color: MUTED, display: 'block', marginBottom: '0.6rem' }}>SKILL STACK</span>
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                                {SKILL_STACK.map((s) => (
-                                    <span key={s} style={{ border: `1px solid ${INK}`, fontFamily: "'JetBrains Mono', monospace", fontSize: '0.72rem', padding: '6px 10px', textAlign: 'center' }}>{s}</span>
-                                ))}
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.1rem', borderTop: `1px solid ${INK}`, paddingTop: '1.25rem' }}>
+                        {STACK.map((g) => (
+                            <div key={g.group}>
+                                <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.68rem', letterSpacing: '0.1em', color: MUTED, display: 'block', marginBottom: '0.5rem' }}>{g.group}</span>
+                                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
+                                    {g.items.map((t) => (
+                                        <span key={t} style={{ border: `1px solid ${INK}`, fontFamily: "'JetBrains Mono', monospace", fontSize: '0.7rem', padding: '4px 9px', whiteSpace: 'nowrap' }}>{t}</span>
+                                    ))}
+                                </div>
                             </div>
-                        </div>
-                        <div>
-                            <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.68rem', letterSpacing: '0.1em', color: MUTED, display: 'block', marginBottom: '0.6rem' }}>TOOLS &amp; CRAFT</span>
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                                {TOOLS_CRAFT.map((t) => (
-                                    <span key={t} style={{ border: `1px solid ${INK}`, fontFamily: "'JetBrains Mono', monospace", fontSize: '0.72rem', padding: '6px 10px', textAlign: 'center' }}>{t}</span>
-                                ))}
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
 
@@ -231,6 +231,12 @@ const Home = () => {
                         <h3 style={{ fontFamily: "'Anton', sans-serif", fontSize: '1.6rem', textTransform: 'uppercase', margin: '0.3rem 0' }}>Dublin</h3>
                     </div>
                     <div style={{ borderTop: `1px solid ${INK}`, paddingTop: '1.25rem' }} />
+                    <div>
+                        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.68rem', letterSpacing: '0.1em', color: MUTED }}>RIGHT TO WORK</span>
+                        <h3 style={{ fontFamily: "'Anton', sans-serif", fontSize: '1.3rem', textTransform: 'uppercase', margin: '0.3rem 0' }}>Stamp 1G</h3>
+                        <span style={{ fontSize: '0.9rem', color: MUTED }}>No sponsorship needed</span>
+                    </div>
+                    <div style={{ borderTop: `1px solid ${INK}`, paddingTop: '1.25rem' }} />
 
                     {STATS.map((st) => (
                         <React.Fragment key={st.label}>
@@ -257,12 +263,12 @@ const Home = () => {
             {/* Capabilities */}
             <div style={{ borderTop: `1px solid ${INK}`, borderBottom: `1px solid ${INK}` }}>
                 <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '2.75rem clamp(1.25rem,3vw,3rem)' }}>
-                    <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.72rem', letterSpacing: '0.14em', fontWeight: 700, color: MUTED, display: 'block', marginBottom: '1.75rem' }}>WHAT I WORK ACROSS</span>
+                    <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.72rem', letterSpacing: '0.14em', fontWeight: 700, color: MUTED, display: 'block', marginBottom: '1.75rem' }}>WHAT I DO</span>
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '2rem' }}>
                         {CAPABILITIES.map((c) => (
                             <div key={c.area} style={{ borderTop: `2px solid ${INK}`, paddingTop: '0.9rem' }}>
                                 <h3 style={{ fontFamily: "'Anton', sans-serif", fontSize: '1.15rem', letterSpacing: '0.02em', marginBottom: '0.6rem' }}>{c.area}</h3>
-                                <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.8rem', color: MUTED, lineHeight: 1.7 }}>{c.items}</p>
+                                <p style={{ fontSize: '0.98rem', color: MUTED, lineHeight: 1.65 }}>{c.items}</p>
                             </div>
                         ))}
                     </div>
@@ -292,7 +298,7 @@ const Home = () => {
                             {FEATURED_TAGS.map((tg) => <Chip key={tg}>{tg}</Chip>)}
                         </div>
                         <h3 style={{ fontFamily: "'Anton', sans-serif", fontSize: 'clamp(1.6rem,2.6vw,2.1rem)', textTransform: 'uppercase', lineHeight: 1.1, marginBottom: '1rem' }}>Settld: find your part of Dublin before you sign a lease</h3>
-                        <p style={{ fontSize: '1rem', lineHeight: 1.7, marginBottom: '1.25rem' }}>Students sign Dublin leases for places they have never seen, on rent figures they cannot check. I designed and built a free, open-data tool that ranks 106 areas by rent, the real journey to college and nearby jobs, and shows the source and confidence of every number. Solo, no accounts, no tracking.</p>
+                        <p style={{ fontSize: '1rem', lineHeight: 1.7, marginBottom: '1.25rem' }}>Students sign Dublin leases for places they have never seen, on rent figures they cannot check. After surveying 300+ students across several universities, I designed and built a free, open-data tool that ranks 106 areas by rent, the real journey to college and nearby jobs, and shows the source of every number.</p>
                         <Link to="/projects/settld" style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.85rem', fontWeight: 700, color: RULE, textDecoration: 'underline' }}>Case study →</Link>
                     </div>
                 </div>
@@ -303,7 +309,7 @@ const Home = () => {
                 <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: '2rem', borderTop: `1px solid ${INK}`, paddingTop: '1.5rem' }}>
                     <h2 style={{ fontFamily: "'Anton', sans-serif", fontSize: 'clamp(1.8rem,3.4vw,2.4rem)', textTransform: 'uppercase' }}>Selected work</h2>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.75rem', color: MUTED }}>2023 — 2026</span>
+                        <Link to="/projects" style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.75rem', fontWeight: 700, color: RULE, textDecoration: 'underline' }}>All 8 case studies →</Link>
                         <SignatureMark />
                     </div>
                 </div>
@@ -323,7 +329,7 @@ const Home = () => {
                             >
                                 <span style={{ fontFamily: "'Anton', sans-serif", fontSize: '1.4rem', color: RULE, display: 'block', marginBottom: '1rem' }}>{proj.num}</span>
                                 <div style={{ marginBottom: '1.5rem' }}>
-                                    <img src={proj.img} alt={proj.title} style={{ width: '100%', display: 'block' }} />
+                                    <img src={proj.img} alt={proj.title} loading="lazy" style={{ width: '100%', display: 'block', aspectRatio: '3 / 2', objectFit: 'cover' }} />
                                 </div>
                                 <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.9rem', flexWrap: 'wrap' }}>
                                     <HighlightChip>{proj.year}</HighlightChip>
@@ -357,7 +363,7 @@ const Home = () => {
             <style>{`
                 @media (max-width: 900px) {
                     .home-profile-grid {
-                        grid-template-columns: 1fr !important;
+                        grid-template-columns: minmax(0, 1fr) !important;
                     }
                     .home-profile-grid > div {
                         border-right: none !important;
@@ -368,10 +374,10 @@ const Home = () => {
                         display: none;
                     }
                     .home-featured-grid {
-                        grid-template-columns: 1fr !important;
+                        grid-template-columns: minmax(0, 1fr) !important;
                     }
                     .home-selected-grid {
-                        grid-template-columns: 1fr !important;
+                        grid-template-columns: minmax(0, 1fr) !important;
                     }
                     .home-selected-cell {
                         border-right: none !important;

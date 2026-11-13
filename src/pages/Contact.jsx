@@ -12,15 +12,15 @@ const Contact = () => {
         >
             <div style={styles.layout} className="contact-layout">
                 <div style={styles.infoCol} className="contact-info-col">
-                    <h1 style={styles.title}>Let's create <br />together.</h1>
+                    <h1 style={styles.title}>Let's talk.</h1>
                     <p style={styles.subtitle} className="contact-subtitle">
-                        I'm currently open for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!
+                        I'm a Product Design Engineer in Dublin, open to product designer, design engineer and data and analytics roles. I'm on a Stamp 1G, so I can start without visa sponsorship. I reply within a day.
                     </p>
 
                     <div style={styles.contactDetails} className="contact-details">
                         <div style={styles.contactItem}>
                             <span style={styles.label}>Email</span>
-                            <a href="mailto:hello@kabiroscope.com" style={styles.link} className="contact-link">kabiroscope@gmail.com</a>
+                            <a href="mailto:kabiroscope@gmail.com" style={styles.link} className="contact-link">kabiroscope@gmail.com</a>
                         </div>
                         <div style={styles.contactItem}>
                             <span style={styles.label}>Social</span>
@@ -33,6 +33,19 @@ const Contact = () => {
                             >
                                 LinkedIn
                             </a>
+                            <a
+                                href="https://github.com/Kabir192003"
+                                style={{ ...styles.link, marginTop: '0.5rem' }}
+                                className="contact-link"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                GitHub
+                            </a>
+                        </div>
+                        <div style={styles.contactItem}>
+                            <span style={styles.label}>Based in</span>
+                            <span style={styles.link}>Dublin, Ireland · Stamp 1G, no sponsorship needed</span>
                         </div>
                     </div>
                 </div>

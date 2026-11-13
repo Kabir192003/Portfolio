@@ -13,7 +13,7 @@ const TIMELINE = [
     { year: '2025', label: 'B.Tech completed, 8.09 GPA', place: 'Anurag University, Hyderabad' },
     { year: '2025', label: 'Product Associate', place: 'DreamWeavers' },
     { year: '2025', label: 'M.Sc. Interactive Digital Media begins', place: 'Trinity College Dublin' },
-    { year: '2026', label: 'Research Assistant, UX/Interaction Designer', place: 'ADAPT Research Centre' },
+    { year: '2026', label: 'Product Design Engineer', place: 'Cimelium · ADAPT, Trinity College Dublin' },
 ];
 
 const INTEREST_STATS = [
@@ -24,7 +24,7 @@ const INTEREST_STATS = [
 const FAQS = [
     {
         q: 'What kind of products do you design?',
-        a: "Everything from an AI design-system generator to full e-commerce and community platforms, with a UX research study on food delivery apps in between. I'm drawn to work that sits between a real interface and a real backend, right now that's a research role at ADAPT auditing datasets and testing generative AI workflows, and before that shipping products end to end as both the designer and the person who built them.",
+        a: "Everything from a Dublin housing tool for students and an AI design-system generator to full e-commerce and community platforms, with a UX research study on food delivery apps in between. I'm drawn to work that sits between a real interface and a real backend. Right now that's Cimelium, an AI platform for the art market, where I design the brand, site and product and own the product decisions behind its engineering. Before that I shipped products end to end as both the designer and the person who built them.",
     },
     {
         q: 'What got you into design?',
@@ -32,7 +32,7 @@ const FAQS = [
     },
     {
         q: 'How do you use AI in your work?',
-        a: "Mostly as a collaborator for the parts of the process that reward speed: synthesising research, drafting variations, stress-testing my own assumptions. StyleBook AI, one of my shipped products, generates a full design system from a written brand brief, and every colour pairing it proposes gets measured and corrected in code rather than trusted outright. At ADAPT the work is the other side of that same question, auditing and normalising the datasets generative models get trained on.",
+        a: "Mostly as a collaborator for the parts of the process that reward speed: synthesising research, drafting variations, stress-testing my own assumptions. StyleBook AI, one of my shipped products, generates a full design system from a written brand brief, and every colour pairing it proposes gets measured and corrected in code rather than trusted outright. At Cimelium I direct an AI-agent engineering workflow, and the rule is the same: every stage is checked by something other than the agent that did the work.",
     },
     {
         q: 'Where are you based, and are you eligible to work?',
@@ -41,10 +41,10 @@ const FAQS = [
 ];
 
 const CAPABILITIES = [
-    { area: 'PRODUCT', items: 'Research · Requirements · Prioritisation · Product Analytics · Testing' },
-    { area: 'TECHNOLOGY', items: 'Python · SQL · React · JavaScript · REST APIs · AI/LLM workflows' },
-    { area: 'DESIGN', items: 'UX · Interaction Design · Prototyping · Information Architecture · Usability Testing' },
-    { area: 'DATA', items: 'Analysis · Visualisation · Funnel Analysis · Structured Problem Solving' },
+    { area: 'DESIGN', items: 'Product design · UX research · Interaction design · Design systems · Prototyping · Usability testing · Figma' },
+    { area: 'ENGINEERING', items: 'React · TypeScript · JavaScript · Python · SQL · Postgres / Supabase · AI agent workflows' },
+    { area: 'DATA', items: 'Product analytics · Survey research · Data visualisation · Data pipelines' },
+    { area: 'PRODUCT', items: 'Requirements · Prioritisation · Scope and trade-offs · Acceptance testing' },
 ];
 
 const Chip = ({ children }) => (
@@ -140,7 +140,7 @@ const About = () => {
                             I started in computer science, not design, at Anurag University in Hyderabad. The pivot happened during an internship at Divine Labs, restructuring dashboards nobody could actually navigate, and realising the interesting problem wasn't the code underneath, it was the decisions about what a person sees first and what they never need to see at all.
                         </p>
                         <p style={{ fontSize: '1.08rem', lineHeight: 1.8, marginBottom: '1.5rem' }}>
-                            That's what took me from a Product Associate role at DreamWeavers, shaping requirements alongside engineers, to Trinity College Dublin for a Master's in Interactive Digital Media, and now to a research role at ADAPT, where the work is closer to the technical side again, dataset auditing and structured testing for generative AI workflows. The pattern underneath all of it is the same: engineering background, design instincts, and an unwillingness to leave a decision unexamined just because it's inconvenient to check.
+                            That's what took me from a Product Associate role at DreamWeavers, shaping requirements alongside engineers, to Trinity College Dublin for a Master's in Interactive Digital Media, and now to Cimelium, an Enterprise Ireland funded startup at ADAPT, Trinity College Dublin, where I'm the Product Design Engineer: I designed the brand, the site and the product, and I own the product decisions behind the engineering. The pattern underneath all of it is the same: engineering background, design instincts, and an unwillingness to leave a decision unexamined just because it's inconvenient to check.
                         </p>
                         <blockquote style={{ borderLeft: `3px solid ${RULE}`, paddingLeft: '1.5rem', margin: '1.75rem 0' }}>
                             <span style={{ fontFamily: "'Caveat', cursive", fontSize: '1.9rem', color: INK, lineHeight: 1.3 }}>
@@ -238,7 +238,7 @@ const About = () => {
 
             {/* What I bring */}
             <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '3rem clamp(1.25rem,3vw,3rem)' }}>
-                <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.72rem', letterSpacing: '0.14em', fontWeight: 700, color: MUTED, display: 'block', marginBottom: '1.75rem' }}>WHAT I WORK ACROSS</span>
+                <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.72rem', letterSpacing: '0.14em', fontWeight: 700, color: MUTED, display: 'block', marginBottom: '1.75rem' }}>WHAT I WORK WITH</span>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '2rem', marginBottom: '2.5rem' }}>
                     {CAPABILITIES.map((c) => (
                         <div key={c.area} style={{ borderTop: `2px solid ${INK}`, paddingTop: '0.9rem' }}>

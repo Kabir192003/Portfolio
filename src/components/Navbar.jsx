@@ -8,7 +8,6 @@ const LINKS = [
     { to: '/about', label: 'About' },
     { to: '/experience', label: 'Experience' },
     { to: '/education', label: 'Education' },
-    { to: '/research', label: 'Research' },
 ];
 
 const Navbar = () => {
@@ -31,7 +30,7 @@ const Navbar = () => {
             <div style={styles.container} className="container site-nav-inner">
                 <NavLink to="/" style={styles.logoLink}>
                     <LogoMark size={26} />
-                    <span style={styles.logoText}>KABIROSCOPE</span>
+                    <span style={styles.logoText}>KABIR SHARMA</span>
                 </NavLink>
 
                 {/* Desktop links */}

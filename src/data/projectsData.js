@@ -4,6 +4,7 @@
 export const projectsData = {
     project1: {
         title: `Trek Mate`,
+        glance: { problem: `Hikers plan their pack in one app and shop in another, and work out whether a lighter item is worth it in a spreadsheet.`, did: `Designed and built it alone: positioning, design system, UX and the React and TypeScript app.`, shipped: `A live gear store with a Pack Planner that shows your base weight and ranks lighter swaps by cost per gram saved.`, result: `On the sample pack, the top three swaps take base weight from 7.99 kg to 6.09 kg for $379, verified end to end in a real browser.` },
         problemStatement: `People trying to carry less plan in one place and shop in another. Pack apps add up weights but sell nothing; gear stores sell one product at a time and quote the maker's weight. So the real question, "is this lighter tent worth the money for my pack?", gets worked out by hand in a spreadsheet.`,
         tagline: `An outdoor gear store for independent makers, designed around the whole pack instead of the single product`,
         category: `E-commerce · Product Design`,
@@ -128,6 +129,7 @@ export const projectsData = {
     },
     project2: {
         title: `Work Hive`,
+        glance: { problem: `Recruiters skim self-reported resumes, and the strongest proof, a colleague who will vouch for you, arrives last.`, did: `Designed and built it alone, from a high-fidelity prototype to a production build on Supabase.`, shipped: `A live hiring platform with 18 screens where named, job-specific endorsements travel with each application.`, result: `Every screen on real Postgres tables, and the security boundary tested from a second account.` },
         problemStatement: `Hiring runs on self-reported resumes that recruiters skim quickly and find hard to trust. The strongest signal, a colleague who will vouch for your work, usually appears only at the reference check near the end, after most decisions are made. Work Hive moves that proof to the front of the application.`,
         tagline: `A hiring platform where named, job-specific endorsements from real colleagues travel with your application`,
         category: `Full-Stack Platform · Product Design`,
@@ -242,6 +244,7 @@ export const projectsData = {
     },
     project3: {
         title: `The Hunger Games`,
+        glance: { problem: `Swiggy and Zomato solve the same problem in opposite ways, and app-store ratings can't show where each one wins or loses people.`, did: `Ran the study alone: a heuristic review of both apps, then a stage-by-stage survey of 48 active users.`, shipped: `Five principles for high-frequency transactional apps and prioritised recommendations for both platforms.`, result: `800+ data points analysed. For delivery, speed to checkout beat discovery features, and tracking was the strongest driver of trust.` },
         problemStatement: `Swiggy and Zomato do the same job but make opposite bets: one on speed, one on discovery. App-store ratings blend the whole journey into a single star, so they can't show where each app wins or loses trust. This study breaks the journey into stages to find out.`,
         tagline: `Swiggy vs Zomato: a mixed-methods study of two apps solving the same problem in opposite ways`,
         category: `UX Research · Comparative Analysis`,
@@ -361,6 +364,7 @@ export const projectsData = {
     },
     project5: {
         title: `This or That`,
+        glance: { problem: `Small everyday decisions get lost in chronological feeds that don't match what you know about.`, did: `Technical lead and product designer on a team of four: data model, API, the whole React front end and the UX.`, shipped: `A deployed full-stack poll platform with an interest-matched feed and anonymous posting, built in three months.`, result: `Used by 25+ beta testers on the live app.` },
         problemStatement: `Small decisions, like which laptop or which framework, get asked on forums built for long debate, where they get buried or derailed. The ones that feel personal often never get asked at all. People need a fast read on what others would pick, from people who know the topic, without exposing themselves.`,
         tagline: `A community decision platform: ask an either-or question, get a fast, relevant answer. Designed and built as the team's technical lead.`,
         category: `Full-Stack Platform · Group Project`,
@@ -458,6 +462,7 @@ export const projectsData = {
     },
     project6: {
         title: `StyleBook AI`,
+        glance: { problem: `Setting up a design system means juggling separate tools for colour, type and accessibility, and checking everything by hand.`, did: `My idea. Surveyed 200+ designers with the team, then led four people as project lead and wrote nearly all of the code (207 of 212 commits).`, shipped: `A live app that turns a written brand brief into a checked design system, exporting to 9 code formats and to Figma through a published plugin.`, result: `Every AI-proposed colour pair is measured and repaired in code. Presented at a three-day public showcase.` },
         problemStatement: `Designers juggle a different app for every part of a design system: one for colour, another for fonts, another for accessibility. Nothing connected those steps, so checking happened by hand across separate tools. StyleBook AI turns one written brand description into a single verified, exportable system.`,
         tagline: `A written brand description in, a verified, exportable design system out. Built and shipped with a team of four.`,
         category: `AI Product · Design Systems · Team Lead`,
@@ -473,7 +478,7 @@ export const projectsData = {
         impactMetrics: [
             { label: `Colours, fonts & themes in the library`, value: `1,922 / 1,933 / 90` },
             { label: `Export formats, plus Figma & PDF`, value: `9` },
-            { label: `Commits, mine of 212`, value: `207` }
+            { label: `Designers surveyed`, value: `200+` }
         ],
         tools: [`Next.js 14 · TypeScript · Tailwind`, `Google Gemini for generation`, `Supabase · Zustand · Zod`, `Figma Plugin API`],
         users: [
@@ -502,7 +507,7 @@ export const projectsData = {
         ],
         process: [
             { step: `01`, title: `Analyse what already exists`, desc: `Before designing anything, I studied the competitors: the tools designers already use for colour, type and accessibility. Each does one slice of the job well. Nothing on the market did the whole job in one place.` },
-            { step: `02`, title: `Name the problem I live with as a designer`, desc: `To set up one design system you jump between many different apps: one for fonts, one for colours, another for accessibility, and more. Nothing existing solved that scattered workflow end to end, so that gap became the brief.` },
+            { step: `02`, title: `Name the problem, then survey 200+ designers`, desc: `To set up one design system you jump between many different apps: one for fonts, one for colours, another for accessibility, and more. We surveyed more than 200 designers to check that this scattered workflow was a shared problem, not just mine, and that gap became the brief.` },
             { step: `03`, title: `Pitch the idea, then build it with the team`, desc: `StyleBook AI was my own idea. I pitched it to the team, they received it well, and we committed to building it together, with me leading the work.` },
             { step: `04`, title: `Split scope by what could ship first`, desc: `Debated a narrower "nice colour tool" against the fuller pipeline. Chose to build the browsable library first, since it works with zero AI, and treat generation as a layer on top, so there was always something real to show, even mid-build.` },
             { step: `05`, title: `Get the token architecture right first`, desc: `A full quiet week (week 5) went into the layering model alone: raw palette values feeding derived semantic roles, feeding an alias layer that components actually read, with per-component overrides on top. Getting that order wrong would have been expensive to unwind later.` },
@@ -568,6 +573,7 @@ export const projectsData = {
     },
     project7: {
         title: `PawFect`,
+        glance: { problem: `A dog's care is spread across a paper vaccine book, WhatsApp and phone calls, and the bill arrives last.`, did: `As Product Associate at DreamWeavers I owned the requirements: market and customer research, use cases, specifications and priorities, and contributed to the UI.`, shipped: `A 30+ screen app for a Hyderabad vet and grooming clinic: booking, a digital health passport, reminders from the record, chat and UPI payments.`, result: `Requirements for all six areas of the brief, written as rules engineering could build and QA could test.` },
         problemStatement: `A dog's care is spread across a paper vaccination book, WhatsApp reminders, the clinic's phone line and a bill that only arrives at the end. Owners miss boosters and find out the price too late, while the clinic spends its day on the phone. PawFect puts the whole relationship between an owner, their dog and their clinic into one app.`,
         tagline: `A pet care app for a veterinary and grooming clinic in Hyderabad: book in a few taps, carry a digital health passport, and see every price before you pay`,
         category: `Mobile App · Product Requirements · UX`,
@@ -737,6 +743,7 @@ export const projectsData = {
     },
     project8: {
         title: `Settld`,
+        glance: { problem: `Students sign Dublin leases for places they have never seen, on rent figures and commutes they cannot check.`, did: `Surveyed 300+ students across several universities, then designed and built the whole product alone: research, UX, visual design, data pipeline and routing.`, shipped: `A live web app that ranks 106 Dublin areas by your share of the rent, the real journey to college at 8am and nearby groceries and jobs, with the source of every number shown.`, result: `Rent model back-tested against 132 published figures, with a 2% median error. Pre-launch, so no usage numbers yet.` },
         problemStatement: `Every year thousands of students land in Dublin and sign a lease for a place they have never seen, in one of the most expensive rental markets in Europe. The rent figures are scattered, the commute is a guess, and the listing sites only show what a landlord wants shown. Settld lets a student compare Dublin areas on rent, the real timetabled journey to their college, groceries and part-time work, and says where every number came from.`,
         tagline: `A free, open-data tool that helps students and renters choose where to live in Dublin before they sign a lease, with the source and confidence of every figure shown`,
         category: `Web App · Product Design · Data · Full Stack`,
@@ -747,13 +754,13 @@ export const projectsData = {
         device: `desktop`,
         overview: [
             `Settld (built as Which Dublin) is a web app for students and renters choosing where to live in Dublin. You pick your college, how you will live (own one-bed, a room in a shared two, three or four-bed), a monthly budget and how you will travel. It ranks the city's areas for you and shows, for each one, your monthly share of the rent, the real door-to-door journey at 8am, the nearest Lidl, Aldi and Tesco, and where the part-time jobs are.`,
-            `I built it because I was the user. Moving to Dublin for my master's, I could not answer the simplest question: if I live here, how long is my journey and what will it really cost me? Everything I found was either a listing site with an agenda or a forum thread from three years ago.`,
+            `I built it because I was the user. Moving to Dublin for my master's, I could not answer the simplest question: if I live here, how long is my journey and what will it really cost me? Everything I found was either a listing site with an agenda or a forum thread from three years ago. Before building, I surveyed more than 300 students from several universities, online and in person, about the housing and commute problems they face, and designed around what they told me.`,
             `It is designed, built and deployed by me alone, on open government data only: no listing scraping, no accounts, no cookies and no tracking. It is live and pre-launch, so I make no claims about usage here, and say plainly below what is shipped and what is only designed.`
         ],
         impactMetrics: [
+            { label: `Students surveyed across universities`, value: `300+` },
             { label: `Dublin areas compared`, value: `106` },
-            { label: `Rent figures back-tested, median error`, value: `2%` },
-            { label: `Accounts, cookies or trackers`, value: `0` }
+            { label: `Median error, 132 rent figures back-tested`, value: `2%` }
         ],
         tools: [`React`, `Vite`, `MapLibre GL`, `Postgres (Neon)`, `GTFS and GTFS-Realtime`, `Own routing engine`, `Vercel`, `User research`, `UX and visual design`],
         users: [
@@ -782,7 +789,7 @@ export const projectsData = {
             { title: `Open data only`, desc: `Government and open sources, no listing scraping. It can be checked, reproduced and kept up to date without a licence.` }
         ],
         process: [
-            { step: `01`, title: `Start from my own problem`, desc: `I moved to Dublin as a student and could not answer where to live and what it would cost me. I wrote down the questions I was actually asking and used them as the brief.` },
+            { step: `01`, title: `Start from my own problem, then test it`, desc: `I moved to Dublin as a student and could not answer where to live and what it would cost me. To check it wasn't just me, I surveyed 300+ students from several universities about the housing and commute problems they face, through a Google Forms survey and in-person conversations. Their answers set the brief: rent they could trust, the real commute, and what is nearby.` },
             { step: `02`, title: `Check the data before designing`, desc: `Before any interface I confirmed what open data could support: RTB rents through the CSO, NTA timetables and live feed, OpenStreetMap for shops and Wikipedia for area context. I only designed what the data could back.` },
             { step: `03`, title: `Choose the smaller, sharper problem`, desc: `I scoped to students first, with nine colleges and 25 home sizes and types, rather than "all renters, everywhere". Narrow enough to get right, and the foundation for widening later.` },
             { step: `04`, title: `Build my own routing`, desc: `Journey planners answer one trip at a time. To rank 106 areas I wrote a Connection Scan Algorithm over the timetable data, which also runs in the browser so nothing about the user's trip leaves their device.` },
@@ -883,7 +890,7 @@ export const projectsData = {
             `A design language where every figure carries its source, confidence and date, including on the screens where it would be easier not to.`,
             `Practical guides (part-time work, settling in, renting safely) built from official sources, each dated and linked.`
         ],
-        reflections: `The most important decision in Settld was a design one: to treat trust as the product. A rent figure with no source is worth nothing to someone about to pay a deposit, so provenance, confidence and the back-test became features rather than footnotes. The two bugs that shaped it were both found by looking at the output, not the code, which is why I now check data the way I check an interface. The honest gaps matter as well: it is pre-launch, so I have no usage numbers, I have not run documented usability tests with students yet, and the bus stop lookup is designed but not built. Next I would put it in front of real incoming students, instrument the plan above, and ship the stop lookup.`,
+        reflections: `The most important decision in Settld was a design one: to treat trust as the product. A rent figure with no source is worth nothing to someone about to pay a deposit, so provenance, confidence and the back-test became features rather than footnotes. The two bugs that shaped it were both found by looking at the output, not the code, which is why I now check data the way I check an interface. The honest gaps matter as well: the 300+ student survey shaped what to build, but it is not the same as watching people use it. It is pre-launch, so I have no usage numbers, I have not yet run usability tests on the built product, and the bus stop lookup is designed but not built. Next I would run task-based tests with incoming students, instrument the plan above, and ship the stop lookup.`,
 
         heroImage: `./settld/desktop-start.jpg`
     },

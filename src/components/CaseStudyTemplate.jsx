@@ -130,7 +130,26 @@ const CaseStudyTemplate = ({ project, nextProject, decisionsNote, decisionsHeadi
 
             <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '3.5rem clamp(1.25rem, 3vw, 2rem) 0', display: 'flex', flexDirection: 'column', gap: '4rem' }}>
 
-                {project.problemStatement && (
+                {project.glance && (
+                    <section aria-label="At a glance" style={{ border: `2px solid ${INK}`, background: '#fff' }}>
+                        <div style={{ padding: '0.7rem 1.1rem', borderBottom: `2px solid ${INK}`, background: INK, color: '#f2f0ea', fontFamily: MONO, fontSize: '0.72rem', letterSpacing: '0.16em', textTransform: 'uppercase' }}>At a glance · 30-second read</div>
+                        <div className="cs-glance" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))' }}>
+                            {[
+                                ['The problem', project.glance.problem],
+                                ['What I did', project.glance.did],
+                                ['What shipped', project.glance.shipped],
+                                ['Result', project.glance.result],
+                            ].map(([label, text], i) => (
+                                <div key={label} style={{ padding: '1.1rem 1.25rem', borderRight: i % 2 === 0 ? `1px solid ${INK}` : 'none', borderTop: i > 1 ? `1px solid ${INK}` : 'none' }}>
+                                    <span style={{ display: 'block', fontFamily: MONO, fontSize: '0.68rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: RULE, fontWeight: 700, marginBottom: '0.4rem' }}>{label}</span>
+                                    <p style={{ fontSize: '1rem', lineHeight: 1.6, margin: 0 }}>{text}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
+                )}
+
+                {project.problemStatement && !project.glance && (
                     <section style={{ borderLeft: `4px solid ${RULE}`, paddingLeft: '1.25rem' }}>
                         <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.72rem', letterSpacing: '0.16em', textTransform: 'uppercase', color: RULE }}>Problem statement</span>
                         <p style={{ fontSize: 'clamp(1.15rem, 2vw, 1.4rem)', lineHeight: 1.6, marginTop: '0.6rem', maxWidth: '820px' }}>{project.problemStatement}</p>
@@ -379,9 +398,11 @@ const CaseStudyTemplate = ({ project, nextProject, decisionsNote, decisionsHeadi
 
             <style>{`
                 @media (max-width: 720px) {
-                    .cs-decision-row, .cs-metric-row, .cs-diff-points {
+                    .cs-decision-row, .cs-metric-row, .cs-diff-points, .cs-glance {
                         grid-template-columns: 1fr !important;
                     }
+                    .cs-glance > div { border-right: none !important; border-top: 1px solid ${INK} !important; }
+                    .cs-glance > div:first-child { border-top: none !important; }
                     .cs-metric-row { gap: 0.4rem !important; }
                     .cs-decision-row > div {
                         order: initial !important;

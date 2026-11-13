@@ -6,8 +6,8 @@ const Footer = () => {
         <footer style={styles.footer} className="site-footer">
             <div className="container site-footer-inner" style={styles.container}>
                 <div style={styles.left}>
-                    <p style={styles.wordmark}>kabiroscope</p>
-                    <p style={styles.text}>Product & interaction design, looked at closely.</p>
+                    <p style={styles.wordmark}>Kabir Sharma</p>
+                    <p style={styles.text}>Product Design Engineer · Dublin · Stamp 1G</p>
                     <p style={styles.privacy}>Visits are counted anonymously, with no cookies.</p>
                 </div>
                 <div style={styles.links} className="site-footer-links">
@@ -20,6 +20,7 @@ const Footer = () => {
                     >
                         LinkedIn
                     </a>
+                    <a href="https://github.com/Kabir192003" style={styles.link} target="_blank" rel="noreferrer">GitHub</a>
                     <span style={styles.copyright}>© {new Date().getFullYear()}</span>
                 </div>
             </div>

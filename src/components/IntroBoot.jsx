@@ -41,18 +41,18 @@ const IntroBoot = () => {
 
         const pctInterval = setInterval(() => {
             setPct((p) => {
-                const next = Math.min(100, p + 4);
+                const next = Math.min(100, p + 9);
                 if (next === 100) clearInterval(pctInterval);
                 return next;
             });
-        }, 55);
+        }, 40);
 
         BOOT_LINES.forEach((_, i) => {
-            timers.current.push(setTimeout(() => setLineIdx(i), 200 + i * 420));
+            timers.current.push(setTimeout(() => setLineIdx(i), 120 + i * 200));
         });
 
-        timers.current.push(setTimeout(() => setWiping(true), 1900));
-        timers.current.push(setTimeout(() => setVisible(false), 2650));
+        timers.current.push(setTimeout(() => setWiping(true), 950));
+        timers.current.push(setTimeout(() => setVisible(false), 1500));
 
         return () => {
             clearInterval(pctInterval);

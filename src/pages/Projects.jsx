@@ -13,23 +13,23 @@ const WORKS = [
     {
         num: '01', id: 'settld', title: 'Settld', tags: ['FLAGSHIP', 'DATA', 'FULL STACK'], year: '2026',
         role: projectsData.project8.role,
-        status: 'LIVE · PRE-LAUNCH',
+        status: 'LIVE',
         stack: projectsData.project8.tools.join(' · '),
-        desc: 'A free, open-data tool that helps students choose where to live in Dublin: rent, the real journey to college and where the jobs are, with the source and confidence of every number shown.',
+        desc: 'Built after surveying 300+ students: a free, open-data tool that helps students choose where to live in Dublin, by rent, the real journey to college and where the jobs are, with the source of every number shown.',
         img: './settld/desktop-start.jpg',
     },
     {
         num: '02', id: 6, title: 'StyleBook AI', tags: ['AI PRODUCT', 'TEAM LEAD', 'FIGMA PLUGIN'], year: '2026',
         role: projectsData.project6.role,
-        status: 'LIVE — SHIPPED',
+        status: 'LIVE',
         stack: projectsData.project6.tools.join(' · '),
-        desc: 'Led a team of four, wrote nearly all of the implementation, and shipped it as a working Figma plugin — a verified, exportable design system generated from a written brand description.',
+        desc: 'Shaped by a survey of 200+ designers. I led a team of four, wrote nearly all of the code and shipped it as a Figma plugin: a checked, exportable design system from a written brand brief.',
         img: './stylebook/sb-hero-bg.jpg',
     },
     {
         num: '03', id: 'data-viz', title: 'Global Health & Wealth', tags: ['DATA VIZ', 'INTERACTIVE'], year: '2026',
         role: 'Designer and developer. Chart design, scales and interaction',
-        status: 'LIVE — PLAYABLE',
+        status: 'LIVE · PLAYABLE',
         stack: 'Processing · Canvas · CSV data',
         desc: 'An interactive bubble chart of 186 countries: hover any bubble for its data, click the legend to filter regions. Open it and play.',
         img: './msc/data-viz/banner.jpg',
@@ -37,7 +37,7 @@ const WORKS = [
     {
         num: '04', id: 'pawfect', title: 'PawFect', tags: ['MOBILE APP', 'PRODUCT REQUIREMENTS'], year: '2025',
         role: projectsData.project7.role,
-        status: 'CLIENT PROJECT · DREAMWEAVERS',
+        status: 'CLIENT WORK',
         stack: projectsData.project7.tools.join(' · '),
         desc: 'A pet care app for a veterinary clinic in Hyderabad, from my time at DreamWeavers: book in a few taps, carry a digital health passport, get reminders from the record and see every price before you pay.',
         img: './pawfect/pf-cover.jpg',
@@ -45,7 +45,7 @@ const WORKS = [
     {
         num: '05', id: 1, title: 'Trek Mate', tags: ['E-COMMERCE', 'MOBILE'], year: '2026',
         role: projectsData.project1.role,
-        status: 'LIVE — SHIPPED',
+        status: 'LIVE',
         stack: projectsData.project1.tools.join(' · '),
         desc: 'An outdoor gear store for independent makers, designed around the whole pack: plan your kit, see your base weight, buy only what makes it lighter.',
         img: './trekmate-v3/tm3-hero.jpg',
@@ -53,7 +53,7 @@ const WORKS = [
     {
         num: '06', id: 2, title: 'Work Hive', tags: ['WEB PLATFORM', 'FULL STACK'], year: '2026',
         role: projectsData.project2.role,
-        status: 'LIVE — SHIPPED',
+        status: 'LIVE',
         stack: projectsData.project2.tools.join(' · '),
         desc: 'A hiring platform where named, job-specific endorsements from real colleagues travel with your application. Live on a real Postgres backend.',
         img: './workhive/hero.jpg',
@@ -69,9 +69,9 @@ const WORKS = [
     {
         num: '08', id: 5, title: 'This or That', tags: ['FULL STACK'], year: '2026',
         role: projectsData.project5.role,
-        status: 'LIVE — SHIPPED',
+        status: 'LIVE',
         stack: projectsData.project5.tools.join(' · '),
-        desc: 'A deployed community decision platform — React, Node, Express, MongoDB — with an algorithm-driven feed and anonymous posting.',
+        desc: 'A deployed community decision platform (React, Node, Express, MongoDB) with an algorithm-driven feed and anonymous posting.',
         img: './tot-hero-bg.jpg',
     },
 ];
@@ -122,25 +122,15 @@ const Projects = () => {
             transition={{ duration: 0.4 }}
             style={{ background: PAPER, color: INK, fontFamily: "'JetBrains Mono', monospace" }}
         >
-            {/* Telemetry crosshair — decorative, follows the cursor */}
-            <div
-                ref={crosshairRef}
-                style={{ position: 'fixed', top: 0, left: 0, width: 1, height: 1, zIndex: 5, pointerEvents: 'none', transform: 'translate(-9999px,-9999px)' }}
-            >
-                <div style={{ position: 'absolute', left: -9000, top: 0, width: 18000, height: 1, background: 'rgba(46,43,239,0.2)' }} />
-                <div style={{ position: 'absolute', top: -9000, left: 0, width: 1, height: 18000, background: 'rgba(46,43,239,0.2)' }} />
-                <span ref={labelRef} style={{ position: 'absolute', top: 8, left: 10, fontFamily: "'JetBrains Mono', monospace", fontSize: '0.62rem', letterSpacing: '0.05em', color: RULE, whiteSpace: 'nowrap', background: PAPER, padding: '1px 4px' }}>X 0000 · Y 0000</span>
-            </div>
-
             <div style={{ borderTop: `4px solid ${INK}` }} />
 
             <div style={{ padding: '4rem clamp(1.25rem,3vw,3rem) 2.5rem' }}>
-                <span style={{ fontSize: '0.72rem', letterSpacing: '0.2em', color: FAINT, textTransform: 'uppercase' }}>LOG // {String(WORKS.length).padStart(2, '0')} ENTRIES CAPTURED</span>
+                <span style={{ fontSize: '0.72rem', letterSpacing: '0.2em', color: FAINT, textTransform: 'uppercase' }}>{String(WORKS.length).padStart(2, '0')} CASE STUDIES · DESIGNED AND BUILT BY ME</span>
                 <h1 style={{ fontFamily: "'Anton', sans-serif", fontSize: 'clamp(3rem, 10vw, 7.5rem)', lineHeight: 0.88, textTransform: 'uppercase', margin: '0.6rem 0 0' }}>
-                    Selected<br />Traces<span style={{ color: RULE }}>.</span>
+                    Work<span style={{ color: RULE }}>.</span>
                 </h1>
                 <p style={{ maxWidth: '560px', fontSize: '1rem', lineHeight: 1.65, color: MUTED, marginTop: '1.5rem' }}>
-                    Seven products and a data visualisation, run through their paces. Hover an entry to pull it up on the scope: role, status and stack on the right update live.
+                    Seven products and a data visualisation. Five are live, so you can use them, not just read about them. Open any project for the full case study.
                 </p>
             </div>
             <div style={{ borderTop: `1px solid ${INK}` }} />
@@ -187,10 +177,11 @@ const Projects = () => {
                                             <span key={tg} style={{ border: `1px solid ${INK}`, fontSize: '0.65rem', letterSpacing: '0.05em', padding: '3px 8px' }}>{tg}</span>
                                         ))}
                                     </div>
+                                    <p className="works-row-desc" style={{ fontSize: '0.85rem', lineHeight: 1.6, color: MUTED, margin: '0.7rem 0 0', fontFamily: "'Source Serif 4', Georgia, serif" }}>{w.desc}</p>
                                 </div>
                                 <div style={{ textAlign: 'right', flex: 'none' }}>
                                     <span style={{ display: 'block', fontSize: '0.72rem', color: FAINT, letterSpacing: '0.08em' }}>{w.year}</span>
-                                    <span style={{ display: 'block', fontSize: '0.72rem', color: MUTED, marginTop: '0.2rem' }}>SHEET {w.num}</span>
+                                    <span style={{ display: 'block', fontSize: '0.72rem', color: MUTED, marginTop: '0.2rem' }}>{w.status}</span>
                                 </div>
                                 <div style={{ position: 'absolute', left: 0, bottom: -1, height: 2, background: RULE, width: isActive ? '100%' : '0%', transition: 'width 0.35s cubic-bezier(0.16,1,0.3,1)' }} />
                             </motion.div>
@@ -205,8 +196,8 @@ const Projects = () => {
                             <div className="scope-sweep" />
 
                             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0.75rem 1rem', borderBottom: '1px solid rgba(242,240,234,0.15)' }}>
-                                <span style={{ fontSize: '0.65rem', letterSpacing: '0.12em', color: PAPER }}>SCOPE.FEED</span>
-                                <span style={{ fontSize: '0.65rem', letterSpacing: '0.1em', color: RULE }}>FRAME {String(active + 1).padStart(2, '0')}/{String(WORKS.length).padStart(2, '0')}</span>
+                                <span style={{ fontSize: '0.65rem', letterSpacing: '0.12em', color: PAPER }}>PREVIEW</span>
+                                <span style={{ fontSize: '0.65rem', letterSpacing: '0.1em', color: RULE }}>{String(active + 1).padStart(2, '0')} OF {String(WORKS.length).padStart(2, '0')}</span>
                             </div>
 
                             <div style={{ position: 'relative', aspectRatio: '4/3', overflow: 'hidden' }}>
@@ -233,13 +224,9 @@ const Projects = () => {
                             <p style={{ padding: '1.1rem', margin: 0, fontSize: '0.85rem', lineHeight: 1.65, color: '#cfcdc4', borderBottom: '1px solid rgba(242,240,234,0.15)' }}>{ap.desc}</p>
 
                             <Link to={`/projects/${ap.id}`} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '1rem', color: PAPER, textDecoration: 'none', fontSize: '0.78rem', letterSpacing: '0.08em', textTransform: 'uppercase' }} className="scope-run-link">
-                                <span>Run case study</span>
+                                <span>Read the case study</span>
                                 <span>→</span>
                             </Link>
-                        </div>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '0.75rem', fontSize: '0.68rem', color: FAINT, letterSpacing: '0.06em' }}>
-                            <span>53.3498°N · SHEET {ap.num}</span>
-                            <span>SIGNAL LOCKED</span>
                         </div>
                     </div>
                 </div>
@@ -250,7 +237,7 @@ const Projects = () => {
                 <span style={{ fontSize: '0.8rem', letterSpacing: '0.08em', color: RULE }}>OPEN →</span>
             </Link>
             <div style={{ borderTop: `1px solid ${INK}`, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '1rem clamp(1.25rem,3vw,3rem)', flexWrap: 'wrap', gap: '0.75rem' }}>
-                <span style={{ fontSize: '0.7rem', letterSpacing: '0.1em', color: MUTED }}>{String(WORKS.length).padStart(2, '0')} CASE STUDIES · 06 LIVE, SHIPPABLE</span>
+                <span style={{ fontSize: '0.7rem', letterSpacing: '0.1em', color: MUTED }}>{String(WORKS.length).padStart(2, '0')} CASE STUDIES · 05 LIVE PRODUCTS</span>
                 <span style={{ fontSize: '0.7rem', letterSpacing: '0.1em', color: MUTED }}>DUBLIN</span>
             </div>
             <div style={{ borderTop: `4px solid ${INK}` }} />
@@ -269,10 +256,14 @@ const Projects = () => {
                     pointer-events: none; z-index: 2;
                 }
                 .scope-run-link:hover { color: ${RULE} !important; }
+                .works-row-desc { display: none; }
                 @media (max-width: 860px) {
                     .works-grid { grid-template-columns: 1fr !important; }
                     .works-index { border-right: none !important; }
-                    .works-scope-col > div { position: relative !important; top: 0 !important; }
+                    .works-scope-col { display: none; }
+                    .works-row-desc { display: block; }
+                    .works-index > div { grid-template-columns: 36px 1fr !important; }
+                    .works-index > div > div:nth-child(3) { display: none; }
                 }
             `}</style>
         </motion.div>
