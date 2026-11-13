@@ -364,101 +364,142 @@ export const projectsData = {
     },
     project5: {
         title: `This or That`,
-        glance: { problem: `Small everyday decisions get lost in chronological feeds that don't match what you know about.`, did: `Technical lead and product designer on a team of four: data model, API, the whole React front end and the UX.`, shipped: `A deployed full-stack poll platform with an interest-matched feed and anonymous posting, built in three months.`, result: `Used by 25+ beta testers on the live app.` },
-        problemStatement: `Small decisions, like which laptop or which framework, get asked on forums built for long debate, where they get buried or derailed. The ones that feel personal often never get asked at all. People need a fast read on what others would pick, from people who know the topic, without exposing themselves.`,
-        tagline: `A community decision platform: ask an either-or question, get a fast, relevant answer. Designed and built as the team's technical lead.`,
-        category: `Full-Stack Platform · Group Project`,
-        timeline: `Feb to May 2026 · 3-month academic build`,
-        role: `Technical lead and product designer: architecture, backend, frontend and UX across a four-person team`,
-        liveLink: `https://cs7025-this-or-that.onrender.com/home.html`,
+        glance: { problem: `The first version worked, but it showed the live tally before you voted (so later votes copied the crowd), looked generic, and had security problems serious enough to block a public launch.`, did: `Audited every file, researched how crowds influence each other, then redesigned and rebuilt the product: research, product design and full-stack engineering.`, shipped: `A live two-sided decision app: vote first and then see the split, arguments grouped by side, verdicts called like an election, and a hardened Node and Postgres backend.`, result: `9 problem areas found (4 critical) and fixed, design grounded in 6 peer-reviewed or primary sources, 7 screens on desktop and mobile, 32 integration tests.` },
+        problemStatement: `This or That lets people post a decision they're stuck on and have the community vote. The first version worked, but it showed the running score before you voted, which research shows pulls later votes toward the leader. It also looked generic, displayed placeholder numbers, and had a committed database password and stored cross-site scripting. The redesign asked one question: what would a poll look like if every vote had to be honest?`,
+        tagline: `A community decision app, redesigned around one finding: people vote differently once they can see the crowd`,
+        category: `Product Redesign · Research · Full Stack`,
+        timeline: `Feb to May 2026 first build (team of four) · Nov 2026 redesign`,
+        role: `Research, product design and full-stack engineering. Technical lead on the first build, sole designer and engineer on the redesign`,
+        liveLink: `https://this-or-that-smoky.vercel.app/home.html`,
+        repoLink: `https://github.com/Kabir192003/CS7025-Voting_App`,
+        cover: `./tot2/tot-mockup.jpg`,
         overview: [
-            `This or That is a platform for the small decisions people make every day. You pose a dilemma as a poll, the community votes in one tap, and an optional discussion holds the reasoning. A feed matched to your declared interests surfaces the questions you're actually equipped to answer, instead of a chronological firehose.`,
-            `I was the technical lead on a four-person team at Trinity College Dublin and owned the system end to end: the data model, the API, the entire React frontend and the UX for every screen. It shipped live and was used by more than 25 beta testers during the course.`,
-            `The rest of the team contributed testing, content and coordination. With a fixed three-month deadline, the project lived or died on decisions made in the first two weeks, before a single screen existed.`
+            `This or That is a community decision app. You post a two-sided choice you're stuck on ("Lisbon or Porto for a first long weekend?"), other people vote, and you see where the crowd lands. It started as a CS7025 team project at Trinity College Dublin, where I was technical lead on a team of four, and the first version was used by more than 25 beta testers.`,
+            `This case study is about what came next. I went back and read every file of that first version: 6 controllers, 6 route files, 7 pages, a 2,223-line stylesheet, the schema and the seed scripts. The structure was sound, but I found 9 problem areas, 4 of them critical. Then I researched how crowds influence each other, and redesigned and rebuilt the product around what that research says.`,
+            `The redesign is live. The screens below are from it, shown on sample content: the people and decisions are fictional and generated for demonstration.`
         ],
         impactMetrics: [
-            { label: `System & database architecture`, value: `Solo` },
-            { label: `Time to a deployed MVP`, value: `3 Mos` },
-            { label: `Beta testers on the live app`, value: `25+` }
+            { label: `Problem areas in the audit, 4 critical`, value: `9` },
+            { label: `Peer-reviewed or primary sources behind the design`, value: `6` },
+            { label: `Integration tests against real Postgres`, value: `32` }
         ],
-        tools: [`React`, `Node.js`, `Express`, `MongoDB`, `Figma`],
+        tools: [`Research`, `Product design`, `Node.js`, `Express`, `Postgres (Supabase)`, `Vanilla JS`, `Zod`, `Helmet`],
         users: [
-            { who: `Askers`, need: `A quick, honest answer to an either-or question, including ones they wouldn't post under their own name.` },
-            { who: `Voters`, need: `Questions they can actually help with, and a way to contribute that takes one tap, not a paragraph.` }
+            { who: `Askers`, need: `An honest read on a decision they're stuck on, from people who weren't nudged by the votes already cast.` },
+            { who: `Voters`, need: `Questions worth answering, one tap to take part, and a reason to come back: finding out what the asker chose.` },
+            { who: `Lurkers`, need: `A way to see results without voting, without that view distorting the data for everyone else.` }
         ],
-        problem: `The tools people reach for when deciding are mismatched to the job. Forums like Reddit and Quora are built for depth: settling "Logitech MX Master or Apple Magic Mouse" means reading fifty comments of opinion and tangents. Social media polls are fast, but they reach whoever happens to follow you rather than people who know the topic, and they carry your name, which rules out anything personal. Nothing combined speed, a relevant audience and real anonymity.`,
+        problem: `A poll is only worth something if the votes are independent. The first version showed live percentages before you voted, and the research on social influence says that is the main threat to a poll's usefulness: in Salganik, Dodds and Watts' MusicLab study, letting people see download counts made outcomes more unequal and harder to predict, and in Muchnik, Aral and Taylor's experiment a single early upvote raised the chance of the next positive rating by about 32%. On top of that, the app had real problems: the production database password was committed to the repo, usernames and avatars reached innerHTML unescaped, the schema was out of sync with the code so a fresh install failed at sign-up, most topic picks were silently dropped, votes and comments shared one row, and the hero's "1,240 active votes" and the leaderboard were hard-coded.`,
         differentiator: {
             status: `Live`,
-            title: `Fast, relevant, and safe to ask`,
-            body: `This or That pairs a one-tap vote with an audience matched by declared interest, and lets sensitive questions be asked anonymously, with anonymity enforced by the server rather than hidden in the interface.`,
+            title: `Vote first, then see the crowd`,
+            body: `Results and arguments stay hidden until you vote. Everything else in the redesign follows from that rule: the binary format, the split bar, the verdict labels and the ranking.`,
             points: [
-                `One tap casts a vote and reveals the live split, so contributing costs nothing.`,
-                `The feed follows topics each user chose, logic a person can reason about, instead of an engagement model nobody can inspect.`,
-                `For career or relationship dilemmas, the API strips the author's identity from public responses while keeping the record intact internally.`,
-                `Discussion sits under the result for anyone who wants the why, never in front of it.`
+                `The feed shows only how many votes a decision has, never who is ahead, until you vote. Lurkers can choose "Just show me the results", which records a non-vote so the data stays clean.`,
+                `Strictly two sides, drawn as one split bar with a dashed 50% line borrowed from election-night graphics, so every result reads at a glance.`,
+                `Results are called like elections: Too early to call under 10 votes, Too close to call within 6 points, Leaning, and Landslide at 70% or more. One rule set on the server, used everywhere.`,
+                `Arguments are grouped by side and ranked by the Wilson lower bound of "convincing" marks, so a reader meets the best case for each option instead of a pile-on.`
             ]
         },
-        solution: `I designed around the decision moment. Someone asking "this or that?" wants an answer in minutes, not a debate, so every choice was judged by how much effort it removes. Voting is a single tap that resolves into the live result, because the platform collapses if voting feels like filling in a form. Posting is a two-field form by default and only expands into image fields when a poll needs them. A machine-learning ranking model was on the table early and I turned it down: three months and four developers was the wrong setting for a recommender nobody could inspect, and a platform for anonymous personal dilemmas needs a feed whose logic people can trust. So personalisation lives in the data model, through the interests users declare, where anyone on the team could read it and reason about it.`,
+        solution: `I treated the redesign as three problems in order: make it safe, make it honest, then make it feel like a product with a point of view. Safe meant secrets out of code, validation at the edge, a strict content security policy, rate limits, ownership checks and a database that enforces its own integrity. Honest meant designing from the research: hide the tally until you vote, never call a result on a small sample, always show n. And a point of view meant rejecting the defaults that make an app look generated (a purple gradient hero, Inter, three identical feature cards) for a visual system with two flat inks that always mean the same thing: denim for THIS, marigold for THAT. The product opens on a real feed with a decision you can vote on in the first screen.`,
+        principlesTitle: `Principles from the research`,
         principles: [
-            { title: `Contribution should cost one tap`, desc: `If voting takes effort, questions die unanswered. The primary action resolves instantly and shows its effect.` },
-            { title: `Relevance you can explain`, desc: `People should be able to say why a question is in their feed. Declared interests beat an engagement model for trust.` },
-            { title: `Anonymity is a backend promise`, desc: `Hiding a name in the UI is cosmetic. Real anonymity means removing it from what the API returns.` },
-            { title: `Depth on demand`, desc: `The answer first, the reasoning underneath. Discussion is there for people who want it, and never in the way.` }
+            { title: `Independence first`, desc: `Nothing on screen tells you how others voted until you've voted.` },
+            { title: `Honest numbers`, desc: `Always show n. Never call a result on a small sample.` },
+            { title: `One tap to take part`, desc: `Voting never needs a page load, a confirmation or an account prompt mid-flow.` },
+            { title: `Close the loop`, desc: `Askers report what they chose in the end, so voters learn whether their advice was taken.` }
         ],
         process: [
-            { step: `01`, title: `Frame the decision moment`, desc: `Defined the core job before any screen: ask in seconds, answer in one tap, see the result immediately. Every later choice was tested against it.` },
-            { step: `02`, title: `Data model before interface`, desc: `Designed the schemas for users, polls, votes and interests first, because the personalised feed depends entirely on that model being right.` },
-            { step: `03`, title: `One source of truth for four people`, desc: `Built high-fidelity Figma screens so the team shared one picture of layout and interaction, instead of four interpretations of a spec.` },
-            { step: `04`, title: `An API the team could build on`, desc: `Built REST endpoints for authentication, interest matching and voting: the layer everything else plugged into.` },
-            { step: `05`, title: `Frontend against the real backend`, desc: `Turned the designs into responsive React components wired straight to the real API rather than a mock, so integration problems surfaced early.` },
-            { step: `06`, title: `Own the seams`, desc: `Ran code reviews and merges as technical lead, keeping schemas and API contracts in sync while four people shipped against one codebase.` },
-            { step: `07`, title: `Let AI handle boilerplate, not architecture`, desc: `Used an AI assistant for repetitive endpoints and component scaffolding, and spent the time saved on what mattered under the deadline: the data model and the personalisation logic.` }
+            { step: `01`, title: `Audit every file`, desc: `Read the whole first version and logged 9 problem areas by severity. The 4 critical ones: a committed production database password, stored cross-site scripting, a schema out of sync with the code, and topics that silently did nothing.` },
+            { step: `02`, title: `Research how crowds behave`, desc: `Read the experiments on social influence (Salganik 2006, Muchnik 2013, Lorenz 2011). All three point the same way: visible tallies pull votes toward the leader. That became the core rule.` },
+            { step: `03`, title: `Check the claims I wanted to make`, desc: `A meta-analysis of 63 conditions found the choice-overload effect is close to zero, so "fewer choices are better" is not why it's binary. The real reason is legibility: one bar, one margin, one verdict.` },
+            { step: `04`, title: `Borrow ranking that already works`, desc: `"Rising" uses activity from the last 48 hours over (age + 2)^1.5, like Hacker News' time decay, and arguments rank by the Wilson lower bound so 2 out of 2 never beats 100 out of 101.` },
+            { step: `05`, title: `Design a system that isn't a default`, desc: `Two inks with fixed meanings, a condensed scoreboard face for numbers, a newsroom grotesk for text and a mono for counts. The first cobalt was too heavy in review, so it became a calmer denim that still passes AA.` },
+            { step: `06`, title: `Design seven screens`, desc: `Feed, poll detail, ask, profile, mobile feed, onboarding and a system sheet, on desktop and mobile, in light and dark.` },
+            { step: `07`, title: `Rebuild the backend to enforce the design`, desc: `Node, Express and Postgres on Supabase: votes separate from arguments, a composite foreign key so an option from another poll can't be used, row locks so counters never drift, and row-level security that shuts out the public API.` },
+            { step: `08`, title: `Test it, and say where AI helped`, desc: `32 integration tests against a real Postgres, including 30 simultaneous voters on one poll. I designed the canvas in Claude Design and used AI assistants on the code; the audit, the research and the decisions were mine.` }
         ],
         designDecisions: [
             {
-                image: `./tot-feed.png`,
-                title: `A feed you can explain`,
-                description: `The feed filters on topics a user chose during onboarding. That logic lives in the schema, not in a ranking pass bolted on afterwards, so the answer to "why am I seeing this?" is always one a person would recognise.`
+                image: `./tot2/d-feed.jpg`,
+                title: `A feed that shows the count, not the winner`,
+                description: `Each card shows the question, its context, two tappable options and only the number of votes so far, with "the split shows after you pick". Lenses (For you, Rising, Fresh, Needs votes, Saved) are real queries, which the first version's feeds were not: "New" used to call the same endpoint as "For you".`
             },
             {
-                image: `./tot-hero.png`,
-                title: `A vote that resolves in one tap`,
-                description: `Casting a vote is the platform's core action, so it had to feel weightless: one tap moves straight into the live percentage split, with the discussion anchored below for anyone who wants the reasoning, not just the number.`
+                image: `./tot2/d-feed-voted.jpg`,
+                title: `One tap, and the split slides in`,
+                description: `Voting needs no page load. After the tap, the card turns into the split bar with its verdict, the sample size and the margin, and tells you whether you sided with the majority. You can switch or undo for 10 minutes, then the vote locks.`
             },
             {
-                image: `./tot-ask.png`,
-                title: `Asking is as fast as sending a message`,
-                description: `Creating a poll starts as a two-field form and only expands into image uploads when the poll type needs them. Sensitive topics can be posted anonymously, with identity removed on the server.`
+                image: `./tot2/d-poll.jpg`,
+                title: `A results desk, not a pie chart`,
+                description: `The poll page reads like election night: big percentages on each side, a verdict ("Too close to call"), the margin and n, and a chart of how the split moved over time. Arguments sit below in columns for each side, sorted by how convincing readers found them.`
+            },
+            {
+                image: `./tot2/d-ask.jpg`,
+                title: `Help people ask better questions`,
+                description: `The composer shows a live preview of how voters will see the question, and a five-point question check: is it a question, are the options distinct, do they fit on a button, is there context, is a topic chosen. Well-written prompts are what drive participation.`
+            },
+            {
+                image: `./tot2/d-profile.jpg`,
+                title: `A record, not a vanity page`,
+                description: `The profile shows your decision record: votes cast, decisions asked, how often you side with the majority overall and by topic, and decisions waiting for you to report what you chose. It replaces hard-coded placeholders ("Kelly", ID TT-2025-00421) in the first version.`
+            },
+            {
+                image: `./tot2/d-onboarding.jpg`,
+                title: `Topics that actually work`,
+                description: `In the first version the interface offered 16 topics while the database held 6 differently named ones, so most picks were silently dropped. Now there are 12 topics, each tile shows an example question so the choice is concrete, and the feed starts from your picks.`
+            }
+        ],
+        flows: [
+            {
+                title: `On a phone, one decision at a time`,
+                desc: `The mobile layout keeps the same rules with a bottom bar for Decide, Saved, Ask and Record. Every percentage is printed as text as well as drawn, and THIS and THAT differ in lightness, not only hue, so they stay distinct for colour-blind users.`,
+                steps: [
+                    { image: `./tot2/m-feed.jpg`, caption: `The feed: vote count only, until you pick` },
+                    { image: `./tot2/m-poll.jpg`, caption: `After voting: the split, verdict and margin` },
+                    { image: `./tot2/m-ask.jpg`, caption: `Ask: THIS and THAT, in their own inks` },
+                    { image: `./tot2/m-profile.jpg`, caption: `Your record, and how often you side with the crowd` }
+                ]
             }
         ],
         challenges: [
             {
-                title: `Four developers, one full-stack codebase`,
-                solution: `With several people touching the schema, the API and the frontend in the same sprint, merge conflicts were a constant risk. I set a strict branching strategy and handled most integration merges myself, since I had the clearest picture of how the schema and API contracts fitted together. Someone has to own the seams.`
+                title: `Hiding results without losing the lurkers`,
+                solution: `Hiding the tally makes browsing less satisfying for someone who only wants outcomes. Rather than give in, every card has "Just show me the results", which records a non-vote. Lurkers are served, and the independence of the votes is kept.`
             },
             {
-                title: `State that stays correct across feed, profile and live votes`,
-                solution: `A user's feed, their interests and in-progress votes all had to update consistently, without constant re-renders or stale numbers. I centralised frontend state to avoid both failure modes: boring to describe, and easy to get subtly wrong.`
+                title: `Security problems in a working app`,
+                solution: `The first version ran, which made its problems easy to miss: a production database password base64-encoded in the config beside a hard-coded JWT secret, usernames and avatars reaching innerHTML, and votes not checked against their poll. Each one maps to an OWASP Top 10 (2025) category and a fix that is now tested: secrets only from the environment, textContent everywhere, a strict CSP, and a composite foreign key so the database itself rejects a vote for the wrong poll.`
+            },
+            {
+                title: `Counters that stay right under load`,
+                solution: `Vote counts are stored per option for fast feeds, which risks drift when many people vote at once. Voting locks the poll row in the same transaction as the vote, and a test fires 30 simultaneous voters at one poll to prove the totals stay exact.`
+            },
+            {
+                title: `Not claiming what the evidence doesn't support`,
+                solution: `It would have been easy to justify the binary format with "fewer choices are better". The meta-analysis says the effect is close to zero, so the case study doesn't claim it. Marketing benchmarks for poll engagement had no sources, so I didn't use them either.`
             }
         ],
         metrics: {
-            intro: `The beta was too small for statistics, so these are the measures I'd track at scale.`,
+            intro: `The redesign has just shipped, so these are the measures I'd hold it to, not results.`,
             items: [
-                { name: `Time to first vote`, why: `Seconds from opening the app to a first vote: the truest measure of whether contributing is effortless.` },
-                { name: `Answered within an hour`, why: `Share of new polls with at least ten votes in their first hour. Askers only come back if answers arrive fast.` },
-                { name: `Votes per session`, why: `Whether interest matching surfaces questions people actually want to answer.` },
-                { name: `Anonymous share of posts`, why: `How much demand there is for safe asking, and an early warning if anonymity starts attracting abuse.` }
+                { name: `Time to first vote`, why: `Seconds from opening the app to a first vote. One-tap participation should keep this low.` },
+                { name: `Peek rate`, why: `Share of views that use "Just show me the results" instead of voting. Too high, and the vote-first rule is costing participation.` },
+                { name: `Outcome reports`, why: `Share of closed decisions where the asker reports what they chose. This is the loop that brings voters back.` },
+                { name: `Too-early share`, why: `Share of decisions still under 10 votes when they close. A sign that feeds are not spreading attention well.` }
             ]
         },
         outcomes: [
-            `Shipped a working, deployed full-stack app inside a fixed three-month timeline, used by 25+ beta testers, not a local demo.`,
-            `Owned the full stack: schema, API and every React screen, while the branching strategy and API contracts kept a four-person team integrating without blocking each other.`,
-            `Interest-driven personalisation held up under real concurrent voting without needing a rewrite.`,
-            `Every screen in this case study is a screenshot of the deployed app at the link above.`
+            `Redesigned and rebuilt a working team project into a product with a point of view: vote first, then see the crowd.`,
+            `Fixed all 9 problem areas from the audit, including the 4 critical ones, each now covered by a test.`,
+            `Grounded every major design decision in published research, and said plainly where the evidence did not support a claim.`,
+            `Shipped a hardened backend: environment-only secrets, validation with zod, a strict CSP, rate limits, row locks and row-level security, with 32 integration tests against real Postgres.`,
+            `Live at the link above, with the full audit and research write-up in the repository.`
         ],
-        reflections: `The lesson that travelled furthest: on a team build, investing in the data model and API contracts before any interface pays for itself many times over, because it's what lets four people work in parallel for three months without blocking each other. The same instinct runs through Work Hive and StyleBook AI: get the model right and the screens built on it stay honest. Next I'd add live updates over WebSockets, since a result currently refreshes on the next fetch rather than the instant someone else votes, and test whether showing the split only after voting changes how people vote.`,
+        reflections: `The most useful thing I did on this project was go back to something that already worked and read all of it. A running app hides its problems well: the committed password, the unescaped usernames and the topics that silently did nothing were all invisible from the interface. The second lesson was letting research set the core rule instead of taste. Hiding the tally until you vote is a small interface decision with a large effect on whether the product's numbers mean anything. Next I'd measure the peek rate and time to first vote with real users, to see what the vote-first rule costs in participation.`,
 
-        heroImage: `./tot-hero-bg.jpg`
+        heroImage: `./tot2/tot-mockup.jpg`
     },
     project6: {
         title: `StyleBook AI`,

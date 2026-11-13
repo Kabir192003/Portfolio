@@ -1,118 +1,112 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { projectsData } from '../data/projectsData';
 
 const INK = '#141414';
 const PAPER = '#f2f0ea';
 const RULE = '#2e2bef';
 const MUTED = '#3a3833';
 const FAINT = '#8a8578';
+const MONO = "'JetBrains Mono', monospace";
+const ANTON = "'Anton', sans-serif";
 
+// kind drives the filter row: build = designed and built by me, client = client work,
+// research = research-led, data = data and visualisation.
 const WORKS = [
     {
-        num: '01', id: 'settld', title: 'Settld', tags: ['FLAGSHIP', 'DATA', 'FULL STACK'], year: '2026',
-        role: projectsData.project8.role,
-        status: 'LIVE',
-        stack: projectsData.project8.tools.join(' · '),
-        desc: 'Built after surveying 300+ students: a free, open-data tool that helps students choose where to live in Dublin, by rent, the real journey to college and where the jobs are, with the source of every number shown.',
-        img: './settld/desktop-start.jpg',
+        num: '01', id: 'settld', title: 'Settld', year: '2026', status: 'LIVE', kinds: ['build', 'data', 'research'],
+        role: 'Solo · research, design and build',
+        tags: ['Open data', 'Routing', 'React'],
+        desc: 'Helps students choose where to live in Dublin before they sign a lease: rent, the real journey to college and what is nearby, for 106 areas, with the source of every number shown. Built after surveying 300+ students.',
+        img: './settld/settld-mockup.jpg',
     },
     {
-        num: '02', id: 6, title: 'StyleBook AI', tags: ['AI PRODUCT', 'TEAM LEAD', 'FIGMA PLUGIN'], year: '2026',
-        role: projectsData.project6.role,
-        status: 'LIVE',
-        stack: projectsData.project6.tools.join(' · '),
-        desc: 'Shaped by a survey of 200+ designers. I led a team of four, wrote nearly all of the code and shipped it as a Figma plugin: a checked, exportable design system from a written brand brief.',
-        img: './stylebook/sb-hero-bg.jpg',
+        num: '02', id: 6, title: 'StyleBook AI', year: '2026', status: 'LIVE', kinds: ['build', 'research'],
+        role: 'Project lead · team of four',
+        tags: ['AI product', 'Design systems', 'Figma plugin'],
+        desc: 'A written brand brief in, a checked, exportable design system out. Shaped by a survey of 200+ designers, with every AI-proposed colour pair measured and repaired in code.',
+        img: './stylebook/sb-mockup.jpg',
     },
     {
-        num: '03', id: 'data-viz', title: 'Global Health & Wealth', tags: ['DATA VIZ', 'INTERACTIVE'], year: '2026',
-        role: 'Designer and developer. Chart design, scales and interaction',
-        status: 'LIVE · PLAYABLE',
-        stack: 'Processing · Canvas · CSV data',
-        desc: 'An interactive bubble chart of 186 countries: hover any bubble for its data, click the legend to filter regions. Open it and play.',
+        num: '03', id: 'pawfect', title: 'PawFect', year: '2025', status: 'CLIENT WORK', kinds: ['client'],
+        role: 'Product Associate · DreamWeavers',
+        tags: ['Mobile app', 'Requirements', 'UX'],
+        desc: 'A pet care app for a veterinary clinic in Hyderabad: booking, a digital health passport, reminders worked out from the record, and every price shown before you pay.',
+        img: './pawfect/pf-mockup.jpg',
+    },
+    {
+        num: '04', id: 2, title: 'Work Hive', year: '2026', status: 'LIVE', kinds: ['build'],
+        role: 'Solo · design and full stack',
+        tags: ['Web platform', 'Supabase', 'Security'],
+        desc: 'A hiring platform where named, job-specific endorsements from real colleagues travel with every application. 18 screens on a real Postgres backend.',
+        img: './workhive/wh-mockup.jpg',
+    },
+    {
+        num: '05', id: 1, title: 'Trek Mate', year: '2026', status: 'LIVE', kinds: ['build'],
+        role: 'Solo · design and front end',
+        tags: ['E-commerce', 'React', 'TypeScript'],
+        desc: 'An outdoor gear store designed around the whole pack. A live planner shows your base weight and ranks lighter swaps by what each gram saved costs you.',
+        img: './trekmate-v3/tm3-mockup.jpg',
+    },
+    {
+        num: '06', id: 5, title: 'This or That', year: '2026', status: 'LIVE', kinds: ['build', 'research'],
+        role: 'Research, redesign and full stack',
+        tags: ['Redesign', 'Research', 'Node + Postgres'],
+        desc: 'A community decision app, redesigned around one finding: people vote differently once they can see the crowd. Results stay hidden until you vote.',
+        img: './tot2/tot-mockup.jpg',
+    },
+    {
+        num: '07', id: 3, title: 'The Hunger Games', year: '2025', status: 'RESEARCH', kinds: ['research', 'data'],
+        role: 'Solo UX researcher',
+        tags: ['UX research', 'Survey', 'Heuristics'],
+        desc: 'Swiggy vs Zomato: a mixed-methods study of two apps solving the same problem in opposite ways, from a heuristic review and a survey of 48 users.',
+        img: './hg-mockup.jpg',
+    },
+    {
+        num: '08', id: 'data-viz', title: 'Global Health & Wealth', year: '2026', status: 'PLAYABLE', kinds: ['data'],
+        role: 'Design and code · M.Sc. coursework',
+        tags: ['Data viz', 'Interactive'],
+        desc: 'An interactive bubble chart of 186 countries. Hover any bubble for its data and click the legend to filter regions.',
         img: './msc/data-viz/banner.jpg',
-    },
-    {
-        num: '04', id: 'pawfect', title: 'PawFect', tags: ['MOBILE APP', 'PRODUCT REQUIREMENTS'], year: '2025',
-        role: projectsData.project7.role,
-        status: 'CLIENT WORK',
-        stack: projectsData.project7.tools.join(' · '),
-        desc: 'A pet care app for a veterinary clinic in Hyderabad, from my time at DreamWeavers: book in a few taps, carry a digital health passport, get reminders from the record and see every price before you pay.',
-        img: './pawfect/pf-cover.jpg',
-    },
-    {
-        num: '05', id: 1, title: 'Trek Mate', tags: ['E-COMMERCE', 'MOBILE'], year: '2026',
-        role: projectsData.project1.role,
-        status: 'LIVE',
-        stack: projectsData.project1.tools.join(' · '),
-        desc: 'An outdoor gear store for independent makers, designed around the whole pack: plan your kit, see your base weight, buy only what makes it lighter.',
-        img: './trekmate-v3/tm3-hero.jpg',
-    },
-    {
-        num: '06', id: 2, title: 'Work Hive', tags: ['WEB PLATFORM', 'FULL STACK'], year: '2026',
-        role: projectsData.project2.role,
-        status: 'LIVE',
-        stack: projectsData.project2.tools.join(' · '),
-        desc: 'A hiring platform where named, job-specific endorsements from real colleagues travel with your application. Live on a real Postgres backend.',
-        img: './workhive/hero.jpg',
-    },
-    {
-        num: '07', id: 3, title: 'The Hunger Games', tags: ['UX RESEARCH'], year: '2025',
-        role: projectsData.project3.role,
-        status: 'RESEARCH',
-        stack: projectsData.project3.tools.join(' · '),
-        desc: 'A comparative usability study across the major food delivery apps, built from surveys and interviews.',
-        img: './food.jpg',
-    },
-    {
-        num: '08', id: 5, title: 'This or That', tags: ['FULL STACK'], year: '2026',
-        role: projectsData.project5.role,
-        status: 'LIVE',
-        stack: projectsData.project5.tools.join(' · '),
-        desc: 'A deployed community decision platform (React, Node, Express, MongoDB) with an algorithm-driven feed and anonymous posting.',
-        img: './tot-hero-bg.jpg',
     },
 ];
 
-const rowVariants = {
-    hidden: { opacity: 0, y: 18 },
-    visible: (i) => ({
-        opacity: 1,
-        y: 0,
-        transition: { delay: i * 0.06, duration: 0.5, ease: [0.16, 1, 0.3, 1] },
-    }),
-};
+const FILTERS = [
+    { key: 'all', label: 'All' },
+    { key: 'build', label: 'Designed + built' },
+    { key: 'research', label: 'Research-led' },
+    { key: 'data', label: 'Data' },
+    { key: 'client', label: 'Client work' },
+];
+
+const Card = ({ w, featured }) => (
+    <Link to={`/projects/${w.id}`} className={`work-card${featured ? ' work-card-featured' : ''}`} aria-label={`${w.title} case study`}>
+        <div className="work-card-media">
+            <img src={w.img} alt="" loading={featured ? 'eager' : 'lazy'} />
+        </div>
+        <div className="work-card-body">
+            <div className="work-card-top">
+                <span className="work-card-num">{w.num}</span>
+                <span className="work-card-status">{w.status}</span>
+                <span className="work-card-meta">{w.role} · {w.year}</span>
+            </div>
+            <h2 className="work-card-title">{w.title}</h2>
+            <p className="work-card-desc">{w.desc}</p>
+            <div className="work-card-foot">
+                <div className="work-card-tags">
+                    {w.tags.map((t) => <span key={t}>{t}</span>)}
+                </div>
+                <span className="work-card-cta">Case study <span aria-hidden="true">→</span></span>
+            </div>
+        </div>
+    </Link>
+);
 
 const Projects = () => {
-    const [active, setActive] = useState(0);
-    const navigate = useNavigate();
-    const crosshairRef = useRef(null);
-    const labelRef = useRef(null);
-
-    useEffect(() => {
-        const onMove = (e) => {
-            const el = crosshairRef.current;
-            if (!el) return;
-            el.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-            if (labelRef.current) {
-                labelRef.current.textContent = `X ${String(e.clientX).padStart(4, '0')} · Y ${String(e.clientY).padStart(4, '0')}`;
-            }
-        };
-        const onKey = (e) => {
-            if (e.key === 'ArrowDown') { e.preventDefault(); setActive((a) => Math.min(WORKS.length - 1, a + 1)); }
-            if (e.key === 'ArrowUp') { e.preventDefault(); setActive((a) => Math.max(0, a - 1)); }
-        };
-        window.addEventListener('mousemove', onMove);
-        window.addEventListener('keydown', onKey);
-        return () => {
-            window.removeEventListener('mousemove', onMove);
-            window.removeEventListener('keydown', onKey);
-        };
-    }, []);
-
-    const ap = WORKS[active];
+    const [filter, setFilter] = useState('all');
+    const shown = WORKS.filter((w) => filter === 'all' || w.kinds.includes(filter));
+    const [first, ...rest] = shown;
+    const featureFirst = filter === 'all';
 
     return (
         <motion.div
@@ -120,150 +114,95 @@ const Projects = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
-            style={{ background: PAPER, color: INK, fontFamily: "'JetBrains Mono', monospace" }}
+            style={{ background: PAPER, color: INK }}
         >
             <div style={{ borderTop: `4px solid ${INK}` }} />
 
-            <div style={{ padding: '4rem clamp(1.25rem,3vw,3rem) 2.5rem' }}>
-                <span style={{ fontSize: '0.72rem', letterSpacing: '0.2em', color: FAINT, textTransform: 'uppercase' }}>{String(WORKS.length).padStart(2, '0')} CASE STUDIES · DESIGNED AND BUILT BY ME</span>
-                <h1 style={{ fontFamily: "'Anton', sans-serif", fontSize: 'clamp(3rem, 10vw, 7.5rem)', lineHeight: 0.88, textTransform: 'uppercase', margin: '0.6rem 0 0' }}>
-                    Work<span style={{ color: RULE }}>.</span>
-                </h1>
-                <p style={{ maxWidth: '560px', fontSize: '1rem', lineHeight: 1.65, color: MUTED, marginTop: '1.5rem' }}>
-                    Seven products and a data visualisation. Five are live, so you can use them, not just read about them. Open any project for the full case study.
+            <header style={{ maxWidth: '1400px', margin: '0 auto', padding: '3.5rem clamp(1.25rem,3vw,3rem) 2rem', display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: '2rem', flexWrap: 'wrap' }}>
+                <div>
+                    <span style={{ fontFamily: MONO, fontSize: '0.72rem', letterSpacing: '0.18em', color: FAINT, textTransform: 'uppercase' }}>08 case studies · 05 live products</span>
+                    <h1 style={{ fontFamily: ANTON, fontSize: 'clamp(3rem, 9vw, 6.5rem)', lineHeight: 0.9, textTransform: 'uppercase', margin: '0.6rem 0 0' }}>
+                        Work<span style={{ color: RULE }}>.</span>
+                    </h1>
+                </div>
+                <p style={{ maxWidth: '460px', fontSize: '1.02rem', lineHeight: 1.65, color: MUTED, margin: 0 }}>
+                    Products I researched, designed and built, plus client work and research. Five are live, so you can use them, not just read about them.
                 </p>
-            </div>
-            <div style={{ borderTop: `1px solid ${INK}` }} />
+            </header>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) minmax(320px,460px)', maxWidth: '1500px', margin: '0 auto' }} className="works-grid">
-
-                <div style={{ borderRight: `1px solid ${INK}` }} className="works-index">
-                    {WORKS.map((w, i) => {
-                        const isActive = i === active;
+            <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 clamp(1.25rem,3vw,3rem)' }}>
+                <div className="work-filters" role="tablist" aria-label="Filter case studies">
+                    {FILTERS.map((f) => {
+                        const count = f.key === 'all' ? WORKS.length : WORKS.filter((w) => w.kinds.includes(f.key)).length;
+                        const on = filter === f.key;
                         return (
-                            <motion.div
-                                key={w.id}
-                                custom={i}
-                                initial="hidden"
-                                animate="visible"
-                                variants={rowVariants}
-                                onMouseEnter={() => setActive(i)}
-                                onFocus={() => setActive(i)}
-                                onClick={() => navigate(`/projects/${w.id}`)}
-                                onKeyDown={(e) => { if (e.key === 'Enter') navigate(`/projects/${w.id}`); }}
-                                role="link"
-                                aria-label={`Open ${w.title} case study`}
-                                tabIndex={0}
-                                style={{
-                                    position: 'relative',
-                                    display: 'grid',
-                                    gridTemplateColumns: '80px 1fr auto',
-                                    alignItems: 'center',
-                                    gap: '1.5rem',
-                                    padding: '1.6rem clamp(1.25rem,3vw,3rem)',
-                                    borderTop: `1px solid ${INK}`,
-                                    cursor: 'pointer',
-                                    userSelect: 'none',
-                                    outline: 'none',
-                                    transition: 'background 0.25s',
-                                    background: isActive ? 'rgba(46,43,239,0.04)' : 'transparent',
-                                }}
-                            >
-                                <span style={{ fontSize: '0.95rem', fontWeight: 700, color: isActive ? RULE : FAINT, transition: 'color 0.25s' }}>{w.num}</span>
-                                <div style={{ minWidth: 0 }}>
-                                    <h2 style={{ fontFamily: "'Anton', sans-serif", fontSize: 'clamp(1.8rem,4.4vw,3.6rem)', textTransform: 'uppercase', lineHeight: 1, margin: 0, transition: 'color 0.25s', color: isActive ? RULE : INK }}>{w.title}</h2>
-                                    <div style={{ display: 'flex', gap: '0.5rem', marginTop: '0.6rem', flexWrap: 'wrap' }}>
-                                        {w.tags.map((tg) => (
-                                            <span key={tg} style={{ border: `1px solid ${INK}`, fontSize: '0.65rem', letterSpacing: '0.05em', padding: '3px 8px' }}>{tg}</span>
-                                        ))}
-                                    </div>
-                                    <p className="works-row-desc" style={{ fontSize: '0.85rem', lineHeight: 1.6, color: MUTED, margin: '0.7rem 0 0', fontFamily: "'Source Serif 4', Georgia, serif" }}>{w.desc}</p>
-                                </div>
-                                <div style={{ textAlign: 'right', flex: 'none' }}>
-                                    <span style={{ display: 'block', fontSize: '0.72rem', color: FAINT, letterSpacing: '0.08em' }}>{w.year}</span>
-                                    <span style={{ display: 'block', fontSize: '0.72rem', color: MUTED, marginTop: '0.2rem' }}>{w.status}</span>
-                                </div>
-                                <div style={{ position: 'absolute', left: 0, bottom: -1, height: 2, background: RULE, width: isActive ? '100%' : '0%', transition: 'width 0.35s cubic-bezier(0.16,1,0.3,1)' }} />
-                            </motion.div>
+                            <button key={f.key} role="tab" aria-selected={on} onClick={() => setFilter(f.key)} className={on ? 'on' : ''}>
+                                {f.label} <span>{String(count).padStart(2, '0')}</span>
+                            </button>
                         );
                     })}
                 </div>
+            </div>
 
-                <div style={{ position: 'relative' }} className="works-scope-col">
-                    <div style={{ position: 'sticky', top: '84px', padding: '2rem clamp(1rem,2vw,1.75rem)' }}>
-                        <div style={{ position: 'relative', background: INK, border: `1px solid ${INK}`, overflow: 'hidden' }}>
-                            <div className="scope-scanlines" />
-                            <div className="scope-sweep" />
-
-                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0.75rem 1rem', borderBottom: '1px solid rgba(242,240,234,0.15)' }}>
-                                <span style={{ fontSize: '0.65rem', letterSpacing: '0.12em', color: PAPER }}>PREVIEW</span>
-                                <span style={{ fontSize: '0.65rem', letterSpacing: '0.1em', color: RULE }}>{String(active + 1).padStart(2, '0')} OF {String(WORKS.length).padStart(2, '0')}</span>
-                            </div>
-
-                            <div style={{ position: 'relative', aspectRatio: '4/3', overflow: 'hidden' }}>
-                                <img src={ap.img} alt={ap.title} style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'grayscale(0.3) contrast(1.08)', opacity: 0.92, display: 'block' }} />
-                                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(20,20,20,0) 55%, rgba(20,20,20,0.85) 100%)' }} />
-                                <span style={{ position: 'absolute', bottom: '0.9rem', left: '1rem', fontFamily: "'Anton', sans-serif", fontSize: '1.6rem', textTransform: 'uppercase', color: PAPER }}>{ap.title}</span>
-                            </div>
-
-                            <div style={{ padding: '1.1rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.9rem 1.5rem', borderBottom: '1px solid rgba(242,240,234,0.15)' }}>
-                                <div>
-                                    <span style={{ display: 'block', fontSize: '0.62rem', letterSpacing: '0.1em', color: FAINT }}>ROLE</span>
-                                    <span style={{ display: 'block', fontSize: '0.8rem', color: PAPER, marginTop: '0.2rem' }}>{ap.role}</span>
-                                </div>
-                                <div>
-                                    <span style={{ display: 'block', fontSize: '0.62rem', letterSpacing: '0.1em', color: FAINT }}>STATUS</span>
-                                    <span style={{ display: 'block', fontSize: '0.8rem', color: RULE, marginTop: '0.2rem' }}>{ap.status}</span>
-                                </div>
-                                <div style={{ gridColumn: '1 / -1' }}>
-                                    <span style={{ display: 'block', fontSize: '0.62rem', letterSpacing: '0.1em', color: FAINT }}>STACK</span>
-                                    <span style={{ display: 'block', fontSize: '0.8rem', color: PAPER, marginTop: '0.2rem' }}>{ap.stack}</span>
-                                </div>
-                            </div>
-
-                            <p style={{ padding: '1.1rem', margin: 0, fontSize: '0.85rem', lineHeight: 1.65, color: '#cfcdc4', borderBottom: '1px solid rgba(242,240,234,0.15)' }}>{ap.desc}</p>
-
-                            <Link to={`/projects/${ap.id}`} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '1rem', color: PAPER, textDecoration: 'none', fontSize: '0.78rem', letterSpacing: '0.08em', textTransform: 'uppercase' }} className="scope-run-link">
-                                <span>Read the case study</span>
-                                <span>→</span>
-                            </Link>
-                        </div>
-                    </div>
+            <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '2rem clamp(1.25rem,3vw,3rem) 4rem' }}>
+                {featureFirst && first && <Card w={first} featured />}
+                <div className="work-grid">
+                    {(featureFirst ? rest : shown).map((w) => <Card key={w.id} w={w} />)}
                 </div>
             </div>
 
-            <Link to="/msc" className="scope-run-link" style={{ borderTop: `1px solid ${INK}`, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '1.25rem clamp(1.25rem,3vw,3rem)', color: INK, textDecoration: 'none', gap: '1rem', flexWrap: 'wrap' }}>
-                <span style={{ fontSize: '0.8rem', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Also: M.Sc. studio work · 3D, interaction and playable sketches</span>
-                <span style={{ fontSize: '0.8rem', letterSpacing: '0.08em', color: RULE }}>OPEN →</span>
+            <Link to="/msc" className="work-studio-link">
+                <span>Also: M.Sc. studio work · 3D, interaction and playable sketches</span>
+                <span style={{ color: RULE }}>Open →</span>
             </Link>
-            <div style={{ borderTop: `1px solid ${INK}`, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '1rem clamp(1.25rem,3vw,3rem)', flexWrap: 'wrap', gap: '0.75rem' }}>
-                <span style={{ fontSize: '0.7rem', letterSpacing: '0.1em', color: MUTED }}>{String(WORKS.length).padStart(2, '0')} CASE STUDIES · 05 LIVE PRODUCTS</span>
-                <span style={{ fontSize: '0.7rem', letterSpacing: '0.1em', color: MUTED }}>DUBLIN</span>
-            </div>
             <div style={{ borderTop: `4px solid ${INK}` }} />
 
             <style>{`
-                @keyframes worksScan { 0% { transform: translateY(-100%); } 100% { transform: translateY(100%); } }
-                .scope-scanlines {
-                    position: absolute; inset: 0;
-                    background: repeating-linear-gradient(to bottom, rgba(46,43,239,0.08) 0px, rgba(46,43,239,0.08) 1px, transparent 1px, transparent 3px);
-                    pointer-events: none; z-index: 2;
+                .work-filters { display: flex; flex-wrap: wrap; gap: 0.5rem; border-top: 1px solid ${INK}; border-bottom: 1px solid ${INK}; padding: 0.9rem 0; }
+                .work-filters button { font-family: ${MONO}; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; background: transparent; color: ${INK}; border: 1px solid ${INK}; padding: 0.5rem 0.8rem; cursor: pointer; transition: background 0.2s, color 0.2s; }
+                .work-filters button span { color: ${FAINT}; margin-left: 0.35rem; }
+                .work-filters button:hover { background: rgba(46,43,239,0.06); }
+                .work-filters button.on { background: ${INK}; color: ${PAPER}; }
+                .work-filters button.on span { color: #b9b6ad; }
+
+                .work-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.5rem 2rem; margin-top: 2.5rem; }
+                .work-card { display: flex; flex-direction: column; color: ${INK}; text-decoration: none; border: 1px solid ${INK}; background: ${PAPER}; transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s; }
+                .work-card:hover { transform: translateY(-4px); box-shadow: 8px 8px 0 ${INK}; }
+                .work-card:focus-visible { outline: 3px solid ${RULE}; outline-offset: 3px; }
+                .work-card-media { position: relative; aspect-ratio: 3 / 2; overflow: hidden; border-bottom: 1px solid ${INK}; background: #e6e3db; }
+                .work-card-media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s cubic-bezier(0.16,1,0.3,1); }
+                .work-card:hover .work-card-media img { transform: scale(1.03); }
+                .work-card-status { font-family: ${MONO}; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; background: rgba(46,43,239,0.08); color: ${RULE}; border: 1px solid ${RULE}; padding: 2px 7px; white-space: nowrap; }
+                .work-card-body { padding: 1.4rem 1.5rem 1.5rem; display: flex; flex-direction: column; flex: 1; }
+                .work-card-top { display: flex; align-items: center; flex-wrap: wrap; gap: 0.4rem 0.8rem; margin-bottom: 0.6rem; }
+                .work-card-num { font-family: ${ANTON}; font-size: 1.15rem; color: ${RULE}; }
+                .work-card-meta { font-family: ${MONO}; font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; color: ${MUTED}; }
+                .work-card-title { font-family: ${ANTON}; font-size: clamp(1.6rem, 2.6vw, 2.2rem); text-transform: uppercase; line-height: 1; margin: 0 0 0.7rem; }
+                .work-card-desc { font-size: 0.98rem; line-height: 1.6; color: ${MUTED}; margin: 0 0 1.25rem; max-width: 58ch; }
+                .work-card-foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+                .work-card-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+                .work-card-tags span { font-family: ${MONO}; font-size: 0.64rem; letter-spacing: 0.04em; border: 1px solid ${INK}; padding: 3px 8px; }
+                .work-card-cta { font-family: ${MONO}; font-size: 0.78rem; font-weight: 700; color: ${RULE}; white-space: nowrap; }
+                .work-card:hover .work-card-cta { text-decoration: underline; }
+
+                .work-card-featured { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); }
+                .work-card-featured .work-card-media { border-bottom: none; border-right: 1px solid ${INK}; aspect-ratio: auto; min-height: 100%; }
+                .work-card-featured .work-card-body { padding: 2rem 2.25rem; justify-content: center; }
+                .work-card-featured .work-card-title { font-size: clamp(2.2rem, 4vw, 3.4rem); }
+                .work-card-featured .work-card-desc { font-size: 1.05rem; }
+
+                .work-studio-link { border-top: 1px solid ${INK}; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; padding: 1.25rem clamp(1.25rem,3vw,3rem); color: ${INK}; text-decoration: none; font-family: ${MONO}; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; }
+                .work-studio-link:hover { color: ${RULE}; }
+
+                @media (max-width: 900px) {
+                    .work-grid { grid-template-columns: minmax(0, 1fr); gap: 1.75rem; margin-top: 1.75rem; }
+                    .work-card-featured { grid-template-columns: minmax(0, 1fr); }
+                    .work-card-featured .work-card-media { border-right: none; border-bottom: 1px solid ${INK}; aspect-ratio: 3 / 2; }
+                    .work-card-featured .work-card-body { padding: 1.4rem 1.5rem 1.5rem; }
+                    .work-card:hover { transform: none; box-shadow: none; }
                 }
-                .scope-sweep {
-                    position: absolute; left: 0; right: 0; height: 40%;
-                    background: linear-gradient(to bottom, transparent, rgba(46,43,239,0.12), transparent);
-                    animation: worksScan 5s linear infinite;
-                    pointer-events: none; z-index: 2;
-                }
-                .scope-run-link:hover { color: ${RULE} !important; }
-                .works-row-desc { display: none; }
-                @media (max-width: 860px) {
-                    .works-grid { grid-template-columns: 1fr !important; }
-                    .works-index { border-right: none !important; }
-                    .works-scope-col { display: none; }
-                    .works-row-desc { display: block; }
-                    .works-index > div { grid-template-columns: 36px 1fr !important; }
-                    .works-index > div > div:nth-child(3) { display: none; }
+                @media (prefers-reduced-motion: reduce) {
+                    .work-card, .work-card-media img { transition: none; }
                 }
             `}</style>
         </motion.div>
