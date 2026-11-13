@@ -14,8 +14,7 @@ const Experience = () => {
                     label: 'Design',
                     bullets: [
                         'Designed and launched cimelium.com, the marketing site for the platform: page layouts, the pilot partner programme and the "Book a call" conversion flow.',
-                        'Audited 30+ art-world and art-tech platforms (auction houses, marketplaces, galleries, museums and software), analysing their colour, typography and UI patterns to define a position between technology and art.',
-                        'Developed 11 visual identity directions and moodboards that drove stakeholder decisions on brand tone, imagery and colour.',
+                        'Audited 30+ art-world and art-tech platforms (auction houses, marketplaces, galleries, museums and software) on colour, typography and UI patterns, then developed 11 visual identity directions and moodboards that drove stakeholder decisions on brand tone, imagery and colour.',
                         'Built the core design system: Merriweather and DM Sans, a white base with tinted surfaces, a single brick accent, inverted cards, WCAG-compliant contrast and 4px/8px corner standards.',
                         'Designed platform UI for the client workspace (inventory, enquiry dashboards, AI-drafted replies, matching suggestions and task automation), iterating quickly on leadership feedback.'
                     ]
@@ -23,7 +22,7 @@ const Experience = () => {
                 {
                     label: 'Product engineering',
                     bullets: [
-                        'Owned product decisions across a five-sprint modernisation of the internal app-starter platform, including scope cuts, risk trade-offs and sign-off at every stage gate.',
+                        'Owned product decisions across a five-sprint modernisation of the internal app-starter platform, including scope cuts, risk trade-offs and sign-off at every stage gate, working alongside fellow developers and reporting to the manager for his input.',
                         'Directed an AI-agent engineering workflow (Agent SCRUM): several AI agents taking work through planning, development, independent testing and release, with a separate agent verifying each stage before it could proceed.',
                         'Led the design of the module system and generator: how modules declare dependencies, the rules for safe combinations, and a feature that recommends modules from an existing app or a plain-language description.',
                         'Ran a full application rebuild as the proof of concept, held to the original\'s acceptance bar (zero unaccepted differences), and signed off UAT on independently re-verified numbers rather than self-reported ones.',
@@ -33,8 +32,7 @@ const Experience = () => {
                 {
                     label: 'Data',
                     bullets: [
-                        'Built an image pipeline that detects and extracts frames from paintings, with DDColor colourisation and colour correction across the asset set.',
-                        'Audited and normalised a large CC0 image dataset for generative AI preprocessing, defining evaluation criteria and catching data-quality issues before model training.'
+                        'Built a Python (OpenCV, NumPy) pipeline that detects and crops artwork from about 3,700 museum photographs, reviewing the outputs and recording the cases that needed manual attention.'
                     ]
                 }
             ]
@@ -57,9 +55,10 @@ const Experience = () => {
             period: 'Feb 2025 to Aug 2025',
             bullets: [
                 'Led market analysis and customer research for PawFect, a client pet care app, turning findings into product requirements, use cases and specifications.',
-                'Defined requirements with engineers from discovery through QA and release, so every rule had an owner and a test.',
-                'Analysed user behaviour and product funnels to find and prioritise the highest-impact improvements.',
-                'Used LLMs to speed up specification drafting and edge-case analysis, and presented trade-offs to PMs, engineers and senior stakeholders.'
+                'Defined requirements and use cases alongside engineers, documented decisions and stayed involved through QA and release, cutting feature delivery time by 25%.',
+                'Analysed user behaviour and product data, including Google Analytics 4 funnel tracking, into recommendations that contributed to a 15% lift in product performance.',
+                'Handled SEO for the PawFect product and designed WCAG-aligned interfaces.',
+                'Used structured analysis to pressure-test ideas and align stakeholders before any build work began, reducing ambiguity across multiple releases.'
             ]
         },
         {
@@ -68,12 +67,20 @@ const Experience = () => {
             company: 'Divine Labs (IIT Delhi)',
             period: 'Mar 2024 to May 2024',
             bullets: [
-                'Restructured interaction flows across data-dense dashboards for a Learning Management System and the Unimoni portal, as part of a full LMS redesign.',
-                'Ran usability tests with students and professors who used the LMS daily, documented the findings and iterated on the design.',
-                'Prototyped and tested alternative directions before engineering handoff, and worked with developers through implementation to keep the design intact.'
+                'Collected and surveyed user data and ran usability tests with the students and professors who used the LMS daily, documenting findings and iterating on feedback, which improved key metrics by 40%.',
+                'Restructured interaction flows in data-dense dashboards for the LMS and the Unimoni portal after a systematic review of user behaviour, reducing usability issues by 25%.',
+                'Designed WCAG-aligned interfaces with Google Material Design, used Playwright for automated UI tests and Jira to track work.'
             ]
         }
     ];
+
+    const achievements = [
+        { title: 'Speaker, official Claude Code event, Dublin', when: 'May 2026', desc: 'Explained practical uses of Claude Code to a room of around 100 people at an event hosted by Claude Code\'s ambassador.' },
+        { title: 'Runner-up, Bower School AI Hackathon, T-Hub Hyderabad (100+ teams)', when: 'Sep 2024', desc: 'Built DAYA, a RAG-powered behavioural support platform for caregivers (Next.js, TypeScript, Claude API, pgvector).' },
+        { title: 'Second runner-up, Microsoft InnoQuest Hackathon (80+ teams)', when: 'Jun 2024', desc: 'Built an AI-driven campus venue booking platform that automated scheduling and approvals.' },
+        { title: 'Team lead, Data Dynamo Hackathon (Qlik Sense)', when: '', desc: 'Led the analysis and dashboards that found products priced above $75 were over-discounted, estimating close to $1M of recoverable profit.' },
+    ];
+    const certifications = ['Scrum Fundamentals Certified (SFC), SCRUMstudy', 'AWS Certified Cloud Practitioner', 'Google UX Design Professional Certificate'];
 
     return (
         <motion.div
@@ -119,6 +126,26 @@ const Experience = () => {
                     </motion.div>
                 ))}
             </div>
+
+            <h2 style={styles.sectionTitle}>Achievements</h2>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                {achievements.map((a) => (
+                    <div key={a.title} style={{ borderTop: '1px solid var(--glass-border)', paddingTop: '1rem' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem', flexWrap: 'wrap' }}>
+                            <h3 style={{ fontSize: '1.2rem', color: 'var(--text-primary)', margin: 0 }}>{a.title}</h3>
+                            {a.when && <span style={{ ...styles.period, fontSize: '0.8rem' }}>{a.when}</span>}
+                        </div>
+                        <p style={{ ...styles.descriptionItem, marginTop: '0.4rem' }}>{a.desc}</p>
+                    </div>
+                ))}
+            </div>
+
+            <h2 style={styles.sectionTitle}>Certifications</h2>
+            <ul style={styles.descriptionList}>
+                {certifications.map((c) => <li key={c} style={styles.descriptionItem}>{c}</li>)}
+            </ul>
+
+            <a href="./Kabir_Sharma_CV.pdf" target="_blank" rel="noreferrer" style={{ display: 'inline-block', marginTop: '3rem', border: '1px solid var(--text-primary)', padding: '0.9rem 1.5rem', fontFamily: 'var(--font-mono)', fontSize: '0.85rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-primary)' }}>Download the full CV (PDF) ↓</a>
         </motion.div>
     );
 };
@@ -127,6 +154,10 @@ const styles = {
     pageTitle: {
         fontSize: 'clamp(2.5rem, 5vw, 4rem)',
         marginBottom: '1rem',
+    },
+    sectionTitle: {
+        fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)',
+        margin: '5rem 0 1.5rem',
     },
     intro: {
         fontSize: '1.1rem',

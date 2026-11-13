@@ -6,17 +6,17 @@ const Education = () => {
     const education = [
         {
             id: 1,
-            degree: 'M.SC. Interactive Digital Media',
+            degree: 'M.Sc. Interactive Digital Media (69%)',
             institution: 'Trinity College Dublin, Ireland',
-            period: 'Sep 2025 - Sep 2026',
-            description: 'Explored interaction design, UX/UI principles, digital media production, and user-centered design to create intuitive and engaging digital experiences.'
+            period: 'Sep 2025 to Sep 2026',
+            description: 'Coursework projects in full-stack development with Java, web design, AR/VR, graphic design, game design, video editing and 3D modelling in Blender.'
         },
         {
             id: 2,
-            degree: 'Bachelor of Technology in Computer Science & Engineering',
+            degree: 'B.Tech Computer Science and Engineering (GPA 8.09/10)',
             institution: 'Anurag University, Hyderabad, India',
-            period: '2021 - 2025',
-            description: 'Built a strong foundation in computer science, covering programming, data structures, algorithms, databases, and software engineering fundamentals.'
+            period: 'Oct 2021 to May 2025',
+            description: 'Worked in SQL, Python, Java, JavaScript and React. Major project: co-authored a research paper and report on a low-cost solar tracking device.'
         }
     ];
 

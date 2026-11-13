@@ -44,6 +44,10 @@ const Contact = () => {
                             </a>
                         </div>
                         <div style={styles.contactItem}>
+                            <span style={styles.label}>CV</span>
+                            <a href="./Kabir_Sharma_CV.pdf" target="_blank" rel="noreferrer" style={styles.link} className="contact-link">Download my CV (PDF) ↓</a>
+                        </div>
+                        <div style={styles.contactItem}>
                             <span style={styles.label}>Based in</span>
                             <span style={styles.link}>Dublin, Ireland · Stamp 1G, no sponsorship needed</span>
                         </div>

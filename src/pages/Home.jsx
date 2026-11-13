@@ -140,6 +140,7 @@ const Home = () => {
                         <strong>I research the problem, design the product and build it.</strong> Five of my products are live, so you can click through them, not just look at mockups. Open to product designer, design engineer and data roles.
                     </p>
                     <a href="#work" onClick={(e) => { e.preventDefault(); document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' }); }} style={{ display: 'block', textAlign: 'center', background: RULE, color: '#f2f0ea', fontFamily: "'JetBrains Mono', monospace", fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', fontSize: '0.9rem', padding: '1rem', textDecoration: 'none', marginBottom: '2.25rem' }}>See the work ↓</a>
+                    <a href="./Kabir_Sharma_CV.pdf" target="_blank" rel="noreferrer" style={{ display: 'block', textAlign: 'center', border: `1px solid ${INK}`, color: INK, fontFamily: "'JetBrains Mono', monospace", fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', fontSize: '0.9rem', padding: '1rem', textDecoration: 'none', marginTop: '-1.5rem', marginBottom: '2.25rem' }}>Download CV (PDF) ↓</a>
 
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.1rem', borderTop: `1px solid ${INK}`, paddingTop: '1.25rem' }}>
                         {STACK.map((g) => (

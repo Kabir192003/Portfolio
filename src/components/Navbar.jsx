@@ -45,6 +45,7 @@ const Navbar = () => {
                             {l.label.toUpperCase()}
                         </NavLink>
                     ))}
+                    <a href="./Kabir_Sharma_CV.pdf" target="_blank" rel="noreferrer" className="site-nav-link" style={styles.link}>CV ↓</a>
                     <NavLink to="/contact" className="glass-button btn-primary" style={styles.cta}>
                         Contact
                     </NavLink>
@@ -83,6 +84,7 @@ const Navbar = () => {
                             {l.label.toUpperCase()}
                         </NavLink>
                     ))}
+                    <a href="./Kabir_Sharma_CV.pdf" target="_blank" rel="noreferrer" style={{ ...styles.mobileLink, color: 'var(--text-secondary)' }}>CV (PDF)</a>
                     <NavLink to="/contact" className="glass-button btn-primary" style={{ ...styles.cta, alignSelf: 'flex-start', marginTop: '0.5rem' }}>
                         Contact
                     </NavLink>
