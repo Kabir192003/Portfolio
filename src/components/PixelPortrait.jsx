@@ -23,6 +23,8 @@ const PixelPortrait = ({ src, alt, mode = 'halftone', cell = 4, radius = 100, st
         let busy = false;
         let lastActive = 0;
         let cur = null;
+        // "develop": on load the halftone prints in top to bottom, like ink landing on paper
+        let develop = null;
 
         const buildHalftone = () => {
             const sm = document.createElement('canvas');
@@ -106,9 +108,16 @@ const PixelPortrait = ({ src, alt, mode = 'halftone', cell = 4, radius = 100, st
                 ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
                 ctx.fillStyle = `rgb(${INK})`;
                 ctx.beginPath();
+                const dp = develop ? (performance.now() - develop.t0) / develop.dur : 1;
                 for (const [x, y, dark] of ht.list) {
                     const a = m[((Math.floor(y / 4) * small.width) + Math.floor(x / 4)) * 4 + 3] / 255;
-                    const r = ht.maxR * Math.sqrt(dark) * (1 - a);
+                    let g = 1;
+                    if (dp < 1) {
+                        // each row starts a little after the one above, with a slight diagonal
+                        const k = Math.min(1, Math.max(0, (dp * 1.6 - (y / H) * 0.9 - (x / W) * 0.12) / 0.45));
+                        g = k * k * (3 - 2 * k);
+                    }
+                    const r = ht.maxR * Math.sqrt(dark) * (1 - a) * g;
                     if (r < 0.25) continue;
                     ctx.moveTo(x + r, y);
                     ctx.arc(x, y, r, 0, Math.PI * 2);
@@ -153,7 +162,7 @@ const PixelPortrait = ({ src, alt, mode = 'halftone', cell = 4, radius = 100, st
             mctx.fillRect(0, 0, mask.width, mask.height);
             mctx.globalCompositeOperation = 'source-over';
             if (busy && cur) { stamp(cur.x, cur.y, R()); lastActive = performance.now(); }
-            if (sweep) {
+            if (sweep && performance.now() >= sweep.t0) {
                 const t = (performance.now() - sweep.t0) / sweep.dur;
                 if (t >= 1) sweep = null;
                 else {
@@ -163,9 +172,10 @@ const PixelPortrait = ({ src, alt, mode = 'halftone', cell = 4, radius = 100, st
                     stroke((p[i][0] + (p[i + 1][0] - p[i][0]) * f) * W, (p[i][1] + (p[i + 1][1] - p[i][1]) * f) * H);
                 }
             }
+            if (develop && performance.now() - develop.t0 > develop.dur) develop = null;
             render();
             // keep animating until the trail has faded, then clear any 8-bit residue and stop
-            if (sweep || busy || performance.now() - lastActive < 3800) raf = requestAnimationFrame(loop);
+            if (develop || sweep || busy || performance.now() - lastActive < 3800) raf = requestAnimationFrame(loop);
             else { mctx.clearRect(0, 0, mask.width, mask.height); render(); last = null; }
         };
         const kick = () => { if (!raf) raf = requestAnimationFrame(loop); };
@@ -185,12 +195,14 @@ const PixelPortrait = ({ src, alt, mode = 'halftone', cell = 4, radius = 100, st
         const im = new Image();
         im.onload = () => {
             img = im;
+            if (!reduce && mode === 'halftone') develop = { t0: performance.now(), dur: 1400 };
             resize();
             if (!reduce) {
-                // a short hint sweep so people see it responds
-                sweep = { t0: performance.now() + 600, dur: 2200, pts: [[0.2, 0.25], [0.7, 0.35], [0.35, 0.6], [0.75, 0.8]] };
+                kick();
+                // a short hint sweep so people see it responds, once the print has landed
+                sweep = { t0: performance.now() + 1700, dur: 2200, pts: [[0.2, 0.25], [0.7, 0.35], [0.35, 0.6], [0.75, 0.8]] };
                 const start = () => { if (alive) kick(); };
-                setTimeout(start, 600);
+                setTimeout(start, 1700);
             }
         };
         im.src = src;

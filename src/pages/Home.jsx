@@ -37,6 +37,87 @@ const fade = {
 
 const Mark = ({ pos }) => <span className={`home-mark home-mark-${pos}`} aria-hidden="true" />;
 
+// Hand-drawn margin doodles. Every stroke uses pathLength="1" so CSS can draw it in,
+// and the shared wobble filter keeps the lines from looking machine-made.
+const D = { fill: 'none', stroke: RULE, strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round', pathLength: 1 };
+const DOODLES = [
+    {
+        key: 'camera', cls: 'd-camera', vb: '0 0 64 44', label: null,
+        body: (<>
+            <path {...D} d="M8 14 L20 14 L24 8 L40 8 L44 14 L56 14 L56 38 L8 38 Z" />
+            <circle {...D} cx="32" cy="25" r="8" />
+            <path {...D} d="M48 19 L51 19" />
+        </>),
+    },
+    {
+        key: 'speech', cls: 'd-speech', vb: '0 0 70 46', label: 'hi, there...',
+        body: (<path {...D} fill={PAPER} d="M6 30 Q4 8 34 8 Q64 8 64 22 Q64 34 46 34 L24 34 L14 42 L17 33 Q8 33 6 30 Z" />),
+    },
+    {
+        key: 'claude', cls: 'd-claude', vb: '0 0 60 60', label: 'claude',
+        body: (<>
+            {[0, 30, 60, 90, 120, 150].map((a) => (
+                <path key={a} {...D} strokeWidth={3} d="M30 12 L30 48" transform={`rotate(${a} 30 30)`} />
+            ))}
+        </>),
+    },
+    {
+        key: 'figma', cls: 'd-figma', vb: '0 0 40 60', label: 'figma',
+        body: (<>
+            <path {...D} d="M20 4 L12 4 A8 8 0 0 0 12 20 L20 20 Z" />
+            <path {...D} d="M20 4 L28 4 A8 8 0 0 1 28 20 L20 20 Z" />
+            <path {...D} d="M20 20 L12 20 A8 8 0 0 0 12 36 L20 36 Z" />
+            <circle {...D} cx="28" cy="28" r="8" />
+            <path {...D} d="M20 36 L12 36 A8 8 0 1 0 20 44 Z" />
+        </>),
+    },
+    {
+        key: 'python', cls: 'd-python', vb: '0 0 60 60', label: 'python',
+        body: (<>
+            <path {...D} d="M30 6 Q18 6 18 14 L18 22 L32 22 L32 25 L12 25 Q4 25 4 36 Q4 46 12 46 L18 46 L18 38 Q18 32 26 32 L38 32 Q42 32 42 28 L42 14 Q42 6 30 6 Z" />
+            <path {...D} d="M30 54 Q42 54 42 46 L42 38 L28 38 L28 35 L48 35 Q56 35 56 24 Q56 14 48 14 L42 14" />
+            <circle {...D} cx="25" cy="12" r="1.6" />
+            <circle {...D} cx="35" cy="48" r="1.6" />
+        </>),
+    },
+    {
+        key: 'code', cls: 'd-code', vb: '0 0 64 40', label: null,
+        body: (<>
+            <path {...D} strokeWidth={2.6} d="M18 8 L6 20 L18 32" />
+            <path {...D} strokeWidth={2.6} d="M46 8 L58 20 L46 32" />
+            <path {...D} strokeWidth={2.6} d="M37 6 L27 34" />
+        </>),
+    },
+    {
+        key: 'pen', cls: 'd-pen', vb: '0 0 60 44', label: null,
+        body: (<>
+            <path {...D} d="M6 38 L6 14 L28 14 L28 38 Z" />
+            <path {...D} d="M10 20 L24 20 M10 26 L24 26 M10 32 L19 32" />
+            <path {...D} d="M36 38 L48 10 L53 12 L41 40 Z" />
+        </>),
+    },
+];
+
+const Doodles = () => (
+    <>
+        <svg width="0" height="0" style={{ position: 'absolute' }} aria-hidden="true">
+            <filter id="doodle-wobble" x="-20%" y="-20%" width="140%" height="140%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="7" result="n" />
+                <feDisplacementMap in="SourceGraphic" in2="n" scale="2" />
+            </filter>
+        </svg>
+        {DOODLES.map((d, i) => (
+            <svg key={d.key} viewBox={d.vb} className={`home-doodle ${d.cls}`} style={{ '--d': `${0.5 + i * 0.18}s` }} aria-hidden="true">
+                <g filter="url(#doodle-wobble)">{d.body}</g>
+                {d.label && d.key === 'speech' && <text x="15" y="25" className="home-doodle-text" fontSize="9" transform="rotate(-4 16 25)">{d.label}</text>}
+            </svg>
+        ))}
+        {DOODLES.filter((d) => d.label && d.key !== 'speech').map((d, i) => (
+            <span key={d.key} className={`home-doodle-label ${d.cls}-label`} style={{ '--d': `${1.1 + i * 0.18}s` }} aria-hidden="true">{d.label}</span>
+        ))}
+    </>
+);
+
 const Home = () => {
     const featured = WORKS.find((w) => w.id === FEATURED_ID);
     const selected = SELECTED_IDS.map((id) => WORKS.find((w) => w.id === id)).filter(Boolean);
@@ -69,6 +150,8 @@ const Home = () => {
                     </motion.p>
                 </div>
 
+                <div className="home-plate-wrap">
+                <Doodles />
                 <motion.figure custom={2} variants={fade} initial="hidden" animate="visible" className="home-plate">
                     <Mark pos="tl" /><Mark pos="tr" /><Mark pos="bl" /><Mark pos="br" />
                     <div className="home-plate-inner">
@@ -79,6 +162,7 @@ const Home = () => {
                         <span>53.34° N, 6.25° W</span>
                     </figcaption>
                 </motion.figure>
+                </div>
             </section>
 
             {/* Stats */}
@@ -137,7 +221,7 @@ const Home = () => {
             </section>
 
             <style>{`
-                .home-hero { max-width: 1320px; margin: 0 auto; padding: clamp(3rem, 7vw, 6rem) clamp(1.25rem, 3vw, 3rem) clamp(3rem, 6vw, 5rem); display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 5rem); align-items: center; }
+                .home-hero { overflow-x: clip; max-width: 1320px; margin: 0 auto; padding: clamp(3rem, 7vw, 6rem) clamp(1.25rem, 3vw, 3rem) clamp(3rem, 6vw, 5rem); display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(1.5rem, 3vw, 3rem); align-items: center; }
                 .home-eyebrow { font-family: ${MONO}; font-size: 0.74rem; letter-spacing: 0.16em; text-transform: uppercase; color: ${MUTED}; margin: 0 0 1.6rem; }
                 .home-eyebrow span { color: ${RULE}; margin: 0 0.35em; }
                 .home-title { font-family: ${SERIF}; font-weight: 400; font-size: clamp(2.5rem, 5.4vw, 4.9rem); line-height: 1.04; letter-spacing: -0.02em; margin: 0; text-transform: none; }
@@ -153,6 +237,38 @@ const Home = () => {
                 .home-status { display: flex; align-items: center; gap: 0.6rem; font-family: ${MONO}; font-size: 0.72rem; letter-spacing: 0.04em; color: ${MUTED}; margin: 2rem 0 0; line-height: 1.6; }
                 .home-dot { flex: none; width: 8px; height: 8px; border-radius: 50%; background: ${RULE}; box-shadow: 0 0 0 4px rgba(46,43,239,0.15); }
 
+                .home-plate-wrap { position: relative; margin: 0 84px 0 64px; }
+                .home-plate figcaption span { white-space: nowrap; }
+                @media (max-width: 1320px) { .home-plate figcaption span:last-child { display: none; } }
+                .home-doodle { position: absolute; overflow: visible; pointer-events: none; z-index: 2; }
+                .home-doodle path, .home-doodle circle { stroke-dasharray: 1; stroke-dashoffset: 1; animation: doodle-draw 1.1s cubic-bezier(0.65,0,0.35,1) var(--d) forwards; }
+                .home-doodle-text, .home-doodle-label { opacity: 0; animation: doodle-fade 0.6s ease var(--d) forwards; }
+                .home-doodle-text { font-family: 'Caveat', cursive; font-weight: 700; fill: ${RULE}; }
+                .home-doodle-label { position: absolute; font-family: 'Caveat', cursive; font-size: 1.15rem; font-weight: 600; color: ${RULE}; pointer-events: none; z-index: 2; transform: rotate(-6deg); }
+                @keyframes doodle-draw { to { stroke-dashoffset: 0; } }
+                @keyframes doodle-fade { to { opacity: 1; } }
+                .d-camera { width: 74px; top: 6%; left: -92px; }
+                .d-speech { width: 120px; top: -46px; right: -40px; }
+                .d-claude { width: 54px; top: 34%; left: -78px; }
+                .d-claude-label { top: calc(34% + 54px); left: -80px; }
+                .d-figma { width: 40px; top: 30%; right: -64px; }
+                .d-figma-label { top: calc(30% + 64px); right: -70px; }
+                .d-python { width: 56px; bottom: 22%; right: -80px; }
+                .d-python-label { bottom: calc(22% - 30px); right: -84px; }
+                .d-code { width: 70px; bottom: 8%; left: -96px; }
+                .d-pen { width: 70px; bottom: -40px; left: 18%; }
+                @media (max-width: 960px) {
+                    .home-plate-wrap { margin: 0; }
+                    .home-doodle, .home-doodle-label { display: none; }
+                    .d-speech, .d-claude, .d-claude-label { display: block; }
+                    .d-speech { right: -6px; }
+                    .d-claude { top: 6%; left: auto; right: -6px; width: 44px; }
+                    .d-claude-label { top: calc(6% + 46px); left: auto; right: -10px; }
+                }
+                @media (prefers-reduced-motion: reduce) {
+                    .home-doodle path, .home-doodle circle { animation: none; stroke-dashoffset: 0; }
+                    .home-doodle-text, .home-doodle-label { animation: none; opacity: 1; }
+                }
                 .home-plate { position: relative; margin: 0; padding: 1.1rem; border: 1px solid ${INK}; background: #ebe8e0; }
                 .home-plate-inner { overflow: hidden; }
                 .home-plate figcaption { display: flex; justify-content: space-between; gap: 1rem; font-family: ${MONO}; font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: ${MUTED}; border-top: 1px solid ${INK}; padding-top: 0.75rem; margin-top: 0.9rem; }
