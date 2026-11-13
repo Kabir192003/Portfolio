@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import PixelPortrait from '../components/PixelPortrait';
+import PortraitPlate from '../components/PortraitPlate';
 import { WORKS, WorkCard } from '../components/WorkCard';
 
 const INK = '#141414';
@@ -155,7 +155,7 @@ const Home = () => {
                 <motion.figure custom={2} variants={fade} initial="hidden" animate="visible" className="home-plate">
                     <Mark pos="tl" /><Mark pos="tr" /><Mark pos="bl" /><Mark pos="br" />
                     <div className="home-plate-inner">
-                        <PixelPortrait src="./portrait-cutout.webp" alt="Kabir Sharma" />
+                        <PortraitPlate src="./portrait-cutout.webp" alt="Kabir Sharma" />
                     </div>
                     <figcaption>
                         <span>Fig. 01 · Kabir Sharma</span>
