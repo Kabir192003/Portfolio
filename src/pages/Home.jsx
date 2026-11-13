@@ -1,396 +1,338 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import PixelPortrait from '../components/PixelPortrait';
-import { motion, AnimatePresence } from 'framer-motion';
-import IntroBoot from '../components/IntroBoot';
+import { motion } from 'framer-motion';
+import { WORKS, WorkCard } from '../components/WorkCard';
 
 const INK = '#141414';
 const RULE = '#2e2bef';
 const MUTED = '#3a3833';
+const FAINT = '#8a8578';
 const PAPER = '#f2f0ea';
+const MONO = "'JetBrains Mono', monospace";
+const ANTON = "'Anton', sans-serif";
+const SERIF = "'Source Serif 4', Georgia, serif";
+const NIGHT = '#15161f';
+const GLOW = '#a9b4ff';
 
-
-const STACK = [
-    { group: 'DESIGN', items: ['Product design', 'UX research', 'Interaction design', 'Design systems', 'Prototyping', 'Usability testing', 'Figma'] },
-    { group: 'ENGINEERING', items: ['React', 'TypeScript', 'JavaScript', 'Python', 'SQL', 'Postgres / Supabase', 'AI agent workflows'] },
-    { group: 'DATA', items: ['Product analytics', 'Survey research', 'Data visualisation', 'Data pipelines'] },
-];
 const STATS = [
-    { label: 'LIVE PRODUCTS, DESIGNED AND BUILT', value: '5' },
-    { label: 'PEOPLE SURVEYED FOR MY PRODUCTS', value: '500+' },
-    { label: 'CASE STUDIES', value: '8' },
+    { value: '5', label: 'Live products, designed and built' },
+    { value: '500+', label: 'People surveyed for my products' },
+    { value: '8', label: 'Case studies' },
+    { value: 'M.Sc.', label: 'Interactive Digital Media, Trinity College Dublin' },
 ];
 
 const CAPABILITIES = [
-    { area: 'DESIGN', items: 'Research, flows, interfaces and design systems. From a 300-student survey to the shipped Settld interface, and the brand and site for Cimelium.' },
-    { area: 'ENGINEERING', items: 'I build what I design in React and TypeScript, on real backends. At Cimelium I own product decisions on an AI-agent engineering workflow.' },
-    { area: 'DATA', items: 'Open-data pipelines, back-tested models and survey analysis. Settld\'s rent model is checked against 132 published figures.' },
-    { area: 'PRODUCT', items: 'Requirements, scope and trade-offs. Written as rules engineers can build and QA can test, from PawFect to Cimelium\'s sprint gates.' },
+    { area: 'Design', text: 'Research, flows, interfaces and design systems, from a 300-student survey to the brand and site for Cimelium.', tools: 'Figma · Prototyping · Design systems · Usability testing' },
+    { area: 'Engineering', text: 'I build what I design, on real backends, and own the product decisions behind an AI-agent engineering workflow.', tools: 'React · TypeScript · Python · SQL · Postgres / Supabase' },
+    { area: 'Data', text: 'Open-data pipelines, back-tested models and survey analysis. Settld’s rent model is checked against 132 published figures.', tools: 'Product analytics · GA4 · Data visualisation · Qlik' },
+    { area: 'Product', text: 'Requirements, scope and trade-offs, written as rules engineers can build and QA can test.', tools: 'Requirements · Prioritisation · Scrum · Acceptance testing' },
 ];
 
-const INDEX_ITEMS = [
-    { num: '01', label: 'SETTLD' },
-    { num: '02', label: 'STYLEBOOK AI' },
-    { num: '03', label: 'PAWFECT' },
-    { num: '04', label: 'WORK HIVE' },
-    { num: '05', label: 'TREK MATE' },
-];
-const FEATURED_TAGS = ['300+ STUDENTS SURVEYED', 'OPEN DATA', 'DESIGN + BUILD'];
+const FEATURED_ID = 'settld';
+const SELECTED_IDS = [6, 'pawfect', 2, 1];
 
-const PROJECTS = [
-    { num: '02', year: '2026 · LIVE', title: 'StyleBook AI', meta: 'TEAM LEAD · DESIGN + BUILD', tags: ['AI PRODUCT', 'FIGMA PLUGIN'], desc: 'Shaped by a survey of 200+ designers. I led a team of four and built a tool that turns a written brand brief into a checked, exportable design system, published as a Figma plugin.', img: './stylebook/sb-mockup.jpg', link: '/projects/6' },
-    { num: '03', year: '2025 · CLIENT WORK', title: 'PawFect', meta: 'PRODUCT ASSOCIATE · DREAMWEAVERS', tags: ['MOBILE APP', 'REQUIREMENTS'], desc: 'A pet care app for a veterinary clinic in Hyderabad. I owned the requirements: booking, a digital health passport, reminders worked out from the record, and prices shown before you pay.', img: './pawfect/pf-mockup.jpg', link: '/projects/pawfect' },
-    { num: '04', year: '2026 · LIVE', title: 'Work Hive', meta: 'SOLO · DESIGN + BUILD', tags: ['WEB PLATFORM', 'FULL STACK'], desc: 'A hiring platform where named, job-specific endorsements from real colleagues travel with every application. 18 screens on a real Postgres backend, with the security boundary tested.', img: './workhive/wh-mockup.jpg', link: '/projects/2' },
-    { num: '05', year: '2026 · LIVE', title: 'Trek Mate', meta: 'SOLO · DESIGN + BUILD', tags: ['E-COMMERCE', 'REACT'], desc: 'An outdoor gear store designed around the whole pack. A live planner shows your base weight and ranks lighter swaps by what each gram saved costs you.', img: './trekmate-v3/tm3-mockup.jpg', link: '/projects/1' },
-];
-
-const Chip = ({ children }) => (
-    <span style={{ border: `1px solid ${INK}`, fontFamily: "'JetBrains Mono', monospace", fontSize: '0.7rem', padding: '4px 10px' }}>{children}</span>
-);
-
-const HighlightChip = ({ children }) => (
-    <span style={{ border: `1px solid ${RULE}`, background: 'rgba(46, 43, 239, 0.1)', color: RULE, fontFamily: "'JetBrains Mono', monospace", fontWeight: 700, fontSize: '0.7rem', padding: '4px 10px' }}>{children}</span>
-);
-
-// A small circular hand-signature mark — a personal flourish echoing
-// the "signed off" feel of a printed proof, drawn as one loose stroke.
-const SignatureMark = ({ size = 44 }) => (
-    <svg width={size} height={size} viewBox="0 0 44 44" style={{ overflow: 'visible', filter: 'url(#sketch-wobble)' }}>
-        <circle cx="22" cy="22" r="21" fill="none" stroke={INK} strokeWidth="1" />
-        <path d="M13 28 Q15 14 18 14 Q20 14 18 22 Q17 27 20 27 Q23 27 25 18 Q26 14 28 14 Q31 14 29 22 Q28 27 31 26" fill="none" stroke={INK} strokeWidth="1.1" strokeLinecap="round" />
-    </svg>
-);
-
-const KABIR_LANGS = [
-    { text: 'Kabir', lang: 'en' },
-    { text: 'कबीर', lang: 'hi' },
-    { text: 'కబీర్', lang: 'te' },
-    { text: 'કબીર', lang: 'gu' },
-    { text: 'カビール', lang: 'ja' },
-    { text: 'Кабир', lang: 'ru' },
-    { text: '카비르', lang: 'ko' },
-    { text: '卡比尔', lang: 'zh' },
-    { text: 'কবির', lang: 'bn' },
-    { text: 'கபீர்', lang: 'ta' },
-];
-
-const KabirCycle = () => {
-    // Reads "Kabir" in English by default; hovering the name cycles through scripts.
-    const [index, setIndex] = useState(0);
-    const [hover, setHover] = useState(false);
-
-    useEffect(() => {
-        if (!hover) { setIndex(0); return undefined; }
-        setIndex(1);
-        const id = setInterval(() => {
-            setIndex((i) => (i + 1) % KABIR_LANGS.length);
-        }, 900);
-        return () => clearInterval(id);
-    }, [hover]);
-
-    return (
-        <span style={{ display: 'inline-grid' }} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} title="Kabir, in ten scripts">
-            <AnimatePresence mode="wait">
-                <motion.span
-                    key={KABIR_LANGS[index].lang}
-                    lang={KABIR_LANGS[index].lang}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                    style={{ gridArea: '1 / 1' }}
-                >
-                    {KABIR_LANGS[index].text}
-                </motion.span>
-            </AnimatePresence>
-        </span>
-    );
+const fade = {
+    hidden: { opacity: 0, y: 14 },
+    visible: (i = 0) => ({ opacity: 1, y: 0, transition: { delay: 0.05 + i * 0.07, duration: 0.6, ease: [0.16, 1, 0.3, 1] } }),
 };
 
+const Mark = ({ pos }) => <span className={`home-mark home-mark-${pos}`} aria-hidden="true" />;
+
+// Hand-drawn margin doodles. Every stroke uses pathLength="1" so CSS can draw it in,
+// and the shared wobble filter keeps the lines from looking machine-made.
+const D = { fill: 'none', stroke: RULE, strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round', pathLength: 1 };
+const DOODLES = [
+    {
+        key: 'camera', cls: 'd-camera', vb: '0 0 64 44', label: null,
+        body: (<>
+            <path {...D} d="M8 14 L20 14 L24 8 L40 8 L44 14 L56 14 L56 38 L8 38 Z" />
+            <circle {...D} cx="32" cy="25" r="8" />
+            <path {...D} d="M48 19 L51 19" />
+        </>),
+    },
+    {
+        key: 'speech', cls: 'd-speech', vb: '0 0 70 46', label: 'hi, there...',
+        body: (<path {...D} fill={PAPER} d="M6 30 Q4 8 34 8 Q64 8 64 22 Q64 34 46 34 L24 34 L14 42 L17 33 Q8 33 6 30 Z" />),
+    },
+    {
+        key: 'claude', cls: 'd-claude', vb: '0 0 60 60', label: 'claude',
+        body: (<>
+            {[0, 30, 60, 90, 120, 150].map((a) => (
+                <path key={a} {...D} strokeWidth={3} d="M30 12 L30 48" transform={`rotate(${a} 30 30)`} />
+            ))}
+        </>),
+    },
+    {
+        key: 'figma', cls: 'd-figma', vb: '0 0 40 60', label: 'figma',
+        body: (<>
+            <path {...D} d="M20 4 L12 4 A8 8 0 0 0 12 20 L20 20 Z" />
+            <path {...D} d="M20 4 L28 4 A8 8 0 0 1 28 20 L20 20 Z" />
+            <path {...D} d="M20 20 L12 20 A8 8 0 0 0 12 36 L20 36 Z" />
+            <circle {...D} cx="28" cy="28" r="8" />
+            <path {...D} d="M20 36 L12 36 A8 8 0 1 0 20 44 Z" />
+        </>),
+    },
+    {
+        key: 'python', cls: 'd-python', vb: '0 0 60 60', label: 'python',
+        body: (<>
+            <path {...D} d="M30 6 Q18 6 18 14 L18 22 L32 22 L32 25 L12 25 Q4 25 4 36 Q4 46 12 46 L18 46 L18 38 Q18 32 26 32 L38 32 Q42 32 42 28 L42 14 Q42 6 30 6 Z" />
+            <path {...D} d="M30 54 Q42 54 42 46 L42 38 L28 38 L28 35 L48 35 Q56 35 56 24 Q56 14 48 14 L42 14" />
+            <circle {...D} cx="25" cy="12" r="1.6" />
+            <circle {...D} cx="35" cy="48" r="1.6" />
+        </>),
+    },
+    {
+        key: 'code', cls: 'd-code', vb: '0 0 64 40', label: null,
+        body: (<>
+            <path {...D} strokeWidth={2.6} d="M18 8 L6 20 L18 32" />
+            <path {...D} strokeWidth={2.6} d="M46 8 L58 20 L46 32" />
+            <path {...D} strokeWidth={2.6} d="M37 6 L27 34" />
+        </>),
+    },
+    {
+        key: 'pen', cls: 'd-pen', vb: '0 0 60 44', label: null,
+        body: (<>
+            <path {...D} d="M6 38 L6 14 L28 14 L28 38 Z" />
+            <path {...D} d="M10 20 L24 20 M10 26 L24 26 M10 32 L19 32" />
+            <path {...D} d="M36 38 L48 10 L53 12 L41 40 Z" />
+        </>),
+    },
+];
+
+const Doodles = () => (
+    <>
+        <svg width="0" height="0" style={{ position: 'absolute' }} aria-hidden="true">
+            <filter id="doodle-wobble" x="-20%" y="-20%" width="140%" height="140%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="7" result="n" />
+                <feDisplacementMap in="SourceGraphic" in2="n" scale="2" />
+            </filter>
+        </svg>
+        {DOODLES.map((d, i) => (
+            <svg key={d.key} viewBox={d.vb} className={`home-doodle ${d.cls}`} style={{ '--d': `${0.5 + i * 0.18}s` }} aria-hidden="true">
+                <g filter="url(#doodle-wobble)">{d.body}</g>
+                {d.label && d.key === 'speech' && <text x="15" y="25" className="home-doodle-text" fontSize="9" transform="rotate(-4 16 25)">{d.label}</text>}
+            </svg>
+        ))}
+        {DOODLES.filter((d) => d.label && d.key !== 'speech').map((d, i) => (
+            <span key={d.key} className={`home-doodle-label ${d.cls}-label`} style={{ '--d': `${1.1 + i * 0.18}s` }} aria-hidden="true">{d.label}</span>
+        ))}
+    </>
+);
+
 const Home = () => {
+    const featured = WORKS.find((w) => w.id === FEATURED_ID);
+    const selected = SELECTED_IDS.map((id) => WORKS.find((w) => w.id === id)).filter(Boolean);
+    const scrollToWork = (e) => {
+        e.preventDefault();
+        document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' });
+    };
+
     return (
-        <>
-            <IntroBoot />
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.4 }}
-            >
-            {/* Page title */}
-            <div style={{ textAlign: 'center', padding: '3rem 1.5rem 2rem' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', maxWidth: '900px', margin: '0 auto 1.5rem', paddingBottom: '0.6rem', borderBottom: `1px solid rgba(20,20,20,0.16)`, fontFamily: "'JetBrains Mono', monospace", fontSize: '0.68rem', letterSpacing: '0.04em', color: MUTED, flexWrap: 'wrap', gap: '0.5rem' }}>
-                    <span>Kabir Sharma · Portfolio</span>
-                    <span>Dublin · Stamp 1G, no visa sponsorship needed</span>
-                </div>
-                <h1 style={{ fontFamily: "'Anton', 'Noto Sans', sans-serif", fontSize: 'clamp(2.8rem, 9vw, 7.5rem)', letterSpacing: '0.01em', lineHeight: 0.95, margin: 0, textTransform: 'uppercase', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '0 0.35em' }}><KabirCycle /><span>Sharma</span></h1>
-                <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 'clamp(0.85rem, 2vw, 1.05rem)', letterSpacing: '0.2em', textTransform: 'uppercase', color: RULE, fontWeight: 700, marginTop: '1.1rem' }}>Product Design Engineer</p>
-                <p style={{ fontSize: '1.05rem', color: MUTED, maxWidth: '560px', margin: '0.9rem auto 0', lineHeight: 1.65 }}>I design and build interactive products from evidence: research, data and code.</p>
-            </div>
-            <div style={{ borderTop: `1px solid ${INK}` }} />
-
-            {/* Profile / portrait / stats grid */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) minmax(360px,720px) minmax(0,1fr)', maxWidth: '1400px', margin: '0 auto' }} className="home-profile-grid">
-                <div style={{ padding: '2.75rem clamp(1.25rem,3vw,3rem)', borderRight: `1px solid ${INK}` }}>
-                    <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.72rem', letterSpacing: '0.14em', fontWeight: 700 }}>PROFILE</span>
-                    <h2 style={{ fontFamily: "'Anton', sans-serif", fontSize: 'clamp(1.9rem,3.4vw,2.7rem)', textTransform: 'uppercase', lineHeight: 1.05, margin: '0.9rem 0 1.4rem' }}>
-                        Designer who<br /><span style={{ color: RULE }}>ships the code</span>
-                    </h2>
-                    <p style={{ fontSize: '1.08rem', lineHeight: 1.65, marginBottom: '2rem' }}>
-                        <strong>I research the problem, design the product and build it.</strong> Five of my products are live, so you can click through them, not just look at mockups. Open to product designer, design engineer and data roles.
-                    </p>
-                    <a href="#work" onClick={(e) => { e.preventDefault(); document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' }); }} style={{ display: 'block', textAlign: 'center', background: RULE, color: '#f2f0ea', fontFamily: "'JetBrains Mono', monospace", fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', fontSize: '0.9rem', padding: '1rem', textDecoration: 'none', marginBottom: '2.25rem' }}>See the work ↓</a>
-                    <a href="./Kabir_Sharma_CV.pdf" target="_blank" rel="noreferrer" style={{ display: 'block', textAlign: 'center', border: `1px solid ${INK}`, color: INK, fontFamily: "'JetBrains Mono', monospace", fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', fontSize: '0.9rem', padding: '1rem', textDecoration: 'none', marginTop: '-1.5rem', marginBottom: '2.25rem' }}>Download CV (PDF) ↓</a>
-
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.1rem', borderTop: `1px solid ${INK}`, paddingTop: '1.25rem' }}>
-                        {STACK.map((g) => (
-                            <div key={g.group}>
-                                <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.68rem', letterSpacing: '0.1em', color: MUTED, display: 'block', marginBottom: '0.5rem' }}>{g.group}</span>
-                                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
-                                    {g.items.map((t) => (
-                                        <span key={t} style={{ border: `1px solid ${INK}`, fontFamily: "'JetBrains Mono', monospace", fontSize: '0.7rem', padding: '4px 9px', whiteSpace: 'nowrap' }}>{t}</span>
-                                    ))}
-                                </div>
-                            </div>
-                        ))}
-                    </div>
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} style={{ background: PAPER, color: INK }}>
+            {/* Hero */}
+            <section className="home-hero">
+                <div className="home-hero-text">
+                    <motion.p custom={0} variants={fade} initial="hidden" animate="visible" className="home-eyebrow">
+                        Kabir Sharma <span>·</span> Product Design Engineer <span>·</span> Dublin
+                    </motion.p>
+                    <motion.h1 custom={1} variants={fade} initial="hidden" animate="visible" className="home-title">
+                        I research the problem, design the product <em>and build&nbsp;it.</em>
+                    </motion.h1>
+                    <motion.p custom={2} variants={fade} initial="hidden" animate="visible" className="home-lede">
+                        Product Design Engineer at Cimelium, an Enterprise Ireland funded startup at Trinity College Dublin. Five of my products are live, so you can use them, not just look at mockups.
+                    </motion.p>
+                    <motion.div custom={3} variants={fade} initial="hidden" animate="visible" className="home-ctas">
+                        <a href="#work" onClick={scrollToWork} className="home-btn home-btn-solid">See the work ↓</a>
+                        <a href="./Kabir_Sharma_CV.pdf" target="_blank" rel="noreferrer" className="home-btn">Download CV</a>
+                        <a href="mailto:kabiroscope@gmail.com" className="home-mail">kabiroscope@gmail.com</a>
+                    </motion.div>
+                    <motion.p custom={4} variants={fade} initial="hidden" animate="visible" className="home-status">
+                        <span className="home-dot" /> Open to product designer, design engineer and data roles · Stamp 1G, no sponsorship needed
+                    </motion.p>
                 </div>
 
-                <div style={{ position: 'relative', padding: '1rem 0.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }} className="home-portrait-col">
-                    <div style={{ position: 'relative', width: '460px', maxWidth: '100%' }}>
-                        <PixelPortrait src="./portrait-cutout.webp" alt="Kabir Sharma" />
-
-                        {/* Hand-drawn wobble, shared by every doodle below */}
-                        <svg width="0" height="0" style={{ position: 'absolute' }} aria-hidden="true">
-                            <filter id="sketch-wobble" x="-20%" y="-20%" width="140%" height="140%">
-                                <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="7" result="noise" />
-                                <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.2" />
-                            </filter>
-                        </svg>
-
-                        {/* Camera — floats in the left margin beside the hair */}
-                        <svg viewBox="0 0 60 40" style={{ position: 'absolute', top: '8%', left: '-32%', width: '150px', overflow: 'visible', filter: 'url(#sketch-wobble)' }} className="home-doodle-camera">
-                            <path d="M8 30 L8 12 L28 12 L28 30 Z M8 20 L2 15 L2 25 Z" fill="none" stroke={RULE} strokeWidth="2.1" />
-                            <circle cx="18" cy="21" r="5" fill="none" stroke={RULE} strokeWidth="2.1" />
-                        </svg>
-                        {/* Speech bubble — right margin, paper-filled so it reads clearly */}
-                        <svg viewBox="0 0 60 40" style={{ position: 'absolute', top: '4%', right: '-34%', width: '150px', overflow: 'visible', filter: 'url(#sketch-wobble)' }} className="home-doodle-speech">
-                            <path d="M4 30 Q4 8 26 8 Q48 8 48 22 Q48 32 36 32 L20 32 L14 38 L16 30" fill={PAPER} stroke={RULE} strokeWidth="2.1" />
-                            <text x="8" y="24" fontFamily="Anton" fontSize="7.5" fill={RULE} transform="rotate(-4 10 24)">hi, there...</text>
-                        </svg>
-                        {/* TV — right margin, lower */}
-                        <svg viewBox="0 0 60 40" style={{ position: 'absolute', top: '48%', right: '-36%', width: '115px', overflow: 'visible', filter: 'url(#sketch-wobble)' }} className="home-doodle-tv">
-                            <rect x="8" y="10" width="34" height="22" rx="1.5" fill="none" stroke={RULE} strokeWidth="2" />
-                            <path d="M18 10 L14 3 M32 10 L36 3" fill="none" stroke={RULE} strokeWidth="1.8" />
-                            <circle cx="36" cy="16" r="1.6" fill="none" stroke={RULE} strokeWidth="1.6" />
-                        </svg>
-                        {/* Pen + notebook — left margin, lower */}
-                        <svg viewBox="0 0 60 40" style={{ position: 'absolute', top: '46%', left: '-38%', width: '135px', overflow: 'visible', filter: 'url(#sketch-wobble)' }} className="home-doodle-pen">
-                            <path d="M6 34 L6 16 L26 16 L26 34 Z" fill="none" stroke={RULE} strokeWidth="1.8" />
-                            <path d="M9 21 L23 21 M9 25 L23 25 M9 29 L18 29" fill="none" stroke={RULE} strokeWidth="1.5" />
-                            <path d="M32 34 L44 12 L48 15 L36 37 Z" fill="none" stroke={RULE} strokeWidth="1.8" />
-                            <path d="M44 12 L48 15" stroke={RULE} strokeWidth="1.8" />
-                        </svg>
-                        {/* Laptop, Figma — bottom-right margin */}
-                        <svg viewBox="0 0 60 40" style={{ position: 'absolute', bottom: '-16%', right: '-32%', width: '150px', overflow: 'visible', filter: 'url(#sketch-wobble)' }} className="home-doodle-laptop">
-                            <rect x="10" y="6" width="34" height="22" rx="1.5" fill="none" stroke={RULE} strokeWidth="1.9" />
-                            <path d="M4 32 L50 32 L45 28 L9 28 Z" fill="none" stroke={RULE} strokeWidth="1.9" />
-                            <circle cx="19" cy="14" r="2.2" fill="none" stroke={RULE} strokeWidth="1.4" />
-                            <circle cx="26" cy="14" r="2.2" fill="none" stroke={RULE} strokeWidth="1.4" />
-                            <circle cx="19" cy="20" r="2.2" fill="none" stroke={RULE} strokeWidth="1.4" />
-                            <text x="14" y="26" fontFamily="Anton" fontSize="5.5" fill={RULE}>figma</text>
-                        </svg>
-                        {/* Code brackets — bottom-left margin */}
-                        <svg viewBox="0 0 60 40" style={{ position: 'absolute', bottom: '4%', left: '-24%', width: '90px', overflow: 'visible', filter: 'url(#sketch-wobble)' }} className="home-doodle-code">
-                            <text x="2" y="24" fontFamily="Anton" fontSize="16" fill={RULE}>&lt;/&gt;</text>
-                        </svg>
-
-                    </div>
-
-                    {/* Below the image — real document flow, so it actually fills the remaining column height */}
-                    <div style={{ width: '460px', maxWidth: '100%', marginTop: '2rem' }}>
-                        <Link to="/about" style={{ textDecoration: 'none', display: 'block', transform: 'rotate(-2deg)', marginBottom: '1.5rem' }}>
-                            <span style={{ fontFamily: "'Caveat', cursive", fontSize: '1.5rem', color: RULE, lineHeight: 1.2 }}>
-                                chasing car events when I'm not building →
-                            </span>
-                        </Link>
-                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                            {['MOTORSPORT', 'WATCHES', 'TRAVEL', 'PHOTOGRAPHY'].map((tg) => (
-                                <span key={tg} style={{ border: `1px solid ${INK}`, fontFamily: "'JetBrains Mono', monospace", fontSize: '0.7rem', padding: '4px 10px' }}>{tg}</span>
-                            ))}
-                        </div>
-                    </div>
+                <div className="home-photo">
+                    <img src="./portrait-2026-full.webp" alt="Kabir Sharma by the river at night, city lights behind" className="home-photo-img" />
+                    <Doodles />
                 </div>
+            </section>
 
-                <div style={{ padding: '2.75rem clamp(1.25rem,3vw,3rem)', borderLeft: `1px solid ${INK}`, display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5em', fontFamily: "'JetBrains Mono', monospace", fontSize: '0.72rem', letterSpacing: '0.1em', fontWeight: 700, color: RULE }}>
-                        <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: RULE, display: 'inline-block' }} />OPEN TO WORK
-                    </span>
-
-                    <div>
-                        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.68rem', letterSpacing: '0.1em', color: MUTED }}>BASED IN</span>
-                        <h3 style={{ fontFamily: "'Anton', sans-serif", fontSize: '1.6rem', textTransform: 'uppercase', margin: '0.3rem 0' }}>Dublin</h3>
+            {/* Stats */}
+            <section className="home-stats" aria-label="At a glance">
+                {STATS.map((s) => (
+                    <div key={s.label}>
+                        <span className="home-stat-value">{s.value}</span>
+                        <span className="home-stat-label">{s.label}</span>
                     </div>
-                    <div style={{ borderTop: `1px solid ${INK}`, paddingTop: '1.25rem' }} />
-                    <div>
-                        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.68rem', letterSpacing: '0.1em', color: MUTED }}>RIGHT TO WORK</span>
-                        <h3 style={{ fontFamily: "'Anton', sans-serif", fontSize: '1.3rem', textTransform: 'uppercase', margin: '0.3rem 0' }}>Stamp 1G</h3>
-                        <span style={{ fontSize: '0.9rem', color: MUTED }}>No sponsorship needed</span>
-                    </div>
-                    <div style={{ borderTop: `1px solid ${INK}`, paddingTop: '1.25rem' }} />
-
-                    {STATS.map((st) => (
-                        <React.Fragment key={st.label}>
-                            <div>
-                                <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.68rem', letterSpacing: '0.1em', color: MUTED }}>{st.label}</span>
-                                <h3 style={{ fontFamily: "'Anton', sans-serif", fontSize: '2rem', margin: '0.25rem 0' }}>{st.value}</h3>
-                            </div>
-                            <div style={{ borderTop: `1px solid ${INK}`, paddingTop: '1.25rem' }} />
-                        </React.Fragment>
-                    ))}
-
-                    <div>
-                        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.68rem', letterSpacing: '0.1em', color: MUTED }}>EDUCATION</span>
-                        <h3 style={{ fontFamily: "'Anton', sans-serif", fontSize: '1.2rem', textTransform: 'uppercase', margin: '0.3rem 0' }}>M.Sc. Interactive Digital Media</h3>
-                        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.72rem', color: MUTED, display: 'block', marginBottom: '0.5rem' }}>Trinity College Dublin</span>
-                        <h3 style={{ fontFamily: "'Anton', sans-serif", fontSize: '1.2rem', textTransform: 'uppercase', margin: '0.3rem 0' }}>B.Tech Computer Science</h3>
-                        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.72rem', color: MUTED }}>Anurag University</span>
-                    </div>
-                    <div style={{ borderTop: `1px solid ${INK}`, paddingTop: '1.25rem' }} />
-                    <Link to="/about" style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.8rem', fontWeight: 700, color: RULE, textDecoration: 'underline' }}>More about me →</Link>
-                </div>
-            </div>
-
-            {/* Capabilities */}
-            <div style={{ borderTop: `1px solid ${INK}`, borderBottom: `1px solid ${INK}` }}>
-                <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '2.75rem clamp(1.25rem,3vw,3rem)' }}>
-                    <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.72rem', letterSpacing: '0.14em', fontWeight: 700, color: MUTED, display: 'block', marginBottom: '1.75rem' }}>WHAT I DO</span>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '2rem' }}>
-                        {CAPABILITIES.map((c) => (
-                            <div key={c.area} style={{ borderTop: `2px solid ${INK}`, paddingTop: '0.9rem' }}>
-                                <h3 style={{ fontFamily: "'Anton', sans-serif", fontSize: '1.15rem', letterSpacing: '0.02em', marginBottom: '0.6rem' }}>{c.area}</h3>
-                                <p style={{ fontSize: '0.98rem', color: MUTED, lineHeight: 1.65 }}>{c.items}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
-
-            <div style={{ display: 'flex', alignItems: 'center', gap: '2rem', padding: '0.9rem clamp(1.25rem,3vw,3rem)', overflowX: 'auto', borderBottom: `1px solid ${INK}` }}>
-                <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.75rem', letterSpacing: '0.1em', fontWeight: 700, flex: 'none' }}>INDEX</span>
-                {INDEX_ITEMS.map((ix) => (
-                    <span key={ix.num} style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.78rem', whiteSpace: 'nowrap', flex: 'none' }}>
-                        <span style={{ color: RULE, fontWeight: 700 }}>{ix.num}</span> {ix.label}
-                    </span>
                 ))}
-            </div>
+            </section>
 
-            {/* Featured */}
-            <div id="work" style={{ maxWidth: '1400px', margin: '0 auto', padding: '3.5rem clamp(1.25rem,3vw,3rem) 2rem' }}>
-                <h2 style={{ fontFamily: "'Anton', sans-serif", fontSize: 'clamp(2rem,4vw,3rem)', textTransform: 'uppercase', marginBottom: '2.5rem' }}>Featured: a real problem, built end to end</h2>
-                <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1.3fr) minmax(280px,420px)', gap: '2.5rem', alignItems: 'start' }} className="home-featured-grid">
-                    <div style={{ position: 'relative', backgroundImage: 'radial-gradient(circle, rgba(20,20,20,0.14) 1px, transparent 1.6px)', backgroundSize: '7px 7px', padding: '1.75rem' }}>
-                        <img src="./settld/settld-mockup.jpg" alt="Settld, a Dublin area finder for students" style={{ width: '100%', display: 'block', transform: 'rotate(-1deg)', boxShadow: '0 20px 40px -16px rgba(20,20,20,0.35)', border: `1px solid ${INK}` }} />
-                    </div>
+            {/* Work */}
+            <section id="work" className="home-section">
+                <div className="home-section-head">
                     <div>
-                        <span style={{ fontFamily: "'Anton', sans-serif", fontSize: '1.4rem', color: RULE }}>01</span>
-                        <div style={{ display: 'flex', gap: '0.6rem', margin: '0.8rem 0 1.1rem', flexWrap: 'wrap' }}>
-                            <HighlightChip>2026 · LIVE</HighlightChip>
-                            {FEATURED_TAGS.map((tg) => <Chip key={tg}>{tg}</Chip>)}
+                        <span className="home-kicker">Selected work</span>
+                        <h2 className="home-h2">Real problems, <em>shipped.</em></h2>
+                    </div>
+                    <Link to="/projects" className="home-link">All 8 case studies →</Link>
+                </div>
+                {featured && <WorkCard w={featured} featured />}
+                <div className="work-grid">
+                    {selected.map((w) => <WorkCard key={w.id} w={w} />)}
+                </div>
+            </section>
+
+            {/* What I do */}
+            <section className="home-section home-section-rule">
+                <div className="home-section-head">
+                    <div>
+                        <span className="home-kicker">What I do</span>
+                        <h2 className="home-h2">One person, <em>the whole loop.</em></h2>
+                    </div>
+                    <Link to="/experience" className="home-link">Experience →</Link>
+                </div>
+                <div className="home-caps">
+                    {CAPABILITIES.map((c, i) => (
+                        <div key={c.area}>
+                            <span className="home-cap-num">{String(i + 1).padStart(2, '0')}</span>
+                            <h3>{c.area}</h3>
+                            <p>{c.text}</p>
+                            <span className="home-cap-tools">{c.tools}</span>
                         </div>
-                        <h3 style={{ fontFamily: "'Anton', sans-serif", fontSize: 'clamp(1.6rem,2.6vw,2.1rem)', textTransform: 'uppercase', lineHeight: 1.1, marginBottom: '1rem' }}>Settld: find your part of Dublin before you sign a lease</h3>
-                        <p style={{ fontSize: '1rem', lineHeight: 1.7, marginBottom: '1.25rem' }}>Students sign Dublin leases for places they have never seen, on rent figures they cannot check. After surveying 300+ students across several universities, I designed and built a free, open-data tool that ranks 106 areas by rent, the real journey to college and nearby jobs, and shows the source of every number.</p>
-                        <Link to="/projects/settld" style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.85rem', fontWeight: 700, color: RULE, textDecoration: 'underline' }}>Case study →</Link>
-                    </div>
+                    ))}
                 </div>
-            </div>
+            </section>
 
-            {/* Selected work */}
-            <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '1rem clamp(1.25rem,3vw,3rem) 5rem' }}>
-                <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: '2rem', borderTop: `1px solid ${INK}`, paddingTop: '1.5rem' }}>
-                    <h2 style={{ fontFamily: "'Anton', sans-serif", fontSize: 'clamp(1.8rem,3.4vw,2.4rem)', textTransform: 'uppercase' }}>Selected work</h2>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                        <Link to="/projects" style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.75rem', fontWeight: 700, color: RULE, textDecoration: 'underline' }}>All 8 case studies →</Link>
-                        <SignatureMark />
-                    </div>
-                </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', borderTop: `1px solid ${INK}` }} className="home-selected-grid">
-                    {PROJECTS.map((proj, idx) => {
-                        const isLeftCol = idx % 2 === 0;
-                        const isTopRow = idx < PROJECTS.length - (PROJECTS.length % 2 === 0 ? 2 : 1);
-                        return (
-                            <div
-                                key={proj.num}
-                                className="home-selected-cell"
-                                style={{
-                                    padding: 'clamp(1.5rem, 3vw, 2.75rem)',
-                                    borderRight: isLeftCol ? `1px solid ${INK}` : 'none',
-                                    borderBottom: isTopRow ? `1px solid ${INK}` : 'none',
-                                }}
-                            >
-                                <span style={{ fontFamily: "'Anton', sans-serif", fontSize: '1.4rem', color: RULE, display: 'block', marginBottom: '1rem' }}>{proj.num}</span>
-                                <div style={{ marginBottom: '1.5rem' }}>
-                                    <img src={proj.img} alt={proj.title} loading="lazy" style={{ width: '100%', display: 'block', aspectRatio: '3 / 2', objectFit: 'cover' }} />
-                                </div>
-                                <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.9rem', flexWrap: 'wrap' }}>
-                                    <HighlightChip>{proj.year}</HighlightChip>
-                                    {proj.tags.map((tg) => (
-                                        <span key={tg} style={{ border: `1px solid ${INK}`, fontFamily: "'JetBrains Mono', monospace", fontSize: '0.68rem', padding: '3px 9px' }}>{tg}</span>
-                                    ))}
-                                </div>
-                                <h3 style={{ fontFamily: "'Anton', sans-serif", fontSize: '1.5rem', textTransform: 'uppercase', marginBottom: '0.6rem' }}>{proj.title}</h3>
-                                <p style={{ fontSize: '0.98rem', lineHeight: 1.65, marginBottom: '1.25rem', maxWidth: '46ch' }}>{proj.desc}</p>
-                                <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: '1rem' }}>
-                                    <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.75rem', color: MUTED, letterSpacing: '0.04em' }}>{proj.meta}</span>
-                                    <Link to={proj.link} style={{ flex: 'none', fontFamily: "'JetBrains Mono', monospace", fontSize: '0.8rem', fontWeight: 700, color: RULE, textDecoration: 'underline' }}>Case study →</Link>
-                                </div>
-                            </div>
-                        );
-                    })}
-                </div>
-            </div>
-
-            {/* Outside the build — teaser */}
-            <div style={{ borderTop: `1px solid ${INK}` }}>
-                <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '3.5rem clamp(1.25rem,3vw,3rem) 4rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '2rem' }}>
-                    <div>
-                        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.72rem', letterSpacing: '0.14em', fontWeight: 700, color: RULE, display: 'block', marginBottom: '0.75rem' }}>OUTSIDE THE BUILD</span>
-                        <p style={{ fontSize: '1.08rem', lineHeight: 1.7, maxWidth: '560px' }}>15+ countries, 12,000km driven across Europe chasing car events, a growing watch collection, and a camera that comes along for the ride.</p>
-                    </div>
-                    <Link to="/about" style={{ flex: 'none', fontFamily: "'JetBrains Mono', monospace", fontWeight: 700, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.04em', border: `1px solid ${INK}`, padding: '0.85rem 1.5rem', textDecoration: 'none', color: INK }}>Read the story →</Link>
-                </div>
-            </div>
+            {/* Outside the build */}
+            <section className="home-outside">
+                <p>
+                    <span className="home-kicker">Outside the build</span>
+                    15+ countries and 12,000 km driven across Europe chasing car events, a growing watch collection, and a camera that comes along.
+                </p>
+                <Link to="/about" className="home-btn">Read the story →</Link>
+            </section>
 
             <style>{`
-                @media (max-width: 900px) {
-                    .home-profile-grid {
-                        grid-template-columns: minmax(0, 1fr) !important;
-                    }
-                    .home-profile-grid > div {
-                        border-right: none !important;
-                        border-left: none !important;
-                        border-bottom: 1px solid ${INK};
-                    }
-                    .home-doodle-speech, .home-doodle-code, .home-doodle-pen, .home-doodle-laptop, .home-doodle-tv, .home-doodle-camera {
-                        display: none;
-                    }
-                    .home-featured-grid {
-                        grid-template-columns: minmax(0, 1fr) !important;
-                    }
-                    .home-selected-grid {
-                        grid-template-columns: minmax(0, 1fr) !important;
-                    }
-                    .home-selected-cell {
-                        border-right: none !important;
-                        border-bottom: 1px solid ${INK} !important;
-                    }
-                    .home-selected-cell:last-child {
-                        border-bottom: none !important;
-                    }
+                .home-hero { overflow-x: clip; max-width: 1320px; margin: 0 auto; padding: clamp(3rem, 7vw, 6rem) clamp(1.25rem, 3vw, 3rem) clamp(3rem, 6vw, 5rem); display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(1.5rem, 3vw, 3rem); align-items: center; }
+                .home-eyebrow { font-family: ${MONO}; font-size: 0.74rem; letter-spacing: 0.16em; text-transform: uppercase; color: ${MUTED}; margin: 0 0 1.6rem; }
+                .home-eyebrow span { color: ${RULE}; margin: 0 0.35em; }
+                .home-title { font-family: ${SERIF}; font-weight: 400; font-size: clamp(2.5rem, 5.4vw, 4.9rem); line-height: 1.04; letter-spacing: -0.02em; margin: 0; text-transform: none; }
+                .home-title em, .home-h2 em { font-style: italic; color: ${RULE}; }
+                .home-lede { font-size: clamp(1.02rem, 1.4vw, 1.15rem); line-height: 1.65; color: ${MUTED}; max-width: 54ch; margin: 1.6rem 0 2rem; }
+                .home-ctas { display: flex; align-items: center; flex-wrap: wrap; gap: 0.8rem 1rem; }
+                .home-btn { display: inline-block; font-family: ${MONO}; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: ${INK}; border: 1px solid ${INK}; padding: 0.95rem 1.4rem; text-decoration: none; transition: background 0.2s, color 0.2s; }
+                .home-btn:hover { background: ${INK}; color: ${PAPER}; }
+                .home-btn-solid { background: ${RULE}; border-color: ${RULE}; color: ${PAPER}; }
+                .home-btn-solid:hover { background: ${INK}; border-color: ${INK}; }
+                .home-mail { font-family: ${MONO}; font-size: 0.8rem; color: ${MUTED}; text-decoration: underline; text-underline-offset: 4px; margin-left: 0.4rem; }
+                .home-mail:hover { color: ${RULE}; }
+                .home-status { display: flex; align-items: center; gap: 0.6rem; font-family: ${MONO}; font-size: 0.72rem; letter-spacing: 0.04em; color: ${MUTED}; margin: 2rem 0 0; line-height: 1.6; }
+                .home-dot { flex: none; width: 8px; height: 8px; border-radius: 50%; background: ${RULE}; box-shadow: 0 0 0 4px rgba(46,43,239,0.15); }
+
+                /* Night hero: the photo sits uncropped on the right and dissolves into a matching dark */
+                .home-hero.home-hero { position: relative; max-width: none; margin: 0; display: block; padding: 0; background: ${NIGHT}; color: #f2f0ea; overflow: hidden; }
+                .home-hero-text { position: relative; z-index: 3; max-width: 1320px; margin: 0 auto; padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 3vw, 3rem); }
+                .home-hero-text > * { max-width: 620px; }
+                .home-hero .home-eyebrow { color: #b9b8c8; }
+                .home-hero .home-eyebrow span { color: ${GLOW}; }
+                .home-hero .home-title { color: #f6f4ee; }
+                .home-hero .home-title em { color: ${GLOW}; }
+                .home-hero .home-lede { color: #c9c8d4; max-width: 46ch; }
+                .home-hero .home-btn { color: #f2f0ea; border-color: rgba(242,240,234,0.7); }
+                .home-hero .home-btn:hover { background: #f2f0ea; color: ${INK}; }
+                .home-hero .home-btn-solid { background: ${RULE}; border-color: ${RULE}; }
+                .home-hero .home-btn-solid:hover { background: #f2f0ea; border-color: #f2f0ea; color: ${INK}; }
+                .home-hero .home-mail { color: #c9c8d4; }
+                .home-hero .home-mail:hover { color: ${GLOW}; }
+                .home-hero .home-status { color: #b9b8c8; }
+                .home-hero .home-dot { background: #7dffb0; box-shadow: 0 0 0 4px rgba(125,255,176,0.18); }
+                .home-photo { position: absolute; top: 0; right: 0; bottom: 0; width: min(64%, 1100px); display: flex; align-items: center; z-index: 1; }
+                .home-photo-img { display: block; width: 100%; height: auto; max-height: 100%; object-fit: contain; object-position: right center;
+                    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.35) 14%, #000 34%), linear-gradient(to bottom, transparent 0%, #000 10%, #000 88%, transparent 100%);
+                    -webkit-mask-composite: source-in; mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.35) 14%, #000 34%), linear-gradient(to bottom, transparent 0%, #000 10%, #000 88%, transparent 100%); mask-composite: intersect;
+                    animation: photo-in 1.6s cubic-bezier(0.16,1,0.3,1) 0.1s both; }
+                @keyframes photo-in { from { opacity: 0; transform: scale(1.06); filter: blur(6px); } to { opacity: 1; transform: scale(1); filter: blur(0); } }
+                .home-hero .home-doodle path, .home-hero .home-doodle circle { stroke: ${GLOW}; }
+                .home-hero .home-doodle path[fill="#f2f0ea"] { fill: ${NIGHT}; }
+                .home-hero .home-doodle-text { fill: ${GLOW}; }
+                .home-hero .home-doodle-label { color: ${GLOW}; }
+                .home-doodle { position: absolute; overflow: visible; pointer-events: none; z-index: 2; }
+                .home-doodle path, .home-doodle circle { stroke-dasharray: 1; stroke-dashoffset: 1; animation: doodle-draw 1.1s cubic-bezier(0.65,0,0.35,1) var(--d) forwards; }
+                .home-doodle-text, .home-doodle-label { opacity: 0; animation: doodle-fade 0.6s ease var(--d) forwards; }
+                .home-doodle-text { font-family: 'Caveat', cursive; font-weight: 700; fill: ${RULE}; }
+                .home-doodle-label { position: absolute; font-family: 'Caveat', cursive; font-size: 1.15rem; font-weight: 600; color: ${RULE}; pointer-events: none; z-index: 2; transform: rotate(-6deg); }
+                @keyframes doodle-draw { to { stroke-dashoffset: 0; } }
+                @keyframes doodle-fade { to { opacity: 1; } }
+                /* doodles sit in the dark margins of the photo, around the subject (who stands at ~55-75% across) */
+                .d-speech { width: 120px; top: 14%; left: 63%; }
+                .d-camera { width: 64px; top: 16%; left: 30%; }
+                .d-claude { width: 48px; top: 44%; left: 36%; }
+                .d-claude-label { top: calc(44% + 50px); left: 35%; }
+                .d-code { width: 62px; top: 70%; left: 30%; }
+                .d-figma { width: 36px; top: 34%; left: 85%; }
+                .d-figma-label { top: calc(34% + 58px); left: 84%; }
+                .d-python { width: 50px; top: 58%; left: 86%; }
+                .d-python-label { top: calc(58% + 52px); left: 86%; }
+                .d-pen { width: 62px; top: 82%; left: 22%; }
+                @media (max-width: 960px) {
+                    .home-hero.home-hero { display: flex; flex-direction: column-reverse; }
+                    .home-photo { position: relative; width: 100%; }
+                    .home-photo-img { -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent 100%); mask-image: linear-gradient(to bottom, #000 70%, transparent 100%); }
+                    .home-hero-text { padding-top: 0.5rem; }
+                    .home-doodle, .home-doodle-label { display: none; }
+                    .d-speech { display: block; top: 10%; left: 60%; width: 104px; }
+                }
+                @media (prefers-reduced-motion: reduce) {
+                    .home-doodle path, .home-doodle circle { animation: none; stroke-dashoffset: 0; }
+                    .home-doodle-text, .home-doodle-label { animation: none; opacity: 1; }
+                }
+                .home-plate { position: relative; margin: 0; padding: 1.1rem; border: 1px solid ${INK}; background: #ebe8e0; }
+                .home-plate-inner { overflow: hidden; }
+                .home-plate figcaption { display: flex; justify-content: space-between; gap: 1rem; font-family: ${MONO}; font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: ${MUTED}; border-top: 1px solid ${INK}; padding-top: 0.75rem; margin-top: 0.9rem; }
+                .home-mark { position: absolute; width: 14px; height: 14px; border-color: ${RULE}; border-style: solid; border-width: 0; }
+                .home-mark-tl { top: -8px; left: -8px; border-top-width: 2px; border-left-width: 2px; }
+                .home-mark-tr { top: -8px; right: -8px; border-top-width: 2px; border-right-width: 2px; }
+                .home-mark-bl { bottom: -8px; left: -8px; border-bottom-width: 2px; border-left-width: 2px; }
+                .home-mark-br { bottom: -8px; right: -8px; border-bottom-width: 2px; border-right-width: 2px; }
+
+                .home-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid ${INK}; border-bottom: 1px solid ${INK}; }
+                .home-stats > div { padding: 1.8rem clamp(1.25rem, 3vw, 3rem); border-right: 1px solid ${INK}; display: flex; flex-direction: column; gap: 0.4rem; }
+                .home-stats > div:last-child { border-right: none; }
+                .home-stat-value { font-family: ${ANTON}; font-size: clamp(2rem, 3.6vw, 3rem); line-height: 1; }
+                .home-stat-label { font-family: ${MONO}; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: ${MUTED}; line-height: 1.5; }
+
+                .home-section { max-width: 1400px; margin: 0 auto; padding: clamp(3.5rem, 7vw, 6rem) clamp(1.25rem, 3vw, 3rem) 1rem; }
+                .home-section-rule { border-top: 1px solid ${INK}; max-width: none; }
+                .home-section-rule > * { max-width: 1304px; margin-left: auto; margin-right: auto; }
+                .home-section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2.25rem; }
+                .home-kicker { display: block; font-family: ${MONO}; font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: ${RULE}; font-weight: 700; margin-bottom: 0.7rem; }
+                .home-h2 { font-family: ${SERIF}; font-weight: 400; font-size: clamp(2rem, 3.8vw, 3.2rem); line-height: 1.05; letter-spacing: -0.015em; text-transform: none; margin: 0; }
+                .home-link { font-family: ${MONO}; font-size: 0.82rem; font-weight: 700; color: ${RULE}; text-decoration: underline; text-underline-offset: 4px; }
+
+                .home-caps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem; padding-bottom: 4rem; }
+                .home-caps > div { border-top: 2px solid ${INK}; padding-top: 1rem; display: flex; flex-direction: column; }
+                .home-cap-num { font-family: ${MONO}; font-size: 0.7rem; color: ${FAINT}; }
+                .home-caps h3 { font-family: ${ANTON}; font-size: 1.35rem; text-transform: uppercase; margin: 0.35rem 0 0.6rem; }
+                .home-caps p { font-size: 0.98rem; line-height: 1.6; color: ${MUTED}; margin: 0 0 1rem; }
+                .home-cap-tools { margin-top: auto; font-family: ${MONO}; font-size: 0.7rem; line-height: 1.7; color: ${INK}; }
+
+                .home-outside { border-top: 1px solid ${INK}; max-width: 1304px; margin: 0 auto; padding: 3rem clamp(1.25rem, 3vw, 3rem) 4rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+                .home-outside p { font-size: 1.08rem; line-height: 1.7; max-width: 60ch; margin: 0; }
+
+                @media (max-width: 960px) {
+                    .home-hero { grid-template-columns: minmax(0, 1fr); }
+                    .home-plate { max-width: 440px; }
+                    .home-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+                    .home-stats > div:nth-child(2) { border-right: none; }
+                    .home-stats > div:nth-child(-n+2) { border-bottom: 1px solid ${INK}; }
+                    .home-caps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+                }
+                @media (max-width: 560px) {
+                    .home-caps { grid-template-columns: minmax(0, 1fr); }
+                    .home-mail { margin-left: 0; }
                 }
             `}</style>
-            </motion.div>
-        </>
+        </motion.div>
     );
 };
 
