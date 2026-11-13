@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import PortraitPlate from '../components/PortraitPlate';
 import { WORKS, WorkCard } from '../components/WorkCard';
 
 const INK = '#141414';
@@ -12,6 +11,8 @@ const PAPER = '#f2f0ea';
 const MONO = "'JetBrains Mono', monospace";
 const ANTON = "'Anton', sans-serif";
 const SERIF = "'Source Serif 4', Georgia, serif";
+const NIGHT = '#15161f';
+const GLOW = '#a9b4ff';
 
 const STATS = [
     { value: '5', label: 'Live products, designed and built' },
@@ -150,18 +151,9 @@ const Home = () => {
                     </motion.p>
                 </div>
 
-                <div className="home-plate-wrap">
-                <Doodles />
-                <motion.figure custom={2} variants={fade} initial="hidden" animate="visible" className="home-plate">
-                    <Mark pos="tl" /><Mark pos="tr" /><Mark pos="bl" /><Mark pos="br" />
-                    <div className="home-plate-inner">
-                        <PortraitPlate src="./portrait-2026.webp" alt="Kabir Sharma" />
-                    </div>
-                    <figcaption>
-                        <span>Fig. 01 · Kabir Sharma</span>
-                        <span>53.34° N, 6.25° W</span>
-                    </figcaption>
-                </motion.figure>
+                <div className="home-photo">
+                    <img src="./portrait-2026-full.webp" alt="Kabir Sharma by the river at night, city lights behind" className="home-photo-img" />
+                    <Doodles />
                 </div>
             </section>
 
@@ -237,9 +229,33 @@ const Home = () => {
                 .home-status { display: flex; align-items: center; gap: 0.6rem; font-family: ${MONO}; font-size: 0.72rem; letter-spacing: 0.04em; color: ${MUTED}; margin: 2rem 0 0; line-height: 1.6; }
                 .home-dot { flex: none; width: 8px; height: 8px; border-radius: 50%; background: ${RULE}; box-shadow: 0 0 0 4px rgba(46,43,239,0.15); }
 
-                .home-plate-wrap { position: relative; margin: 0 84px 0 64px; }
-                .home-plate figcaption span { white-space: nowrap; }
-                @media (max-width: 1320px) { .home-plate figcaption span:last-child { display: none; } }
+                /* Night hero: the photo sits uncropped on the right and dissolves into a matching dark */
+                .home-hero.home-hero { position: relative; max-width: none; margin: 0; display: block; padding: 0; background: ${NIGHT}; color: #f2f0ea; overflow: hidden; }
+                .home-hero-text { position: relative; z-index: 3; max-width: 1320px; margin: 0 auto; padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 3vw, 3rem); }
+                .home-hero-text > * { max-width: 620px; }
+                .home-hero .home-eyebrow { color: #b9b8c8; }
+                .home-hero .home-eyebrow span { color: ${GLOW}; }
+                .home-hero .home-title { color: #f6f4ee; }
+                .home-hero .home-title em { color: ${GLOW}; }
+                .home-hero .home-lede { color: #c9c8d4; max-width: 46ch; }
+                .home-hero .home-btn { color: #f2f0ea; border-color: rgba(242,240,234,0.7); }
+                .home-hero .home-btn:hover { background: #f2f0ea; color: ${INK}; }
+                .home-hero .home-btn-solid { background: ${RULE}; border-color: ${RULE}; }
+                .home-hero .home-btn-solid:hover { background: #f2f0ea; border-color: #f2f0ea; color: ${INK}; }
+                .home-hero .home-mail { color: #c9c8d4; }
+                .home-hero .home-mail:hover { color: ${GLOW}; }
+                .home-hero .home-status { color: #b9b8c8; }
+                .home-hero .home-dot { background: #7dffb0; box-shadow: 0 0 0 4px rgba(125,255,176,0.18); }
+                .home-photo { position: absolute; top: 0; right: 0; bottom: 0; width: min(64%, 1100px); display: flex; align-items: center; z-index: 1; }
+                .home-photo-img { display: block; width: 100%; height: auto; max-height: 100%; object-fit: contain; object-position: right center;
+                    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.35) 14%, #000 34%), linear-gradient(to bottom, transparent 0%, #000 10%, #000 88%, transparent 100%);
+                    -webkit-mask-composite: source-in; mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.35) 14%, #000 34%), linear-gradient(to bottom, transparent 0%, #000 10%, #000 88%, transparent 100%); mask-composite: intersect;
+                    animation: photo-in 1.6s cubic-bezier(0.16,1,0.3,1) 0.1s both; }
+                @keyframes photo-in { from { opacity: 0; transform: scale(1.06); filter: blur(6px); } to { opacity: 1; transform: scale(1); filter: blur(0); } }
+                .home-hero .home-doodle path, .home-hero .home-doodle circle { stroke: ${GLOW}; }
+                .home-hero .home-doodle path[fill="#f2f0ea"] { fill: ${NIGHT}; }
+                .home-hero .home-doodle-text { fill: ${GLOW}; }
+                .home-hero .home-doodle-label { color: ${GLOW}; }
                 .home-doodle { position: absolute; overflow: visible; pointer-events: none; z-index: 2; }
                 .home-doodle path, .home-doodle circle { stroke-dasharray: 1; stroke-dashoffset: 1; animation: doodle-draw 1.1s cubic-bezier(0.65,0,0.35,1) var(--d) forwards; }
                 .home-doodle-text, .home-doodle-label { opacity: 0; animation: doodle-fade 0.6s ease var(--d) forwards; }
@@ -247,23 +263,24 @@ const Home = () => {
                 .home-doodle-label { position: absolute; font-family: 'Caveat', cursive; font-size: 1.15rem; font-weight: 600; color: ${RULE}; pointer-events: none; z-index: 2; transform: rotate(-6deg); }
                 @keyframes doodle-draw { to { stroke-dashoffset: 0; } }
                 @keyframes doodle-fade { to { opacity: 1; } }
-                .d-camera { width: 74px; top: 6%; left: -92px; }
-                .d-speech { width: 120px; top: -46px; right: -40px; }
-                .d-claude { width: 54px; top: 34%; left: -78px; }
-                .d-claude-label { top: calc(34% + 54px); left: -80px; }
-                .d-figma { width: 40px; top: 30%; right: -64px; }
-                .d-figma-label { top: calc(30% + 64px); right: -70px; }
-                .d-python { width: 56px; bottom: 22%; right: -80px; }
-                .d-python-label { bottom: calc(22% - 30px); right: -84px; }
-                .d-code { width: 70px; bottom: 8%; left: -96px; }
-                .d-pen { width: 70px; bottom: -40px; left: 18%; }
+                /* doodles sit in the dark margins of the photo, around the subject (who stands at ~55-75% across) */
+                .d-speech { width: 120px; top: 14%; left: 63%; }
+                .d-camera { width: 64px; top: 16%; left: 30%; }
+                .d-claude { width: 48px; top: 44%; left: 36%; }
+                .d-claude-label { top: calc(44% + 50px); left: 35%; }
+                .d-code { width: 62px; top: 70%; left: 30%; }
+                .d-figma { width: 36px; top: 34%; left: 85%; }
+                .d-figma-label { top: calc(34% + 58px); left: 84%; }
+                .d-python { width: 50px; top: 58%; left: 86%; }
+                .d-python-label { top: calc(58% + 52px); left: 86%; }
+                .d-pen { width: 62px; top: 84%; left: 44%; }
                 @media (max-width: 960px) {
-                    .home-plate-wrap { margin: 0; }
+                    .home-hero.home-hero { display: flex; flex-direction: column-reverse; }
+                    .home-photo { position: relative; width: 100%; }
+                    .home-photo-img { -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent 100%); mask-image: linear-gradient(to bottom, #000 70%, transparent 100%); }
+                    .home-hero-text { padding-top: 0.5rem; }
                     .home-doodle, .home-doodle-label { display: none; }
-                    .d-speech, .d-claude, .d-claude-label { display: block; }
-                    .d-speech { right: -6px; }
-                    .d-claude { top: 6%; left: auto; right: -6px; width: 44px; }
-                    .d-claude-label { top: calc(6% + 46px); left: auto; right: -10px; }
+                    .d-speech { display: block; top: 10%; left: 60%; width: 104px; }
                 }
                 @media (prefers-reduced-motion: reduce) {
                     .home-doodle path, .home-doodle circle { animation: none; stroke-dashoffset: 0; }
