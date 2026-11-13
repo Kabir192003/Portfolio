@@ -273,7 +273,7 @@ const Home = () => {
                 .d-figma-label { top: calc(34% + 58px); left: 84%; }
                 .d-python { width: 50px; top: 58%; left: 86%; }
                 .d-python-label { top: calc(58% + 52px); left: 86%; }
-                .d-pen { width: 62px; top: 84%; left: 44%; }
+                .d-pen { width: 62px; top: 82%; left: 22%; }
                 @media (max-width: 960px) {
                     .home-hero.home-hero { display: flex; flex-direction: column-reverse; }
                     .home-photo { position: relative; width: 100%; }
