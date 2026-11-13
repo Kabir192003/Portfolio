@@ -18,7 +18,7 @@ const STATS = [
     { value: '5', label: 'Live products, designed and built' },
     { value: '500+', label: 'People surveyed for my products' },
     { value: '8', label: 'Case studies' },
-    { value: 'Stamp 1G', label: 'Right to work in Ireland · No visa sponsorship needed', highlight: true },
+    { value: 'M.Sc.', label: 'Interactive Digital Media, Trinity College Dublin' },
 ];
 
 // Grouped like the CV's skills section, so the site and the CV say the same thing.
@@ -166,7 +166,17 @@ const Home = () => {
                 </div>
 
                 <div className="home-photo">
-                    <img src="./portrait-2026-full.webp" alt="Kabir Sharma by the river at night, city lights behind" className="home-photo-img" />
+                    <img
+                        src="./portrait-night-2400.webp"
+                        srcSet="./portrait-night-1600.webp 1600w, ./portrait-night-2400.webp 2400w, ./portrait-night-4032.webp 4032w"
+                        sizes="(max-width: 960px) 100vw, min(64vw, 1100px)"
+                        width="4032"
+                        height="3024"
+                        fetchPriority="high"
+                        decoding="async"
+                        alt="Kabir Sharma by the river at night, city lights behind"
+                        className="home-photo-img"
+                    />
                     <Doodles />
                 </div>
             </section>
@@ -292,8 +302,9 @@ const Home = () => {
                 .home-photo-img { display: block; width: 100%; height: auto; max-height: 100%; object-fit: contain; object-position: right center;
                     -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.35) 14%, #000 34%), linear-gradient(to bottom, transparent 0%, #000 10%, #000 88%, transparent 100%);
                     -webkit-mask-composite: source-in; mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.35) 14%, #000 34%), linear-gradient(to bottom, transparent 0%, #000 10%, #000 88%, transparent 100%); mask-composite: intersect;
-                    animation: photo-in 1.6s cubic-bezier(0.16,1,0.3,1) 0.1s both; }
-                @keyframes photo-in { from { opacity: 0; transform: scale(1.06); filter: blur(6px); } to { opacity: 1; transform: scale(1); filter: blur(0); } }
+                    animation: photo-in 1.6s cubic-bezier(0.16,1,0.3,1) 0.1s backwards; }
+                /* "backwards" so nothing (blur, scale) stays applied once it lands: the photo renders at full sharpness */
+                @keyframes photo-in { from { opacity: 0; transform: scale(1.06); filter: blur(6px); } to { opacity: 1; transform: none; filter: none; } }
                 .home-hero .home-doodle path, .home-hero .home-doodle circle { stroke: ${GLOW}; }
                 .home-hero .home-doodle path[fill="#f2f0ea"] { fill: ${NIGHT}; }
                 .home-hero .home-doodle-text { fill: ${GLOW}; }
