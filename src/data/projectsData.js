@@ -4,17 +4,17 @@
 export const projectsData = {
     project1: {
         title: `Trek Mate`,
-        glance: { problem: `Hikers plan their pack in one app and shop in another, and work out whether a lighter item is worth it in a spreadsheet.`, did: `Designed and built it alone: positioning, design system, UX and the React and TypeScript app.`, shipped: `A live gear store with a Pack Planner that shows your base weight and ranks lighter swaps by cost per gram saved.`, result: `On the sample pack, the top three swaps take base weight from 7.99 kg to 6.09 kg for $379, verified end to end in a real browser.` },
+        glance: { problem: `Hikers plan their pack in one app and shop in another, and work out whether a lighter item is worth it in a spreadsheet.`, did: `In a team of four, I led the visual design direction and built the backend: the product data model and the pack, readiness and swap logic behind every screen.`, shipped: `A live gear store with a Pack Planner that shows your base weight and ranks lighter swaps by cost per gram saved.`, result: `On the sample pack, the top three swaps take base weight from 7.99 kg to 6.09 kg for $379, verified end to end in a real browser.` },
         problemStatement: `People trying to carry less plan in one place and shop in another. Pack apps add up weights but sell nothing; gear stores sell one product at a time and quote the maker's weight. So the real question, "is this lighter tent worth the money for my pack?", gets worked out by hand in a spreadsheet.`,
         tagline: `An outdoor gear store for independent makers, designed around the whole pack instead of the single product`,
         category: `E-commerce · Product Design`,
-        timeline: `Solo · concept to live build`,
-        role: `Product designer and front-end developer, solo: positioning, UX, UI and build`,
+        timeline: `Team of four · concept to live build`,
+        role: `Visual design direction and backend, in a team of four: the design system and look, plus the data model and the pack and swap logic every screen reads from`,
         liveLink: `https://kabir192003.github.io/Trek-Mate/`,
         overview: [
             `Trek Mate is an outdoor gear store for people who plan trips around weight. It sells gear from seven independent makers, and every listing leads with what decides a purchase on trail: what it weighed on our scale, what the maker claims, how small it packs and how many days it spent with field testers.`,
             `Its centre is the Pack Planner. You set the trip (nights, people, season, the overnight low), add gear from the store or anything you already own, and Trek Mate shows your base weight live, what is missing for those conditions, and which lighter swaps are worth making, ranked by what each gram saved costs you.`,
-            `I designed and built it on my own, from positioning and the design system to the deployed React and TypeScript app: ten screens from the homepage to Base Camp, all reading from the same pack, so a change in one place shows up everywhere.`
+            `We built it as a team of four. I led the visual design direction, from the field-instrument design system to how weight reads on every screen, and implemented the backend: the product data model and the pack, readiness and swap-pricing logic that all ten screens read from, from the homepage to Base Camp, so a change in one place shows up everywhere.`
         ],
         impactMetrics: [
             { label: `Top 3 swaps on the sample pack, for $379`, value: `−1.90 kg` },
@@ -129,17 +129,17 @@ export const projectsData = {
     },
     project2: {
         title: `Work Hive`,
-        glance: { problem: `Recruiters skim self-reported resumes, and the strongest proof, a colleague who will vouch for you, arrives last.`, did: `Designed and built it alone, from a high-fidelity prototype to a production build on Supabase.`, shipped: `A live hiring platform with 18 screens where named, job-specific endorsements travel with each application.`, result: `Every screen on real Postgres tables, and the security boundary tested from a second account.` },
+        glance: { problem: `Recruiters skim self-reported resumes, and the strongest proof, a colleague who will vouch for you, arrives last.`, did: `In a team of five, I led the visual design direction and built the backend: the Postgres schema on Supabase, Row Level Security on all 20 tables, auth and resume storage.`, shipped: `A live hiring platform with 18 screens where named, job-specific endorsements travel with each application.`, result: `Every screen on real Postgres tables, and the security boundary tested from a second account.` },
         problemStatement: `Hiring runs on self-reported resumes that recruiters skim quickly and find hard to trust. The strongest signal, a colleague who will vouch for your work, usually appears only at the reference check near the end, after most decisions are made. Work Hive moves that proof to the front of the application.`,
         tagline: `A hiring platform where named, job-specific endorsements from real colleagues travel with your application`,
         category: `Full-Stack Platform · Product Design`,
-        timeline: `Solo · prototype first, then a production build`,
-        role: `Product designer and full-stack developer, solo`,
+        timeline: `Team of five · prototype first, then a production build`,
+        role: `Visual design direction and backend, in a team of five: the look and feel, plus the Supabase schema, Row Level Security, auth and storage`,
         liveLink: `https://kabir192003.github.io/WorkHive/`,
         overview: [
             `Work Hive is a hiring platform built on one idea: a short, named endorsement from someone who actually worked with you, written for the specific job you're applying to, tells a recruiter more than another line on a resume. Candidates search and apply as usual, but every application can carry proof: who is vouching, how they know you, and what they saw you do.`,
-            `I designed and built it end to end. The product spans eighteen screens: search with thirteen refine facets, Apply Direct with resume upload, endorsement requests and messaging, a network you can grow, company ratings, and salary, cost-of-living and relocation tools for candidates weighing a move.`,
-            `I worked in two stages on purpose. First a high-fidelity prototype, to walk every flow and find where the experience broke before writing a backend. Then the production build: a real Postgres database on Supabase, email and password accounts, Row Level Security enforced in the database rather than assumed in the interface, and storage for resumes, so everything a candidate does is still there when they come back.`
+            `We built it as a team of five. I led the visual design direction and implemented the backend. The product spans eighteen screens: search with thirteen refine facets, Apply Direct with resume upload, endorsement requests and messaging, a network you can grow, company ratings, and salary, cost-of-living and relocation tools for candidates weighing a move.`,
+            `We worked in two stages on purpose. First a high-fidelity prototype, to walk every flow and find where the experience broke before writing a backend. Then the production build: a real Postgres database on Supabase, email and password accounts, Row Level Security enforced in the database rather than assumed in the interface, and storage for resumes, so everything a candidate does is still there when they come back.`
         ],
         impactMetrics: [
             { label: `Screens on a real, persisted backend`, value: `18` },
@@ -174,7 +174,7 @@ export const projectsData = {
         process: [
             { step: `01`, title: `Frame the trust problem`, desc: `Mapped what each side needs to believe: candidates need to be seen, endorsers need it to be quick, hiring teams need a signal they can weigh. The gap sat between those three, not inside the job list.` },
             { step: `02`, title: `Map the alternatives`, desc: `Compared job boards, LinkedIn endorsements and recommendations, and employer-side reference checks by when the proof appears and who controls it. All three put real proof late, or nowhere.` },
-            { step: `03`, title: `Prototype the loops, then walk them`, desc: `Built a high-fidelity prototype first, then clicked every path as a candidate and logged what happened against what the UI promised. It surfaced the gaps cheaply: dead-end applies, ratings that ignored the selected company, a network a new user couldn't grow.` },
+            { step: `03`, title: `Prototype the loops, then walk them`, desc: `Built a high-fidelity prototype first as a team, then clicked every path as a candidate and logged what happened against what the UI promised. It surfaced the gaps cheaply: dead-end applies, ratings that ignored the selected company, a network a new user couldn't grow.` },
             { step: `04`, title: `Make the data honest before the screens`, desc: `Modelled 100 companies and 111 jobs with enough variety that search and all thirteen facets return genuinely different results, so the design could be judged against something real.` },
             { step: `05`, title: `Schema and security boundary first`, desc: `Mapped every screen to the tables it needs, split public reference data from private per-account data, and wrote Row Level Security for all twenty tables before touching the frontend.` },
             { step: `06`, title: `Wire every screen, not just the demo path`, desc: `Settings toggles, onboarding steps and the add-connection flow got the same real persistence as search and apply, so the product doesn't only feel finished in the parts a demo covers.` },

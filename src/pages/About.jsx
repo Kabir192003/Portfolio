@@ -24,7 +24,7 @@ const INTEREST_STATS = [
 const FAQS = [
     {
         q: 'What kind of products do you design?',
-        a: "Everything from a Dublin housing tool for students and an AI design-system generator to full e-commerce and community platforms, with a UX research study on food delivery apps in between. I'm drawn to work that sits between a real interface and a real backend. Right now that's Cimelium, an AI platform for the art market, where I design the brand, site and product and own the product decisions behind its engineering. Before that I shipped products end to end as both the designer and the person who built them.",
+        a: "Everything from a Dublin housing tool for students and an AI design-system generator to full e-commerce and community platforms, with a UX research study on food delivery apps in between. I'm drawn to work that sits between a real interface and a real backend. Right now that's Cimelium, an AI platform for the art market, where I design the brand, site and product and own the product decisions behind its engineering. Before that I shipped products as a designer who also builds: leading visual design and writing the backend.",
     },
     {
         q: 'What got you into design?',

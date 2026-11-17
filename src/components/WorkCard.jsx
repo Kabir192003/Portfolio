@@ -25,14 +25,14 @@ export const WORKS = [
     },
     {
         num: '04', id: 2, title: 'Work Hive', year: '2026', status: 'LIVE', kinds: ['build'],
-        role: 'Solo · design and full stack',
+        role: 'Team of five · visual design and backend',
         tags: ['Web platform', 'Supabase', 'Security'],
         desc: 'A hiring platform where named, job-specific endorsements from real colleagues travel with every application. 18 screens on a real Postgres backend.',
         img: './workhive/wh-mockup.jpg',
     },
     {
         num: '05', id: 1, title: 'Trek Mate', year: '2026', status: 'LIVE', kinds: ['build'],
-        role: 'Solo · design and front end',
+        role: 'Team of four · visual design and backend',
         tags: ['E-commerce', 'React', 'TypeScript'],
         desc: 'An outdoor gear store designed around the whole pack. A live planner shows your base weight and ranks lighter swaps by what each gram saved costs you.',
         img: './trekmate-v3/tm3-mockup.jpg',
