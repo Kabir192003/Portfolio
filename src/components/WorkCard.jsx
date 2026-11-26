@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export const WORKS = [
     {
-        num: '01', id: 'settld', title: 'Settld', year: '2026', status: 'LIVE', kinds: ['build', 'data', 'research'],
+        num: '01', id: 'settld', title: 'Settld', year: '2026', status: 'PUBLIC MVP', kinds: ['build', 'data', 'research'],
         role: 'Solo · research, design and build',
         tags: ['Open data', 'Routing', 'React'],
         desc: 'Helps students choose where to live in Dublin before they sign a lease: rent, the real journey to college and what is nearby, for 106 areas, with the source of every number shown. Built after surveying 300+ students.',

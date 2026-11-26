@@ -144,6 +144,7 @@ const CaseStudyV2 = ({ project, nextProject, logo }) => {
                                     {d.considered && <p><Label tone={MUTED}>Options considered</Label>{d.considered}</p>}
                                     <p><Label>Chose</Label>{d.chose}</p>
                                     <p><Label tone={MUTED}>Why</Label>{d.why}</p>
+                                    {d.points && <dl className="cs2-points">{d.points.map((pt) => <div key={pt.k}><dt>{pt.k}</dt><dd>{pt.v}</dd></div>)}</dl>}
                                 </div>
                             </article>
                         ))}
@@ -227,6 +228,9 @@ const CaseStudyV2 = ({ project, nextProject, logo }) => {
                 .cs2-finding h3, .cs2-dtext h3, .cs2-itext h3, .cs2-screen h3 { font-family: ${ANTON}; font-size: 1.2rem; text-transform: uppercase; line-height: 1.15; margin: 0.35rem 0 0.6rem; }
                 .cs2-finding p, .cs2-dtext p, .cs2-itext p, .cs2-screen p { font-size: 0.97rem; line-height: 1.6; color: ${MUTED}; margin: 0 0 0.8rem; }
                 .cs2-led { color: ${INK} !important; }
+                .cs2-points { margin: 0.4rem 0 0; display: flex; flex-direction: column; gap: 0.7rem; border-top: 1px solid ${INK}; padding-top: 0.8rem; }
+                .cs2-points dt { font-family: ${MONO}; font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; color: ${INK}; }
+                .cs2-points dd { margin: 0.15rem 0 0; font-size: 0.95rem; line-height: 1.55; color: ${MUTED}; }
                 .cs2-stack { display: flex; flex-direction: column; gap: 3rem; }
                 .cs2-decision, .cs2-iter { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 2rem; align-items: center; }
                 .cs2-iter:not(:has(> div:first-child img)) { grid-template-columns: minmax(0, 1fr); }
