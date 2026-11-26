@@ -726,6 +726,85 @@ export const projectsData = {
     },
     project7: {
         title: `PawFect`,
+        v2: {
+            preview: { image: `./pawfect/pf-cover.jpg` },
+            overview: {
+                summary: `PawFect is a pet care app for a veterinary and grooming clinic in Hyderabad. It puts the whole relationship between an owner, their dog and the clinic in one place: booking, a digital health passport, reminders worked out from the record, chat with the clinic team, and every price shown before you pay.`,
+                problem: `A dog's care was spread across a paper vaccine book, WhatsApp, phone calls and a bill that arrived last. Owners missed boosters and met prices too late; the clinic spent its day on the phone.`,
+                role: `Product Associate at DreamWeavers. I owned the product requirements (research, use cases, specifications, priorities) and contributed to the UI through direction and critique.`,
+                team: `DreamWeavers product team with engineers, for a client clinic.`,
+                timeline: `Feb to Aug 2025`,
+                stats: [
+                    { value: `6`, label: `Capability areas from one clinic brief` },
+                    { value: `30+`, label: `Screens in one working prototype` },
+                    { value: `1`, label: `Visit for everything a dog is due` }
+                ]
+            },
+            discovery: {
+                title: `The admin was the problem, for owners and for the clinic`,
+                intro: `I led the market analysis and customer research: what owners juggle today, where the clinic loses time, and what other pet apps leave out.`,
+                findings: [
+                    { title: `Care lives in places that don't talk`, text: `Vaccine history in a paper book, reminders on WhatsApp, booking by phone in clinic hours, aftercare on paper. The next booster date was a guess.`, ledTo: `A health passport that works out what's due from the record.` },
+                    { title: `Prices arrive too late`, text: `Costs came up at the counter, often after the work was done, and estimates waited on a phone call.`, ledTo: `Every price shown for the dog's size before booking, and estimates approved in the app.` },
+                    { title: `The clinic pays for the friction`, text: `Late boosters, slots lost to no-shows, and reception tied up with routine questions.`, ledTo: `Goals the clinic could measure: boosters on time, fewer calls, refilled slots, faster payment.` }
+                ]
+            },
+            decisionsTitle: `Turning a long feature list into a few promises`,
+            decisions: [
+                {
+                    phones: [{ src: `./pawfect/pf-home-tall.jpg`, scroll: true }],
+                    title: `Structure by how often owners need it`,
+                    considered: `A tab for every feature in the brief, or a structure ranked by frequency of use.`,
+                    chose: `Daily care and doses, weekly messages and monthly bookings earned the five tabs; billing appears in context, on Home or a visit, when there's something to pay.`,
+                    why: `Billing happens a few times a year. Giving it a permanent tab would cost space every owner needs every day.`
+                },
+                {
+                    phones: [{ src: `./pawfect/pf-book-service-tall.jpg`, scroll: true }, { src: `./pawfect/pf-vaccines.jpg` }],
+                    title: `Price before commitment, everything due in one visit`,
+                    considered: `Quote at the counter as before, or show prices and what's due while booking.`,
+                    chose: `Every service is priced for the dog's size before booking, and anything else the dog is due for this month is offered in the same visit, with its price.`,
+                    why: `It answers the two complaints at once: no surprise bills, and no extra trips for a booster the app already knew was due.`
+                },
+                {
+                    phones: [{ src: `./pawfect/pf-chat.jpg` }],
+                    title: `Safe before convenient`,
+                    considered: `Make chat the main way to reach the clinic, or keep a clear line for emergencies.`,
+                    chose: `Chat says plainly it isn't for emergencies, the 24-hour line is one tap away, urgent symptoms during booking prompt a call, and results appear only after a vet has reviewed them.`,
+                    why: `An app that makes the clinic easy to message must not become where emergencies go.`
+                }
+            ],
+            iterationsTitle: `Three design passes`,
+            iterations: [
+                { title: `Pass 1: it worked, but looked like a template`, feedback: `A trendy display font, cream backgrounds and pastel tiles on every card. Nothing felt like a real product.`, change: `Moved to native iOS conventions so the app feels familiar on first use.` },
+                { title: `Pass 2: native, but every section a list`, feedback: `Adopting iOS conventions went too far: every section became the same grouped list, like a settings screen.`, change: `Kept the native treatment and gave each section a layout suited to its job.` },
+                { title: `Pass 3: one calm home screen`, feedback: `The brief asked Home to hold eight kinds of information at once.`, change: `Ordered them by urgency and gave each its own shape: a swipeable row for what needs action, today's doses, one bold card for the next visit, lighter rows for the rest.` }
+            ],
+            final: {
+                title: `The prototype`,
+                note: `Screens from the PawFect design, shown on sample data for a household with two dogs. Longer screens scroll inside the frame.`,
+                screens: [
+                    { phones: [`./pawfect/pf-book-time.jpg`, `./pawfect/pf-book-details.jpg`, `./pawfect/pf-book-confirm.jpg`, `./pawfect/pf-book-done.jpg`], title: `Booking in four steps`, note: `Who and what, when, details, confirm, with the total and time pinned to the bottom the whole way.` },
+                    { phones: [`./pawfect/pf-appointment.jpg`, `./pawfect/pf-queue.jpg`, `./pawfect/pf-health.jpg`, `./pawfect/pf-care.jpg`], title: `On the day, and every day`, note: `Check in from the car park and watch a live queue; a health passport that works out what's next; today's doses and tasks.` },
+                    { phones: [`./pawfect/pf-billing.jpg`, `./pawfect/pf-estimate-approve.jpg`, `./pawfect/pf-pay.jpg`], title: `Money without the awkward conversation`, note: `Approve an estimate within its range, then pay by UPI in two taps and send the insurance claim.` }
+                ]
+            },
+            outcomes: {
+                title: `Requirements the build and QA could check`,
+                results: [
+                    `Requirements for all six areas of the brief, written as jobs, rules and use cases engineering could build and QA could test.`,
+                    `Every rule designed into the screens: boosters 12 months after the last dose, prices by dog size, free cancellation up to 24 hours before, waitlist offers, estimate approval.`,
+                    `30+ screens following native iOS conventions, with payments shaped around how Hyderabad pays: UPI first.`
+                ],
+                limitations: [
+                    `A client prototype: I can't report live usage or clinic results here.`,
+                    `I contributed to the UI rather than owning it; my ownership was the requirements.`
+                ],
+                next: [
+                    `Measure boosters given on time, bookings made without a call, cancelled slots refilled and days to payment.`
+                ],
+                reflection: `Owning the requirements taught me that a long feature list usually hides a few promises. PawFect's came down to three: you'll always know what your dog needs, you'll never be surprised by a price, and the clinic is one message away. Every requirement and every screen had to keep one of them.`
+            }
+        },
         glance: { problem: `A dog's care is spread across a paper vaccine book, WhatsApp and phone calls, and the bill arrives last.`, did: `As Product Associate at DreamWeavers I owned the requirements: market and customer research, use cases, specifications and priorities, and contributed to the UI.`, shipped: `A 30+ screen app for a Hyderabad vet and grooming clinic: booking, a digital health passport, reminders from the record, chat and UPI payments.`, result: `Requirements for all six areas of the brief, written as rules engineering could build and QA could test.` },
         problemStatement: `A dog's care is spread across a paper vaccination book, WhatsApp reminders, the clinic's phone line and a bill that only arrives at the end. Owners miss boosters and find out the price too late, while the clinic spends its day on the phone. PawFect puts the whole relationship between an owner, their dog and their clinic into one app.`,
         tagline: `A pet care app for a veterinary and grooming clinic in Hyderabad: book in a few taps, carry a digital health passport, and see every price before you pay`,
