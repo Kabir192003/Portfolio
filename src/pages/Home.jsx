@@ -30,10 +30,10 @@ const STACK = [
 ];
 
 const CAPABILITIES = [
-    { area: 'Design', text: 'Research, flows, interfaces and design systems, from a 300-student survey to the brand and site for Cimelium.', tools: 'Figma · Prototyping · Design systems · Usability testing' },
-    { area: 'Engineering', text: 'I build what I design, on real backends, and own the product decisions behind an AI-agent engineering workflow.', tools: 'React · TypeScript · Python · SQL · Postgres / Supabase' },
-    { area: 'Data', text: 'Open-data pipelines, back-tested models and survey analysis. Settld’s rent model is checked against 132 published figures.', tools: 'Product analytics · GA4 · Data visualisation · Qlik' },
-    { area: 'Product', text: 'Requirements, scope and trade-offs, written as rules engineers can build and QA can test.', tools: 'Requirements · Prioritisation · Scrum · Acceptance testing' },
+    { area: 'Product design', text: 'Flows, interfaces and design systems that feel obvious to use, from the Settld interface to the brand, site and platform UI for Cimelium.' },
+    { area: 'Research', text: 'Every product starts from evidence: 300+ students surveyed for Settld, 200+ designers for StyleBook, and usability testing before handoff.' },
+    { area: 'Engineering', edge: true, text: 'I can build what I design, on real backends, so designs ship as intended and trade-offs get made with engineers, not around them.' },
+    { area: 'Data', edge: true, text: 'Analytics, survey analysis and back-tested models, so decisions rest on numbers. Settld’s rent model is checked against 132 published figures.' },
 ];
 
 const FEATURED_ID = 'settld';
@@ -156,13 +156,13 @@ const Home = () => {
                         Eligible to work in Ireland, no visa sponsorship needed
                     </motion.p>
                     <motion.p custom={0} variants={fade} initial="hidden" animate="visible" className="home-eyebrow">
-                        Kabir Sharma <span>·</span> Product Design Engineer <span>·</span> Dublin
+                        Kabir Sharma <span>·</span> Product Designer &amp; Design Engineer <span>·</span> Dublin
                     </motion.p>
                     <motion.h1 custom={1} variants={fade} initial="hidden" animate="visible" className="home-title">
-                        I research the problem, design the product <em>and build&nbsp;it.</em>
+                        Designing intuitive, research-driven digital products, <em>with the technical ability to bring them to&nbsp;life.</em>
                     </motion.h1>
                     <motion.p custom={2} variants={fade} initial="hidden" animate="visible" className="home-lede">
-                        Product Design Engineer at Cimelium, an Enterprise Ireland funded startup at Trinity College Dublin. Five of my products are live, so you can use them, not just look at mockups.
+                        Currently designing the product, brand and platform at Cimelium, an Enterprise Ireland funded startup at Trinity College Dublin. Five of my products are live, so you can use them, not just look at mockups.
                     </motion.p>
                     <motion.div custom={3} variants={fade} initial="hidden" animate="visible" className="home-ctas">
                         <a href="#work" onClick={scrollToWork} className="home-btn home-btn-solid">See the work ↓</a>
@@ -170,7 +170,7 @@ const Home = () => {
                         <a href="mailto:kabiroscope@gmail.com" className="home-mail">kabiroscope@gmail.com</a>
                     </motion.div>
                     <motion.p custom={4} variants={fade} initial="hidden" animate="visible" className="home-status">
-                        <span className="home-dot" /> Open to product designer, design engineer and data &amp; analytics roles in Dublin or remote
+                        <span className="home-dot" /> Open to product designer and design engineer roles in Dublin or remote
                     </motion.p>
                 </div>
 
@@ -220,14 +220,14 @@ const Home = () => {
                 <div className="home-section-head">
                     <div>
                         <span className="home-kicker">What I do</span>
-                        <h2 className="home-h2">One person, <em>the whole loop.</em></h2>
+                        <h2 className="home-h2">Design first, <em>with an engineer’s edge.</em></h2>
                     </div>
                     <Link to="/experience" className="home-link">Experience →</Link>
                 </div>
                 <div className="home-caps">
                     {CAPABILITIES.map((c, i) => (
                         <div key={c.area}>
-                            <span className="home-cap-num">{String(i + 1).padStart(2, '0')}</span>
+                            <span className="home-cap-num">{String(i + 1).padStart(2, '0')}{c.edge && <span className="home-cap-edge">Differentiator</span>}</span>
                             <h3>{c.area}</h3>
                             <p>{c.text}</p>
                         </div>
@@ -277,7 +277,7 @@ const Home = () => {
                 .home-hero-text > .home-visa { max-width: none; }
                 .home-eyebrow { font-family: ${MONO}; font-size: 0.74rem; letter-spacing: 0.16em; text-transform: uppercase; color: ${MUTED}; margin: 0 0 1.6rem; }
                 .home-eyebrow span { color: ${RULE}; margin: 0 0.35em; }
-                .home-title { font-family: ${SERIF}; font-weight: 400; font-size: clamp(2.5rem, 5.4vw, 4.9rem); line-height: 1.04; letter-spacing: -0.02em; margin: 0; text-transform: none; }
+                .home-title { font-family: ${SERIF}; font-weight: 400; font-size: clamp(2.2rem, 4.3vw, 3.9rem); line-height: 1.08; letter-spacing: -0.02em; margin: 0; text-transform: none; }
                 .home-title em, .home-h2 em { font-style: italic; color: ${RULE}; }
                 .home-lede { font-size: clamp(1.02rem, 1.4vw, 1.15rem); line-height: 1.65; color: ${MUTED}; max-width: 54ch; margin: 1.6rem 0 2rem; }
                 .home-ctas { display: flex; align-items: center; flex-wrap: wrap; gap: 0.8rem 1rem; }
@@ -388,7 +388,8 @@ const Home = () => {
 
                 .home-caps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem; padding-bottom: 4rem; }
                 .home-caps > div { border-top: 2px solid ${INK}; padding-top: 1rem; display: flex; flex-direction: column; }
-                .home-cap-num { font-family: ${MONO}; font-size: 0.7rem; color: ${FAINT}; }
+                .home-cap-num { font-family: ${MONO}; font-size: 0.7rem; color: ${FAINT}; display: flex; align-items: center; gap: 0.6rem; }
+                .home-cap-edge { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: ${RULE}; border: 1px solid ${RULE}; padding: 1px 6px; }
                 .home-caps h3 { font-family: ${ANTON}; font-size: 1.35rem; text-transform: uppercase; margin: 0.35rem 0 0.6rem; }
                 .home-caps p { font-size: 0.98rem; line-height: 1.6; color: ${MUTED}; margin: 0 0 1rem; }
                 .home-cap-tools { margin-top: auto; font-family: ${MONO}; font-size: 0.7rem; line-height: 1.7; color: ${INK}; }

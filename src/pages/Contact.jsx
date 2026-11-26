@@ -14,7 +14,7 @@ const Contact = () => {
                 <div style={styles.infoCol} className="contact-info-col">
                     <h1 style={styles.title}>Let's talk.</h1>
                     <p style={styles.subtitle} className="contact-subtitle">
-                        I'm a Product Design Engineer in Dublin, open to product designer, design engineer and data and analytics roles. I'm on a Stamp 1G, so I can start without visa sponsorship. I reply within a day.
+                        I'm a product designer and design engineer in Dublin, open to product designer and design engineer roles. I'm on a Stamp 1G, so I can start without visa sponsorship. I reply within a day.
                     </p>
 
                     <div style={styles.contactDetails} className="contact-details">

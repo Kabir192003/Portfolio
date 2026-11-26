@@ -91,7 +91,7 @@ const Experience = () => {
             className="container section experience-page"
         >
             <h1 style={styles.pageTitle}>Work Experience</h1>
-            <p style={styles.intro}>Product Design Engineer: I design products and own the decisions that get them built. Based in Dublin on a Stamp 1G, so no sponsorship is needed.</p>
+            <p style={styles.intro}>Product Designer & Design Engineer: I design intuitive, research-driven products, and I have the technical ability to bring them to life. Based in Dublin on a Stamp 1G, so no sponsorship is needed.</p>
 
             <div style={styles.timeline} className="timeline">
                 {experiences.map((exp, index) => (

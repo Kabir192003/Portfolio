@@ -7,7 +7,7 @@ const Footer = () => {
             <div className="container site-footer-inner" style={styles.container}>
                 <div style={styles.left}>
                     <p style={styles.wordmark}>Kabir Sharma</p>
-                    <p style={styles.text}>Product Design Engineer · Dublin · Stamp 1G</p>
+                    <p style={styles.text}>Product Designer & Design Engineer · Dublin · Stamp 1G</p>
                     <p style={styles.privacy}>Visits are counted anonymously, with no cookies.</p>
                 </div>
                 <div style={styles.links} className="site-footer-links">

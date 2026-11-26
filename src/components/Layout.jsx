@@ -4,7 +4,7 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import CustomCursor from './CustomCursor';
 
-const BASE_TITLE = 'Kabir Sharma · Product Design Engineer';
+const BASE_TITLE = 'Kabir Sharma · Product Designer & Design Engineer';
 const PAGE_TITLES = {
     '/projects': 'Work',
     '/projects/settld': 'Settld case study',
