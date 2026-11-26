@@ -4,6 +4,87 @@
 export const projectsData = {
     project1: {
         title: `Trek Mate`,
+        v2: {
+            preview: { image: `./trekmate-v3/tm3-hero.jpg` },
+            overview: {
+                summary: `Trek Mate is an outdoor gear store for people who plan trips around weight. Its centre is the Pack Planner: set the trip, add gear from the store or what you already own, and see your base weight live, what's missing for those conditions, and which lighter swaps are worth making, ranked by what each gram saved costs you.`,
+                problem: `Hikers plan in one tool and shop in another. Pack apps add up weights but sell nothing; stores sell one product at a time and quote the maker's weight. "Is this lighter tent worth it for my pack?" gets worked out in a spreadsheet.`,
+                role: `Visual design direction and backend: the field-instrument design system and look, plus the product data model and the pack, readiness and swap-pricing logic every screen reads from.`,
+                team: `Team of four.`,
+                timeline: `2026 · concept to live build`,
+                stats: [
+                    { value: `−1.90 kg`, label: `Top 3 swaps on the sample pack, for $379` },
+                    { value: `25`, label: `Products with measured and listed weight` },
+                    { value: `10`, label: `Screens, all sharing one live pack` }
+                ]
+            },
+            discovery: {
+                title: `Nobody helped people decide what to change`,
+                intro: `We compared gear stores, cottage-gear marketplaces and pack-weight apps on one question: who helps you decide what to carry?`,
+                findings: [
+                    { title: `Stores sell single products`, text: `Every listing stands alone, with the maker's quoted weight, and a cart totals your price, never your weight.`, ledTo: `Weight shown as a measurement everywhere: our scale, the maker's claim, and the alternatives.` },
+                    { title: `Pack apps sell nothing`, text: `LighterPack and Packstack understand a whole pack, but you type every weight by hand and they suggest no swaps.`, ledTo: `The planner lives inside the store and reads real product data.` },
+                    { title: `Hikers already do the maths`, text: `The ultralight community prices swaps as dollars per ounce saved, in spreadsheets.`, ledTo: `Swaps ranked by cost per gram saved, computed for you.` }
+                ]
+            },
+            decisionsTitle: `Designing at the level of the pack`,
+            decisions: [
+                {
+                    image: `./trekmate-v3/tm3-planner.jpg`,
+                    title: `The trip first, then the gear`,
+                    considered: `Start with a product list, or start with the trip.`,
+                    chose: `Nights, people, season and the overnight low come first, because they define what "right" means: a bag warm enough, a tent big enough.`,
+                    why: `A product only looks light or heavy next to what it replaces, for a specific trip.`
+                },
+                {
+                    image: `./trekmate-v3/tm3-swaps.jpg`,
+                    title: `Swaps you can trust`,
+                    considered: `Suggest the lightest item in each category, or only like-for-like swaps priced by what you own.`,
+                    chose: `Tents must sleep the party, bags must suit the low, packs must hold enough. A swap costs the full price if you own the item, the difference if you haven't bought either.`,
+                    why: `A lighter bag that won't keep you warm isn't a saving, and "cost per gram" is only honest if the cost is real.`
+                },
+                {
+                    image: `./trekmate-v3/tm3-shop.jpg`,
+                    title: `Shopping that knows what you carry`,
+                    considered: `Standard filters, or filters only a pack-aware store can offer.`,
+                    chose: `"Lighter than what I carry" and "Fits my trip" filters, and every card shows the difference against the item it would replace.`,
+                    why: `A buying decision becomes a packing decision.`
+                }
+            ],
+            iterationsTitle: `Subtraction did most of the work`,
+            iterations: [
+                { title: `A planner that showed everything`, feedback: `Once the logic worked, every row had a swap suggestion, a quantity stepper and a worn toggle. Accurate and exhausting.`, change: `Only the three best-value swaps appear inline; other rows get a quiet "See a lighter option" link, and controls appear on hover or focus while staying visible on touch screens.` },
+                { title: `Never suggest paying twice`, feedback: `Replaced gear vanished, and the planner could suggest buying something you'd just bought.`, change: `Replaced items move to a gear closet, and purchases count as owned after checkout.` },
+                { image: `./trekmate-v3/tm3-mobile.jpg`, title: `Built for the phone at the trailhead`, feedback: `Controls hidden behind hover on desktop don't exist on a phone.`, change: `On a phone the live base weight docks at the bottom, controls are touch-sized, and everything hidden behind hover is simply visible.` }
+            ],
+            final: {
+                title: `The live store`,
+                note: `Screenshots of the live product. Every number on screen traces back to one calculation.`,
+                screens: [
+                    { image: `./trekmate-v3/tm3-hero.jpg`, title: `A homepage that opens on your pack`, note: `Your trip, base weight, weight class and the best two swaps, before you scroll.` },
+                    { image: `./trekmate-v3/tm3-product.jpg`, title: `What does this change?`, note: `Measured against listed weight, packed size and field-test days, and the saving against your current item.` },
+                    { image: `./trekmate-v3/tm3-basecamp.jpg`, title: `Base Camp`, note: `Base weight over time against the class thresholds, and a to-do list for the next trip.` },
+                    { image: `./trekmate-v3/tm3-swaps.jpg`, title: `The swaps worth making`, note: `Ranked by cost per 100 g saved, with a readiness list that flags what's missing.` }
+                ]
+            },
+            outcomes: {
+                title: `A store built around the decision, not the transaction`,
+                results: [
+                    `Live: ten screens from the homepage to Base Camp, all reading from one pack.`,
+                    `On the sample pack, the top three swaps take base weight from 7.99 kg to 6.09 kg for $379.`,
+                    `Verified with a scripted end-to-end run in a real browser, from swap and undo to checkout and Base Camp.`,
+                    `Text colours checked against WCAG AA, keyboard-reachable controls, reduced-motion support, tested down to 390 px.`
+                ],
+                limitations: [
+                    `Not running with real customers, so success measures are planned, not results.`,
+                    `A 25-product sample catalogue from seven makers.`
+                ],
+                next: [
+                    `Measure planner-to-cart, grams saved per order and returns on weight-led purchases.`
+                ],
+                reflection: `The hardest design work was subtraction. Once the store could compute every swap, the temptation was to show all of it, and the planner only became good when it showed the three worth making. The deeper lesson was the reframe: people don't decide what to buy, they decide what to carry.`
+            }
+        },
         glance: { problem: `Hikers plan their pack in one app and shop in another, and work out whether a lighter item is worth it in a spreadsheet.`, did: `In a team of four, I led the visual design direction and built the backend: the product data model and the pack, readiness and swap logic behind every screen.`, shipped: `A live gear store with a Pack Planner that shows your base weight and ranks lighter swaps by cost per gram saved.`, result: `On the sample pack, the top three swaps take base weight from 7.99 kg to 6.09 kg for $379, verified end to end in a real browser.` },
         problemStatement: `People trying to carry less plan in one place and shop in another. Pack apps add up weights but sell nothing; gear stores sell one product at a time and quote the maker's weight. So the real question, "is this lighter tent worth the money for my pack?", gets worked out by hand in a spreadsheet.`,
         tagline: `An outdoor gear store for independent makers, designed around the whole pack instead of the single product`,
@@ -129,6 +210,95 @@ export const projectsData = {
     },
     project2: {
         title: `Work Hive`,
+        v2: {
+            preview: { image: `./workhive/search.jpg` },
+            overview: {
+                summary: `Work Hive is a hiring platform built on proof. Candidates search and apply as usual, but every application can carry a short, named endorsement from someone who actually worked with them, written for that specific job. It moves the strongest hiring signal, a colleague who will vouch for you, from the end of the process to the front.`,
+                problem: `Recruiters skim self-reported resumes they find hard to trust. The proof they do trust, a reference, usually arrives at the very end, for finalists only, after most decisions are made.`,
+                role: `Visual design direction and backend: the look and feel, plus the Supabase schema, Row Level Security, auth and resume storage.`,
+                team: `Team of five.`,
+                timeline: `2026 · prototype first, then a production build`,
+                stats: [
+                    { value: `18`, label: `Screens on a real, persisted backend` },
+                    { value: `20`, label: `Database tables, every one RLS-protected` },
+                    { value: `100 / 111`, label: `Companies and jobs in a real database` }
+                ]
+            },
+            discovery: {
+                title: `Every channel asks candidates to describe themselves`,
+                intro: `We compared job boards, LinkedIn and employer-side reference checks by one question: when does real proof appear, and who controls it?`,
+                findings: [
+                    { title: `Resumes are claims`, text: `Job boards collect resumes and cover letters: self-description that recruiters skim and discount.`, ledTo: `Every place the interface asks for a claim, it also offers a way to show proof.` },
+                    { title: `Social proof is weak at the moment of applying`, text: `LinkedIn skill endorsements are one-click ticks; recommendations are written once, for no particular role, and sit on a profile, not an application.`, ledTo: `Endorsements requested for a specific job, and attached to that application.` },
+                    { title: `References arrive last`, text: `Reference-check tools run at the end, for finalists only, so most candidates never get to use their strongest signal.`, ledTo: `Proof that travels with every application from the first click.` }
+                ]
+            },
+            decisionsTitle: `Designing proof people can trust`,
+            decisions: [
+                {
+                    image: `./workhive/apply.jpg`,
+                    title: `Endorsements scoped to the job`,
+                    considered: `Generic recommendations on a profile, or endorsements requested for a specific role and company.`,
+                    chose: `An endorsement is requested from the job itself or during Apply; the endorser sees exactly what they're vouching for and states how they know the candidate.`,
+                    why: `A hiring team reads proof in context, for this role, instead of a compliment written years ago for no job in particular.`
+                },
+                {
+                    image: `./workhive/ratings.jpg`,
+                    title: `Ratings that say who gave them`,
+                    considered: `One star average per company, or scores labelled by source with their distribution.`,
+                    chose: `Every score is labelled as verified employee reviews or aggregated public sources, and shown with its distribution.`,
+                    why: `A 4.71 means little without knowing where it came from. Labelling the source lets candidates weigh it.`
+                },
+                {
+                    image: `./workhive/cost.jpg`,
+                    title: `Money questions come first`,
+                    considered: `Salary as a form field, or currency as the first control.`,
+                    chose: `Salary, cost of living and relocation lead with the candidate's currency and answer the real question: what salary would match my current life in the new city?`,
+                    why: `A move is a financial decision before it is a career one.`
+                },
+                {
+                    image: `./workhive/profile.jpg`,
+                    title: `Trust enforced in the database`,
+                    considered: `Hide private data in the interface, or isolate it where it lives.`,
+                    chose: `Row Level Security on all 20 tables, with public reference data split from private per-account data, written before any frontend.`,
+                    why: `A platform that holds applications, resumes and messages has to earn trust in its architecture, not by hiding a button.`
+                }
+            ],
+            iterationsTitle: `From prototype to a product that behaves like one`,
+            iterations: [
+                { title: `The prototype found the gaps cheaply`, feedback: `Walking every path as a candidate surfaced dead-end applies, ratings that ignored the selected company, and a network a new user couldn't grow.`, change: `Each became a requirement for the production build before any backend was written.` },
+                { image: `./workhive/connections.jpg`, title: `A new account was stuck`, feedback: `Endorsements depend on connections, so a brand-new account with none couldn't use the core loop.`, change: `An Add connection flow (suggested people on the platform, or someone added by hand) so the loop works for every account, not only a seeded demo user.` },
+                { title: `A security claim, tested`, feedback: `RLS policies are easy to get subtly wrong: a missing check can let a policy read correctly but write anywhere.`, change: `I signed up a second account and queried the API directly. The schema only counted as done once another person's applications, messages and profile came back empty.` },
+                { title: `A seed file too large to load`, feedback: `The first generated seed (278 KB) failed midway in the Supabase SQL editor with an unhelpful parser error.`, change: `Split it by table and removed duplicated arrays, which fixed reliability and shrank the file.` }
+            ],
+            final: {
+                title: `The live product`,
+                note: `Screenshots of the deployed product, with a seeded demo account for anyone who doesn't want to sign up.`,
+                screens: [
+                    { image: `./workhive/search.jpg`, title: `Search that respects the decision`, note: `Role, company, location and freshness first, then match strength and how many people in your network can endorse you. One primary action: Get Endorsed.` },
+                    { image: `./workhive/apply.jpg`, title: `Apply Direct, with proof attached`, note: `Two steps, a real resume upload and an optional endorsement request for this exact job.` },
+                    { image: `./workhive/connections.jpg`, title: `A network you can grow`, note: `Suggested people already on the platform, or add someone by hand.` },
+                    { image: `./workhive/profile.jpg`, title: `A profile built around proof`, note: `Endorsement score, endorsements received and given, then the usual fields.` }
+                ]
+            },
+            outcomes: {
+                title: `A working loop on a real backend`,
+                results: [
+                    `All 18 screens backed by real Postgres tables: nothing resets on reload.`,
+                    `Verified, not assumed: a second account could not read the first account's private data through direct API calls.`,
+                    `The core loop works end to end: search, apply with a real resume, request an endorsement, watch the score move.`
+                ],
+                limitations: [
+                    `Not yet running with real hiring teams, so success measures are planned, not results.`,
+                    `The live build is the candidate side; the hiring-team view is designed for but not built.`
+                ],
+                next: [
+                    `Build the hiring-team view, where an endorsement proves its value.`,
+                    `Measure the endorsed application rate, request-to-endorsement time and replies with versus without proof.`
+                ],
+                reflection: `The distance between a design that looks finished and a product that behaves like one sits in the parts a click-through never shows: the tenth click, and what is still there tomorrow. On a platform that asks for people's applications and their colleagues' words, the most important design decisions are invisible: where data is isolated, and whether that claim has been tested.`
+            }
+        },
         glance: { problem: `Recruiters skim self-reported resumes, and the strongest proof, a colleague who will vouch for you, arrives last.`, did: `In a team of five, I led the visual design direction and built the backend: the Postgres schema on Supabase, Row Level Security on all 20 tables, auth and resume storage.`, shipped: `A live hiring platform with 18 screens where named, job-specific endorsements travel with each application.`, result: `Every screen on real Postgres tables, and the security boundary tested from a second account.` },
         problemStatement: `Hiring runs on self-reported resumes that recruiters skim quickly and find hard to trust. The strongest signal, a colleague who will vouch for your work, usually appears only at the reference check near the end, after most decisions are made. Work Hive moves that proof to the front of the application.`,
         tagline: `A hiring platform where named, job-specific endorsements from real colleagues travel with your application`,
@@ -244,6 +414,89 @@ export const projectsData = {
     },
     project3: {
         title: `The Hunger Games`,
+        v2: {
+            preview: { image: `./hg-mockup.jpg` },
+            overview: {
+                summary: `Swiggy and Zomato do the same job but make opposite bets: one on speed, one on discovery. App-store ratings blend the whole journey into a single star, so they can't show where each app wins or loses people. I ran a mixed-methods study that broke the journey into stages to find out.`,
+                problem: `Brand loyalty and single-number ratings hide where, in a five-stage journey, each app actually earns or loses trust.`,
+                role: `UX researcher: study design, fieldwork, analysis and recommendations.`,
+                team: `Solo.`,
+                timeline: `1 month · 2025`,
+                stats: [
+                    { value: `48`, label: `Active users surveyed` },
+                    { value: `800+`, label: `Data points analysed` },
+                    { value: `5`, label: `Journey stages, each measured separately` }
+                ]
+            },
+            discovery: {
+                title: `Who answered, and how they use these apps`,
+                intro: `An expert heuristic review of both apps against Nielsen's ten principles formed the hypothesis; a stage-by-stage survey of active users tested it. Some of the raw survey results:`,
+                visual: { images: [{ src: `./p3survey1.png`, label: `Mostly 18 to 24, the core delivery audience` }, { src: `./p3survey3.png`, label: `Swiggy used more often, many use both` }] },
+                findings: [
+                    { title: `Speed beats depth for delivery`, text: `Swiggy scored 9.2 for speed to checkout against Zomato's 6.8, with much lower reported cognitive load (3.4 vs 7.9).`, ledTo: `Principle: for high-intent tasks, remove steps before adding features.` },
+                    { title: `Trust comes from tracking`, text: `Delivery-tracking accuracy was the strongest driver of trust in the survey; one honest status update beat any discovery feature.`, ledTo: `Principle: be truthful about delays before being clever about recommendations.` },
+                    { title: `Most people order occasionally`, text: `Most respondents order once a week or less, so nearly every session starts cold, with no habit to lean on.`, ledTo: `Principle: the path to an order must be obvious without relearning the app each time.` }
+                ]
+            },
+            decisionsTitle: `Designing a study that cuts through loyalty`,
+            decisions: [
+                {
+                    image: `./p3survey4.png`,
+                    title: `Ask about stages, not brands`,
+                    considered: `Ask which app people prefer, or ask about one stage of one task at a time.`,
+                    chose: `Twenty questions scoped to onboarding, discovery, checkout, tracking and support, each rating paired with an open "why".`,
+                    why: `Overall preference measures loyalty. Stage-level questions measure the interface, and the "why" field is where the actionable detail lives.`
+                },
+                {
+                    image: `./p3survey6.png`,
+                    title: `Two lenses before a finding`,
+                    considered: `Rely on expert review alone, or on user opinion alone.`,
+                    chose: `A finding only counted when the heuristic review and the user evidence pointed the same way.`,
+                    why: `Each lens has blind spots: experts miss context, and users report what they remember rather than what they did.`
+                },
+                {
+                    image: `./p3survey9.png`,
+                    title: `AI for clustering, people for judgement`,
+                    considered: `Cluster 800+ open-text answers by hand, or hand the synthesis to a tool.`,
+                    chose: `An AI first pass at clustering, then every theme checked against the raw responses and the stage scores in FigJam before it counted.`,
+                    why: `Clustering is mechanical; deciding what a theme means for a product is not.`
+                }
+            ],
+            iterationsTitle: `From hypothesis to recommendation`,
+            iterations: [
+                { title: `A hypothesis from the expert review`, feedback: `The heuristic pass suggested that, for delivery, speed beats depth.`, change: `The survey was written to test it stage by stage rather than confirm it.` },
+                { title: `Promotional overload on Zomato`, feedback: `Users described a home screen of flashing banners that made first navigation overwhelming.`, change: `Recommendation: group promotions into dedicated zones, and adopt Swiggy's auto-applied coupons.` },
+                { title: `Fees that appear at the last step`, feedback: `Delivery and surge charges surfacing only at checkout frustrated users on both platforms.`, change: `Recommendation: show the full cost, even as an estimate, earlier in the flow.` },
+                { title: `Chatbot loops during a late order`, feedback: `Automated support loops made a bad delivery worse; Swiggy rated slightly higher for reaching a person.`, change: `Recommendation: escalate to a human faster during time-sensitive failures.` }
+            ],
+            final: {
+                title: `What the research found`,
+                note: `Photography for illustration; every figure comes from the survey.`,
+                screens: [
+                    { image: `./hgx1.jpg`, title: `Simplicity vs feature depth`, note: `Swiggy was rated faster largely because of its minimal interface; Zomato carried more load but rewarded it with richer dine-in discovery.` },
+                    { image: `./hgx.jpg`, title: `When intent is delivery, speed wins`, note: `Auto-applied coupons and a short checkout won clearly in the "hungry and in a rush" case.` },
+                    { image: `./hgx2.jpg`, title: `Trust comes from transparency`, note: `Tracking that is honest about delays did more for trust than any feature.` },
+                    { image: `./p3survey10.png`, title: `Overall experience`, note: `Many rated both apps equally good; Swiggy was chosen more often for its clean interface, speed and delivery transparency.` }
+                ]
+            },
+            outcomes: {
+                title: `Five principles and prioritised recommendations`,
+                results: [
+                    `800+ data points synthesised into five principles for high-frequency transactional apps.`,
+                    `A clear signal: for delivery, speed to checkout outweighs discovery, and tracking transparency drives trust.`,
+                    `Recommendations for both platforms, each framed as problem, evidence and smallest likely fix.`
+                ],
+                limitations: [
+                    `Self-reported survey answers from active urban users: a strong signal, not proof.`,
+                    `What people report isn't always what they do.`
+                ],
+                next: [
+                    `Timed, moderated task sessions to measure the speed gap directly.`,
+                    `Run fee transparency as a real A/B experiment.`
+                ],
+                reflection: `This study sharpened a belief I now design by: beautiful UI is irrelevant if the architecture adds friction during a high-intent task. The craft was in the instrument, writing questions that isolate journey stages instead of asking for preference.`
+            }
+        },
         glance: { problem: `Swiggy and Zomato solve the same problem in opposite ways, and app-store ratings can't show where each one wins or loses people.`, did: `Ran the study alone: a heuristic review of both apps, then a stage-by-stage survey of 48 active users.`, shipped: `Five principles for high-frequency transactional apps and prioritised recommendations for both platforms.`, result: `800+ data points analysed. For delivery, speed to checkout beat discovery features, and tracking was the strongest driver of trust.` },
         problemStatement: `Swiggy and Zomato do the same job but make opposite bets: one on speed, one on discovery. App-store ratings blend the whole journey into a single star, so they can't show where each app wins or loses trust. This study breaks the journey into stages to find out.`,
         tagline: `Swiggy vs Zomato: a mixed-methods study of two apps solving the same problem in opposite ways`,
@@ -364,6 +617,88 @@ export const projectsData = {
     },
     project5: {
         title: `This or That`,
+        v2: {
+            preview: { image: `./tot2/d-poll.jpg` },
+            overview: {
+                summary: `This or That lets people post a decision they're stuck on and have the community vote. The first version worked, but it showed the running score before you voted, which research shows pulls later votes toward the leader. I audited it, researched how crowds influence each other, and redesigned and rebuilt it around one rule: vote first, then see the crowd.`,
+                problem: `A poll is only worth something if the votes are independent. The original also looked generic, showed placeholder numbers, and had a committed database password and stored cross-site scripting.`,
+                role: `Research, product design and full-stack engineering. Technical lead on the first build; sole designer and engineer on the redesign.`,
+                team: `Team of four (first build), then solo (redesign).`,
+                timeline: `Feb to May 2026 first build · Nov 2026 redesign`,
+                stats: [
+                    { value: `9`, label: `Problem areas in the audit, 4 critical` },
+                    { value: `6`, label: `Peer-reviewed or primary sources behind the design` },
+                    { value: `32`, label: `Integration tests against real Postgres` },
+                    { value: `25+`, label: `Beta testers on the first version` }
+                ]
+            },
+            discovery: {
+                title: `Showing the score changes the score`,
+                intro: `I read every file of the first version, then the research on social influence. All of it pointed the same way.`,
+                findings: [
+                    { title: `Visible tallies distort outcomes`, text: `In Salganik, Dodds and Watts' MusicLab study, seeing download counts made results more unequal and harder to predict. In Muchnik, Aral and Taylor's experiment, one early upvote raised the chance of the next positive rating by about 32%.`, ledTo: `Results and arguments hidden until you vote.` },
+                    { title: `Small samples lie`, text: `Sorting by raw percentage ranks 2 out of 2 above 100 out of 101.`, ledTo: `No "leaning" label under 10 votes, and arguments ranked by the Wilson lower bound.` },
+                    { title: `The app had real, hidden problems`, text: `A committed production password, usernames reaching innerHTML unescaped, a schema out of sync with the code, and topics silently dropped.`, ledTo: `A rebuilt backend where each audit finding maps to a tested fix.` }
+                ],
+                note: `I also checked a claim I wanted to make: a meta-analysis of 63 conditions found the choice-overload effect close to zero, so "fewer choices are better" is not why the format is binary. The reason is legibility.`
+            },
+            decisionsTitle: `Every rule follows from vote first`,
+            decisions: [
+                {
+                    image: `./tot2/d-feed.jpg`,
+                    title: `A feed that shows the count, not the winner`,
+                    considered: `Live percentages on every card, as before, or only the number of votes until you pick.`,
+                    chose: `Cards show the question, two tappable options and only how many votes so far. "Just show me the results" records a non-vote for lurkers.`,
+                    why: `Each vote should reflect the voter's view, not the counter's, without shutting out people who only want outcomes.`
+                },
+                {
+                    image: `./tot2/d-poll.jpg`,
+                    title: `Results called like elections`,
+                    considered: `A pie chart, or a single split bar with a verdict.`,
+                    chose: `One bar with a dashed 50% line, and verdicts from one server rule set: Too early (under 10), Too close (within 6 points), Leaning, Landslide (70%+).`,
+                    why: `With two options, one bar, one margin and one verdict say everything, and n is always shown.`
+                },
+                {
+                    image: `./tot2/d-ask.jpg`,
+                    title: `Help people ask better questions`,
+                    considered: `A blank form, or a composer that coaches.`,
+                    chose: `A live preview of the card plus a five-point check: is it a question, are the options distinct, do they fit on a button, is there context, is a topic chosen.`,
+                    why: `Well-written prompts drive participation more than any feed tweak.`
+                }
+            ],
+            iterationsTitle: `From the first build to the redesign`,
+            iterations: [
+                { images: [{ src: `./tot2/d-onboarding.jpg`, label: `Topics now match the database` }, { src: `./tot2/d-profile.jpg`, label: `A real record replaces placeholders`, tone: `after` }], title: `Fixing what the interface hid`, feedback: `The UI offered 16 topics while the database held 6, so most picks vanished; the hero's "1,240 active votes" and the profile ("Kelly") were hard-coded.`, change: `12 working topics with example questions, and a profile built from your real voting record.` },
+                { title: `A visual system that isn't a default`, feedback: `The first version had the generated look: gradients, a safe typeface, identical feature cards. A first cobalt in the redesign was too heavy in review.`, change: `Two flat inks with fixed meanings (denim for THIS, marigold for THAT), a scoreboard face for numbers, and a calmer denim that still passes AA.` },
+                { title: `Counters that stay right under load`, feedback: `Stored vote counts risk drifting when many people vote at once.`, change: `Voting locks the poll row in the same transaction; a test fires 30 simultaneous voters at one poll to prove totals stay exact.` }
+            ],
+            final: {
+                title: `The redesigned app`,
+                note: `Screens from the redesign on its sample content: the people and decisions are fictional, generated for demonstration.`,
+                screens: [
+                    { image: `./tot2/d-feed-voted.jpg`, title: `One tap, and the split slides in`, note: `No page load: the card becomes the split bar with verdict, n and margin, and tells you if you sided with the majority. Undo for 10 minutes.` },
+                    { image: `./tot2/d-poll.jpg`, title: `A results desk`, note: `Big percentages, the verdict and margin, how the split moved over time, and arguments grouped by side.` },
+                    { phones: [`./tot2/m-feed.jpg`, `./tot2/m-poll.jpg`, `./tot2/m-ask.jpg`, `./tot2/m-profile.jpg`], title: `On a phone`, note: `Every percentage printed as text, and THIS and THAT differ in lightness as well as hue, so they stay distinct for colour-blind users.` }
+                ]
+            },
+            outcomes: {
+                title: `Safe, honest, and opinionated`,
+                results: [
+                    `All 9 audit problem areas fixed, including the 4 critical ones, each covered by a test.`,
+                    `A hardened backend: environment-only secrets, zod validation, strict CSP, rate limits, row locks and row-level security.`,
+                    `Every major design decision grounded in published research, with the unsupported claims left out.`
+                ],
+                limitations: [
+                    `The redesign has just shipped: no usage data on it yet.`,
+                    `The 25+ beta testers used the first version, not the redesign.`
+                ],
+                next: [
+                    `Measure time to first vote and the peek rate, to see what vote-first costs in participation.`,
+                    `Track how often askers report what they chose.`
+                ],
+                reflection: `The most useful thing I did was go back to something that already worked and read all of it. A running app hides its problems well. The second lesson was letting research set the core rule instead of taste: hiding the tally is a small interface decision with a large effect on whether the numbers mean anything.`
+            }
+        },
         glance: { problem: `The first version worked, but it showed the live tally before you voted (so later votes copied the crowd), looked generic, and had security problems serious enough to block a public launch.`, did: `Audited every file, researched how crowds influence each other, then redesigned and rebuilt the product: research, product design and full-stack engineering.`, shipped: `A live two-sided decision app: vote first and then see the split, arguments grouped by side, verdicts called like an election, and a hardened Node and Postgres backend.`, result: `9 problem areas found (4 critical) and fixed, design grounded in 6 peer-reviewed or primary sources, 7 screens on desktop and mobile, 32 integration tests.` },
         problemStatement: `This or That lets people post a decision they're stuck on and have the community vote. The first version worked, but it showed the running score before you voted, which research shows pulls later votes toward the leader. It also looked generic, displayed placeholder numbers, and had a committed database password and stored cross-site scripting. The redesign asked one question: what would a poll look like if every vote had to be honest?`,
         tagline: `A community decision app, redesigned around one finding: people vote differently once they can see the crowd`,
