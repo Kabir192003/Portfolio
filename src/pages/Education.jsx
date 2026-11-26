@@ -9,7 +9,9 @@ const Education = () => {
             degree: 'M.Sc. Interactive Digital Media (69%)',
             institution: 'Trinity College Dublin, Ireland',
             period: 'Sep 2025 to Sep 2026',
-            description: 'Coursework projects in full-stack development with Java, web design, AR/VR, graphic design, game design, video editing and 3D modelling in Blender.'
+            description: 'Design-focused coursework in user experience, interaction design, web accessibility (WCAG), visual design, interactive storytelling, and prototyping, complemented by full-stack development and immersive technologies.',
+            topics: ['User experience', 'Interaction design', 'Web accessibility (WCAG)', 'Visual design', 'Prototyping', 'Interactive storytelling', 'User-centred design', 'Immersive experiences (AR/VR)'],
+            capstone: { title: 'StyleBook AI', to: '/projects/6', text: 'A written brand brief in, a checked, exportable design system out. I led a team of four on product direction, UX design and technical implementation, and shipped it with a published Figma plugin.' }
         },
         {
             id: 2,
@@ -47,7 +49,19 @@ const Education = () => {
                             <h2 style={styles.degree} className="role-heading">{edu.degree}</h2>
                             <h3 style={styles.institution}>{edu.institution}</h3>
                             <p style={styles.description} className="timeline-description">{edu.description}</p>
-                            {edu.id === 1 && <Link to="/msc" style={{ display: 'inline-block', marginTop: '0.75rem', color: 'inherit', textDecoration: 'underline' }}>See my studio work from the course →</Link>}
+                            {edu.topics && (
+                                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem', marginTop: '1rem' }}>
+                                    {edu.topics.map((t) => <span key={t} style={styles.topic}>{t}</span>)}
+                                </div>
+                            )}
+                            {edu.capstone && (
+                                <Link to={edu.capstone.to} style={styles.capstone} className="edu-capstone">
+                                    <span style={styles.capLabel}>M.Sc. capstone</span>
+                                    <span style={styles.capTitle}>{edu.capstone.title} →</span>
+                                    <span style={styles.capText}>{edu.capstone.text}</span>
+                                </Link>
+                            )}
+                            {edu.id === 1 && <Link to="/msc" style={{ display: 'inline-block', marginTop: '1rem', color: 'inherit', textDecoration: 'underline' }}>See my studio work from the course →</Link>}
                         </div>
                     </motion.div>
                 ))}
@@ -58,6 +72,42 @@ const Education = () => {
 
 // Reusing same styles structure from Experience for consistency
 const styles = {
+    topic: {
+        fontFamily: 'var(--font-mono)',
+        fontSize: '0.74rem',
+        border: '1px solid var(--text-primary)',
+        padding: '4px 9px',
+    },
+    capstone: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '0.35rem',
+        marginTop: '1.5rem',
+        padding: '1.1rem 1.25rem',
+        border: '2px solid #2e2bef',
+        background: 'rgba(46,43,239,0.05)',
+        color: 'var(--text-primary)',
+        textDecoration: 'none',
+        maxWidth: '620px',
+    },
+    capLabel: {
+        fontFamily: 'var(--font-mono)',
+        fontSize: '0.7rem',
+        letterSpacing: '0.12em',
+        textTransform: 'uppercase',
+        fontWeight: 700,
+        color: '#2e2bef',
+    },
+    capTitle: {
+        fontFamily: 'var(--font-display)',
+        fontSize: '1.5rem',
+        textTransform: 'uppercase',
+    },
+    capText: {
+        fontSize: '1rem',
+        lineHeight: 1.55,
+        color: 'var(--text-secondary)',
+    },
     pageTitle: {
         fontSize: 'clamp(2.5rem, 5vw, 4rem)',
         marginBottom: '4rem',

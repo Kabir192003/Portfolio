@@ -503,12 +503,124 @@ export const projectsData = {
     },
     project6: {
         title: `StyleBook AI`,
+        v2: {
+            links: [{ label: `Figma plugin ↗`, href: `https://www.figma.com/community/plugin/1672744768973480438` }],
+            preview: { image: `./stylebook/sb-landing-after.jpg` },
+            overview: {
+                summary: `StyleBook AI turns a written brand description into a complete design system you can edit and export. The interesting part is not that it uses AI. It is that nothing the AI proposes reaches the user unchecked: every colour pair is measured in code, repaired if it fails, and explained from the real numbers, while the person stays in control of every decision.`,
+                problem: `Setting up a design system means separate tools for colour, type and accessibility, and checking everything by hand. AI generators can draft one in seconds, but they state contrast ratios they never calculated.`,
+                role: `Project lead: product direction, UX design and technical implementation, bringing research and usability feedback from the team into every stage.`,
+                team: `Four people at Trinity College Dublin. My M.Sc. capstone.`,
+                timeline: `3 weeks research, 9 weeks build · Summer 2026`,
+                stats: [
+                    { value: `1.02:1`, label: `Worst AI contrast caught in testing, now repaired automatically` },
+                    { value: `0`, label: `Silent substitutions: failures are reported, never hidden` },
+                    { value: `200+`, label: `Designers surveyed before we built` },
+                    { value: `9 + Figma`, label: `Code export formats, plus a published Figma plugin` }
+                ]
+            },
+            discovery: {
+                title: `The workflow was scattered, and AI made it fast but untrustworthy`,
+                intro: `Before designing anything we mapped the tools designers already use, surveyed more than 200 designers to check the problem was shared, and then tested AI generation itself to see where it broke.`,
+                findings: [
+                    { title: `Every tool stops at one slice`, text: `Palette tools never check colour against real type. Font tools show a typeface on a blank page. Token tools assume a design system already exists. AI interface generators hand back a picture, not a system.`, ledTo: `One path from brief to tokens to Figma and code, with the connection between stages as the product.` },
+                    { title: `Designers felt the scatter`, text: `The 200+ designer survey confirmed that jumping between apps for fonts, colours and accessibility was a shared frustration, not just mine.`, ledTo: `Scope set around the whole system, with a browsable library that works even without AI.` },
+                    { title: `The model asserts, it doesn't measure`, text: `In testing, the generator produced body text at 1.02:1 contrast, nearly invisible, and separately claimed a button passed 4.5:1 when it measurably did not.`, ledTo: `A hard rule: the AI drafts, code verifies, and the person decides.` }
+                ]
+            },
+            decisionsTitle: `Designing for trust, control and failure`,
+            decisions: [
+                {
+                    image: `./stylebook/sb-journey.svg`,
+                    title: `Where the AI sits in the flow`,
+                    considered: `Let the model output a finished system; use a rules engine with no AI; or let the AI draft inside checks.`,
+                    chose: `The AI drafts from a shortlist of real colours and fonts, code verifies every claim, and the person reviews and decides.`,
+                    why: `A brief like "calm, premium, Gen Z" needs a model to hold everything in view at once, but only code can be trusted with arithmetic, and only the user knows if it feels like their brand.`
+                },
+                {
+                    image: `./stylebook/sb-verified.png`,
+                    title: `Verified, not claimed`,
+                    considered: `Prompt the model harder to get contrast right; show a warning; or measure and repair in code.`,
+                    chose: `Measure every colour pair with real WCAG maths, repair by changing lightness while keeping hue, and regenerate the written rationale from the measured numbers.`,
+                    why: `Better prompting reduced errors but could not guarantee them away. A panel that shows each change, by how much and why, lets people trust the output without trusting the model.`
+                },
+                {
+                    image: `./stylebook/sb-studio.png`,
+                    title: `The person stays in control`,
+                    considered: `Auto-apply the AI's system, or make people edit raw tokens before they see anything.`,
+                    chose: `Two speeds: accept the first pass and export in a minute, or open any token in Studio, edit it against a realistic interface, and watch the rationale update.`,
+                    why: `Founders want a credible start; designers want control. Neither path should slow the other, and every edit is undoable.`
+                },
+                {
+                    image: `./stylebook/sb-tokens.svg`,
+                    title: `A token architecture that makes edits land`,
+                    considered: `A flat list of tokens, or layered tokens with roles and overrides.`,
+                    chose: `Four layers: raw tokens, semantic roles, an alias layer components read, and per-component overrides on top.`,
+                    why: `A colour is only right next to a typeface, at a size, on a surface. Layers let one change flow through ten components in both themes. I spent a full week on this before building the editor.`
+                }
+            ],
+            iterationsTitle: `What changed, and why`,
+            iterations: [
+                {
+                    images: [{ src: `./stylebook/sb-landing-before.jpg`, label: `Before · July: a 16,500 px scroll story, no prompt on the page` }, { src: `./stylebook/sb-landing-after.jpg`, label: `After · a working prompt in the first screen`, tone: `after` }],
+                    title: `The landing page buried the product`,
+                    feedback: `The first version told a "watch a page come to life" story over 16,500 px of scrolling. There was no prompt box anywhere on it: to try the generator you had to find the button in the nav.`,
+                    change: `We put a live, working prompt directly in the hero, 605 px from the top, and kept the story underneath as optional depth.`
+                },
+                {
+                    title: `Vague generations, then unsafe ones`,
+                    feedback: `Early outputs read as generic, and later ones failed contrast while claiming to pass.`,
+                    change: `I redesigned the prompt to break each brief into its parts and added a shortlisting step so the model chooses from about 1,900 real colours and fonts. Then the verification loop above caught what was left.`
+                },
+                {
+                    title: `Figma export that looked right but wasn't`,
+                    feedback: `The first export rebuilt layout from token values on the server, and was subtly wrong everywhere.`,
+                    change: `The shipped plugin reads the real rendered geometry from the browser. Measuring reality fixed most fidelity problems at once.`
+                },
+                {
+                    title: `Fixing the reported bug, not the convenient one`,
+                    feedback: `A teammate reported outline buttons vanishing in dark mode. The quick fix darkened every border in the app.`,
+                    change: `A narrower role used only where a border is a control's whole boundary. The button went from 1.32:1 to 3.04:1, and nothing else moved. A later accessibility audit also fixed muted text at 1.8:1 in about 200 places and a mobile nav unreachable below 640 px.`
+                }
+            ],
+            final: {
+                title: `The shipped product`,
+                note: `Screenshots of the live product. Try it, or import a system into Figma with the published plugin.`,
+                screens: [
+                    { image: `./stylebook/sb-hero.png`, title: `A number that has to be true`, note: `The 13.0:1 contrast figure in the hero is computed live from whatever palette is on screen, because a tool that measures can't fake its own shop window.` },
+                    { image: `./stylebook/sb-verified.png`, title: `The verification panel`, note: `Which tokens were adjusted, by how much, and why, in plain language written from the measured values.` },
+                    { image: `./stylebook/sb-studio.png`, title: `Studio`, note: `Edit any token against a realistic product page; ten components follow in four interaction states, light and dark.` },
+                    { image: `./stylebook/sb-colors.png`, title: `A library that works without AI`, note: `Nearly 2,000 named shades to browse and filter, so the product was useful even in weeks the pipeline broke.` }
+                ]
+            },
+            outcomes: {
+                title: `Shipped, published, and honest about the gaps`,
+                results: [
+                    `A live product that goes from a brief to a checked, editable system exported to 9 code formats, PDF or Figma.`,
+                    `The StyleBook Import plugin published to the Figma Community after a review that included a security disclosure.`,
+                    `Every AI-proposed colour pair is measured before anyone sees it; anything that can't be repaired is reported as a deviation.`,
+                    `28 passing tests, and a formal accessibility audit with its failures fixed.`,
+                    `Presented at a three-day public showcase.`
+                ],
+                limitations: [
+                    `Too new for usage data, so success measures are planned, not results.`,
+                    `No rate limiting on the AI endpoint yet.`,
+                    `No automated accessibility testing in the build, and no testing with assistive-technology users.`
+                ],
+                next: [
+                    `Measure brief-to-first-export time and how often the verifier has to repair the model.`,
+                    `Test with screen-reader and keyboard-only users.`,
+                    `Add rate limiting and automated accessibility checks to the pipeline.`
+                ],
+                reflection: `The habit I'll carry furthest is verifying instead of asserting. It started as a rule about a language model's arithmetic and became how I work: measure the rendered result, then make the claim. Next time I'd also pair with teammates on the first features rather than splitting the build into clean slices from day one, so more of the team understands how the pieces connect.`
+            }
+        },
         glance: { problem: `Setting up a design system means juggling separate tools for colour, type and accessibility, and checking everything by hand.`, did: `My idea. Surveyed 200+ designers with the team, then led four people as project lead and wrote nearly all of the code (207 of 212 commits).`, shipped: `A live app that turns a written brand brief into a checked design system, exporting to 9 code formats and to Figma through a published plugin.`, result: `Every AI-proposed colour pair is measured and repaired in code. Presented at a three-day public showcase.` },
         problemStatement: `Designers juggle a different app for every part of a design system: one for colour, another for fonts, another for accessibility. Nothing connected those steps, so checking happened by hand across separate tools. StyleBook AI turns one written brand description into a single verified, exportable system.`,
         tagline: `A written brand description in, a verified, exportable design system out. Built and shipped with a team of four.`,
         category: `AI Product · Design Systems · Team Lead`,
         timeline: `9 weeks build, 3 weeks research · Summer 2026`,
-        role: `Project lead: idea, product design, architecture and nearly all implementation`,
+        role: `Project lead for a team of four: product direction, UX design and technical implementation`,
         liveLink: `https://stylebook.site`,
         repoLink: `https://github.com/Kabir192003/StyleBookAI`,
         overview: [

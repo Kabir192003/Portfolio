@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 860" font-family="Georgia, 'Times New Roman', serif">
+  <rect width="1600" height="860" fill="#f2f0ea"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#141414"/></marker>
+  </defs>
+  <text x="60" y="70" font-family="'Courier New', monospace" font-size="20" letter-spacing="3" fill="#2e2bef" font-weight="700">TOKEN ARCHITECTURE</text>
+  <text x="60" y="112" font-size="36" fill="#141414">Four layers, resolved in order, <tspan font-style="italic" fill="#2e2bef">so one edit changes everything it should.</tspan></text>
+
+  <!-- layers -->
+  <g>
+    <rect x="60" y="160" width="1000" height="130" fill="#fff" stroke="#141414" stroke-width="2"/>
+    <text x="84" y="196" font-family="'Courier New', monospace" font-size="16" fill="#2e2bef" font-weight="700">LAYER 1 · RAW TOKENS</text>
+    <text x="84" y="232" font-size="20" fill="#141414">What the generator and your edits produce, and what exports</text>
+    <text x="84" y="266" font-family="'Courier New', monospace" font-size="16" fill="#3a3833">--color-*  --font-*  --text-*  --space-*  --radius  --shadow-*</text>
+  </g>
+  <g>
+    <rect x="60" y="330" width="1000" height="130" fill="#fff" stroke="#141414" stroke-width="2"/>
+    <text x="84" y="366" font-family="'Courier New', monospace" font-size="16" fill="#2e2bef" font-weight="700">LAYER 2 · SEMANTIC ROLES</text>
+    <text x="84" y="402" font-size="20" fill="#141414">Meanings a five-colour palette has no name for, in light and dark</text>
+    <text x="84" y="436" font-family="'Courier New', monospace" font-size="16" fill="#3a3833">--pg-border  --pg-muted  --pg-success / warning / error  --pg-on-*</text>
+  </g>
+  <g>
+    <rect x="60" y="500" width="1000" height="130" fill="#fff" stroke="#141414" stroke-width="2"/>
+    <text x="84" y="536" font-family="'Courier New', monospace" font-size="16" fill="#2e2bef" font-weight="700">LAYER 3 · ALIAS LAYER</text>
+    <text x="84" y="572" font-size="20" fill="#141414">The only names component rules read, so roles can change underneath</text>
+    <text x="84" y="606" font-family="'Courier New', monospace" font-size="16" fill="#3a3833">--pgc-*</text>
+  </g>
+  <g>
+    <rect x="60" y="670" width="1000" height="130" fill="#141414"/>
+    <text x="84" y="706" font-family="'Courier New', monospace" font-size="16" fill="#a9b4ff" font-weight="700">LAYER 4 · COMPONENT OVERRIDES</text>
+    <text x="84" y="742" font-size="20" fill="#f2f0ea">Per-component edits from the inspector, read first by the 10 components</text>
+    <text x="84" y="776" font-family="'Courier New', monospace" font-size="16" fill="#cfcdc4">--ds-&lt;component&gt;-&lt;slot&gt;</text>
+  </g>
+  <g stroke="#141414" stroke-width="2" marker-end="url(#a)">
+    <line x1="560" y1="290" x2="560" y2="326"/>
+    <line x1="560" y1="460" x2="560" y2="496"/>
+    <line x1="560" y1="630" x2="560" y2="666"/>
+  </g>
+
+  <!-- side notes -->
+  <g>
+    <text x="1110" y="200" font-family="'Courier New', monospace" font-size="15" fill="#2e2bef" font-weight="700">WHY IT MATTERS</text>
+    <text x="1110" y="238" font-size="19" fill="#141414">A colour is only right next to a</text>
+    <text x="1110" y="264" font-size="19" fill="#141414">typeface, at a size, on a surface.</text>
+    <text x="1110" y="290" font-size="19" fill="#141414">Layers let one change flow through</text>
+    <text x="1110" y="316" font-size="19" fill="#141414">every component, in both themes.</text>
+
+    <rect x="1110" y="380" width="430" height="190" fill="#fff7ed" stroke="#c2410c" stroke-width="2" stroke-dasharray="6 4"/>
+    <text x="1132" y="414" font-family="'Courier New', monospace" font-size="15" fill="#c2410c" font-weight="700">THE ORDER IS THE HARD PART</text>
+    <text x="1132" y="448" font-size="18" fill="#141414">The alias layer reads roles first.</text>
+    <text x="1132" y="474" font-size="18" fill="#141414">Editable components invert that and</text>
+    <text x="1132" y="500" font-size="18" fill="#141414">read their own overrides first.</text>
+    <text x="1132" y="534" font-size="17" font-style="italic" fill="#3a3833">Get it backwards and inspector edits</text>
+    <text x="1132" y="556" font-size="17" font-style="italic" fill="#3a3833">silently do nothing.</text>
+
+    <text x="1110" y="640" font-family="'Courier New', monospace" font-size="15" fill="#2e2bef" font-weight="700">TIME SPENT</text>
+    <text x="1110" y="676" font-size="19" fill="#141414">One full week (week 5) on this model</text>
+    <text x="1110" y="702" font-size="19" fill="#141414">before building the editor on top.</text>
+  </g>
+</svg>

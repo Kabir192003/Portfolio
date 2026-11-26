@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 860" font-family="Georgia, 'Times New Roman', serif">
+  <rect width="1600" height="860" fill="#f2f0ea"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#141414"/></marker>
+    <marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#c2410c"/></marker>
+  </defs>
+
+  <text x="60" y="70" font-family="'Courier New', monospace" font-size="20" letter-spacing="3" fill="#2e2bef" font-weight="700">FROM BRIEF TO FIGMA</text>
+  <text x="60" y="112" font-size="36" fill="#141414">The AI drafts. Code checks. <tspan font-style="italic" fill="#2e2bef">You decide.</tspan></text>
+
+  <!-- lane labels -->
+  <g font-family="'Courier New', monospace" font-size="15" letter-spacing="2" font-weight="700">
+    <text x="60" y="186" fill="#141414">YOU</text>
+    <text x="60" y="436" fill="#2e2bef">AI</text>
+    <text x="60" y="646" fill="#15803d">CODE</text>
+  </g>
+  <g stroke="#141414" stroke-opacity="0.15" stroke-dasharray="4 6">
+    <line x1="60" y1="200" x2="1540" y2="200"/>
+    <line x1="60" y1="450" x2="1540" y2="450"/>
+    <line x1="60" y1="660" x2="1540" y2="660"/>
+  </g>
+
+  <!-- 1 brief (you) -->
+  <g>
+    <rect x="60" y="216" width="250" height="150" fill="#fff" stroke="#141414" stroke-width="2"/>
+    <text x="78" y="248" font-family="'Courier New', monospace" font-size="15" fill="#2e2bef" font-weight="700">01  BRIEF</text>
+    <text x="78" y="280" font-size="19" fill="#141414">Describe the brand</text>
+    <text x="78" y="310" font-size="16" font-style="italic" fill="#3a3833">"A calm, premium</text>
+    <text x="78" y="332" font-size="16" font-style="italic" fill="#3a3833">skincare brand for Gen Z"</text>
+  </g>
+
+  <!-- 2 shortlist (code) -->
+  <g>
+    <rect x="250" y="676" width="270" height="130" fill="#fff" stroke="#15803d" stroke-width="2"/>
+    <text x="268" y="708" font-family="'Courier New', monospace" font-size="15" fill="#15803d" font-weight="700">02  SHORTLIST</text>
+    <text x="268" y="740" font-size="18" fill="#141414">Sample real options</text>
+    <text x="268" y="768" font-size="15" fill="#3a3833">from ~1,900 colours and</text>
+    <text x="268" y="788" font-size="15" fill="#3a3833">fonts, so the AI can't invent</text>
+  </g>
+
+  <!-- 3 draft (ai) -->
+  <g>
+    <rect x="470" y="466" width="290" height="150" fill="#fff" stroke="#2e2bef" stroke-width="2"/>
+    <text x="488" y="498" font-family="'Courier New', monospace" font-size="15" fill="#2e2bef" font-weight="700">03  DRAFT</text>
+    <text x="488" y="530" font-size="18" fill="#141414">Propose a whole system</text>
+    <text x="488" y="558" font-size="15" fill="#3a3833">Colour roles, type pairing,</text>
+    <text x="488" y="578" font-size="15" fill="#3a3833">scale, spacing, 10 components,</text>
+    <text x="488" y="598" font-size="15" fill="#3a3833">and a written rationale</text>
+  </g>
+
+  <!-- 4 verify (code) -->
+  <g>
+    <rect x="700" y="676" width="330" height="150" fill="#fff" stroke="#15803d" stroke-width="2.5"/>
+    <text x="718" y="708" font-family="'Courier New', monospace" font-size="15" fill="#15803d" font-weight="700">04  VERIFY AND REPAIR</text>
+    <text x="718" y="740" font-size="18" fill="#141414">Measure every colour pair</text>
+    <text x="718" y="768" font-size="15" fill="#3a3833">Real WCAG maths. Fix failures by</text>
+    <text x="718" y="788" font-size="15" fill="#3a3833">changing lightness, keeping hue.</text>
+    <text x="718" y="808" font-size="15" fill="#3a3833">Rewrite the rationale from the numbers.</text>
+  </g>
+
+  <!-- error branch -->
+  <g>
+    <rect x="1080" y="700" width="300" height="104" fill="#fff7ed" stroke="#c2410c" stroke-width="2" stroke-dasharray="6 4"/>
+    <text x="1098" y="730" font-family="'Courier New', monospace" font-size="14" fill="#c2410c" font-weight="700">IF IT CAN'T BE FIXED</text>
+    <text x="1098" y="760" font-size="16" fill="#141414">Reported as a deviation,</text>
+    <text x="1098" y="784" font-size="16" fill="#141414">never silently swapped</text>
+  </g>
+
+  <!-- 5 review (you) -->
+  <g>
+    <rect x="1000" y="216" width="290" height="160" fill="#fff" stroke="#141414" stroke-width="2.5"/>
+    <text x="1018" y="248" font-family="'Courier New', monospace" font-size="15" fill="#2e2bef" font-weight="700">05  REVIEW</text>
+    <text x="1018" y="280" font-size="18" fill="#141414">See what changed and why</text>
+    <text x="1018" y="308" font-size="15" fill="#3a3833">Accept the first pass, edit any</text>
+    <text x="1018" y="328" font-size="15" fill="#3a3833">token in Studio, or ask for</text>
+    <text x="1018" y="348" font-size="15" fill="#3a3833">another draft</text>
+  </g>
+
+  <!-- 6 ship (you) -->
+  <g>
+    <rect x="1330" y="216" width="210" height="160" fill="#141414"/>
+    <text x="1348" y="248" font-family="'Courier New', monospace" font-size="15" fill="#a9b4ff" font-weight="700">06  SHIP</text>
+    <text x="1348" y="280" font-size="18" fill="#f2f0ea">9 code formats</text>
+    <text x="1348" y="306" font-size="18" fill="#f2f0ea">PDF</text>
+    <text x="1348" y="332" font-size="18" fill="#f2f0ea">Figma plugin</text>
+    <text x="1348" y="358" font-size="13" fill="#b9b6ad">real rendered layout</text>
+  </g>
+
+  <!-- arrows -->
+  <g fill="none" stroke="#141414" stroke-width="2" marker-end="url(#a)">
+    <path d="M185 366 L185 520 Q185 560 230 640 L300 672"/>
+    <path d="M520 700 Q560 640 560 620"/>
+    <path d="M760 560 Q840 580 840 672"/>
+    <path d="M1000 676 Q1080 560 1120 380"/>
+    <path d="M1290 296 L1326 296"/>
+  </g>
+  <path d="M1030 752 L1076 752" fill="none" stroke="#c2410c" stroke-width="2" marker-end="url(#r)"/>
+  <path d="M1230 700 Q1230 520 1200 380" fill="none" stroke="#c2410c" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#r)"/>
+
+  <!-- regenerate loop -->
+  <path d="M1000 296 Q760 296 640 462" fill="none" stroke="#2e2bef" stroke-width="2" stroke-dasharray="5 5" marker-end="url(#a)"/>
+  <text x="700" y="282" font-family="'Courier New', monospace" font-size="14" fill="#2e2bef">ask for another draft</text>
+</svg>

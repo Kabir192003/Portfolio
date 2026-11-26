@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import CaseStudyV2 from './CaseStudyV2';
 
 // The site-wide case-study format: Swiss-poster registration marks, a
 // rule-blue accent, numbered sections, a dot-matrix halftone behind every
@@ -57,6 +58,7 @@ const HALFTONE = { backgroundImage: 'radial-gradient(circle, rgba(20,20,20,0.14)
 
 const CaseStudyTemplate = ({ project, nextProject, decisionsNote, decisionsHeading, challengesHeading, logo }) => {
     useCaseStudyFonts();
+    if (project.v2) return <CaseStudyV2 project={project} nextProject={nextProject} logo={logo} />;
     const n = project.impactMetrics.length;
 
     const challengeCount = project.challenges?.length || 0;
